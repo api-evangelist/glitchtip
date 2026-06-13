@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-commentschema.json",
+  "title": "CommentSchema",
+  "description": "GlitchTip CommentSchema",
+  "properties": {
+    "data": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Data",
+      "type": "object"
+    },
+    "type": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "note",
+      "title": "Type"
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "user": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/CommentUserSchema"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "ID"
+    }
+  },
+  "required": [
+    "data",
+    "dateCreated",
+    "user"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,199 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-monitordetailschema.json",
+  "title": "MonitorDetailSchema",
+  "description": "GlitchTip MonitorDetailSchema",
+  "properties": {
+    "projectID": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Projectid"
+    },
+    "environmentID": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Environmentid"
+    },
+    "isUp": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Isup"
+    },
+    "lastChange": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Lastchange"
+    },
+    "heartbeatEndpoint": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Heartbeatendpoint"
+    },
+    "projectName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Projectname"
+    },
+    "envName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Envname"
+    },
+    "checks": {
+      "items": {
+        "$ref": "#/components/schemas/MonitorCheckResponseTimeSchema"
+      },
+      "title": "Checks",
+      "type": "array"
+    },
+    "organizationID": {
+      "title": "Organizationid",
+      "type": "integer"
+    },
+    "monitorType": {
+      "$ref": "#/components/schemas/MonitorType"
+    },
+    "id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "ID"
+    },
+    "endpointID": {
+      "anyOf": [
+        {
+          "format": "uuid",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Used for referencing heartbeat endpoint",
+      "title": "Endpoint Id"
+    },
+    "created": {
+      "format": "date-time",
+      "title": "Created",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 200,
+      "title": "Name",
+      "type": "string"
+    },
+    "url": {
+      "anyOf": [
+        {
+          "maxLength": 2000,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Url"
+    },
+    "expectedStatus": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": 200,
+      "title": "Expected Status"
+    },
+    "expectedBody": {
+      "anyOf": [
+        {
+          "maxLength": 2000,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Expected Body"
+    },
+    "interval": {
+      "default": 60,
+      "title": "Interval",
+      "type": "integer"
+    },
+    "timeout": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Blank implies default value of 20",
+      "title": "Timeout"
+    }
+  },
+  "required": [
+    "projectID",
+    "environmentID",
+    "isUp",
+    "lastChange",
+    "heartbeatEndpoint",
+    "checks",
+    "organizationID",
+    "monitorType",
+    "created",
+    "name"
+  ],
+  "type": "object"
+}

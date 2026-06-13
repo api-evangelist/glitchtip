@@ -37,6 +37,8 @@ apis:
         url: https://glitchtip.com/documentation/
       - type: OpenAPI
         url: https://app.glitchtip.com/api/docs
+      - type: OpenAPI
+        url: https://raw.githubusercontent.com/api-evangelist/glitchtip/refs/heads/main/openapi/glitchtip-rest-openapi.yml
 
   - name: GlitchTip Event Intake API
     description: Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions, and log messages from Sentry-compatible SDKs across Python, JavaScript, Ruby, PHP, Go, Java, and more.

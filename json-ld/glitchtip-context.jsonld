@@ -1,0 +1,183 @@
+{
+  "@context": {
+    "@vocab": "https://glitchtip.com/api/vocab#",
+    "glitchtip": "https://glitchtip.com/api/vocab#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Organization": "glitchtip:Organization",
+    "organizationSlug": {
+      "@id": "glitchtip:organizationSlug",
+      "@type": "xsd:string"
+    },
+    "organizationName": {
+      "@id": "glitchtip:organizationName",
+      "@type": "xsd:string"
+    },
+    "Project": "glitchtip:Project",
+    "projectSlug": {
+      "@id": "glitchtip:projectSlug",
+      "@type": "xsd:string"
+    },
+    "projectName": {
+      "@id": "glitchtip:projectName",
+      "@type": "xsd:string"
+    },
+    "platform": {
+      "@id": "glitchtip:platform",
+      "@type": "xsd:string"
+    },
+    "Issue": "glitchtip:Issue",
+    "shortId": {
+      "@id": "glitchtip:shortId",
+      "@type": "xsd:string"
+    },
+    "title": {
+      "@id": "schema:name"
+    },
+    "culprit": {
+      "@id": "glitchtip:culprit",
+      "@type": "xsd:string"
+    },
+    "level": {
+      "@id": "glitchtip:level",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "glitchtip:status",
+      "@type": "xsd:string"
+    },
+    "isPublic": {
+      "@id": "glitchtip:isPublic",
+      "@type": "xsd:boolean"
+    },
+    "firstSeen": {
+      "@id": "glitchtip:firstSeen",
+      "@type": "xsd:dateTime"
+    },
+    "lastSeen": {
+      "@id": "glitchtip:lastSeen",
+      "@type": "xsd:dateTime"
+    },
+    "count": {
+      "@id": "glitchtip:count",
+      "@type": "xsd:string"
+    },
+    "userCount": {
+      "@id": "glitchtip:userCount",
+      "@type": "xsd:integer"
+    },
+    "Event": "glitchtip:Event",
+    "eventID": {
+      "@id": "glitchtip:eventID",
+      "@type": "xsd:string"
+    },
+    "message": {
+      "@id": "schema:description"
+    },
+    "dateCreated": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "tags": {
+      "@id": "schema:keywords"
+    },
+    "exception": {
+      "@id": "glitchtip:exception"
+    },
+    "stacktrace": {
+      "@id": "glitchtip:stacktrace"
+    },
+    "breadcrumbs": {
+      "@id": "glitchtip:breadcrumbs"
+    },
+    "Monitor": "glitchtip:Monitor",
+    "monitorType": {
+      "@id": "glitchtip:monitorType",
+      "@type": "xsd:string"
+    },
+    "expectedStatus": {
+      "@id": "glitchtip:expectedStatus",
+      "@type": "xsd:integer"
+    },
+    "interval": {
+      "@id": "glitchtip:interval",
+      "@type": "xsd:string"
+    },
+    "isUp": {
+      "@id": "glitchtip:isUp",
+      "@type": "xsd:boolean"
+    },
+    "lastChecked": {
+      "@id": "glitchtip:lastChecked",
+      "@type": "xsd:dateTime"
+    },
+    "responseTime": {
+      "@id": "glitchtip:responseTime",
+      "@type": "xsd:integer"
+    },
+    "Team": "glitchtip:Team",
+    "teamSlug": {
+      "@id": "glitchtip:teamSlug",
+      "@type": "xsd:string"
+    },
+    "User": "glitchtip:User",
+    "username": {
+      "@id": "schema:identifier"
+    },
+    "email": {
+      "@id": "schema:email"
+    },
+    "ipAddress": {
+      "@id": "glitchtip:ipAddress",
+      "@type": "xsd:string"
+    },
+    "id": "@id",
+    "slug": {
+      "@id": "glitchtip:slug",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "dateAdded": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "Alert": "glitchtip:Alert",
+    "timespan_minutes": {
+      "@id": "glitchtip:timespanMinutes",
+      "@type": "xsd:integer"
+    },
+    "quantity": {
+      "@id": "glitchtip:quantity",
+      "@type": "xsd:integer"
+    },
+    "Release": "glitchtip:Release",
+    "version": {
+      "@id": "schema:version"
+    },
+    "ref": {
+      "@id": "glitchtip:ref",
+      "@type": "xsd:string"
+    },
+    "commit": {
+      "@id": "glitchtip:commit",
+      "@type": "xsd:string"
+    },
+    "APIToken": "glitchtip:APIToken",
+    "token": {
+      "@id": "glitchtip:token",
+      "@type": "xsd:string"
+    },
+    "scopes": {
+      "@id": "glitchtip:scopes"
+    }
+  }
+}

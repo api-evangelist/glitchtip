@@ -1,0 +1,48 @@
+{
+  "id": "abc123def456",
+  "eventID": "abc123def456789012345678901234567890",
+  "title": "TypeError: Cannot read property 'foo' of undefined",
+  "message": "Cannot read property 'foo' of undefined",
+  "platform": "javascript",
+  "level": "error",
+  "dateCreated": "2024-06-12T14:22:00Z",
+  "tags": [
+    {
+      "key": "browser",
+      "value": "Chrome 125"
+    },
+    {
+      "key": "os",
+      "value": "Windows 11"
+    },
+    {
+      "key": "url",
+      "value": "https://example.com/dashboard"
+    }
+  ],
+  "user": {
+    "id": "user-123",
+    "email": "user@example.com",
+    "username": "johndoe",
+    "ipAddress": "192.168.1.1"
+  },
+  "exception": {
+    "values": [
+      {
+        "type": "TypeError",
+        "value": "Cannot read property 'foo' of undefined",
+        "stacktrace": {
+          "frames": [
+            {
+              "filename": "app/utils.js",
+              "function": "processData",
+              "lineno": 42,
+              "colno": 10,
+              "inApp": true
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-apitokenschema.json",
+  "title": "APITokenSchema",
+  "description": "GlitchTip APITokenSchema",
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "integer"
+    },
+    "label": {
+      "title": "Label",
+      "type": "string"
+    },
+    "scopes": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Scopes",
+      "type": "array"
+    },
+    "token": {
+      "title": "Token",
+      "type": "string"
+    },
+    "created": {
+      "format": "date-time",
+      "title": "Created",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "label",
+    "scopes",
+    "token",
+    "created"
+  ],
+  "type": "object"
+}

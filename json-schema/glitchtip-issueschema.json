@@ -1,0 +1,218 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-issueschema.json",
+  "title": "IssueSchema",
+  "description": "GlitchTip IssueSchema",
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "count": {
+      "title": "Count",
+      "type": "string"
+    },
+    "type": {
+      "$ref": "#/components/schemas/IssueEventTypeDisplay"
+    },
+    "level": {
+      "$ref": "#/components/schemas/LogLevelDisplay"
+    },
+    "status": {
+      "$ref": "#/components/schemas/EventStatusDisplay"
+    },
+    "metadata": {
+      "additionalProperties": true,
+      "title": "Metadata",
+      "type": "object"
+    },
+    "project": {
+      "$ref": "#/components/schemas/ProjectReference"
+    },
+    "shortId": {
+      "title": "Shortid",
+      "type": "string"
+    },
+    "numComments": {
+      "title": "Numcomments",
+      "type": "integer"
+    },
+    "stats": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": {
+        "24h": []
+      },
+      "title": "Stats"
+    },
+    "shareId": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Shareid"
+    },
+    "logger": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Logger"
+    },
+    "permalink": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "Not implemented",
+      "title": "Permalink"
+    },
+    "statusDetails": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Statusdetails"
+    },
+    "subscriptionDetails": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Subscriptiondetails"
+    },
+    "userCount": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": 0,
+      "title": "Usercount"
+    },
+    "matchingEventId": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Matchingeventid"
+    },
+    "firstRelease": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/IssueReleaseSchema"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lastRelease": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/IssueReleaseSchema"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "firstSeen": {
+      "format": "date-time",
+      "title": "Firstseen",
+      "type": "string"
+    },
+    "lastSeen": {
+      "format": "date-time",
+      "title": "Lastseen",
+      "type": "string"
+    },
+    "assignedTo": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/IssueActorSchema"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "title": {
+      "maxLength": 255,
+      "title": "Title",
+      "type": "string"
+    },
+    "culprit": {
+      "anyOf": [
+        {
+          "maxLength": 1024,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Culprit"
+    }
+  },
+  "required": [
+    "id",
+    "count",
+    "type",
+    "level",
+    "status",
+    "metadata",
+    "project",
+    "shortId",
+    "numComments",
+    "firstSeen",
+    "lastSeen",
+    "title"
+  ],
+  "type": "object"
+}

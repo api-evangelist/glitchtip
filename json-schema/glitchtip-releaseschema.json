@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-releaseschema.json",
+  "title": "ReleaseSchema",
+  "description": "GlitchTip ReleaseSchema",
+  "properties": {
+    "ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Ref"
+    },
+    "dateReleased": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Datereleased"
+    },
+    "version": {
+      "maxLength": 255,
+      "title": "Version",
+      "type": "string"
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "shortVersion": {
+      "title": "Shortversion",
+      "type": "string"
+    },
+    "projects": {
+      "items": {
+        "$ref": "#/components/schemas/NameSlugProjectSchema"
+      },
+      "title": "Projects",
+      "type": "array"
+    },
+    "repository": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/ReleaseRepositorySchema"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Url"
+    },
+    "data": {
+      "title": "Data",
+      "type": "object"
+    },
+    "commitCount": {
+      "default": 0,
+      "title": "Commit Count",
+      "type": "integer"
+    },
+    "deployCount": {
+      "default": 0,
+      "title": "Deploy Count",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "dateReleased",
+    "version",
+    "dateCreated",
+    "shortVersion",
+    "projects"
+  ],
+  "type": "object"
+}

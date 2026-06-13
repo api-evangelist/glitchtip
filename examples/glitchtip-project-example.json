@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "slug": "my-project",
+  "name": "My Project",
+  "platform": "python",
+  "dateCreated": "2024-01-15T10:05:00Z",
+  "isPublic": false,
+  "hasAccess": true,
+  "isMember": true,
+  "isBookmarked": false,
+  "organization": {
+    "id": 1,
+    "slug": "my-org",
+    "name": "My Organization"
+  }
+}

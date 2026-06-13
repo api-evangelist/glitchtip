@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "name": "Homepage Uptime",
+  "url": "https://example.com/",
+  "monitorType": "Ping",
+  "expectedStatus": 200,
+  "interval": "00:01:00",
+  "projectSlug": "my-project",
+  "organizationSlug": "my-org",
+  "isUp": true,
+  "lastChecked": "2024-06-12T14:20:00Z",
+  "responseTime": 142
+}

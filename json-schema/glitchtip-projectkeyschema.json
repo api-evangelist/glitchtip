@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-projectkeyschema.json",
+  "title": "ProjectKeySchema",
+  "description": "A project key (DSN) provides a public authentication string used for event\ningestion.",
+  "properties": {
+    "name": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Name"
+    },
+    "rateLimit": {
+      "anyOf": [
+        {
+          "$ref": "#/components/schemas/KeyRateLimit"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "id": {
+      "format": "uuid",
+      "title": "Id",
+      "type": "string"
+    },
+    "dsn": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Dsn",
+      "type": "object"
+    },
+    "label": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Label"
+    },
+    "public": {
+      "format": "uuid",
+      "title": "Public",
+      "type": "string"
+    },
+    "projectID": {
+      "title": "Projectid",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "dateCreated",
+    "id",
+    "dsn",
+    "label",
+    "public",
+    "projectID"
+  ],
+  "type": "object"
+}

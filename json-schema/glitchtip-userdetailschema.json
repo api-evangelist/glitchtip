@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-userdetailschema.json",
+  "title": "UserDetailSchema",
+  "description": "GlitchTip UserDetailSchema",
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "options": {
+      "$ref": "#/components/schemas/UserOptions"
+    },
+    "username": {
+      "format": "email",
+      "title": "Username",
+      "type": "string"
+    },
+    "dateJoined": {
+      "format": "date-time",
+      "title": "Datejoined",
+      "type": "string"
+    },
+    "email": {
+      "format": "email",
+      "title": "Email",
+      "type": "string"
+    },
+    "hasPasswordAuth": {
+      "title": "Haspasswordauth",
+      "type": "boolean"
+    },
+    "identities": {
+      "items": {
+        "$ref": "#/components/schemas/SocialAccountSchema"
+      },
+      "title": "Identities",
+      "type": "array"
+    },
+    "lastLogin": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Last Login"
+    },
+    "isSuperuser": {
+      "default": false,
+      "description": "Designates that this user has all permissions without explicitly assigning them.",
+      "title": "Superuser Status",
+      "type": "boolean"
+    },
+    "isActive": {
+      "default": true,
+      "description": "Designates whether this user should be treated as active. Unselect this instead of deleting accounts.",
+      "title": "Active",
+      "type": "boolean"
+    },
+    "name": {
+      "anyOf": [
+        {
+          "maxLength": 255,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Name"
+    },
+    "chatwootIdentifierHash": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Chatwootidentifierhash"
+    }
+  },
+  "required": [
+    "id",
+    "options",
+    "username",
+    "dateJoined",
+    "email",
+    "hasPasswordAuth",
+    "identities"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,14 @@
+{
+  "id": 3,
+  "name": "Error Rate Alert",
+  "timespan_minutes": 10,
+  "quantity": 50,
+  "uptime_monitor": null,
+  "project": 1,
+  "alertRecipients": [
+    {
+      "recipientType": "email",
+      "url": "mailto:ops@example.com"
+    }
+  ]
+}

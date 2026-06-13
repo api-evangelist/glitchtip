@@ -1,0 +1,1242 @@
+vocabulary: glitchtip
+name: GlitchTip API Vocabulary
+description: Vocabulary of terms used in the GlitchTip API for error tracking, performance
+  monitoring, and uptime monitoring.
+url: https://glitchtip.com/documentation/
+terms:
+- name: 14d
+  description: The 14d property.
+  type: array
+- name: 24h
+  description: The 24h property.
+  type: array
+- name: abs_path
+  description: The abs_path property.
+  type: string
+- name: acceptInvite
+  description: The acceptInvite property.
+  type: boolean
+- name: access
+  description: The access property.
+  type: array
+- name: addr_mode
+  description: The addr_mode property.
+  type: string
+- name: address
+  description: The address property.
+  type: string
+- name: alertRecipients
+  description: The alertRecipients property.
+  type: array
+- name: apiKey
+  description: The apiKey property.
+  type: string
+- name: apiTarget
+  description: The apiTarget property.
+  type: string
+- name: api_target
+  description: The api_target property.
+  type: string
+- name: api_type
+  description: The api_type property.
+  type: string
+- name: app_build
+  description: The app_build property.
+  type: string
+- name: app_identifier
+  description: The app_identifier property.
+  type: string
+- name: app_memory
+  description: The app_memory property.
+  type: integer
+- name: app_name
+  description: The app_name property.
+  type: string
+- name: app_start_time
+  description: The app_start_time property.
+  type: string
+- name: app_version
+  description: The app_version property.
+  type: string
+- name: arch
+  description: The arch property.
+  type: string
+- name: assignedTo
+  description: The assignedTo property.
+  type: string
+- name: authToken
+  description: The authToken property.
+  type: string
+- name: authorEmail
+  description: The authorEmail property.
+  type: string
+- name: authorName
+  description: The authorName property.
+  type: string
+- name: authorize_url
+  description: The authorize_url property.
+  type: string
+- name: avatar
+  description: The avatar property.
+  type: object
+- name: avgDuration
+  description: Average duration in ms
+  type: number
+- name: battery_level
+  description: The battery_level property.
+  type: number
+- name: battery_status
+  description: The battery_status property.
+  type: string
+- name: billingEmail
+  description: The billingEmail property.
+  type: string
+- name: billingEnabled
+  description: The billingEnabled property.
+  type: boolean
+- name: blocked-uri
+  description: The blocked-uri property.
+  type: string
+- name: body
+  description: The body property.
+  type: string
+- name: bodySize
+  description: The bodySize property.
+  type: integer
+- name: body_size
+  description: The body_size property.
+  type: integer
+- name: boot_time
+  description: The boot_time property.
+  type: string
+- name: botEmail
+  description: The botEmail property.
+  type: string
+- name: brand
+  description: The brand property.
+  type: string
+- name: build
+  description: The build property.
+  type: string
+- name: build_type
+  description: The build_type property.
+  type: string
+- name: calendar
+  description: The calendar property.
+  type: string
+- name: category
+  description: The category property.
+  type: string
+- name: channel
+  description: The channel property.
+  type: string
+- name: charging
+  description: The charging property.
+  type: boolean
+- name: chatwootIdentifierHash
+  description: The chatwootIdentifierHash property.
+  type: string
+- name: chatwootWebsiteToken
+  description: The chatwootWebsiteToken property.
+  type: string
+- name: checks
+  description: The checks property.
+  type: array
+- name: checksum
+  description: The checksum property.
+  type: string
+- name: chunks
+  description: The chunks property.
+  type: array
+- name: city
+  description: The city property.
+  type: string
+- name: class_name
+  description: The class_name property.
+  type: string
+- name: client_id
+  description: App ID, or consumer key
+  type: string
+- name: client_sample_rate
+  description: The client_sample_rate property.
+  type: number
+- name: clock24Hours
+  description: The clock24Hours property.
+  type: boolean
+- name: cloud
+  description: The cloud property.
+  type: object
+- name: code
+  description: The code property.
+  type: string
+- name: code_file
+  description: The code_file property.
+  type: string
+- name: code_id
+  description: The code_id property.
+  type: string
+- name: codes
+  description: The codes property.
+  type: array
+- name: colno
+  description: The colno property.
+  type: integer
+- name: color
+  description: The color property.
+  type: string
+- name: column_number
+  description: The column_number property.
+  type: integer
+- name: comments
+  description: The comments property.
+  type: string
+- name: commitCount
+  description: The commitCount property.
+  type: integer
+- name: config
+  description: The config property.
+  type: object
+- name: context
+  description: The context property.
+  type: object
+- name: context_line
+  description: The context_line property.
+  type: string
+- name: contexts
+  description: The contexts property.
+  type: object
+- name: cookies
+  description: The cookies property.
+  type: string
+- name: count
+  description: The count property.
+  type: string
+- name: country_code
+  description: The country_code property.
+  type: string
+- name: cpuName
+  description: The cpuName property.
+  type: string
+- name: cpu_description
+  description: The cpu_description property.
+  type: string
+- name: crashed
+  description: The crashed property.
+  type: boolean
+- name: created
+  description: The created property.
+  type: string
+- name: culprit
+  description: The culprit property.
+  type: string
+- name: current
+  description: The current property.
+  type: boolean
+- name: currentPeriodEnd
+  description: The currentPeriodEnd property.
+  type: string
+- name: currentPeriodStart
+  description: The currentPeriodStart property.
+  type: string
+- name: cursor
+  description: The pagination cursor value.
+  type: string
+- name: data
+  description: The data property.
+  type: object
+- name: date
+  description: The date property.
+  type: string
+- name: dateCreated
+  description: The dateCreated property.
+  type: string
+- name: dateFinished
+  description: The dateFinished property.
+  type: string
+- name: dateJoined
+  description: The dateJoined property.
+  type: string
+- name: dateReceived
+  description: The dateReceived property.
+  type: string
+- name: dateReleased
+  description: The dateReleased property.
+  type: string
+- name: dateStarted
+  description: The dateStarted property.
+  type: string
+- name: datetime
+  description: The datetime property.
+  type: string
+- name: debugId
+  description: The debugId property.
+  type: string
+- name: debug_checksum
+  description: The debug_checksum property.
+  type: string
+- name: debug_id
+  description: The debug_id property.
+  type: string
+- name: default_price_id
+  description: The default_price_id property.
+  type: string
+- name: deployCount
+  description: The deployCount property.
+  type: integer
+- name: description
+  description: The description property.
+  type: string
+- name: device_app_hash
+  description: The device_app_hash property.
+  type: string
+- name: device_type
+  description: The device_type property.
+  type: string
+- name: device_unique_identifier
+  description: The device_unique_identifier property.
+  type: string
+- name: display_name
+  description: The display_name property.
+  type: string
+- name: disposition
+  description: The disposition property.
+  type: string
+- name: dist
+  description: The dist property.
+  type: string
+- name: document-uri
+  description: The document-uri property.
+  type: string
+- name: dsn
+  description: The dsn property.
+  type: object
+- name: dynamic_sampling_context
+  description: The dynamic_sampling_context property.
+  type: object
+- name: effective-directive
+  description: The effective-directive property.
+  type: string
+- name: email
+  description: The email property.
+  type: string
+- name: enableOrganizationCreation
+  description: The enableOrganizationCreation property.
+  type: boolean
+- name: enableSocialAppsUserRegistration
+  description: The enableSocialAppsUserRegistration property.
+  type: boolean
+- name: enableUserRegistration
+  description: The enableUserRegistration property.
+  type: boolean
+- name: enabledFeatures
+  description: The enabledFeatures property.
+  type: array
+- name: end
+  description: The end property.
+  type: string
+- name: endpointID
+  description: Used for referencing heartbeat endpoint
+  type: string
+- name: entries
+  description: The entries property.
+  type: array
+- name: env
+  description: The env property.
+  type: object
+- name: envName
+  description: The envName property.
+  type: string
+- name: environment
+  description: The environment property.
+  type: string
+- name: environmentID
+  description: The environmentID property.
+  type: integer
+- name: errorCount
+  description: The errorCount property.
+  type: integer
+- name: errorFormEntry
+  description: The errorFormEntry property.
+  type: string
+- name: errorGeneric
+  description: The errorGeneric property.
+  type: string
+- name: errorRate
+  description: Delegates to TransactionGroup.error_rate property.
+  type: number
+- name: errors
+  description: The errors property.
+  type: array
+- name: event
+  description: The event property.
+  type: object
+- name: eventCount
+  description: The eventCount property.
+  type: integer
+- name: eventID
+  description: The eventID property.
+  type: string
+- name: eventId
+  description: The eventId property.
+  type: string
+- name: eventThrottleRate
+  description: Probability (in percent) on how many events are throttled. Used for
+    throttling at project level
+  type: integer
+- name: event_id
+  description: The event_id property.
+  type: string
+- name: events
+  description: The events property.
+  type: integer
+- name: exclusive_time
+  description: The exclusive_time property.
+  type: number
+- name: expectedBody
+  description: The expectedBody property.
+  type: string
+- name: expectedStatus
+  description: The expectedStatus property.
+  type: integer
+- name: external_free_storage
+  description: The external_free_storage property.
+  type: integer
+- name: external_storage_size
+  description: The external_storage_size property.
+  type: integer
+- name: extra
+  description: The extra property.
+  type: object
+- name: family
+  description: The family property.
+  type: string
+- name: features
+  description: The features property.
+  type: array
+- name: field
+  description: The field property.
+  type: string
+- name: fileSizeMb
+  description: The fileSizeMb property.
+  type: integer
+- name: filename
+  description: The filename property.
+  type: string
+- name: fingerprint
+  description: The fingerprint property.
+  type: array
+- name: firstEvent
+  description: The firstEvent property.
+  type: string
+- name: firstSeen
+  description: The firstSeen property.
+  type: string
+- name: formatted
+  description: The formatted property.
+  type: string
+- name: fragment
+  description: The fragment property.
+  type: string
+- name: frames
+  description: The frames property.
+  type: array
+- name: free_memory
+  description: The free_memory property.
+  type: integer
+- name: free_storage
+  description: The free_storage property.
+  type: integer
+- name: function
+  description: The function property.
+  type: string
+- name: function_id
+  description: The function_id property.
+  type: string
+- name: glitchtipInstanceName
+  description: The glitchtipInstanceName property.
+  type: string
+- name: graphics_shader_level
+  description: The graphics_shader_level property.
+  type: string
+- name: groupID
+  description: The groupID property.
+  type: string
+- name: groups
+  description: The groups property.
+  type: array
+- name: handled
+  description: The handled property.
+  type: boolean
+- name: hasAccess
+  description: The hasAccess property.
+  type: boolean
+- name: hasPasswordAuth
+  description: The hasPasswordAuth property.
+  type: boolean
+- name: hash
+  description: The hash property.
+  type: string
+- name: hashes
+  description: The hashes property.
+  type: array
+- name: headers
+  description: The headers property.
+  type: array
+- name: heartbeatEndpoint
+  description: The heartbeatEndpoint property.
+  type: string
+- name: help_link
+  description: The help_link property.
+  type: string
+- name: host
+  description: The host property.
+  type: object
+- name: iPaidForGlitchTip
+  description: The iPaidForGlitchTip property.
+  type: boolean
+- name: id
+  description: The id property.
+  type: integer
+- name: identities
+  description: The identities property.
+  type: array
+- name: image_addr
+  description: The image_addr property.
+  type: string
+- name: image_size
+  description: The image_size property.
+  type: integer
+- name: images
+  description: The images property.
+  type: array
+- name: inNextRelease
+  description: The inNextRelease property.
+  type: boolean
+- name: inRelease
+  description: The inRelease property.
+  type: string
+- name: in_app
+  description: The in_app property.
+  type: boolean
+- name: in_foreground
+  description: The in_foreground property.
+  type: boolean
+- name: inferredContentType
+  description: The inferredContentType property.
+  type: string
+- name: instruction_addr
+  description: The instruction_addr property.
+  type: string
+- name: integrations
+  description: The integrations property.
+  type: array
+- name: interval
+  description: The interval property.
+  type: string
+- name: intervals
+  description: The intervals property.
+  type: array
+- name: inviteLink
+  description: The inviteLink property.
+  type: string
+- name: ip_address
+  description: The ip_address property.
+  type: string
+- name: isAcceptingEvents
+  description: Used for throttling at org level
+  type: boolean
+- name: isActive
+  description: Designates whether this user should be treated as active. Unselect
+    this instead of deleting accounts.
+  type: boolean
+- name: isBookmarked
+  description: The isBookmarked property.
+  type: boolean
+- name: isEarlyAdopter
+  description: The isEarlyAdopter property.
+  type: boolean
+- name: isHidden
+  description: The isHidden property.
+  type: boolean
+- name: isInternal
+  description: The isInternal property.
+  type: boolean
+- name: isMember
+  description: The isMember property.
+  type: boolean
+- name: isOwner
+  description: The isOwner property.
+  type: boolean
+- name: isPrimary
+  description: The isPrimary property.
+  type: boolean
+- name: isPublic
+  description: The isPublic property.
+  type: boolean
+- name: isSuperuser
+  description: Designates that this user has all permissions without explicitly assigning
+    them.
+  type: boolean
+- name: isUnhandled
+  description: The isUnhandled property.
+  type: boolean
+- name: isUp
+  description: The isUp property.
+  type: boolean
+- name: isVerified
+  description: The isVerified property.
+  type: boolean
+- name: is_24_hour_format
+  description: The is_24_hour_format property.
+  type: boolean
+- name: is_exception_group
+  description: The is_exception_group property.
+  type: boolean
+- name: kernel_version
+  description: The kernel_version property.
+  type: string
+- name: key
+  description: The key property.
+  type: string
+- name: label
+  description: The label property.
+  type: string
+- name: labelClose
+  description: The labelClose property.
+  type: string
+- name: labelComments
+  description: The labelComments property.
+  type: string
+- name: labelEmail
+  description: The labelEmail property.
+  type: string
+- name: labelName
+  description: The labelName property.
+  type: string
+- name: labelSubmit
+  description: The labelSubmit property.
+  type: string
+- name: language
+  description: The language property.
+  type: string
+- name: lastChange
+  description: The lastChange property.
+  type: string
+- name: lastLogin
+  description: The lastLogin property.
+  type: string
+- name: lastSeen
+  description: The lastSeen property.
+  type: string
+- name: level
+  description: The level property.
+  type: string
+- name: limit
+  description: Number of results to return per page.
+  type: integer
+- name: line_number
+  description: The line_number property.
+  type: integer
+- name: lineno
+  description: The lineno property.
+  type: integer
+- name: locale
+  description: The locale property.
+  type: string
+- name: logEventCount
+  description: The logEventCount property.
+  type: integer
+- name: logger
+  description: The logger property.
+  type: string
+- name: low_memory
+  description: The low_memory property.
+  type: boolean
+- name: manufacturer
+  description: The manufacturer property.
+  type: string
+- name: marketingFeatures
+  description: The marketingFeatures property.
+  type: array
+- name: matchingEventId
+  description: The matchingEventId property.
+  type: string
+- name: max_texture_size
+  description: The max_texture_size property.
+  type: integer
+- name: memberCount
+  description: The memberCount property.
+  type: integer
+- name: memory_size
+  description: The memory_size property.
+  type: integer
+- name: merge
+  description: The merge property.
+  type: integer
+- name: message
+  description: The message property.
+  type: string
+- name: meta
+  description: The meta property.
+  type: object
+- name: metadata
+  description: The metadata property.
+  type: object
+- name: method
+  description: The method property.
+  type: string
+- name: model
+  description: The model property.
+  type: string
+- name: model_id
+  description: The model_id property.
+  type: string
+- name: module
+  description: The module property.
+  type: string
+- name: modules
+  description: The modules property.
+  type: object
+- name: monitorType
+  description: The monitorType property.
+  type: string
+- name: monitors
+  description: The monitors property.
+  type: array
+- name: multi_threaded_rendering
+  description: The multi_threaded_rendering property.
+  type: boolean
+- name: name
+  description: The name property.
+  type: string
+- name: nextEventID
+  description: The nextEventID property.
+  type: string
+- name: npot_support
+  description: The npot_support property.
+  type: string
+- name: numComments
+  description: The numComments property.
+  type: integer
+- name: objectName
+  description: The objectName property.
+  type: string
+- name: online
+  description: The online property.
+  type: boolean
+- name: op
+  description: The op property.
+  type: string
+- name: openMembership
+  description: Allow any organization member to join any team
+  type: boolean
+- name: orgRole
+  description: The orgRole property.
+  type: string
+- name: organization
+  description: The organization property.
+  type: string
+- name: organizationID
+  description: The organizationID property.
+  type: integer
+- name: organizationSlug
+  description: The organizationSlug property.
+  type: string
+- name: orientation
+  description: The orientation property.
+  type: string
+- name: origin
+  description: The origin property.
+  type: string
+- name: original-policy
+  description: The original-policy property.
+  type: string
+- name: p50
+  description: The p50 property.
+  type: number
+- name: p95
+  description: The p95 property.
+  type: number
+- name: p95Duration
+  description: The p95Duration property.
+  type: number
+- name: package
+  description: The package property.
+  type: string
+- name: package_name
+  description: The package_name property.
+  type: string
+- name: packages
+  description: The packages property.
+  type: array
+- name: params
+  description: The params property.
+  type: array
+- name: parent_id
+  description: The parent_id property.
+  type: integer
+- name: parent_span_id
+  description: The parent_span_id property.
+  type: string
+- name: pending
+  description: The pending property.
+  type: boolean
+- name: permalink
+  description: The permalink property.
+  type: string
+- name: platform
+  description: The platform property.
+  type: string
+- name: plausibleDomain
+  description: The plausibleDomain property.
+  type: string
+- name: plausibleUrl
+  description: The plausibleUrl property.
+  type: string
+- name: post_context
+  description: The post_context property.
+  type: array
+- name: pre_context
+  description: The pre_context property.
+  type: array
+- name: preferredTheme
+  description: The preferredTheme property.
+  type: string
+- name: previousEventID
+  description: The previousEventID property.
+  type: string
+- name: price
+  description: The price property.
+  type: string
+- name: prices
+  description: The prices property.
+  type: array
+- name: processor_count
+  description: The processor_count property.
+  type: integer
+- name: processor_frequency
+  description: The processor_frequency property.
+  type: number
+- name: project
+  description: The project property.
+  type: integer
+- name: projectID
+  description: The projectID property.
+  type: integer
+- name: projectId
+  description: The projectId property.
+  type: integer
+- name: projectName
+  description: The projectName property.
+  type: string
+- name: projects
+  description: The projects property.
+  type: array
+- name: protocol
+  description: The protocol property.
+  type: string
+- name: provider
+  description: The provider property.
+  type: string
+- name: public
+  description: The public property.
+  type: string
+- name: quantity
+  description: The quantity property.
+  type: integer
+- name: query
+  description: The query property.
+  type: array
+- name: query_string
+  description: The query_string property.
+  type: string
+- name: raw_description
+  description: The raw_description property.
+  type: string
+- name: raw_function
+  description: The raw_function property.
+  type: string
+- name: reason
+  description: The reason property.
+  type: integer
+- name: recipientType
+  description: The recipientType property.
+  type: string
+- name: ref
+  description: The ref property.
+  type: string
+- name: region
+  description: The region property.
+  type: string
+- name: registers
+  description: The registers property.
+  type: object
+- name: reinvite
+  description: The reinvite property.
+  type: boolean
+- name: release
+  description: The release property.
+  type: string
+- name: replay_id
+  description: The replay_id property.
+  type: string
+- name: require2fa
+  description: The require2fa property.
+  type: boolean
+- name: responseTime
+  description: Reponse time in milliseconds
+  type: integer
+- name: role
+  description: The role property.
+  type: string
+- name: roleName
+  description: The roleName property.
+  type: string
+- name: rooted
+  description: The rooted property.
+  type: boolean
+- name: scopes
+  description: The scopes property.
+  type: array
+- name: screen_density
+  description: The screen_density property.
+  type: number
+- name: screen_dpi
+  description: The screen_dpi property.
+  type: number
+- name: screen_height_pixels
+  description: The screen_height_pixels property.
+  type: integer
+- name: screen_resolution
+  description: The screen_resolution property.
+  type: string
+- name: screen_width_pixels
+  description: The screen_width_pixels property.
+  type: integer
+- name: script-sample
+  description: The script-sample property.
+  type: string
+- name: scrubIPAddresses
+  description: The scrubIPAddresses property.
+  type: boolean
+- name: sdk
+  description: The sdk property.
+  type: object
+- name: sendInvite
+  description: The sendInvite property.
+  type: boolean
+- name: sentryDSN
+  description: The sentryDSN property.
+  type: string
+- name: sentryTracesSampleRate
+  description: The sentryTracesSampleRate property.
+  type: number
+- name: series
+  description: The series property.
+  type: array
+- name: serverTimeZone
+  description: The serverTimeZone property.
+  type: string
+- name: server_name
+  description: The server_name property.
+  type: string
+- name: service
+  description: Filter by service name
+  type: string
+- name: severityNumber
+  description: The severityNumber property.
+  type: integer
+- name: sha1
+  description: The sha1 property.
+  type: string
+- name: shareId
+  description: The shareId property.
+  type: integer
+- name: shortId
+  description: The shortId property.
+  type: string
+- name: shortVersion
+  description: The shortVersion property.
+  type: string
+- name: simulator
+  description: The simulator property.
+  type: boolean
+- name: size
+  description: The size property.
+  type: integer
+- name: slug
+  description: The slug property.
+  type: string
+- name: socialApps
+  description: The socialApps property.
+  type: array
+- name: sort
+  description: The sort property.
+  type: string
+- name: source
+  description: The source property.
+  type: string
+- name: source_link
+  description: The source_link property.
+  type: string
+- name: spanID
+  description: The spanID property.
+  type: string
+- name: span_id
+  description: The span_id property.
+  type: string
+- name: spansPerTxn
+  description: The spansPerTxn property.
+  type: number
+- name: stack_start
+  description: The stack_start property.
+  type: boolean
+- name: stacktraceOrder
+  description: The stacktraceOrder property.
+  type: integer
+- name: start
+  description: The start property.
+  type: string
+- name: startCheck
+  description: Time when the start of this check was performed
+  type: string
+- name: startDate
+  description: The startDate property.
+  type: string
+- name: state
+  description: The state property.
+  type: object
+- name: stats
+  description: The stats property.
+  type: object
+- name: statsPeriod
+  description: The statsPeriod property.
+  type: string
+- name: status
+  description: The status property.
+  type: string
+- name: status-code
+  description: The status-code property.
+  type: integer
+- name: statusDetails
+  description: The statusDetails property.
+  type: object
+- name: status_code
+  description: The status_code property.
+  type: integer
+- name: storage_size
+  description: The storage_size property.
+  type: integer
+- name: stripeID
+  description: The stripeID property.
+  type: string
+- name: stripePublicKey
+  description: The stripePublicKey property.
+  type: string
+- name: subdivision
+  description: The subdivision property.
+  type: string
+- name: subscribeByDefault
+  description: Subscribe to project notifications by default. Overrides project settings
+  type: boolean
+- name: subscriptionCycleEnd
+  description: The subscriptionCycleEnd property.
+  type: string
+- name: subscriptionCycleStart
+  description: The subscriptionCycleStart property.
+  type: string
+- name: subscriptionDetails
+  description: The subscriptionDetails property.
+  type: string
+- name: subtitle
+  description: The subtitle property.
+  type: string
+- name: subtitle2
+  description: The subtitle2 property.
+  type: string
+- name: successMessage
+  description: The successMessage property.
+  type: string
+- name: supports_accelerometer
+  description: The supports_accelerometer property.
+  type: boolean
+- name: supports_audio
+  description: The supports_audio property.
+  type: boolean
+- name: supports_compute_shaders
+  description: The supports_compute_shaders property.
+  type: boolean
+- name: supports_draw_call_instancing
+  description: The supports_draw_call_instancing property.
+  type: boolean
+- name: supports_geometry_shaders
+  description: The supports_geometry_shaders property.
+  type: boolean
+- name: supports_gyroscope
+  description: The supports_gyroscope property.
+  type: boolean
+- name: supports_location_service
+  description: The supports_location_service property.
+  type: boolean
+- name: supports_ray_tracing
+  description: The supports_ray_tracing property.
+  type: boolean
+- name: supports_vibration
+  description: The supports_vibration property.
+  type: boolean
+- name: symbol
+  description: The symbol property.
+  type: string
+- name: symbolType
+  description: The symbolType property.
+  type: string
+- name: symbol_addr
+  description: The symbol_addr property.
+  type: string
+- name: synthetic
+  description: The synthetic property.
+  type: boolean
+- name: tags
+  description: The tags property.
+  type: array
+- name: tagsToAdd
+  description: List of additional tags to include in the alert
+  type: array
+- name: task_id
+  description: The task_id property.
+  type: string
+- name: teamRoles
+  description: The teamRoles property.
+  type: array
+- name: teamSlug
+  description: The teamSlug property.
+  type: string
+- name: teams
+  description: The teams property.
+  type: array
+- name: theme
+  description: The theme property.
+  type: string
+- name: thread_id
+  description: The thread_id property.
+  type: string
+- name: threshold
+  description: The threshold property.
+  type: number
+- name: throughput
+  description: Delegates to TransactionGroup.throughput property.
+  type: number
+- name: timeout
+  description: Blank implies default value of 20
+  type: integer
+- name: timespanMinutes
+  description: The timespanMinutes property.
+  type: integer
+- name: timestamp
+  description: The timestamp property.
+  type: string
+- name: timezone
+  description: The timezone property.
+  type: string
+- name: title
+  description: The title property.
+  type: string
+- name: token
+  description: The token property.
+  type: string
+- name: topValues
+  description: The topValues property.
+  type: array
+- name: topic
+  description: The topic property.
+  type: string
+- name: total
+  description: The total property.
+  type: integer
+- name: totalSpans
+  description: The totalSpans property.
+  type: integer
+- name: totalTime
+  description: The totalTime property.
+  type: number
+- name: totalValues
+  description: The totalValues property.
+  type: integer
+- name: traceID
+  description: The traceID property.
+  type: string
+- name: traceId
+  description: Filter by trace ID
+  type: string
+- name: trace_id
+  description: The trace_id property.
+  type: string
+- name: transaction
+  description: The transaction property.
+  type: string
+- name: transactionCount
+  description: The transactionCount property.
+  type: integer
+- name: transactionEventCount
+  description: The transactionEventCount property.
+  type: integer
+- name: transactionName
+  description: The transactionName property.
+  type: string
+- name: type
+  description: The type property.
+  type: string
+- name: uid
+  description: The uid property.
+  type: string
+- name: uniqueValues
+  description: The uniqueValues property.
+  type: integer
+- name: uptime
+  description: Send alert on any uptime monitor check failure
+  type: boolean
+- name: uptimeCheckEventCount
+  description: The uptimeCheckEventCount property.
+  type: integer
+- name: url
+  description: The url property.
+  type: string
+- name: usable_memory
+  description: The usable_memory property.
+  type: integer
+- name: user
+  description: The user property.
+  type: string
+- name: userCount
+  description: The userCount property.
+  type: integer
+- name: userReportCount
+  description: The userReportCount property.
+  type: integer
+- name: username
+  description: The username property.
+  type: string
+- name: uuid
+  description: The uuid property.
+  type: string
+- name: value
+  description: The value property.
+  type: string
+- name: values
+  description: The values property.
+  type: array
+- name: vars
+  description: The vars property.
+  type: object
+- name: vendor_id
+  description: The vendor_id property.
+  type: string
+- name: vendor_name
+  description: The vendor_name property.
+  type: string
+- name: version
+  description: The version property.
+  type: string
+- name: window
+  description: The window property.
+  type: integer

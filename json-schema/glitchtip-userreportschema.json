@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-userreportschema.json",
+  "title": "UserReportSchema",
+  "description": "GlitchTip UserReportSchema",
+  "properties": {
+    "eventID": {
+      "title": "Eventid",
+      "type": "string"
+    },
+    "event": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Event",
+      "type": "object"
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "user": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "User"
+    },
+    "id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "ID"
+    },
+    "name": {
+      "maxLength": 128,
+      "title": "Name",
+      "type": "string"
+    },
+    "email": {
+      "maxLength": 254,
+      "title": "Email",
+      "type": "string"
+    },
+    "comments": {
+      "title": "Comments",
+      "type": "string"
+    }
+  },
+  "required": [
+    "eventID",
+    "event",
+    "dateCreated",
+    "name",
+    "email",
+    "comments"
+  ],
+  "type": "object"
+}

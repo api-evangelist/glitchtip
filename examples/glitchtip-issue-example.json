@@ -1,0 +1,25 @@
+{
+  "id": 42,
+  "shortId": "MY-PROJECT-42",
+  "title": "TypeError: Cannot read property 'foo' of undefined",
+  "culprit": "app/utils.js in processData",
+  "permalink": "https://app.glitchtip.com/my-org/issues/42/",
+  "logger": null,
+  "level": "error",
+  "status": "unresolved",
+  "isPublic": false,
+  "platform": "javascript",
+  "project": {
+    "id": 1,
+    "name": "My Project",
+    "slug": "my-project"
+  },
+  "count": "15",
+  "userCount": 3,
+  "firstSeen": "2024-06-01T08:30:00Z",
+  "lastSeen": "2024-06-12T14:22:00Z",
+  "assignedTo": null,
+  "hasSeen": false,
+  "isSubscribed": false,
+  "isBookmarked": false
+}

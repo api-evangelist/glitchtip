@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "slug": "my-org",
+  "name": "My Organization",
+  "dateCreated": "2024-01-15T10:00:00Z",
+  "status": {
+    "id": "active",
+    "name": "active"
+  },
+  "avatar": {
+    "avatarType": "letter_avatar"
+  },
+  "isEarlyAdopter": false
+}

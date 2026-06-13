@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-projectalertschema.json",
+  "title": "ProjectAlertSchema",
+  "description": "GlitchTip ProjectAlertSchema",
+  "properties": {
+    "alertRecipients": {
+      "items": {
+        "$ref": "#/components/schemas/AlertRecipientSchema"
+      },
+      "title": "Alertrecipients",
+      "type": "array"
+    },
+    "id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "ID"
+    },
+    "name": {
+      "anyOf": [
+        {
+          "maxLength": 255,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Name"
+    },
+    "timespanMinutes": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Timespan Minutes"
+    },
+    "quantity": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Quantity"
+    },
+    "uptime": {
+      "default": false,
+      "description": "Send alert on any uptime monitor check failure",
+      "title": "Uptime",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "alertRecipients"
+  ],
+  "type": "object"
+}

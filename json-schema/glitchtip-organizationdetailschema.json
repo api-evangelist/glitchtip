@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-organizationdetailschema.json",
+  "title": "OrganizationDetailSchema",
+  "description": "GlitchTip OrganizationDetailSchema",
+  "properties": {
+    "name": {
+      "description": "The name of the organization",
+      "maxLength": 200,
+      "title": "Name",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "status": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "default": {
+        "id": "active",
+        "name": "active"
+      },
+      "title": "Status",
+      "type": "object"
+    },
+    "avatar": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "default": {
+        "avatarType": "",
+        "avatarUuid": null
+      },
+      "title": "Avatar",
+      "type": "object"
+    },
+    "isEarlyAdopter": {
+      "default": false,
+      "title": "Isearlyadopter",
+      "type": "boolean"
+    },
+    "require2fa": {
+      "default": false,
+      "title": "Require2Fa",
+      "type": "boolean"
+    },
+    "slug": {
+      "description": "The name in all lowercase, suitable for URL identification",
+      "maxLength": 200,
+      "title": "Slug",
+      "type": "string"
+    },
+    "isAcceptingEvents": {
+      "default": true,
+      "description": "Used for throttling at org level",
+      "title": "Is Accepting Events",
+      "type": "boolean"
+    },
+    "eventThrottleRate": {
+      "default": 0,
+      "description": "Probability (in percent) on how many events are throttled. Used for throttling at project level",
+      "title": "Event Throttle Rate",
+      "type": "integer"
+    },
+    "projects": {
+      "items": {
+        "$ref": "#/components/schemas/ProjectTeamSchema"
+      },
+      "title": "Projects",
+      "type": "array"
+    },
+    "teams": {
+      "items": {
+        "$ref": "#/components/schemas/TeamSchema"
+      },
+      "title": "Teams",
+      "type": "array"
+    },
+    "access": {
+      "items": {
+        "enum": [
+          "org:read",
+          "org:write",
+          "org:admin",
+          "org:integrations",
+          "member:read",
+          "member:write",
+          "member:admin",
+          "team:read",
+          "team:write",
+          "team:admin",
+          "project:read",
+          "project:write",
+          "project:admin",
+          "project:releases",
+          "event:read",
+          "event:write",
+          "event:admin"
+        ],
+        "type": "string"
+      },
+      "title": "Access",
+      "type": "array"
+    },
+    "openMembership": {
+      "default": true,
+      "description": "Allow any organization member to join any team",
+      "title": "Open Membership",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name",
+    "id",
+    "dateCreated",
+    "slug",
+    "projects",
+    "teams",
+    "access"
+  ],
+  "type": "object"
+}

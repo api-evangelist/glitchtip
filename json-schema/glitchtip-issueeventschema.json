@@ -1,0 +1,291 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-issueeventschema.json",
+  "title": "IssueEventSchema",
+  "description": "GlitchTip IssueEventSchema",
+  "properties": {
+    "platform": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Platform"
+    },
+    "errors": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/components/schemas/EventProcessingError"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Errors"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "eventID": {
+      "title": "Eventid",
+      "type": "string"
+    },
+    "projectID": {
+      "title": "Projectid",
+      "type": "integer"
+    },
+    "groupID": {
+      "title": "Groupid",
+      "type": "string"
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "dateReceived": {
+      "format": "date-time",
+      "title": "Datereceived",
+      "type": "string"
+    },
+    "dist": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Dist"
+    },
+    "culprit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Culprit"
+    },
+    "packages": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Packages"
+    },
+    "type": {
+      "title": "Type",
+      "type": "string"
+    },
+    "message": {
+      "title": "Message",
+      "type": "string"
+    },
+    "metadata": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "title": "Metadata",
+      "type": "object"
+    },
+    "tags": {
+      "default": [],
+      "items": {
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "type": "object"
+      },
+      "title": "Tags",
+      "type": "array"
+    },
+    "entries": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "breadcrumbs": "#/components/schemas/BreadcrumbsEntry",
+            "csp": "#/components/schemas/CSPEntry",
+            "exception": "#/components/schemas/ExceptionEntry",
+            "message": "#/components/schemas/MessageEntry",
+            "request": "#/components/schemas/RequestEntry"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/BreadcrumbsEntry"
+          },
+          {
+            "$ref": "#/components/schemas/CSPEntry"
+          },
+          {
+            "$ref": "#/components/schemas/ExceptionEntry"
+          },
+          {
+            "$ref": "#/components/schemas/MessageEntry"
+          },
+          {
+            "$ref": "#/components/schemas/RequestEntry"
+          }
+        ]
+      },
+      "title": "Entries",
+      "type": "array"
+    },
+    "contexts": {
+      "anyOf": [
+        {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "discriminator": {
+                  "mapping": {
+                    "app": "#/components/schemas/AppContext",
+                    "browser": "#/components/schemas/BrowserContext",
+                    "cloud_resource": "#/components/schemas/CloudResourceContext",
+                    "culture": "#/components/schemas/CultureContext",
+                    "device": "#/components/schemas/DeviceContext",
+                    "gpu": "#/components/schemas/GPUContext",
+                    "os": "#/components/schemas/OSContext",
+                    "replay": "#/components/schemas/ReplayContext",
+                    "response": "#/components/schemas/ResponseContext",
+                    "runtime": "#/components/schemas/RuntimeContext",
+                    "state": "#/components/schemas/StateContext",
+                    "trace": "#/components/schemas/TraceContext"
+                  },
+                  "propertyName": "type"
+                },
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/DeviceContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/OSContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RuntimeContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/AppContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/BrowserContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/GPUContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/StateContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CultureContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/CloudResourceContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/TraceContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ReplayContext"
+                  },
+                  {
+                    "$ref": "#/components/schemas/ResponseContext"
+                  }
+                ]
+              },
+              {}
+            ]
+          },
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Contexts"
+    },
+    "context": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Context"
+    },
+    "user": {
+      "anyOf": [
+        {},
+        {
+          "type": "null"
+        }
+      ],
+      "title": "User"
+    },
+    "sdk": {
+      "anyOf": [
+        {
+          "additionalProperties": true,
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Sdk"
+    },
+    "title": {
+      "maxLength": 255,
+      "title": "Title",
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "eventID",
+    "projectID",
+    "groupID",
+    "dateCreated",
+    "dateReceived",
+    "type",
+    "message",
+    "title"
+  ],
+  "type": "object"
+}

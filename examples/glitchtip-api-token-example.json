@@ -1,0 +1,10 @@
+{
+  "id": 7,
+  "label": "CI deployment token",
+  "token": "glitchtip_xxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "scopes": [
+    "projects:read",
+    "issues:write"
+  ],
+  "dateAdded": "2024-05-01T09:00:00Z"
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/glitchtip/main/json-schema/glitchtip-projectschema.json",
+  "title": "ProjectSchema",
+  "description": "A project is an organizational unit for GlitchTip events. It may contain\nDSN keys, be connected to exactly one organization, and provide user permissions\nthrough teams.",
+  "properties": {
+    "name": {
+      "maxLength": 64,
+      "title": "Name",
+      "type": "string"
+    },
+    "slug": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Slug"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "avatar": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "default": {
+        "avatarType": "",
+        "avatarUuid": null
+      },
+      "title": "Avatar",
+      "type": "object"
+    },
+    "color": {
+      "default": "",
+      "title": "Color",
+      "type": "string"
+    },
+    "features": {
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "title": "Features",
+      "type": "array"
+    },
+    "hasAccess": {
+      "default": true,
+      "title": "Hasaccess",
+      "type": "boolean"
+    },
+    "isBookmarked": {
+      "default": false,
+      "title": "Isbookmarked",
+      "type": "boolean"
+    },
+    "isInternal": {
+      "default": false,
+      "title": "Isinternal",
+      "type": "boolean"
+    },
+    "isMember": {
+      "title": "Ismember",
+      "type": "boolean"
+    },
+    "isPublic": {
+      "default": false,
+      "title": "Ispublic",
+      "type": "boolean"
+    },
+    "scrubIPAddresses": {
+      "title": "Scrubipaddresses",
+      "type": "boolean"
+    },
+    "dateCreated": {
+      "format": "date-time",
+      "title": "Datecreated",
+      "type": "string"
+    },
+    "platform": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Platform"
+    },
+    "firstEvent": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "First Event"
+    },
+    "eventThrottleRate": {
+      "default": 0,
+      "description": "Probability (in percent) on how many events are throttled. Used for throttling at project level",
+      "title": "Event Throttle Rate",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "name",
+    "id",
+    "isMember",
+    "scrubIPAddresses",
+    "dateCreated"
+  ],
+  "type": "object"
+}
