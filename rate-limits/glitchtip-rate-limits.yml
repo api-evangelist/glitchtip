@@ -1,0 +1,57 @@
+name: GlitchTip Rate Limits
+description: Rate limiting and quota policies for the GlitchTip hosted API and event intake.
+url: https://glitchtip.com/pricing
+limits:
+
+  - name: Monthly Event Quota
+    description: Each plan has a monthly event cap covering errors, performance transactions, and uptime events.
+    scope: account
+    policies:
+      - plan: Free
+        limit: 1000
+        period: monthly
+        unit: events
+      - plan: Small
+        limit: 100000
+        period: monthly
+        unit: events
+      - plan: Medium
+        limit: 500000
+        period: monthly
+        unit: events
+      - plan: Large
+        limit: 3000000
+        period: monthly
+        unit: events
+
+  - name: Quota Throttling Policy
+    description: When the monthly event quota is exceeded, GlitchTip applies gradual throttling before full blocking.
+    scope: account
+    policies:
+      - threshold: 100% of quota
+        action: throttle by 10%
+      - threshold: 200% of quota
+        action: block all events
+
+  - name: Data Retention
+    description: Event data is automatically purged after 90 days on all hosted plans.
+    scope: account
+    policies:
+      - period: 90 days
+        action: auto-purge
+
+  - name: API Authentication
+    description: REST API access is controlled by scoped auth tokens issued per user.
+    scope: user
+    policies:
+      - token_scopes:
+          - event:read
+          - project:read
+          - project:write
+          - org:read
+          - org:write
+
+notes:
+  - No documented per-minute or per-second API rate limits are published for the REST API.
+  - GlitchTip is Sentry API compatible; Sentry SDK rate limit headers (X-Sentry-Rate-Limits) apply to event intake.
+  - Self-hosted deployments do not have enforced event quotas by default.

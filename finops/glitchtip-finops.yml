@@ -1,0 +1,72 @@
+name: GlitchTip FinOps
+description: Financial operations guidance for managing GlitchTip API usage costs, event budgets, and cost optimization strategies.
+url: https://glitchtip.com/pricing
+
+cost_model:
+  type: event-based
+  description: GlitchTip charges based on the number of events ingested per month across error tracking, performance monitoring, and uptime monitoring.
+  currency: USD
+  billing_periods:
+    - monthly
+    - annual (contact sales for discount)
+
+plans:
+  - name: Free
+    monthly_cost: 0
+    event_cap: 1000
+    cost_per_event: 0
+  - name: Small
+    monthly_cost: 15
+    event_cap: 100000
+    cost_per_event: 0.00015
+  - name: Medium
+    monthly_cost: 50
+    event_cap: 500000
+    cost_per_event: 0.0001
+  - name: Large
+    monthly_cost: 250
+    event_cap: 3000000
+    cost_per_event: 0.0000833
+
+cost_optimization:
+  - strategy: Use SDK sampling for performance events
+    description: Set tracesSampleRate to a low value (e.g. 0.01) so only 1% of transactions are sent, dramatically reducing performance event volume.
+    impact: high
+
+  - strategy: Use SDK sampling for errors
+    description: Set sampleRate (e.g. 0.5) to send only half of error events when volume is high.
+    impact: medium
+
+  - strategy: Self-host GlitchTip
+    description: Run GlitchTip on your own infrastructure for free. Recommended donation is $5 per user per month.
+    impact: high
+
+  - strategy: Monitor event quota usage
+    description: Review monthly event usage in the GlitchTip dashboard and alert before hitting the quota threshold.
+    impact: medium
+
+  - strategy: Apply for nonprofit or open source discount
+    description: Plans starting at $5/month are available for eligible nonprofits and open source projects.
+    impact: medium
+
+  - strategy: Choose EU or US region based on data residency needs
+    description: Both regions (app.glitchtip.com US, eu.glitchtip.com EU) are available at the same price; choose appropriately to avoid any data transfer overhead.
+    impact: low
+
+quota_overage:
+  policy: gradual throttle then block
+  description: After exceeding the monthly quota, events are throttled starting at 10% and increasing until fully blocked at 2x the quota. No automatic overage charges.
+
+add_ons:
+  - name: HIPAA BAA
+    description: Business Associate Agreement for HIPAA compliance; available as an add-on on the Large plan.
+    availability: Large plan only
+  - name: EU Hosting
+    description: Data stored exclusively in DigitalOcean FRA1 (Frankfurt) for GDPR compliance.
+    availability: All paid plans
+
+payment:
+  processor: Stripe (PCI-DSS Level 1)
+  methods:
+    - credit card
+  contact: sales@glitchtip.com

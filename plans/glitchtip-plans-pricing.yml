@@ -1,0 +1,75 @@
+name: GlitchTip Plans and Pricing
+description: Pricing plans for the GlitchTip hosted error tracking and performance monitoring platform.
+url: https://glitchtip.com/pricing
+plans:
+  - name: Free
+    description: Free hosted plan for individuals and small projects.
+    price: 0
+    currency: USD
+    period: monthly
+    features:
+      - Up to 1,000 events per month
+      - Error tracking
+      - Unlimited projects
+      - Unlimited team members
+      - Performance monitoring
+      - Uptime monitoring
+
+  - name: Small
+    description: Starter paid plan for growing teams.
+    price: 15
+    currency: USD
+    period: monthly
+    features:
+      - Up to 100,000 events per month
+      - Error tracking
+      - Unlimited projects
+      - Unlimited team members
+      - Performance monitoring
+      - Uptime monitoring
+      - Support access
+
+  - name: Medium
+    description: Mid-tier plan for teams with higher event volumes.
+    price: 50
+    currency: USD
+    period: monthly
+    features:
+      - Up to 500,000 events per month
+      - Error tracking
+      - Unlimited projects
+      - Unlimited team members
+      - Performance monitoring
+      - Uptime monitoring
+      - Priority email and live chat support
+
+  - name: Large
+    description: High-volume plan for enterprises with compliance needs.
+    price: 250
+    currency: USD
+    period: monthly
+    features:
+      - Up to 3,000,000 events per month
+      - Error tracking
+      - Unlimited projects
+      - Unlimited team members
+      - Performance monitoring
+      - Uptime monitoring
+      - Development support and prioritization
+      - Optional HIPAA BAA add-on
+      - EU hosting for data sovereignty
+
+  - name: Nonprofit / Open Source
+    description: Discounted plan for nonprofits and open source projects.
+    price: 5
+    currency: USD
+    period: monthly
+    features:
+      - Discounted event limits
+      - Full platform access
+
+notes:
+  - Self-hosted version is free; a donation of $5 per user per month is recommended.
+  - EU hosting (eu.glitchtip.com) is available on all plans.
+  - Annual billing discounts available; contact sales@glitchtip.com.
+  - Event throttling begins after quota is reached; throttled by 10% initially, increasing until fully blocked at 2x quota.
