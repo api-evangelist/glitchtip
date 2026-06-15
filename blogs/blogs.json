@@ -1,0 +1,14 @@
+{
+  "repo": "glitchtip",
+  "feeds": [
+    {
+      "source": "https://gitlab.com/glitchtip",
+      "feed_url": "https://gitlab.com/glitchtip.atom",
+      "title": "",
+      "saved": 16,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 16,
+  "fetched": "2026-06-14T20:42:17Z"
+}
