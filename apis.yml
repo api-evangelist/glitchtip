@@ -2,7 +2,7 @@ aid: glitchtip
 name: GlitchTip
 description: GlitchTip is an open-source error tracking and performance monitoring platform compatible with Sentry SDKs. It provides a REST API for managing errors, issues, projects, organizations, and teams, along with uptime monitoring and application performance insights. Available as a hosted SaaS service or self-hosted deployment.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/glitchtip/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -20,7 +20,7 @@ tags:
 apis:
   - name: GlitchTip REST API
     description: Sentry-compatible REST API for managing organizations, projects, teams, issues, events, alerts, and uptime monitors in GlitchTip. Auth tokens are scoped per user and grant access to all projects the user has permissions for.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://app.glitchtip.com/api/docs
     baseURL: https://app.glitchtip.com/api/0/
     tags:
@@ -42,7 +42,7 @@ apis:
 
   - name: GlitchTip Event Intake API
     description: Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions, and log messages from Sentry-compatible SDKs across Python, JavaScript, Ruby, PHP, Go, Java, and more.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://glitchtip.com/sdkdocs/
     baseURL: https://app.glitchtip.com/api/
     tags:
@@ -57,7 +57,7 @@ apis:
 
   - name: GlitchTip MCP Server
     description: Model Context Protocol (MCP) server exposing 17 tools for AI assistants to query organizations, projects, issues, events, performance data, alert rules, and uptime monitors. Authenticated via OAuth 2.0 with GlitchTip API tokens.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://glitchtip.com/documentation/mcp/
     baseURL: https://app.glitchtip.com/mcp
     tags:
