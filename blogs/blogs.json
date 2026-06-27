@@ -2,13 +2,27 @@
   "repo": "glitchtip",
   "feeds": [
     {
+      "source": "https://gitlab.com/glitchtip.atom",
+      "feed_url": "https://gitlab.com/glitchtip.atom",
+      "title": "",
+      "saved": 17,
+      "method": "feed"
+    },
+    {
+      "source": "https://glitchtip.com/blog/rss.xml",
+      "feed_url": "https://glitchtip.com/blog/rss.xml",
+      "title": "",
+      "saved": 1,
+      "method": "feed"
+    },
+    {
       "source": "https://gitlab.com/glitchtip",
       "feed_url": "https://gitlab.com/glitchtip.atom",
       "title": "",
-      "saved": 16,
+      "saved": 0,
       "method": "discovered"
     }
   ],
-  "post_count": 16,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 34,
+  "fetched": "2026-06-27T12:03:07Z"
 }
