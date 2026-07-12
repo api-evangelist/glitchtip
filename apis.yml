@@ -71,6 +71,10 @@ apis:
         url: https://glitchtip.com/documentation/mcp/
 
 common:
+  - type: DomainSecurity
+    url: security/glitchtip-domain-security.yml
+  - type: Authentication
+    url: authentication/glitchtip-authentication.yml
   - type: Website
     url: https://glitchtip.com/
   - type: Documentation

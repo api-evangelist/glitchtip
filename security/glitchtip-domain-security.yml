@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: glitchtip.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  5 17:24:02 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: app.glitchtip.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 31 21:32:40 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: glitchtip.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none

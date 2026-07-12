@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/glitchtip-rest-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: TokenAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/glitchtip-rest-openapi.yml
+- name: SessionAuth
+  type: apiKey
+  in: cookie
+  parameter: sessionid
+  sources:
+  - openapi/glitchtip-rest-openapi.yml
