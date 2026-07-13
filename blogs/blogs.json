@@ -5,14 +5,14 @@
       "source": "https://gitlab.com/glitchtip.atom",
       "feed_url": "https://gitlab.com/glitchtip.atom",
       "title": "",
-      "saved": 17,
+      "saved": 0,
       "method": "feed"
     },
     {
       "source": "https://glitchtip.com/blog/rss.xml",
       "feed_url": "https://glitchtip.com/blog/rss.xml",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -23,6 +23,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 34,
-  "fetched": "2026-06-27T12:03:07Z"
+  "post_count": 100,
+  "fetched": "2026-07-11T11:50:51Z"
 }
