@@ -1,0 +1,2045 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/glitchtip-rest-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 156
+  by_action_class:
+    connected: 79
+    acting: 77
+  by_consequence:
+    read: 79
+    write: 74
+    physical: 3
+  human_in_the_loop_required: 0
+operations:
+- path: /api/settings/
+  method: get
+  operationId: glitchtip_api_api_get_settings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/instance-license/
+  method: get
+  operationId: glitchtip_api_api_get_instance_license
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/instance-license/support-link/
+  method: get
+  operationId: glitchtip_api_api_get_support_link
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/
+  method: get
+  operationId: glitchtip_api_api_api_root
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/api-tokens/
+  method: get
+  operationId: apps_api_tokens_api_list_api_tokens
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/api-tokens/
+  method: post
+  operationId: apps_api_tokens_api_create_api_token
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/api-tokens/{token_id}/
+  method: delete
+  operationId: apps_api_tokens_api_delete_api_token
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/{project_id}/store/
+  method: post
+  operationId: apps_event_ingest_api_event_store
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/{project_id}/security/
+  method: post
+  operationId: apps_event_ingest_api_event_security
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/alerts/
+  method: get
+  operationId: apps_alerts_api_list_project_alerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/alerts/
+  method: post
+  operationId: apps_alerts_api_create_project_alert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/alerts/{alert_id}/
+  method: put
+  operationId: apps_alerts_api_update_project_alert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/alerts/{alert_id}/
+  method: delete
+  operationId: apps_alerts_api_delete_project_alert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/alerts/{alert_id}/test/
+  method: post
+  operationId: apps_alerts_api_test_project_alert
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/files/difs/assemble/
+  method: post
+  operationId: apps_difs_api_difs_assemble_api
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/reprocessing/
+  method: post
+  operationId: apps_difs_api_project_reprocessing
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/files/dsyms/
+  method: get
+  operationId: apps_difs_api_list_dsyms
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/files/dsyms/
+  method: post
+  operationId: apps_difs_api_dsyms
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/environments/
+  method: get
+  operationId: apps_environments_api_list_environments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/environments/
+  method: get
+  operationId: apps_environments_api_list_environment_projects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/environments/{name}/
+  method: put
+  operationId: apps_environments_api_update_environment_project
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/chunk-upload/
+  method: get
+  operationId: apps_files_api_get_chunk_upload_info
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/chunk-upload/
+  method: post
+  operationId: apps_files_api_chunk_upload
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/import/
+  method: post
+  operationId: apps_importer_api_importer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/issues/{issue_id}/comments/
+  method: get
+  operationId: apps_issue_events_api_comments_list_comments
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/comments/
+  method: post
+  operationId: apps_issue_events_api_comments_add_comment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/issues/{issue_id}/comments/{comment_id}/
+  method: put
+  operationId: apps_issue_events_api_comments_update_comment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/issues/{issue_id}/comments/{comment_id}/
+  method: delete
+  operationId: apps_issue_events_api_comments_delete_comment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/issues/{issue_id}/events/
+  method: get
+  operationId: apps_issue_events_api_events_list_issue_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/events/latest/
+  method: get
+  operationId: apps_issue_events_api_events_get_latest_issue_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/events/{event_id}/
+  method: get
+  operationId: apps_issue_events_api_events_get_issue_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/events/
+  method: get
+  operationId: apps_issue_events_api_events_list_project_issue_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/events/{event_id}/
+  method: get
+  operationId: apps_issue_events_api_events_get_project_issue_event
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/issues/{issue_id}/events/{event_id}/json/
+  method: get
+  operationId: apps_issue_events_api_events_get_event_json
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/
+  method: get
+  operationId: apps_issue_events_api_issues_get_issue
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/
+  method: put
+  operationId: apps_issue_events_api_issues_update_issue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/issues/{issue_id}/
+  method: delete
+  operationId: apps_issue_events_api_issues_delete_issue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/issues/{issue_id}/commits/
+  method: get
+  operationId: apps_issue_events_api_issues_list_issue_commits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/issues/{issue_id}/
+  method: put
+  operationId: apps_issue_events_api_issues_update_organization_issue
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/issues/
+  method: get
+  operationId: apps_issue_events_api_issues_list_issues
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/issues/
+  method: delete
+  operationId: apps_issue_events_api_issues_delete_issues
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/issues/
+  method: put
+  operationId: apps_issue_events_api_issues_update_issues
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/issues/
+  method: get
+  operationId: apps_issue_events_api_issues_list_project_issues
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/tags/
+  method: get
+  operationId: apps_issue_events_api_issues_list_issue_tags
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/issues-stats/
+  method: get
+  operationId: apps_issue_events_api_issues_issue_stats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/issues/{issue_id}/user-reports/
+  method: get
+  operationId: apps_issue_events_api_user_reports_list_user_reports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/issues/{issue_id}/hashes/
+  method: get
+  operationId: apps_issue_events_api_hashes_list_issue_hashes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/issues/{issue_id}/hashes/
+  method: delete
+  operationId: apps_issue_events_api_hashes_delete_hash
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/logs/
+  method: get
+  operationId: apps_logs_api_list_logs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/logs/{log_id}/
+  method: get
+  operationId: apps_logs_api_get_log
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/logs/stats/
+  method: get
+  operationId: apps_logs_api_get_log_stats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/logs/resources/
+  method: get
+  operationId: apps_logs_api_list_log_resources
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/
+  method: get
+  operationId: apps_organizations_ext_api_list_organizations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/
+  method: post
+  operationId: apps_organizations_ext_api_create_organization
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/
+  method: get
+  operationId: apps_organizations_ext_api_get_organization
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/
+  method: put
+  operationId: apps_organizations_ext_api_update_organization
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/
+  method: delete
+  operationId: apps_organizations_ext_api_delete_organization
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/members/
+  method: get
+  operationId: apps_organizations_ext_api_list_organization_members
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/members/
+  method: post
+  operationId: apps_organizations_ext_api_create_organization_member
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/teams/{organization_slug}/{team_slug}/members/
+  method: get
+  operationId: apps_organizations_ext_api_list_team_organization_members
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/members/{member_id}/
+  method: get
+  operationId: apps_organizations_ext_api_get_organization_member
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/members/{member_id}/
+  method: delete
+  operationId: apps_organizations_ext_api_delete_organization_member
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/members/{member_id}/
+  method: put
+  operationId: apps_organizations_ext_api_update_organization_member
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/members/{member_id}/set_owner/
+  method: post
+  operationId: apps_organizations_ext_api_set_organization_owner
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/accept/{org_user_id}/{token}/
+  method: get
+  operationId: apps_organizations_ext_api_get_accept_invite
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/accept/{org_user_id}/{token}/
+  method: post
+  operationId: apps_organizations_ext_api_accept_invite
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/transaction-groups/
+  method: get
+  operationId: apps_performance_api_list_transaction_groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/transaction-groups/{id}/
+  method: get
+  operationId: apps_performance_api_get_transaction_group
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/transaction-groups/{id}/spans/
+  method: get
+  operationId: apps_performance_api_list_transaction_spans
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/span-groups/
+  method: get
+  operationId: apps_performance_api_list_span_groups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/n-plus-one/
+  method: get
+  operationId: apps_performance_api_list_n_plus_one_patterns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/transaction-groups/{id}/trend/
+  method: get
+  operationId: apps_performance_api_get_transaction_trend
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/
+  method: get
+  operationId: apps_projects_api_list_projects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/
+  method: get
+  operationId: apps_projects_api_get_project
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/
+  method: put
+  operationId: apps_projects_api_update_project
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/
+  method: delete
+  operationId: apps_projects_api_delete_project
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/teams/{organization_slug}/{team_slug}/projects/
+  method: get
+  operationId: apps_projects_api_list_team_projects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/teams/{organization_slug}/{team_slug}/projects/
+  method: post
+  operationId: apps_projects_api_create_project
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/projects/
+  method: get
+  operationId: apps_projects_api_list_organization_projects
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/keys/
+  method: get
+  operationId: apps_projects_api_list_project_keys
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/keys/
+  method: post
+  operationId: apps_projects_api_create_project_key
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/keys/{key_id}/
+  method: get
+  operationId: apps_projects_api_get_project_key
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/keys/{key_id}/
+  method: put
+  operationId: apps_projects_api_update_project_key
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/keys/{key_id}/
+  method: delete
+  operationId: apps_projects_api_delete_project_key
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/notifications/alerts/
+  method: get
+  operationId: apps_projects_api_user_notification_alerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/users/{user_id}/notifications/alerts/
+  method: put
+  operationId: apps_projects_api_update_user_notification_alerts
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/stats_v2/
+  method: get
+  operationId: apps_stats_api_stats_v2
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/stripe/products/
+  method: get
+  operationId: apps_stripe_api_list_stripe_products
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/stripe/subscriptions/{organization_slug}/
+  method: get
+  operationId: apps_stripe_api_get_stripe_subscription
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/stripe/organizations/{organization_slug}/create-stripe-subscription-checkout/
+  method: post
+  operationId: apps_stripe_api_create_stripe_session
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/stripe/organizations/{organization_slug}/create-billing-portal/
+  method: post
+  operationId: apps_stripe_api_stripe_billing_portal_session
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/stripe/subscriptions/
+  method: post
+  operationId: apps_stripe_api_stripe_create_subscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/stripe/subscriptions/{organization_slug}/events_count/period/
+  method: get
+  operationId: apps_stripe_api_subscription_events_count_for_period
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/stripe/subscriptions/{organization_slug}/events_count/daily/
+  method: get
+  operationId: apps_stripe_api_subscription_events_count_daily
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/repos/
+  method: get
+  operationId: apps_sourcecode_api_list_repositories
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/repos/
+  method: post
+  operationId: apps_sourcecode_api_create_repository
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/artifactbundle/assemble/
+  method: post
+  operationId: apps_sourcecode_api_artifact_bundle_assemble
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/teams/{organization_slug}/{team_slug}/
+  method: get
+  operationId: apps_teams_api_get_team
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/teams/{organization_slug}/{team_slug}/
+  method: put
+  operationId: apps_teams_api_update_team
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/teams/{organization_slug}/{team_slug}/
+  method: delete
+  operationId: apps_teams_api_delete_team
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/teams/
+  method: get
+  operationId: apps_teams_api_list_teams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/teams/
+  method: post
+  operationId: apps_teams_api_create_team
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/members/{member_id}/teams/{team_slug}/
+  method: post
+  operationId: apps_teams_api_add_member_to_team
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/members/{member_id}/teams/{team_slug}/
+  method: delete
+  operationId: apps_teams_api_delete_member_from_team
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/teams/
+  method: get
+  operationId: apps_teams_api_list_project_teams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/teams/{team_slug}/
+  method: post
+  operationId: apps_teams_api_add_team_to_project
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/teams/{team_slug}/
+  method: delete
+  operationId: apps_teams_api_delete_team_from_project
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/heartbeat_check/{endpoint_id}/
+  method: post
+  operationId: apps_uptime_api_heartbeat_check
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/monitors/
+  method: get
+  operationId: apps_uptime_api_list_monitors
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/monitors/
+  method: post
+  operationId: apps_uptime_api_create_monitor
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/monitors/{monitor_id}/
+  method: get
+  operationId: apps_uptime_api_get_monitor
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/monitors/{monitor_id}/
+  method: put
+  operationId: apps_uptime_api_update_monitor
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/monitors/{monitor_id}/
+  method: delete
+  operationId: apps_uptime_api_delete_monitor
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/monitors/{monitor_id}/checks/
+  method: get
+  operationId: apps_uptime_api_list_monitor_checks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/status-pages/
+  method: get
+  operationId: apps_uptime_api_list_status_pages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/status-pages/
+  method: post
+  operationId: apps_uptime_api_create_status_page
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/
+  method: get
+  operationId: apps_users_api_list_users
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/users/{user_id}/
+  method: get
+  operationId: apps_users_api_get_user
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/users/{user_id}/
+  method: delete
+  operationId: apps_users_api_delete_user
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/
+  method: put
+  operationId: apps_users_api_update_user
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/emails/
+  method: get
+  operationId: apps_users_api_list_emails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/users/{user_id}/emails/
+  method: post
+  operationId: apps_users_api_create_email
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/emails/
+  method: put
+  operationId: apps_users_api_set_email_as_primary
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/emails/
+  method: delete
+  operationId: apps_users_api_delete_email
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/emails/confirm/
+  method: post
+  operationId: apps_users_api_send_confirm_email
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/users/{user_id}/notifications/
+  method: get
+  operationId: apps_users_api_get_notifications
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/users/{user_id}/notifications/
+  method: put
+  operationId: apps_users_api_update_notifications
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/generate-recovery-codes/
+  method: get
+  operationId: apps_users_api_generate_recovery_codes
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/generate-recovery-codes/
+  method: post
+  operationId: apps_users_api_set_recovery_codes
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/wizard/
+  method: get
+  operationId: apps_wizard_api_setup_wizard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/wizard/{wizard_hash}/
+  method: get
+  operationId: apps_wizard_api_setup_wizard_hash
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/wizard/{wizard_hash}/
+  method: delete
+  operationId: apps_wizard_api_setup_wizard_delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/wizard-set-token/
+  method: post
+  operationId: apps_wizard_api_setup_wizard_set_token
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/releases/
+  method: post
+  operationId: apps_releases_api_create_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/releases/
+  method: get
+  operationId: apps_releases_api_list_releases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/
+  method: post
+  operationId: apps_releases_api_create_project_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/
+  method: get
+  operationId: apps_releases_api_list_project_releases
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/
+  method: get
+  operationId: apps_releases_api_get_release
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/
+  method: put
+  operationId: apps_releases_api_update_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/releases/{version}/
+  method: delete
+  operationId: apps_releases_api_delete_organization_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/releases/{version}/files/
+  method: get
+  operationId: apps_releases_api_list_release_files
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/files/{file_id}/
+  method: get
+  operationId: apps_releases_api_get_organization_release_file
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/files/{file_id}/
+  method: delete
+  operationId: apps_releases_api_delete_organization_release_file
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/{version}/
+  method: get
+  operationId: apps_releases_api_get_project_release
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/{version}/
+  method: put
+  operationId: apps_releases_api_update_project_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/{version}/
+  method: delete
+  operationId: apps_releases_api_delete_project_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/{version}/files/
+  method: get
+  operationId: apps_releases_api_list_project_release_files
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/{version}/files/{file_id}/
+  method: delete
+  operationId: apps_releases_api_delete_project_release_file
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/projects/{organization_slug}/{project_slug}/releases/{version}/files/{file_id}/
+  method: get
+  operationId: apps_releases_api_get_project_release_file
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/deploys/
+  method: post
+  operationId: apps_releases_api_create_deploy
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/releases/{version}/deploys/
+  method: get
+  operationId: apps_releases_api_list_deploys
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/commits/
+  method: post
+  operationId: apps_releases_api_create_commits
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/0/organizations/{organization_slug}/releases/{version}/commits/
+  method: get
+  operationId: apps_releases_api_list_commits
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/0/organizations/{organization_slug}/releases/{version}/assemble/
+  method: post
+  operationId: apps_releases_api_assemble_release
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /api/embed/error-page/
+  method: get
+  operationId: apps_event_ingest_embed_api_get_embed_error_page
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /api/embed/error-page/
+  method: post
+  operationId: apps_event_ingest_embed_api_submit_embed_error_page
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
