@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Import API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Import
+paths:
+  /api/0/import/:
+    post:
+      operationId: apps_importer_api_importer
+      summary: Importer
+      parameters: []
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImportIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Import
+components:
+  schemas:
+    ImportIn:
+      properties:
+        url:
+          format: uri
+          maxLength: 2083
+          minLength: 1
+          title: Url
+          type: string
+        authToken:
+          title: Authtoken
+          type: string
+        organizationSlug:
+          title: Organizationslug
+          type: string
+      required:
+      - url
+      - authToken
+      - organizationSlug
+      title: ImportIn
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

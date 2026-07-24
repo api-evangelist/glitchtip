@@ -1,0 +1,2780 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Issues API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Issues
+paths:
+  /api/0/issues/{issue_id}/comments/:
+    get:
+      operationId: apps_issue_events_api_comments_list_comments
+      summary: List Comments
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommentSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    post:
+      operationId: apps_issue_events_api_comments_add_comment
+      summary: Add Comment
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentSchema'
+      tags:
+      - Issues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCommentSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/comments/{comment_id}/:
+    put:
+      operationId: apps_issue_events_api_comments_update_comment
+      summary: Update Comment
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: path
+        name: comment_id
+        schema:
+          title: Comment Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentSchema'
+      tags:
+      - Issues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCommentSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    delete:
+      operationId: apps_issue_events_api_comments_delete_comment
+      summary: Delete Comment
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: path
+        name: comment_id
+        schema:
+          title: Comment Id
+          type: integer
+        required: true
+      responses:
+        '204':
+          description: No Content
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/events/:
+    get:
+      operationId: apps_issue_events_api_events_list_issue_event
+      summary: List Issue Event
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueEventSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/events/latest/:
+    get:
+      operationId: apps_issue_events_api_events_get_latest_issue_event
+      summary: Get Latest Issue Event
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueEventDetailSchema'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/events/{event_id}/:
+    get:
+      operationId: apps_issue_events_api_events_get_issue_event
+      summary: Get Issue Event
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: path
+        name: event_id
+        schema:
+          format: uuid
+          title: Event Id
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueEventDetailSchema'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/projects/{organization_slug}/{project_slug}/events/:
+    get:
+      operationId: apps_issue_events_api_events_list_project_issue_event
+      summary: List Project Issue Event
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: project_slug
+        schema:
+          title: Project Slug
+          type: string
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueEventSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/projects/{organization_slug}/{project_slug}/events/{event_id}/:
+    get:
+      operationId: apps_issue_events_api_events_get_project_issue_event
+      summary: Get Project Issue Event
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: project_slug
+        schema:
+          title: Project Slug
+          type: string
+        required: true
+      - in: path
+        name: event_id
+        schema:
+          format: uuid
+          title: Event Id
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueEventDetailSchema'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/organizations/{organization_slug}/issues/{issue_id}/events/{event_id}/json/:
+    get:
+      operationId: apps_issue_events_api_events_get_event_json
+      summary: Get Event Json
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: path
+        name: event_id
+        schema:
+          format: uuid
+          title: Event Id
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueEventJsonSchema'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/:
+    get:
+      operationId: apps_issue_events_api_issues_get_issue
+      summary: Get Issue
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueDetailSchema'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    put:
+      operationId: apps_issue_events_api_issues_update_issue
+      summary: Update Issue
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueDetailSchema'
+      tags:
+      - Issues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIssueSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    delete:
+      operationId: apps_issue_events_api_issues_delete_issue
+      summary: Delete Issue
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '204':
+          description: No Content
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/commits/:
+    get:
+      operationId: apps_issue_events_api_issues_list_issue_commits
+      summary: List Issue Commits
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommitSchema'
+                title: Response
+                type: array
+      description: Return commits from the release where this issue first appeared.
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/organizations/{organization_slug}/issues/{issue_id}/:
+    put:
+      operationId: apps_issue_events_api_issues_update_organization_issue
+      summary: Update Organization Issue
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueDetailSchema'
+      tags:
+      - Issues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIssueSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/organizations/{organization_slug}/issues/:
+    get:
+      operationId: apps_issue_events_api_issues_list_issues
+      summary: List Issues
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: query
+        name: id
+        schema:
+          title: Id
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: start
+        schema:
+          title: Start
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: end
+        schema:
+          title: End
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: project
+        schema:
+          title: Project
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: environment
+        schema:
+          title: Environment
+          nullable: true
+          items:
+            type: string
+          type: array
+        required: false
+      - in: query
+        name: query
+        schema:
+          title: Query
+          nullable: true
+          type: string
+        required: false
+      - in: query
+        name: sort
+        schema:
+          default: -last_seen
+          enum:
+          - last_seen
+          - first_seen
+          - count
+          - priority
+          - -last_seen
+          - -first_seen
+          - -count
+          - -priority
+          title: Sort
+          type: string
+        required: false
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    delete:
+      operationId: apps_issue_events_api_issues_delete_issues
+      summary: Delete Issues
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: query
+        name: id
+        schema:
+          title: Id
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: start
+        schema:
+          title: Start
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: end
+        schema:
+          title: End
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: project
+        schema:
+          title: Project
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: environment
+        schema:
+          title: Environment
+          nullable: true
+          items:
+            type: string
+          type: array
+        required: false
+      - in: query
+        name: query
+        schema:
+          title: Query
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateIssueSchema'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    put:
+      operationId: apps_issue_events_api_issues_update_issues
+      summary: Update Issues
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: query
+        name: id
+        schema:
+          title: Id
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: start
+        schema:
+          title: Start
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: end
+        schema:
+          title: End
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: project
+        schema:
+          title: Project
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: environment
+        schema:
+          title: Environment
+          nullable: true
+          items:
+            type: string
+          type: array
+        required: false
+      - in: query
+        name: query
+        schema:
+          title: Query
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateIssueSchema'
+      tags:
+      - Issues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIssueSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/projects/{organization_slug}/{project_slug}/issues/:
+    get:
+      operationId: apps_issue_events_api_issues_list_project_issues
+      summary: List Project Issues
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: project_slug
+        schema:
+          title: Project Slug
+          type: string
+        required: true
+      - in: query
+        name: id
+        schema:
+          title: Id
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: start
+        schema:
+          title: Start
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: end
+        schema:
+          title: End
+          nullable: true
+          format: date-time
+          type: string
+        required: false
+      - in: query
+        name: project
+        schema:
+          title: Project
+          nullable: true
+          items:
+            type: integer
+          type: array
+        required: false
+      - in: query
+        name: environment
+        schema:
+          title: Environment
+          nullable: true
+          items:
+            type: string
+          type: array
+        required: false
+      - in: query
+        name: query
+        schema:
+          title: Query
+          nullable: true
+          type: string
+        required: false
+      - in: query
+        name: sort
+        schema:
+          default: -last_seen
+          enum:
+          - last_seen
+          - first_seen
+          - count
+          - priority
+          - -last_seen
+          - -first_seen
+          - -count
+          - -priority
+          title: Sort
+          type: string
+        required: false
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/tags/:
+    get:
+      operationId: apps_issue_events_api_issues_list_issue_tags
+      summary: List Issue Tags
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: query
+        name: key
+        schema:
+          title: Key
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueTagSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/organizations/{organization_slug}/issues-stats/:
+    get:
+      operationId: apps_issue_events_api_issues_issue_stats
+      summary: Retrieve Statistics for a Set of Issues
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: query
+        name: groups
+        schema:
+          items:
+            type: integer
+          title: Groups
+          type: array
+        required: true
+      - in: query
+        name: statsPeriod
+        schema:
+          default: 24h
+          enum:
+          - 14d
+          - 24h
+          title: Statsperiod
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueStatsResponse'
+                title: Response
+                type: array
+      description: 'Retrieves aggregated statistics for a given list of issue groups.
+
+
+        This endpoint returns data for the last 24 hours, formatted as a series of
+
+        [timestamp, count] pairs.'
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/issues/{issue_id}/user-reports/:
+    get:
+      operationId: apps_issue_events_api_user_reports_list_user_reports
+      summary: List User Reports
+      parameters:
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserReportSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+  /api/0/organizations/{organization_slug}/issues/{issue_id}/hashes/:
+    get:
+      operationId: apps_issue_events_api_hashes_list_issue_hashes
+      summary: List Issue Hashes
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/IssueHashSchema'
+                title: Response
+                type: array
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+    delete:
+      operationId: apps_issue_events_api_hashes_delete_hash
+      summary: Delete Hash
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: issue_id
+        schema:
+          title: Issue Id
+          type: integer
+        required: true
+      - in: query
+        name: id
+        schema:
+          items:
+            format: uuid
+            type: string
+          title: Id
+          type: array
+        required: true
+      responses:
+        '202':
+          description: Accepted
+      tags:
+      - Issues
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+components:
+  schemas:
+    Request:
+      properties:
+        apiTarget:
+          title: Apitarget
+          nullable: true
+          type: string
+        bodySize:
+          title: Bodysize
+          nullable: true
+          type: integer
+        cookies:
+          anyOf:
+          - type: string
+          - items:
+              items:
+                nullable: true
+                type: string
+              type: array
+            type: array
+          - additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Cookies
+          nullable: true
+        data:
+          anyOf:
+          - type: string
+          - additionalProperties: true
+            type: object
+          - items: {}
+            type: array
+          - {}
+          title: Data
+          nullable: true
+        env:
+          title: Env
+          nullable: true
+          additionalProperties: true
+          type: object
+        fragment:
+          title: Fragment
+          nullable: true
+          type: string
+        method:
+          title: Method
+          nullable: true
+          type: string
+        protocol:
+          title: Protocol
+          nullable: true
+          type: string
+        url:
+          title: Url
+          nullable: true
+          type: string
+        headers:
+          title: Headers
+          nullable: true
+          items:
+            items:
+              nullable: true
+              type: string
+            type: array
+          type: array
+        query:
+          title: Query
+          nullable: true
+          items:
+            items:
+              nullable: true
+              type: string
+            type: array
+          type: array
+        inferredContentType:
+          readOnly: true
+          title: Inferredcontenttype
+          nullable: true
+          type: string
+      required:
+      - inferredContentType
+      title: Request
+      type: object
+    CultureContext:
+      properties:
+        type:
+          const: culture
+          default: culture
+          type: string
+        calendar:
+          nullable: true
+          type: string
+        display_name:
+          nullable: true
+          type: string
+        locale:
+          nullable: true
+          type: string
+        is_24_hour_format:
+          nullable: true
+          type: boolean
+        timezone:
+          nullable: true
+          type: string
+      type: object
+    PostCommentSchema:
+      properties:
+        data:
+          additionalProperties:
+            type: string
+          propertyNames:
+            const: text
+          title: Data
+          type: object
+      required:
+      - data
+      title: PostCommentSchema
+      type: object
+    ResponseContext:
+      properties:
+        type:
+          const: response
+          default: response
+          title: Type
+          type: string
+        status_code:
+          title: Status Code
+          type: integer
+      required:
+      - status_code
+      title: ResponseContext
+      type: object
+    IssueDetailSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        count:
+          title: Count
+          type: string
+        type:
+          $ref: '#/components/schemas/IssueEventTypeDisplay'
+        level:
+          $ref: '#/components/schemas/LogLevelDisplay'
+        status:
+          $ref: '#/components/schemas/EventStatusDisplay'
+        metadata:
+          additionalProperties: true
+          title: Metadata
+          type: object
+        project:
+          $ref: '#/components/schemas/ProjectReference'
+        shortId:
+          title: Shortid
+          type: string
+        numComments:
+          title: Numcomments
+          type: integer
+        stats:
+          default:
+            24h: []
+          title: Stats
+          nullable: true
+          additionalProperties:
+            items:
+              items:
+                type: number
+              type: array
+            type: array
+          type: object
+        shareId:
+          title: Shareid
+          nullable: true
+          type: integer
+        logger:
+          title: Logger
+          nullable: true
+          type: string
+        permalink:
+          default: Not implemented
+          title: Permalink
+          nullable: true
+          type: string
+        statusDetails:
+          title: Statusdetails
+          nullable: true
+          additionalProperties:
+            type: string
+          type: object
+        subscriptionDetails:
+          title: Subscriptiondetails
+          nullable: true
+          type: string
+        userCount:
+          default: 0
+          title: Usercount
+          nullable: true
+          type: integer
+        matchingEventId:
+          title: Matchingeventid
+          nullable: true
+          type: string
+        firstRelease:
+          nullable: true
+          $ref: '#/components/schemas/IssueReleaseSchema'
+        lastRelease:
+          nullable: true
+          $ref: '#/components/schemas/IssueReleaseSchema'
+        firstSeen:
+          format: date-time
+          title: Firstseen
+          type: string
+        lastSeen:
+          format: date-time
+          title: Lastseen
+          type: string
+        assignedTo:
+          nullable: true
+          $ref: '#/components/schemas/IssueActorSchema'
+        title:
+          maxLength: 255
+          title: Title
+          type: string
+        culprit:
+          title: Culprit
+          nullable: true
+          maxLength: 1024
+          type: string
+        userReportCount:
+          title: Userreportcount
+          type: integer
+      required:
+      - id
+      - count
+      - type
+      - level
+      - status
+      - metadata
+      - project
+      - shortId
+      - numComments
+      - firstSeen
+      - lastSeen
+      - title
+      - userReportCount
+      title: IssueDetailSchema
+      type: object
+    AppContext:
+      properties:
+        type:
+          const: app
+          default: app
+          type: string
+        app_start_time:
+          nullable: true
+          type: string
+        device_app_hash:
+          nullable: true
+          type: string
+        build_type:
+          nullable: true
+          type: string
+        app_identifier:
+          nullable: true
+          type: string
+        app_name:
+          nullable: true
+          type: string
+        app_version:
+          nullable: true
+          type: string
+        app_build:
+          nullable: true
+          type: string
+        app_memory:
+          nullable: true
+          type: integer
+        in_foreground:
+          nullable: true
+          type: boolean
+      type: object
+    IssueSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        count:
+          title: Count
+          type: string
+        type:
+          $ref: '#/components/schemas/IssueEventTypeDisplay'
+        level:
+          $ref: '#/components/schemas/LogLevelDisplay'
+        status:
+          $ref: '#/components/schemas/EventStatusDisplay'
+        metadata:
+          additionalProperties: true
+          title: Metadata
+          type: object
+        project:
+          $ref: '#/components/schemas/ProjectReference'
+        shortId:
+          title: Shortid
+          type: string
+        numComments:
+          title: Numcomments
+          type: integer
+        stats:
+          default:
+            24h: []
+          title: Stats
+          nullable: true
+          additionalProperties:
+            items:
+              items:
+                type: number
+              type: array
+            type: array
+          type: object
+        shareId:
+          title: Shareid
+          nullable: true
+          type: integer
+        logger:
+          title: Logger
+          nullable: true
+          type: string
+        permalink:
+          default: Not implemented
+          title: Permalink
+          nullable: true
+          type: string
+        statusDetails:
+          title: Statusdetails
+          nullable: true
+          additionalProperties:
+            type: string
+          type: object
+        subscriptionDetails:
+          title: Subscriptiondetails
+          nullable: true
+          type: string
+        userCount:
+          default: 0
+          title: Usercount
+          nullable: true
+          type: integer
+        matchingEventId:
+          title: Matchingeventid
+          nullable: true
+          type: string
+        firstRelease:
+          nullable: true
+          $ref: '#/components/schemas/IssueReleaseSchema'
+        lastRelease:
+          nullable: true
+          $ref: '#/components/schemas/IssueReleaseSchema'
+        firstSeen:
+          format: date-time
+          title: Firstseen
+          type: string
+        lastSeen:
+          format: date-time
+          title: Lastseen
+          type: string
+        assignedTo:
+          nullable: true
+          $ref: '#/components/schemas/IssueActorSchema'
+        title:
+          maxLength: 255
+          title: Title
+          type: string
+        culprit:
+          title: Culprit
+          nullable: true
+          maxLength: 1024
+          type: string
+      required:
+      - id
+      - count
+      - type
+      - level
+      - status
+      - metadata
+      - project
+      - shortId
+      - numComments
+      - firstSeen
+      - lastSeen
+      - title
+      title: IssueSchema
+      type: object
+    EventUser:
+      properties:
+        id:
+          title: Id
+          nullable: true
+          type: string
+        username:
+          title: Username
+          nullable: true
+          type: string
+        email:
+          title: Email
+          nullable: true
+          type: string
+        ip_address:
+          title: Ip Address
+          nullable: true
+          type: string
+        data:
+          title: Data
+          nullable: true
+          additionalProperties: true
+          type: object
+        geo:
+          nullable: true
+          $ref: '#/components/schemas/EventGeo'
+      title: EventUser
+      type: object
+    DeviceContext:
+      properties:
+        type:
+          const: device
+          default: device
+          type: string
+        name:
+          nullable: true
+          type: string
+        family:
+          nullable: true
+          type: string
+        model:
+          nullable: true
+          type: string
+        model_id:
+          nullable: true
+          type: string
+        arch:
+          nullable: true
+          type: string
+        battery_level:
+          nullable: true
+          type: number
+        orientation:
+          nullable: true
+          type: string
+        manufacturer:
+          nullable: true
+          type: string
+        brand:
+          nullable: true
+          type: string
+        screen_resolution:
+          nullable: true
+          type: string
+        screen_height_pixels:
+          nullable: true
+          type: integer
+        screen_width_pixels:
+          nullable: true
+          type: integer
+        screen_density:
+          nullable: true
+          type: number
+        screen_dpi:
+          nullable: true
+          type: number
+        online:
+          nullable: true
+          type: boolean
+        charging:
+          nullable: true
+          type: boolean
+        low_memory:
+          nullable: true
+          type: boolean
+        simulator:
+          nullable: true
+          type: boolean
+        memory_size:
+          nullable: true
+          type: integer
+        free_memory:
+          nullable: true
+          type: integer
+        usable_memory:
+          nullable: true
+          type: integer
+        storage_size:
+          nullable: true
+          type: integer
+        free_storage:
+          nullable: true
+          type: integer
+        external_storage_size:
+          nullable: true
+          type: integer
+        external_free_storage:
+          nullable: true
+          type: integer
+        boot_time:
+          nullable: true
+          type: string
+        timezone:
+          nullable: true
+          type: string
+        language:
+          nullable: true
+          type: string
+        processor_count:
+          nullable: true
+          type: integer
+        cpu_description:
+          nullable: true
+          type: string
+        processor_frequency:
+          nullable: true
+          type: number
+        device_type:
+          nullable: true
+          type: string
+        battery_status:
+          nullable: true
+          type: string
+        device_unique_identifier:
+          nullable: true
+          type: string
+        supports_vibration:
+          nullable: true
+          type: boolean
+        supports_accelerometer:
+          nullable: true
+          type: boolean
+        supports_gyroscope:
+          nullable: true
+          type: boolean
+        supports_audio:
+          nullable: true
+          type: boolean
+        supports_location_service:
+          nullable: true
+          type: boolean
+      type: object
+    ExceptionEntry:
+      properties:
+        type:
+          const: exception
+          title: Type
+          type: string
+        data:
+          additionalProperties: true
+          title: Data
+          type: object
+      required:
+      - type
+      - data
+      title: ExceptionEntry
+      type: object
+    CommentUserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        email:
+          maxLength: 254
+          title: Email
+          type: string
+      required:
+      - id
+      - email
+      title: CommentUserSchema
+      type: object
+    IssueEventSchema:
+      properties:
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+        errors:
+          title: Errors
+          nullable: true
+          items:
+            $ref: '#/components/schemas/EventProcessingError'
+          type: array
+        id:
+          title: Id
+          type: string
+        eventID:
+          title: Eventid
+          type: string
+        projectID:
+          title: Projectid
+          type: integer
+        groupID:
+          title: Groupid
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        dateReceived:
+          format: date-time
+          title: Datereceived
+          type: string
+        dist:
+          title: Dist
+          nullable: true
+          type: string
+        culprit:
+          title: Culprit
+          nullable: true
+          type: string
+        packages:
+          title: Packages
+          nullable: true
+          additionalProperties:
+            nullable: true
+            type: string
+          type: object
+        type:
+          title: Type
+          type: string
+        message:
+          title: Message
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          title: Metadata
+          type: object
+        tags:
+          default: []
+          items:
+            additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Tags
+          type: array
+        entries:
+          items:
+            discriminator:
+              mapping:
+                breadcrumbs: '#/components/schemas/BreadcrumbsEntry'
+                csp: '#/components/schemas/CSPEntry'
+                exception: '#/components/schemas/ExceptionEntry'
+                message: '#/components/schemas/MessageEntry'
+                request: '#/components/schemas/RequestEntry'
+              propertyName: type
+            oneOf:
+            - $ref: '#/components/schemas/BreadcrumbsEntry'
+            - $ref: '#/components/schemas/CSPEntry'
+            - $ref: '#/components/schemas/ExceptionEntry'
+            - $ref: '#/components/schemas/MessageEntry'
+            - $ref: '#/components/schemas/RequestEntry'
+          title: Entries
+          type: array
+        contexts:
+          title: Contexts
+          nullable: true
+          additionalProperties:
+            anyOf:
+            - discriminator:
+                mapping:
+                  app: '#/components/schemas/AppContext'
+                  browser: '#/components/schemas/BrowserContext'
+                  cloud_resource: '#/components/schemas/CloudResourceContext'
+                  culture: '#/components/schemas/CultureContext'
+                  device: '#/components/schemas/DeviceContext'
+                  gpu: '#/components/schemas/GPUContext'
+                  os: '#/components/schemas/OSContext'
+                  replay: '#/components/schemas/ReplayContext'
+                  response: '#/components/schemas/ResponseContext'
+                  runtime: '#/components/schemas/RuntimeContext'
+                  state: '#/components/schemas/StateContext'
+                  trace: '#/components/schemas/TraceContext'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/DeviceContext'
+              - $ref: '#/components/schemas/OSContext'
+              - $ref: '#/components/schemas/RuntimeContext'
+              - $ref: '#/components/schemas/AppContext'
+              - $ref: '#/components/schemas/BrowserContext'
+              - $ref: '#/components/schemas/GPUContext'
+              - $ref: '#/components/schemas/StateContext'
+              - $ref: '#/components/schemas/CultureContext'
+              - $ref: '#/components/schemas/CloudResourceContext'
+              - $ref: '#/components/schemas/TraceContext'
+              - $ref: '#/components/schemas/ReplayContext'
+              - $ref: '#/components/schemas/ResponseContext'
+            - {}
+          type: object
+        context:
+          title: Context
+          nullable: true
+          additionalProperties: true
+          type: object
+        user:
+          title: User
+          nullable: true
+        sdk:
+          title: Sdk
+          nullable: true
+          additionalProperties: true
+          type: object
+        title:
+          maxLength: 255
+          title: Title
+          type: string
+      required:
+      - id
+      - eventID
+      - projectID
+      - groupID
+      - dateCreated
+      - dateReceived
+      - type
+      - message
+      - title
+      title: IssueEventSchema
+      type: object
+    StatsDetailSchema:
+      description: Represents the 24-hour statistics block.
+      properties:
+        24h:
+          title: 24H
+          nullable: true
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+        14d:
+          title: 14D
+          nullable: true
+          items:
+            items:
+              type: integer
+            type: array
+          type: array
+      title: StatsDetailSchema
+      type: object
+    UpdateIssueSchema:
+      properties:
+        status:
+          nullable: true
+          $ref: '#/components/schemas/EventStatusEnum'
+        statusDetails:
+          nullable: true
+          $ref: '#/components/schemas/StatusDetailsSchema'
+        merge:
+          title: Merge
+          nullable: true
+          type: integer
+        assignedTo:
+          title: Assignedto
+          nullable: true
+          type: string
+      title: UpdateIssueSchema
+      type: object
+    BrowserContext:
+      properties:
+        type:
+          const: browser
+          default: browser
+          type: string
+        name:
+          type: string
+        version:
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
+    RuntimeContext:
+      properties:
+        type:
+          const: runtime
+          default: runtime
+          type: string
+        name:
+          nullable: true
+          type: string
+        version:
+          nullable: true
+          type: string
+        raw_description:
+          nullable: true
+          type: string
+      type: object
+    RequestEntry:
+      properties:
+        type:
+          const: request
+          title: Type
+          type: string
+        data:
+          $ref: '#/components/schemas/Request'
+      required:
+      - type
+      - data
+      title: RequestEntry
+      type: object
+    IssueEventTypeDisplay:
+      enum:
+      - default
+      - error
+      - csp
+      title: IssueEventTypeDisplay
+      type: string
+    CSPEntry:
+      properties:
+        type:
+          const: csp
+          title: Type
+          type: string
+        data:
+          additionalProperties: true
+          title: Data
+          type: object
+      required:
+      - type
+      - data
+      title: CSPEntry
+      type: object
+    IssueActorSchema:
+      properties:
+        type:
+          enum:
+          - user
+          - team
+          title: Type
+          type: string
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+        username:
+          title: Username
+          nullable: true
+          type: string
+        email:
+          title: Email
+          nullable: true
+          type: string
+        slug:
+          title: Slug
+          nullable: true
+          type: string
+      required:
+      - type
+      - id
+      - name
+      title: IssueActorSchema
+      type: object
+    StatusDetailsSchema:
+      properties:
+        inRelease:
+          title: Inrelease
+          nullable: true
+          type: string
+        inNextRelease:
+          title: Innextrelease
+          nullable: true
+          type: boolean
+      title: StatusDetailsSchema
+      type: object
+    EventGeo:
+      properties:
+        city:
+          title: City
+          nullable: true
+          type: string
+        country_code:
+          title: Country Code
+          nullable: true
+          type: string
+        region:
+          title: Region
+          nullable: true
+          type: string
+        subdivision:
+          title: Subdivision
+          nullable: true
+          type: string
+      title: EventGeo
+      type: object
+    BreadcrumbsEntry:
+      properties:
+        type:
+          const: breadcrumbs
+          title: Type
+          type: string
+        data:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/APIEventBreadcrumb'
+            type: array
+          propertyNames:
+            const: values
+          title: Data
+          type: object
+      required:
+      - type
+      - data
+      title: BreadcrumbsEntry
+      type: object
+    CloudResourceContext:
+      properties:
+        type:
+          const: cloud_resource
+          default: cloud_resource
+          title: Type
+          type: string
+        cloud:
+          additionalProperties: true
+          title: Cloud
+          type: object
+        host:
+          additionalProperties: true
+          title: Host
+          type: object
+      required:
+      - cloud
+      - host
+      title: CloudResourceContext
+      type: object
+    IssueEventDetailSchema:
+      properties:
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+        errors:
+          title: Errors
+          nullable: true
+          items:
+            $ref: '#/components/schemas/EventProcessingError'
+          type: array
+        id:
+          title: Id
+          type: string
+        eventID:
+          title: Eventid
+          type: string
+        projectID:
+          title: Projectid
+          type: integer
+        groupID:
+          title: Groupid
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        dateReceived:
+          format: date-time
+          title: Datereceived
+          type: string
+        dist:
+          title: Dist
+          nullable: true
+          type: string
+        culprit:
+          title: Culprit
+          nullable: true
+          type: string
+        packages:
+          title: Packages
+          nullable: true
+          additionalProperties:
+            nullable: true
+            type: string
+          type: object
+        type:
+          title: Type
+          type: string
+        message:
+          title: Message
+          type: string
+        metadata:
+          additionalProperties:
+            type: string
+          title: Metadata
+          type: object
+        tags:
+          default: []
+          items:
+            additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Tags
+          type: array
+        entries:
+          items:
+            discriminator:
+              mapping:
+                breadcrumbs: '#/components/schemas/BreadcrumbsEntry'
+                csp: '#/components/schemas/CSPEntry'
+                exception: '#/components/schemas/ExceptionEntry'
+                message: '#/components/schemas/MessageEntry'
+                request: '#/components/schemas/RequestEntry'
+              propertyName: type
+            oneOf:
+            - $ref: '#/components/schemas/BreadcrumbsEntry'
+            - $ref: '#/components/schemas/CSPEntry'
+            - $ref: '#/components/schemas/ExceptionEntry'
+            - $ref: '#/components/schemas/MessageEntry'
+            - $ref: '#/components/schemas/RequestEntry'
+          title: Entries
+          type: array
+        contexts:
+          title: Contexts
+          nullable: true
+          additionalProperties:
+            anyOf:
+            - discriminator:
+                mapping:
+                  app: '#/components/schemas/AppContext'
+                  browser: '#/components/schemas/BrowserContext'
+                  cloud_resource: '#/components/schemas/CloudResourceContext'
+                  culture: '#/components/schemas/CultureContext'
+                  device: '#/components/schemas/DeviceContext'
+                  gpu: '#/components/schemas/GPUContext'
+                  os: '#/components/schemas/OSContext'
+                  replay: '#/components/schemas/ReplayContext'
+                  response: '#/components/schemas/ResponseContext'
+                  runtime: '#/components/schemas/RuntimeContext'
+                  state: '#/components/schemas/StateContext'
+                  trace: '#/components/schemas/TraceContext'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/DeviceContext'
+              - $ref: '#/components/schemas/OSContext'
+              - $ref: '#/components/schemas/RuntimeContext'
+              - $ref: '#/components/schemas/AppContext'
+              - $ref: '#/components/schemas/BrowserContext'
+              - $ref: '#/components/schemas/GPUContext'
+              - $ref: '#/components/schemas/StateContext'
+              - $ref: '#/components/schemas/CultureContext'
+              - $ref: '#/components/schemas/CloudResourceContext'
+              - $ref: '#/components/schemas/TraceContext'
+              - $ref: '#/components/schemas/ReplayContext'
+              - $ref: '#/components/schemas/ResponseContext'
+            - {}
+          type: object
+        context:
+          title: Context
+          nullable: true
+          additionalProperties: true
+          type: object
+        user:
+          title: User
+          nullable: true
+        sdk:
+          title: Sdk
+          nullable: true
+          additionalProperties: true
+          type: object
+        title:
+          maxLength: 255
+          title: Title
+          type: string
+        userReport:
+          nullable: true
+          $ref: '#/components/schemas/UserReportSchema'
+        nextEventID:
+          title: Nexteventid
+          nullable: true
+          type: string
+        previousEventID:
+          title: Previouseventid
+          nullable: true
+          type: string
+      required:
+      - id
+      - eventID
+      - projectID
+      - groupID
+      - dateCreated
+      - dateReceived
+      - type
+      - message
+      - title
+      - userReport
+      title: IssueEventDetailSchema
+      type: object
+    UserReportSchema:
+      properties:
+        eventID:
+          title: Eventid
+          type: string
+        event:
+          additionalProperties:
+            type: string
+          title: Event
+          type: object
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        user:
+          title: User
+          nullable: true
+          type: string
+        id:
+          title: ID
+          nullable: true
+          type: integer
+        name:
+          maxLength: 128
+          title: Name
+          type: string
+        email:
+          maxLength: 254
+          title: Email
+          type: string
+        comments:
+          title: Comments
+          type: string
+      required:
+      - eventID
+      - event
+      - dateCreated
+      - name
+      - email
+      - comments
+      title: UserReportSchema
+      type: object
+    APIEventBreadcrumb:
+      description: Slightly modified Breadcrumb for sentry api compatibility
+      properties:
+        type:
+          default: default
+          title: Type
+          nullable: true
+          type: string
+        category:
+          title: Category
+          nullable: true
+          type: string
+        message:
+          title: Message
+          nullable: true
+          type: string
+        data:
+          title: Data
+          nullable: true
+          additionalProperties: true
+          type: object
+        level:
+          default: info
+          title: Level
+          nullable: true
+          enum:
+          - fatal
+          - error
+          - warning
+          - info
+          - debug
+          type: string
+        timestamp:
+          title: Timestamp
+          nullable: true
+          format: date-time
+          type: string
+        event_id:
+          title: Event Id
+          nullable: true
+          type: string
+      title: APIEventBreadcrumb
+      type: object
+    IssueReleaseSchema:
+      properties:
+        shortVersion:
+          title: Shortversion
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        dateReleased:
+          title: Datereleased
+          nullable: true
+          format: date-time
+          type: string
+        version:
+          maxLength: 255
+          title: Version
+          type: string
+      required:
+      - shortVersion
+      - dateCreated
+      - dateReleased
+      - version
+      title: IssueReleaseSchema
+      type: object
+    IssueTagSchema:
+      properties:
+        topValues:
+          items:
+            $ref: '#/components/schemas/IssueTagTopValue'
+          title: Topvalues
+          type: array
+        uniqueValues:
+          title: Uniquevalues
+          type: integer
+        key:
+          title: Key
+          type: string
+        name:
+          title: Name
+          type: string
+        totalValues:
+          title: Totalvalues
+          type: integer
+      required:
+      - topValues
+      - uniqueValues
+      - key
+      - name
+      - totalValues
+      title: IssueTagSchema
+      type: object
+    IssueTagTopValue:
+      properties:
+        name:
+          title: Name
+          type: string
+        value:
+          title: Value
+          type: string
+        count:
+          title: Count
+          type: integer
+        key:
+          title: Key
+          type: string
+      required:
+      - name
+      - value
+      - count
+      - key
+      title: IssueTagTopValue
+      type: object
+    TraceContext:
+      properties:
+        type:
+          const: trace
+          default: trace
+          type: string
+        trace_id:
+          type: string
+        span_id:
+          type: string
+        parent_span_id:
+          nullable: true
+          type: string
+        op:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        exclusive_time:
+          nullable: true
+          type: number
+        client_sample_rate:
+          nullable: true
+          type: number
+        tags:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - items: {}
+            type: array
+          nullable: true
+        dynamic_sampling_context:
+          nullable: true
+          additionalProperties: true
+          type: object
+        origin:
+          nullable: true
+          type: string
+      required:
+      - trace_id
+      - span_id
+      type: object
+    ProjectReference:
+      properties:
+        id:
+          title: Id
+          type: string
+        platform:
+          title: Platform
+          nullable: true
+          maxLength: 64
+          type: string
+        slug:
+          title: Slug
+          nullable: true
+          type: string
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+      required:
+      - id
+      - name
+      title: ProjectReference
+      type: object
+    CommitSchema:
+      description: Output schema for commit data, matching documented public API.
+      properties:
+        id:
+          title: Id
+          type: string
+        message:
+          default: ''
+          title: Message
+          nullable: true
+          type: string
+        dateCreated:
+          title: Datecreated
+          nullable: true
+          type: string
+        authorName:
+          title: Authorname
+          nullable: true
+          type: string
+        authorEmail:
+          title: Authoremail
+          nullable: true
+          type: string
+      required:
+      - id
+      title: CommitSchema
+      type: object
+    EventStatusEnum:
+      enum:
+      - unresolved
+      - resolved
+      - ignored
+      title: EventStatusEnum
+      type: string
+    IssueEventJsonSchema:
+      description: Represents a more raw view of the event, built with open source (legacy) Sentry compatibility
+      properties:
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+        errors:
+          title: Errors
+          nullable: true
+          items:
+            $ref: '#/components/schemas/EventProcessingError'
+          type: array
+        event_id:
+          title: Event Id
+          type: string
+        timestamp:
+          title: Timestamp
+          type: number
+        datetime:
+          format: date-time
+          title: Datetime
+          type: string
+        breadcrumbs:
+          title: Breadcrumbs
+          nullable: true
+        project:
+          title: Project
+          type: integer
+        level:
+          title: Level
+          nullable: true
+          type: string
+        exception:
+          title: Exception
+          nullable: true
+        modules:
+          title: Modules
+          nullable: true
+          additionalProperties:
+            type: string
+          type: object
+        contexts:
+          title: Contexts
+          nullable: true
+          additionalProperties: true
+          type: object
+        sdk:
+          title: Sdk
+          nullable: true
+          additionalProperties: true
+          type: object
+        type:
+          title: Type
+          nullable: true
+          type: string
+        request:
+          title: Request
+          nullable: true
+        environment:
+          title: Environment
+          nullable: true
+          type: string
+        extra:
+          title: Extra
+          nullable: true
+          additionalProperties: true
+          type: object
+        user:
+          nullable: true
+          $ref: '#/components/schemas/EventUser'
+        hashes:
+          default: []
+          items:
+            type: string
+          title: Hashes
+          type: array
+        title:
+          maxLength: 255
+          title: Title
+          type: string
+        transaction:
+          maxLength: 200
+          title: Transaction
+          type: string
+        tags:
+          title: Tags
+          type: object
+      required:
+      - event_id
+      - timestamp
+      - datetime
+      - project
+      - level
+      - type
+      - title
+      - transaction
+      - tags
+      title: IssueEventJsonSchema
+      type: object
+    EventStatusDisplay:
+      enum:
+      - unresolved
+      - resolved
+      - ignored
+      title: EventStatusDisplay
+      type: string
+    ReplayContext:
+      properties:
+        type:
+          const: replay
+          default: replay
+          title: Type
+          type: string
+        replay_id:
+          title: Replay Id
+          type: string
+      required:
+      - replay_id
+      title: ReplayContext
+      type: object
+    OSContext:
+      properties:
+        type:
+          const: os
+          default: os
+          type: string
+        name:
+          type: string
+        version:
+          nullable: true
+          type: string
+        build:
+          nullable: true
+          type: string
+        kernel_version:
+          nullable: true
+          type: string
+        rooted:
+          nullable: true
+          type: boolean
+        theme:
+          nullable: true
+          type: string
+        raw_description:
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
+    StateContext:
+      properties:
+        type:
+          const: state
+          default: state
+          title: Type
+          type: string
+        state:
+          additionalProperties: true
+          title: State
+          type: object
+      required:
+      - state
+      title: StateContext
+      type: object
+    IssueHashSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        latestEvent:
+          nullable: true
+          $ref: '#/components/schemas/IssueEventSchema'
+      required:
+      - id
+      - latestEvent
+      title: IssueHashSchema
+      type: object
+    MessageEntry:
+      properties:
+        type:
+          const: message
+          title: Type
+          type: string
+        data:
+          additionalProperties: true
+          title: Data
+          type: object
+      required:
+      - type
+      - data
+      title: MessageEntry
+      type: object
+    EventProcessingError:
+      description: 'Represents a single error encountered during event processing,
+
+        matching the Sentry event schema.'
+      properties:
+        type:
+          title: Type
+          type: string
+        name:
+          title: Name
+          nullable: true
+          type: string
+        value:
+          title: Value
+          nullable: true
+      required:
+      - type
+      title: EventProcessingError
+      type: object
+    CommentSchema:
+      properties:
+        data:
+          additionalProperties:
+            type: string
+          title: Data
+          type: object
+        type:
+          default: note
+          title: Type
+          nullable: true
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        user:
+          nullable: true
+          $ref: '#/components/schemas/CommentUserSchema'
+        id:
+          title: ID
+          nullable: true
+          type: integer
+      required:
+      - data
+      - dateCreated
+      - user
+      title: CommentSchema
+      type: object
+    IssueStatsResponse:
+      description: Defines the structure for a single issue's statistics in the response.
+      properties:
+        id:
+          title: Id
+          type: string
+        count:
+          title: Count
+          type: string
+        userCount:
+          title: Usercount
+          type: integer
+        firstSeen:
+          title: Firstseen
+          type: string
+        lastSeen:
+          title: Lastseen
+          type: string
+        isUnhandled:
+          title: Isunhandled
+          type: boolean
+        stats:
+          $ref: '#/components/schemas/StatsDetailSchema'
+      required:
+      - id
+      - count
+      - userCount
+      - firstSeen
+      - lastSeen
+      - isUnhandled
+      - stats
+      title: IssueStatsResponse
+      type: object
+    LogLevelDisplay:
+      enum:
+      - sample
+      - debug
+      - info
+      - warning
+      - error
+      - fatal
+      title: LogLevelDisplay
+      type: string
+    GPUContext:
+      properties:
+        type:
+          const: gpu
+          default: gpu
+          type: string
+        name:
+          type: string
+        version:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        vendor_id:
+          nullable: true
+          type: string
+        vendor_name:
+          nullable: true
+          type: string
+        memory_size:
+          nullable: true
+          type: integer
+        api_type:
+          nullable: true
+          type: string
+        multi_threaded_rendering:
+          nullable: true
+          type: boolean
+        npot_support:
+          nullable: true
+          type: string
+        max_texture_size:
+          nullable: true
+          type: integer
+        graphics_shader_level:
+          nullable: true
+          type: string
+        supports_draw_call_instancing:
+          nullable: true
+          type: boolean
+        supports_ray_tracing:
+          nullable: true
+          type: boolean
+        supports_compute_shaders:
+          nullable: true
+          type: boolean
+        supports_geometry_shaders:
+          nullable: true
+          type: boolean
+      required:
+      - name
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

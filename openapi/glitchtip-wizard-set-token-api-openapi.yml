@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Wizard Set Token API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Wizard Set Token
+paths:
+  /api/0/wizard-set-token/:
+    post:
+      operationId: apps_wizard_api_setup_wizard_set_token
+      summary: Setup Wizard Set Token
+      parameters: []
+      responses:
+        '200':
+          description: OK
+      description: Authenticated api for storing projects data to later be used by sentry-wizard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetupWizardSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Wizard Set Token
+components:
+  schemas:
+    SetupWizardSchema:
+      description: 'A 64 char random string used to provide a shorted lived and secure
+
+        way to transfer sensative data.'
+      properties:
+        hash:
+          maxLength: 64
+          minLength: 64
+          title: Hash
+          type: string
+      required:
+      - hash
+      title: SetupWizardSchema
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

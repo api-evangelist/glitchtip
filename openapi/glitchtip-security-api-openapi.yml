@@ -1,0 +1,109 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Security API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Security
+paths:
+  /api/{project_id}/security/:
+    post:
+      operationId: apps_event_ingest_api_event_security
+      summary: Event Security
+      parameters:
+      - in: path
+        name: project_id
+        schema:
+          title: Project Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+      description: 'Accept Security (and someday other) issue events.
+
+        Reformats event to make CSP browser format match more standard
+
+        event format.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SecuritySchema'
+        required: true
+      tags:
+      - Security
+components:
+  schemas:
+    CSPReportSchema:
+      description: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only#violation_report_syntax
+      properties:
+        blocked-uri:
+          title: Blocked-Uri
+          type: string
+        disposition:
+          enum:
+          - enforce
+          - report
+          title: Disposition
+          type: string
+        document-uri:
+          title: Document-Uri
+          type: string
+        effective-directive:
+          title: Effective-Directive
+          type: string
+        original-policy:
+          title: Original-Policy
+          nullable: true
+          type: string
+        script-sample:
+          title: Script-Sample
+          nullable: true
+          type: string
+        status-code:
+          title: Status-Code
+          nullable: true
+          type: integer
+        line_number:
+          title: Line Number
+          nullable: true
+          type: integer
+        column_number:
+          title: Column Number
+          nullable: true
+          type: integer
+      required:
+      - blocked-uri
+      - disposition
+      - document-uri
+      - effective-directive
+      - original-policy
+      - status-code
+      title: CSPReportSchema
+      type: object
+    SecuritySchema:
+      properties:
+        csp-report:
+          $ref: '#/components/schemas/CSPReportSchema'
+      required:
+      - csp-report
+      title: SecuritySchema
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

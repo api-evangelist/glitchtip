@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Settings API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Settings
+paths:
+  /api/settings/:
+    get:
+      operationId: glitchtip_api_api_get_settings
+      summary: Get Settings
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SettingsOut'
+      tags:
+      - Settings
+components:
+  schemas:
+    SocialAppSchema:
+      properties:
+        scopes:
+          items:
+            type: string
+          title: Scopes
+          type: array
+        authorize_url:
+          title: Authorize Url
+          nullable: true
+          type: string
+        name:
+          maxLength: 40
+          title: Name
+          type: string
+        client_id:
+          description: App ID, or consumer key
+          maxLength: 191
+          title: Client Id
+          type: string
+        provider:
+          maxLength: 30
+          title: Provider
+          type: string
+      required:
+      - scopes
+      - authorize_url
+      - name
+      - client_id
+      - provider
+      title: SocialAppSchema
+      type: object
+    SettingsOut:
+      properties:
+        socialApps:
+          items:
+            $ref: '#/components/schemas/SocialAppSchema'
+          title: Socialapps
+          type: array
+        billingEnabled:
+          title: Billingenabled
+          type: boolean
+        iPaidForGlitchTip:
+          title: Ipaidforglitchtip
+          type: boolean
+        enableUserRegistration:
+          title: Enableuserregistration
+          type: boolean
+        enableSocialAppsUserRegistration:
+          title: Enablesocialappsuserregistration
+          type: boolean
+        enableOrganizationCreation:
+          title: Enableorganizationcreation
+          type: boolean
+        stripePublicKey:
+          title: Stripepublickey
+          nullable: true
+          type: string
+        plausibleUrl:
+          title: Plausibleurl
+          nullable: true
+          type: string
+        plausibleDomain:
+          title: Plausibledomain
+          nullable: true
+          type: string
+        chatwootWebsiteToken:
+          title: Chatwootwebsitetoken
+          nullable: true
+          type: string
+        sentryDSN:
+          title: Sentrydsn
+          nullable: true
+          type: string
+        sentryTracesSampleRate:
+          title: Sentrytracessamplerate
+          nullable: true
+          type: number
+        environment:
+          title: Environment
+          nullable: true
+          type: string
+        version:
+          title: Version
+          type: string
+        serverTimeZone:
+          title: Servertimezone
+          type: string
+        glitchtipInstanceName:
+          title: Glitchtipinstancename
+          nullable: true
+          type: string
+        enabledFeatures:
+          items:
+            type: string
+          title: Enabledfeatures
+          type: array
+      required:
+      - socialApps
+      - billingEnabled
+      - iPaidForGlitchTip
+      - enableUserRegistration
+      - enableSocialAppsUserRegistration
+      - enableOrganizationCreation
+      - stripePublicKey
+      - plausibleUrl
+      - plausibleDomain
+      - chatwootWebsiteToken
+      - sentryDSN
+      - sentryTracesSampleRate
+      - environment
+      - version
+      - serverTimeZone
+      - glitchtipInstanceName
+      - enabledFeatures
+      title: SettingsOut
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

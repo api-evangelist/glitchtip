@@ -1,0 +1,566 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Teams API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Teams
+paths:
+  /api/0/teams/{organization_slug}/{team_slug}/members/:
+    get:
+      operationId: apps_organizations_ext_api_list_team_organization_members
+      summary: List Team Organization Members
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: team_slug
+        schema:
+          title: Team Slug
+          type: string
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/OrganizationUserSchema'
+                title: Response
+                type: array
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Teams
+  /api/0/teams/{organization_slug}/{team_slug}/projects/:
+    get:
+      operationId: apps_projects_api_list_team_projects
+      summary: List Team Projects
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: team_slug
+        schema:
+          title: Team Slug
+          type: string
+        required: true
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ProjectSchema'
+                title: Response
+                type: array
+      description: List all projects for a given team
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Teams
+    post:
+      operationId: apps_projects_api_create_project
+      summary: Create Project
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: team_slug
+        schema:
+          title: Team Slug
+          type: string
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectSchema'
+      description: Create a new project given a team and organization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Teams
+  /api/0/teams/{organization_slug}/{team_slug}/:
+    get:
+      operationId: apps_teams_api_get_team
+      summary: Get Team
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: team_slug
+        schema:
+          title: Team Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamProjectSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Teams
+    put:
+      operationId: apps_teams_api_update_team
+      summary: Update Team
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: team_slug
+        schema:
+          title: Team Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamProjectSchema'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Teams
+    delete:
+      operationId: apps_teams_api_delete_team
+      summary: Delete Team
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: path
+        name: team_slug
+        schema:
+          title: Team Slug
+          type: string
+        required: true
+      responses:
+        '204':
+          description: No Content
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Teams
+components:
+  schemas:
+    TeamProjectSchema:
+      description: TeamSchema with related projects
+      properties:
+        id:
+          title: Id
+          type: string
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        isMember:
+          title: Ismember
+          type: boolean
+        memberCount:
+          title: Membercount
+          type: integer
+        projects:
+          default: []
+          items:
+            $ref: '#/components/schemas/ProjectSchema'
+          title: Projects
+          type: array
+      required:
+      - id
+      - slug
+      - dateCreated
+      - isMember
+      - memberCount
+      title: TeamProjectSchema
+      type: object
+    ProjectSchema:
+      description: 'A project is an organizational unit for GlitchTip events. It may contain
+
+        DSN keys, be connected to exactly one organization, and provide user permissions
+
+        through teams.'
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          nullable: true
+          type: string
+        id:
+          title: Id
+          type: string
+        avatar:
+          additionalProperties:
+            nullable: true
+            type: string
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        color:
+          default: ''
+          title: Color
+          type: string
+        features:
+          default: []
+          items:
+            type: string
+          title: Features
+          type: array
+        hasAccess:
+          default: true
+          title: Hasaccess
+          type: boolean
+        isBookmarked:
+          default: false
+          title: Isbookmarked
+          type: boolean
+        isInternal:
+          default: false
+          title: Isinternal
+          type: boolean
+        isMember:
+          title: Ismember
+          type: boolean
+        isPublic:
+          default: false
+          title: Ispublic
+          type: boolean
+        scrubIPAddresses:
+          title: Scrubipaddresses
+          type: boolean
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+        firstEvent:
+          title: First Event
+          nullable: true
+          format: date-time
+          type: string
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+      required:
+      - name
+      - id
+      - isMember
+      - scrubIPAddresses
+      - dateCreated
+      title: ProjectSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          nullable: true
+          format: email
+          type: string
+        username:
+          title: Username
+          nullable: true
+          type: string
+        id:
+          title: ID
+          nullable: true
+          type: integer
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    ProjectIn:
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          nullable: true
+          type: string
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+        eventThrottleRate:
+          title: Eventthrottlerate
+          nullable: true
+          type: integer
+      required:
+      - name
+      title: ProjectIn
+      type: object
+    UserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          title: Last Login
+          nullable: true
+          format: date-time
+          type: string
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          title: Name
+          nullable: true
+          maxLength: 255
+          type: string
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          nullable: true
+          type: string
+        stacktraceOrder:
+          title: Stacktraceorder
+          nullable: true
+          type: integer
+        language:
+          title: Language
+          nullable: true
+          type: string
+        clock24Hours:
+          title: Clock24Hours
+          nullable: true
+          type: boolean
+        preferredTheme:
+          title: Preferredtheme
+          nullable: true
+          type: string
+      title: UserOptions
+      type: object
+    OrganizationUserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        role:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Role
+          type: string
+        roleName:
+          title: Rolename
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        email:
+          title: Email
+          type: string
+        user:
+          nullable: true
+          $ref: '#/components/schemas/UserSchema'
+        pending:
+          title: Pending
+          type: boolean
+        isOwner:
+          title: Isowner
+          type: boolean
+      required:
+      - id
+      - role
+      - roleName
+      - dateCreated
+      - email
+      - pending
+      - isOwner
+      title: OrganizationUserSchema
+      type: object
+    TeamIn:
+      properties:
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+      required:
+      - slug
+      title: TeamIn
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

@@ -1,0 +1,646 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Users API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Users
+paths:
+  /api/0/users/{user_id}/notifications/alerts/:
+    get:
+      operationId: apps_projects_api_user_notification_alerts
+      summary: User Notification Alerts
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StrKeyIntValue'
+      description: 'Returns dictionary of project_id: status. Now project_id status means it''s "default"
+
+
+        To update, submit `{project_id: status}` where status is -1 (default), 0, or 1'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    put:
+      operationId: apps_projects_api_update_user_notification_alerts
+      summary: Update User Notification Alerts
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StrKeyIntValue'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+  /api/0/users/:
+    get:
+      operationId: apps_users_api_list_users
+      summary: List Users
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserSchema'
+                title: Response
+                type: array
+      description: 'Exists in Sentry OSS, unsure what the use case is
+
+        We make it only list the current user'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+  /api/0/users/{user_id}/:
+    get:
+      operationId: apps_users_api_get_user
+      summary: Get User
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDetailSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    delete:
+      operationId: apps_users_api_delete_user
+      summary: Delete User
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '204':
+          description: No Content
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    put:
+      operationId: apps_users_api_update_user
+      summary: Update User
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSchema'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+  /api/0/users/{user_id}/emails/:
+    get:
+      operationId: apps_users_api_list_emails
+      summary: List Emails
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EmailAddressSchema'
+                title: Response
+                type: array
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    post:
+      operationId: apps_users_api_create_email
+      summary: Create Email
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAddressSchema'
+      description: 'Create a new unverified email address. Will return 400 if the email already exists
+
+        and is verified.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAddressIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    put:
+      operationId: apps_users_api_set_email_as_primary
+      summary: Set Email As Primary
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAddressSchema'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAddressIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    delete:
+      operationId: apps_users_api_delete_email
+      summary: Delete Email
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAddressIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+  /api/0/users/{user_id}/emails/confirm/:
+    post:
+      operationId: apps_users_api_send_confirm_email
+      summary: Send Confirm Email
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '204':
+          description: No Content
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAddressIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+  /api/0/users/{user_id}/notifications/:
+    get:
+      operationId: apps_users_api_get_notifications
+      summary: Get Notifications
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotificationsSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+    put:
+      operationId: apps_users_api_update_notifications
+      summary: Update Notifications
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          anyOf:
+          - const: me
+            type: string
+          - type: integer
+          title: User Id
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserNotificationsSchema'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserNotificationsSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Users
+components:
+  schemas:
+    EmailAddressSchema:
+      properties:
+        isPrimary:
+          title: Isprimary
+          type: boolean
+        isVerified:
+          title: Isverified
+          type: boolean
+        email:
+          maxLength: 254
+          title: Email Address
+          type: string
+      required:
+      - isPrimary
+      - isVerified
+      - email
+      title: EmailAddressSchema
+      type: object
+    UserNotificationsSchema:
+      properties:
+        subscribeByDefault:
+          default: true
+          description: Subscribe to project notifications by default. Overrides project settings
+          title: Subscribe By Default
+          type: boolean
+      title: UserNotificationsSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          nullable: true
+          format: email
+          type: string
+        username:
+          title: Username
+          nullable: true
+          type: string
+        id:
+          title: ID
+          nullable: true
+          type: integer
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    UserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          title: Last Login
+          nullable: true
+          format: date-time
+          type: string
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          title: Name
+          nullable: true
+          maxLength: 255
+          type: string
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          nullable: true
+          type: string
+        stacktraceOrder:
+          title: Stacktraceorder
+          nullable: true
+          type: integer
+        language:
+          title: Language
+          nullable: true
+          type: string
+        clock24Hours:
+          title: Clock24Hours
+          nullable: true
+          type: boolean
+        preferredTheme:
+          title: Preferredtheme
+          nullable: true
+          type: string
+      title: UserOptions
+      type: object
+    UserDetailSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          title: Last Login
+          nullable: true
+          format: date-time
+          type: string
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          title: Name
+          nullable: true
+          maxLength: 255
+          type: string
+        chatwootIdentifierHash:
+          title: Chatwootidentifierhash
+          nullable: true
+          type: string
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserDetailSchema
+      type: object
+    UserIn:
+      properties:
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        name:
+          title: Name
+          nullable: true
+          maxLength: 255
+          type: string
+      required:
+      - options
+      title: UserIn
+      type: object
+    EmailAddressIn:
+      properties:
+        email:
+          format: email
+          title: Email
+          type: string
+      required:
+      - email
+      title: EmailAddressIn
+      type: object
+    StrKeyIntValue:
+      additionalProperties:
+        type: integer
+      title: StrKeyIntValue
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

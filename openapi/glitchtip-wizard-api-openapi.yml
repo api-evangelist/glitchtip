@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Wizard API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Wizard
+paths:
+  /api/0/wizard/:
+    get:
+      operationId: apps_wizard_api_setup_wizard
+      summary: Setup Wizard
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetupWizardSchema'
+      description: 'First step used by sentry-wizard
+
+        Generates a random hash for later usage'
+      tags:
+      - Wizard
+  /api/0/wizard/{wizard_hash}/:
+    get:
+      operationId: apps_wizard_api_setup_wizard_hash
+      summary: Setup Wizard Hash
+      parameters:
+      - in: path
+        name: wizard_hash
+        schema:
+          title: Wizard Hash
+          type: string
+        required: true
+      - in: query
+        name: auth
+        schema:
+          title: Auth
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+      description: 'Last step used by sentry-wizard
+
+        For a specified hash, fetch data for projects with organizations and dsn keys
+
+        Hash replaces user authentication'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Wizard
+    delete:
+      operationId: apps_wizard_api_setup_wizard_delete
+      summary: Setup Wizard Delete
+      parameters:
+      - in: path
+        name: wizard_hash
+        schema:
+          title: Wizard Hash
+          type: string
+        required: true
+      - in: query
+        name: auth
+        schema:
+          title: Auth
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+      description: 'Delete hash used by sentry-wizard.
+
+        It contains sensitive data, so it makes sense to remove when done.'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Wizard
+components:
+  schemas:
+    SetupWizardSchema:
+      description: 'A 64 char random string used to provide a shorted lived and secure
+
+        way to transfer sensative data.'
+      properties:
+        hash:
+          maxLength: 64
+          minLength: 64
+          title: Hash
+          type: string
+      required:
+      - hash
+      title: SetupWizardSchema
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

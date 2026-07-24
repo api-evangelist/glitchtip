@@ -1,0 +1,474 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Stripe API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Stripe
+paths:
+  /api/0/stripe/products/:
+    get:
+      operationId: apps_stripe_api_list_stripe_products
+      summary: List Stripe Products
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/StripeProductExpandedPriceSchema'
+                title: Response
+                type: array
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/subscriptions/{organization_slug}/:
+    get:
+      operationId: apps_stripe_api_get_stripe_subscription
+      summary: Get Stripe Subscription
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                nullable: true
+                $ref: '#/components/schemas/StripeSubscriptionSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/organizations/{organization_slug}/create-stripe-subscription-checkout/:
+    post:
+      operationId: apps_stripe_api_create_stripe_session
+      summary: Create Stripe Session
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StripeCheckoutSessionSchema'
+      description: 'Create Stripe Checkout, send to client for redirecting to Stripe
+
+        See https://stripe.com/docs/api/checkout/sessions/create'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PriceIDSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/organizations/{organization_slug}/create-billing-portal/:
+    post:
+      operationId: apps_stripe_api_stripe_billing_portal_session
+      summary: Stripe Billing Portal Session
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StripePortalSessionSchema'
+      description: See https://stripe.com/docs/billing/subscriptions/integrating-self-serve-portal
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/subscriptions/:
+    post:
+      operationId: apps_stripe_api_stripe_create_subscription
+      summary: Stripe Create Subscription
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSubscriptionResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/subscriptions/{organization_slug}/events_count/period/:
+    get:
+      operationId: apps_stripe_api_subscription_events_count_for_period
+      summary: Subscription Events Count For Period
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      - in: query
+        name: periods_ago
+        schema:
+          default: 0
+          title: Periods Ago
+          type: integer
+        required: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionUsageSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/subscriptions/{organization_slug}/events_count/daily/:
+    get:
+      operationId: apps_stripe_api_subscription_events_count_daily
+      summary: Subscription Events Count Daily
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DailyEventsCountSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+components:
+  schemas:
+    StripeProductSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        events:
+          title: Events
+          type: integer
+        default_price_id:
+          title: Default Price
+          nullable: true
+          type: string
+      required:
+      - stripeID
+      - name
+      - description
+      - events
+      title: StripeProductSchema
+      type: object
+    StripeSubscriptionSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        product:
+          $ref: '#/components/schemas/StripeProductSchema'
+        price:
+          $ref: '#/components/schemas/StripeNestedPriceSchema'
+        status:
+          nullable: true
+          $ref: '#/components/schemas/SubscriptionStatus'
+        collectionMethod:
+          $ref: '#/components/schemas/CollectionMethod'
+        created:
+          format: date-time
+          title: Created
+          type: string
+        currentPeriodStart:
+          format: date-time
+          title: Current Period Start
+          type: string
+        currentPeriodEnd:
+          format: date-time
+          title: Current Period End
+          type: string
+        startDate:
+          format: date-time
+          title: Start Date
+          type: string
+        subscriptionCycleStart:
+          title: Subscription Cycle Start
+          nullable: true
+          format: date-time
+          type: string
+        subscriptionCycleEnd:
+          title: Subscription Cycle End
+          nullable: true
+          format: date-time
+          type: string
+      required:
+      - stripeID
+      - product
+      - price
+      - status
+      - collectionMethod
+      - created
+      - currentPeriodStart
+      - currentPeriodEnd
+      - startDate
+      title: StripeSubscriptionSchema
+      type: object
+    SubscriptionStatus:
+      enum:
+      - incomplete
+      - incomplete_expired
+      - trialing
+      - active
+      - past_due
+      - canceled
+      - unpaid
+      - paused
+      title: SubscriptionStatus
+      type: string
+    StripeCheckoutSessionSchema:
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: StripeCheckoutSessionSchema
+      type: object
+    StripePortalSessionSchema:
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: StripePortalSessionSchema
+      type: object
+    CollectionMethod:
+      enum:
+      - charge_automatically
+      - send_invoice
+      title: CollectionMethod
+      type: string
+    DailyEventCountEntry:
+      properties:
+        date:
+          format: date
+          title: Date
+          type: string
+        eventCount:
+          title: Eventcount
+          type: integer
+        transactionEventCount:
+          title: Transactioneventcount
+          type: integer
+        uptimeCheckEventCount:
+          title: Uptimecheckeventcount
+          type: integer
+        logEventCount:
+          title: Logeventcount
+          type: integer
+      required:
+      - date
+      - eventCount
+      - transactionEventCount
+      - uptimeCheckEventCount
+      - logEventCount
+      title: DailyEventCountEntry
+      type: object
+    SubscriptionIn:
+      properties:
+        price:
+          title: Price
+          type: string
+        organization:
+          title: Organization
+          type: string
+      required:
+      - price
+      - organization
+      title: SubscriptionIn
+      type: object
+    DailyEventsCountSchema:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DailyEventCountEntry'
+          title: Data
+          type: array
+      required:
+      - data
+      title: DailyEventsCountSchema
+      type: object
+    CreateSubscriptionResponse:
+      properties:
+        price:
+          title: Price
+          type: string
+        organization:
+          title: Organization
+          type: string
+        subscription:
+          $ref: '#/components/schemas/StripeSubscriptionSchema'
+      required:
+      - price
+      - organization
+      - subscription
+      title: CreateSubscriptionResponse
+      type: object
+    StripeNestedPriceSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        price:
+          title: Price
+          type: string
+        interval:
+          default: month
+          maxLength: 20
+          title: Interval
+          type: string
+      required:
+      - stripeID
+      - price
+      title: StripeNestedPriceSchema
+      type: object
+    SubscriptionUsageSchema:
+      properties:
+        total:
+          title: Total
+          type: integer
+        eventCount:
+          title: Eventcount
+          type: integer
+        transactionEventCount:
+          title: Transactioneventcount
+          type: integer
+        uptimeCheckEventCount:
+          title: Uptimecheckeventcount
+          type: integer
+        logEventCount:
+          title: Logeventcount
+          type: integer
+        fileSizeMb:
+          title: Filesizemb
+          type: integer
+      required:
+      - total
+      - eventCount
+      - transactionEventCount
+      - uptimeCheckEventCount
+      - logEventCount
+      - fileSizeMb
+      title: SubscriptionUsageSchema
+      type: object
+    StripeProductExpandedPriceSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        defaultPrice:
+          $ref: '#/components/schemas/StripeNestedPriceSchema'
+        prices:
+          items:
+            $ref: '#/components/schemas/StripeNestedPriceSchema'
+          title: Prices
+          type: array
+        marketingFeatures:
+          items:
+            type: string
+          title: Marketingfeatures
+          type: array
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        events:
+          title: Events
+          type: integer
+      required:
+      - stripeID
+      - defaultPrice
+      - prices
+      - marketingFeatures
+      - name
+      - description
+      - events
+      title: StripeProductExpandedPriceSchema
+      type: object
+    PriceIDSchema:
+      properties:
+        price:
+          title: Price
+          type: string
+      required:
+      - price
+      title: PriceIDSchema
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

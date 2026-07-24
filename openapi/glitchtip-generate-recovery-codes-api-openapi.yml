@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Generate Recovery Codes API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Generate Recovery Codes
+paths:
+  /api/0/generate-recovery-codes/:
+    get:
+      operationId: apps_users_api_generate_recovery_codes
+      summary: Generate Recovery Codes
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecoveryCodesSchema'
+      description: Extension of django-allauth headless API to pre-generate recovery codes before saving
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Generate Recovery Codes
+    post:
+      operationId: apps_users_api_set_recovery_codes
+      summary: Set Recovery Codes
+      parameters: []
+      responses:
+        '204':
+          description: No Content
+      description: Extension of django-allauth headless API to set recovery codes
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecoveryCodeSchema'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Generate Recovery Codes
+components:
+  schemas:
+    RecoveryCodeSchema:
+      properties:
+        code:
+          title: Code
+          type: string
+      required:
+      - code
+      title: RecoveryCodeSchema
+      type: object
+    RecoveryCodesSchema:
+      properties:
+        codes:
+          items:
+            type: string
+          title: Codes
+          type: array
+      required:
+      - codes
+      title: RecoveryCodesSchema
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

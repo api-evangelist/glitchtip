@@ -1,0 +1,1294 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Store API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Store
+paths:
+  /api/{project_id}/store/:
+    post:
+      operationId: apps_event_ingest_api_event_store
+      summary: Event Store
+      parameters:
+      - in: path
+        name: project_id
+        schema:
+          title: Project Id
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventIngestOut'
+      description: 'Event store is the original event ingest API from OSS Sentry but is used less often
+
+        Unlike Envelope, it accepts only one Issue event.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventIngestSchema'
+        required: true
+      tags:
+      - Store
+components:
+  schemas:
+    CultureContext:
+      properties:
+        type:
+          const: culture
+          default: culture
+          type: string
+        calendar:
+          nullable: true
+          type: string
+        display_name:
+          nullable: true
+          type: string
+        locale:
+          nullable: true
+          type: string
+        is_24_hour_format:
+          nullable: true
+          type: boolean
+        timezone:
+          nullable: true
+          type: string
+      type: object
+    ResponseContext:
+      properties:
+        type:
+          const: response
+          default: response
+          title: Type
+          type: string
+        status_code:
+          title: Status Code
+          type: integer
+      required:
+      - status_code
+      title: ResponseContext
+      type: object
+    JvmDebugImage:
+      properties:
+        type:
+          const: jvm
+          title: Type
+          type: string
+        debug_id:
+          format: uuid
+          title: Debug Id
+          type: string
+      required:
+      - type
+      - debug_id
+      title: JvmDebugImage
+      type: object
+    EventTemplate:
+      properties:
+        lineno:
+          title: Lineno
+          type: integer
+        abs_path:
+          title: Abs Path
+          nullable: true
+          type: string
+        filename:
+          title: Filename
+          type: string
+        context_line:
+          title: Context Line
+          type: string
+        pre_context:
+          title: Pre Context
+          nullable: true
+          items:
+            type: string
+          type: array
+        post_context:
+          title: Post Context
+          nullable: true
+          items:
+            type: string
+          type: array
+      required:
+      - lineno
+      - filename
+      - context_line
+      title: EventTemplate
+      type: object
+    ClientSDKInfo:
+      properties:
+        integrations:
+          title: Integrations
+          nullable: true
+          items:
+            nullable: true
+            type: string
+          type: array
+        name:
+          title: Name
+          nullable: true
+          type: string
+        packages:
+          title: Packages
+          nullable: true
+          items:
+            $ref: '#/components/schemas/ClientSDKPackage'
+          type: array
+        version:
+          title: Version
+          nullable: true
+          type: string
+      required:
+      - name
+      - version
+      title: ClientSDKInfo
+      type: object
+    AppContext:
+      properties:
+        type:
+          const: app
+          default: app
+          type: string
+        app_start_time:
+          nullable: true
+          type: string
+        device_app_hash:
+          nullable: true
+          type: string
+        build_type:
+          nullable: true
+          type: string
+        app_identifier:
+          nullable: true
+          type: string
+        app_name:
+          nullable: true
+          type: string
+        app_version:
+          nullable: true
+          type: string
+        app_build:
+          nullable: true
+          type: string
+        app_memory:
+          nullable: true
+          type: integer
+        in_foreground:
+          nullable: true
+          type: boolean
+      type: object
+    OtherDebugImage:
+      properties:
+        type:
+          title: Type
+          type: string
+      required:
+      - type
+      title: OtherDebugImage
+      type: object
+    EventUser:
+      properties:
+        id:
+          title: Id
+          nullable: true
+          type: string
+        username:
+          title: Username
+          nullable: true
+          type: string
+        email:
+          title: Email
+          nullable: true
+          type: string
+        ip_address:
+          title: Ip Address
+          nullable: true
+          type: string
+        data:
+          title: Data
+          nullable: true
+          additionalProperties: true
+          type: object
+        geo:
+          nullable: true
+          $ref: '#/components/schemas/EventGeo'
+      title: EventUser
+      type: object
+    IngestValueEventException:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/IngestEventException'
+          title: Values
+          type: array
+      required:
+      - values
+      title: IngestValueEventException
+      type: object
+    EventBreadcrumb:
+      properties:
+        type:
+          default: default
+          title: Type
+          nullable: true
+          type: string
+        category:
+          title: Category
+          nullable: true
+          type: string
+        message:
+          title: Message
+          nullable: true
+          type: string
+        data:
+          title: Data
+          nullable: true
+          additionalProperties: true
+          type: object
+        level:
+          default: info
+          title: Level
+          nullable: true
+          enum:
+          - fatal
+          - error
+          - warning
+          - info
+          - debug
+          type: string
+        timestamp:
+          title: Timestamp
+          nullable: true
+          format: date-time
+          type: string
+      title: EventBreadcrumb
+      type: object
+    IngestEventException:
+      properties:
+        type:
+          title: Type
+          nullable: true
+          type: string
+        value:
+          title: Value
+          nullable: true
+          type: string
+        module:
+          title: Module
+          nullable: true
+          type: string
+        thread_id:
+          title: Thread Id
+          nullable: true
+          type: string
+        mechanism:
+          nullable: true
+          $ref: '#/components/schemas/ExceptionMechanism'
+        stacktrace:
+          nullable: true
+          $ref: '#/components/schemas/StackTrace'
+        raw_stacktrace:
+          nullable: true
+          $ref: '#/components/schemas/StackTrace'
+      title: IngestEventException
+      type: object
+    ClientSDKPackage:
+      properties:
+        name:
+          title: Name
+          nullable: true
+          type: string
+        version:
+          title: Version
+          nullable: true
+          type: string
+      title: ClientSDKPackage
+      type: object
+    DeviceContext:
+      properties:
+        type:
+          const: device
+          default: device
+          type: string
+        name:
+          nullable: true
+          type: string
+        family:
+          nullable: true
+          type: string
+        model:
+          nullable: true
+          type: string
+        model_id:
+          nullable: true
+          type: string
+        arch:
+          nullable: true
+          type: string
+        battery_level:
+          nullable: true
+          type: number
+        orientation:
+          nullable: true
+          type: string
+        manufacturer:
+          nullable: true
+          type: string
+        brand:
+          nullable: true
+          type: string
+        screen_resolution:
+          nullable: true
+          type: string
+        screen_height_pixels:
+          nullable: true
+          type: integer
+        screen_width_pixels:
+          nullable: true
+          type: integer
+        screen_density:
+          nullable: true
+          type: number
+        screen_dpi:
+          nullable: true
+          type: number
+        online:
+          nullable: true
+          type: boolean
+        charging:
+          nullable: true
+          type: boolean
+        low_memory:
+          nullable: true
+          type: boolean
+        simulator:
+          nullable: true
+          type: boolean
+        memory_size:
+          nullable: true
+          type: integer
+        free_memory:
+          nullable: true
+          type: integer
+        usable_memory:
+          nullable: true
+          type: integer
+        storage_size:
+          nullable: true
+          type: integer
+        free_storage:
+          nullable: true
+          type: integer
+        external_storage_size:
+          nullable: true
+          type: integer
+        external_free_storage:
+          nullable: true
+          type: integer
+        boot_time:
+          nullable: true
+          type: string
+        timezone:
+          nullable: true
+          type: string
+        language:
+          nullable: true
+          type: string
+        processor_count:
+          nullable: true
+          type: integer
+        cpu_description:
+          nullable: true
+          type: string
+        processor_frequency:
+          nullable: true
+          type: number
+        device_type:
+          nullable: true
+          type: string
+        battery_status:
+          nullable: true
+          type: string
+        device_unique_identifier:
+          nullable: true
+          type: string
+        supports_vibration:
+          nullable: true
+          type: boolean
+        supports_accelerometer:
+          nullable: true
+          type: boolean
+        supports_gyroscope:
+          nullable: true
+          type: boolean
+        supports_audio:
+          nullable: true
+          type: boolean
+        supports_location_service:
+          nullable: true
+          type: boolean
+      type: object
+    ValueEventThread:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/Thread'
+          title: Values
+          type: array
+      required:
+      - values
+      title: ValueEventThread
+      type: object
+    NativeDebugImage:
+      properties:
+        type:
+          enum:
+          - macho
+          - elf
+          - pe
+          - pe_dotnet
+          - wasm
+          title: Type
+          type: string
+        debug_id:
+          title: Debug Id
+          nullable: true
+          format: uuid
+          type: string
+        debug_checksum:
+          title: Debug Checksum
+          nullable: true
+          type: string
+        image_addr:
+          title: Image Addr
+          nullable: true
+          type: string
+        image_size:
+          title: Image Size
+          nullable: true
+          type: integer
+        code_file:
+          title: Code File
+          nullable: true
+          type: string
+        code_id:
+          title: Code Id
+          nullable: true
+          type: string
+      required:
+      - type
+      title: NativeDebugImage
+      type: object
+    BrowserContext:
+      properties:
+        type:
+          const: browser
+          default: browser
+          type: string
+        name:
+          type: string
+        version:
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
+    EventMessage:
+      properties:
+        formatted:
+          default: ''
+          maxLength: 8192
+          title: Formatted
+          type: string
+        message:
+          title: Message
+          nullable: true
+          type: string
+        params:
+          anyOf:
+          - items:
+              nullable: true
+              type: string
+            type: array
+          - additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Params
+          nullable: true
+      title: EventMessage
+      type: object
+    RuntimeContext:
+      properties:
+        type:
+          const: runtime
+          default: runtime
+          type: string
+        name:
+          nullable: true
+          type: string
+        version:
+          nullable: true
+          type: string
+        raw_description:
+          nullable: true
+          type: string
+      type: object
+    EventIngestOut:
+      properties:
+        event_id:
+          title: Event Id
+          type: string
+        task_id:
+          title: Task Id
+          nullable: true
+          type: string
+      required:
+      - event_id
+      title: EventIngestOut
+      type: object
+    StackTrace:
+      properties:
+        frames:
+          items:
+            $ref: '#/components/schemas/StackTraceFrame'
+          title: Frames
+          type: array
+        registers:
+          title: Registers
+          nullable: true
+          additionalProperties:
+            type: string
+          type: object
+      required:
+      - frames
+      title: StackTrace
+      type: object
+    EventGeo:
+      properties:
+        city:
+          title: City
+          nullable: true
+          type: string
+        country_code:
+          title: Country Code
+          nullable: true
+          type: string
+        region:
+          title: Region
+          nullable: true
+          type: string
+        subdivision:
+          title: Subdivision
+          nullable: true
+          type: string
+      title: EventGeo
+      type: object
+    EventIngestSchema:
+      properties:
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+        errors:
+          title: Errors
+          nullable: true
+          items: {}
+          type: array
+        event_id:
+          format: uuid
+          title: Event Id
+          type: string
+        timestamp:
+          anyOf:
+          - format: date-time
+            type: string
+          - additionalProperties: true
+            type: object
+          title: Timestamp
+          nullable: true
+        level:
+          default: error
+          title: Level
+          nullable: true
+          type: string
+        logentry:
+          nullable: true
+          $ref: '#/components/schemas/EventMessage'
+        logger:
+          title: Logger
+          nullable: true
+          type: string
+        transaction:
+          title: Transaction
+          nullable: true
+          type: string
+        server_name:
+          title: Server Name
+          nullable: true
+          type: string
+        release:
+          title: Release
+          nullable: true
+          type: string
+        dist:
+          title: Dist
+          nullable: true
+          type: string
+        tags:
+          anyOf:
+          - items:
+              items:
+                nullable: true
+                type: string
+              type: array
+            type: array
+          - additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Tags
+          nullable: true
+        environment:
+          title: Environment
+          nullable: true
+          type: string
+        modules:
+          title: Modules
+          nullable: true
+          additionalProperties:
+            nullable: true
+            type: string
+          type: object
+        extra:
+          title: Extra
+          nullable: true
+          additionalProperties: true
+          type: object
+        fingerprint:
+          title: Fingerprint
+          nullable: true
+          items:
+            nullable: true
+            type: string
+          type: array
+        exception:
+          nullable: true
+          $ref: '#/components/schemas/IngestValueEventException'
+        threads:
+          nullable: true
+          $ref: '#/components/schemas/ValueEventThread'
+        message:
+          anyOf:
+          - type: string
+          - $ref: '#/components/schemas/EventMessage'
+          title: Message
+          nullable: true
+        template:
+          nullable: true
+          $ref: '#/components/schemas/EventTemplate'
+        breadcrumbs:
+          nullable: true
+          $ref: '#/components/schemas/ValueEventBreadcrumb'
+        sdk:
+          nullable: true
+          $ref: '#/components/schemas/ClientSDKInfo'
+        request:
+          nullable: true
+          $ref: '#/components/schemas/IngestRequest'
+        contexts:
+          title: Contexts
+          nullable: true
+          additionalProperties:
+            anyOf:
+            - discriminator:
+                mapping:
+                  app: '#/components/schemas/AppContext'
+                  browser: '#/components/schemas/BrowserContext'
+                  cloud_resource: '#/components/schemas/CloudResourceContext'
+                  culture: '#/components/schemas/CultureContext'
+                  device: '#/components/schemas/DeviceContext'
+                  gpu: '#/components/schemas/GPUContext'
+                  os: '#/components/schemas/OSContext'
+                  replay: '#/components/schemas/ReplayContext'
+                  response: '#/components/schemas/ResponseContext'
+                  runtime: '#/components/schemas/RuntimeContext'
+                  state: '#/components/schemas/StateContext'
+                  trace: '#/components/schemas/TraceContext'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/DeviceContext'
+              - $ref: '#/components/schemas/OSContext'
+              - $ref: '#/components/schemas/RuntimeContext'
+              - $ref: '#/components/schemas/AppContext'
+              - $ref: '#/components/schemas/BrowserContext'
+              - $ref: '#/components/schemas/GPUContext'
+              - $ref: '#/components/schemas/StateContext'
+              - $ref: '#/components/schemas/CultureContext'
+              - $ref: '#/components/schemas/CloudResourceContext'
+              - $ref: '#/components/schemas/TraceContext'
+              - $ref: '#/components/schemas/ReplayContext'
+              - $ref: '#/components/schemas/ResponseContext'
+            - {}
+          type: object
+        user:
+          nullable: true
+          $ref: '#/components/schemas/EventUser'
+        debug_meta:
+          nullable: true
+          $ref: '#/components/schemas/DebugMeta'
+      required:
+      - event_id
+      title: EventIngestSchema
+      type: object
+    Thread:
+      properties:
+        id:
+          anyOf:
+          - type: integer
+          - type: string
+          title: Id
+          nullable: true
+        current:
+          title: Current
+          nullable: true
+          type: boolean
+        crashed:
+          title: Crashed
+          nullable: true
+          type: boolean
+        name:
+          title: Name
+          nullable: true
+          type: string
+        stacktrace:
+          nullable: true
+          $ref: '#/components/schemas/StackTrace'
+        raw_stacktrace:
+          nullable: true
+          $ref: '#/components/schemas/StackTrace'
+      title: Thread
+      type: object
+    ValueEventBreadcrumb:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/EventBreadcrumb'
+          title: Values
+          type: array
+      required:
+      - values
+      title: ValueEventBreadcrumb
+      type: object
+    SourceMapImage:
+      properties:
+        type:
+          const: sourcemap
+          title: Type
+          type: string
+        code_file:
+          title: Code File
+          type: string
+        debug_id:
+          format: uuid
+          title: Debug Id
+          type: string
+      required:
+      - type
+      - code_file
+      - debug_id
+      title: SourceMapImage
+      type: object
+    CloudResourceContext:
+      properties:
+        type:
+          const: cloud_resource
+          default: cloud_resource
+          title: Type
+          type: string
+        cloud:
+          additionalProperties: true
+          title: Cloud
+          type: object
+        host:
+          additionalProperties: true
+          title: Host
+          type: object
+      required:
+      - cloud
+      - host
+      title: CloudResourceContext
+      type: object
+    LockReason:
+      properties:
+        type:
+          title: Type
+          type: integer
+        address:
+          title: Address
+          nullable: true
+          type: string
+        package_name:
+          title: Package Name
+          nullable: true
+          type: string
+        class_name:
+          title: Class Name
+          nullable: true
+          type: string
+        thread_id:
+          title: Thread Id
+          nullable: true
+          type: string
+      required:
+      - type
+      title: LockReason
+      type: object
+    TraceContext:
+      properties:
+        type:
+          const: trace
+          default: trace
+          type: string
+        trace_id:
+          type: string
+        span_id:
+          type: string
+        parent_span_id:
+          nullable: true
+          type: string
+        op:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        exclusive_time:
+          nullable: true
+          type: number
+        client_sample_rate:
+          nullable: true
+          type: number
+        tags:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - items: {}
+            type: array
+          nullable: true
+        dynamic_sampling_context:
+          nullable: true
+          additionalProperties: true
+          type: object
+        origin:
+          nullable: true
+          type: string
+      required:
+      - trace_id
+      - span_id
+      type: object
+    StackTraceFrame:
+      properties:
+        filename:
+          title: Filename
+          nullable: true
+          type: string
+        function:
+          title: Function
+          nullable: true
+          type: string
+        raw_function:
+          title: Raw Function
+          nullable: true
+          type: string
+        function_id:
+          title: Function Id
+          nullable: true
+          type: string
+        symbol:
+          title: Symbol
+          nullable: true
+          type: string
+        module:
+          title: Module
+          nullable: true
+          type: string
+        lineno:
+          title: Lineno
+          nullable: true
+          type: integer
+        colno:
+          title: Colno
+          nullable: true
+          type: integer
+        abs_path:
+          title: Abs Path
+          nullable: true
+          type: string
+        context_line:
+          title: Context Line
+          nullable: true
+          type: string
+        pre_context:
+          title: Pre Context
+          nullable: true
+          items:
+            nullable: true
+            type: string
+          type: array
+        post_context:
+          title: Post Context
+          nullable: true
+          items:
+            nullable: true
+            type: string
+          type: array
+        source_link:
+          title: Source Link
+          nullable: true
+          type: string
+        in_app:
+          title: In App
+          nullable: true
+          type: boolean
+        stack_start:
+          title: Stack Start
+          nullable: true
+          type: boolean
+        lock:
+          nullable: true
+          $ref: '#/components/schemas/LockReason'
+        vars:
+          title: Vars
+          nullable: true
+          additionalProperties:
+            anyOf:
+            - type: string
+            - additionalProperties: true
+              type: object
+            - items: {}
+              type: array
+          type: object
+        instruction_addr:
+          title: Instruction Addr
+          nullable: true
+          type: string
+        addr_mode:
+          title: Addr Mode
+          nullable: true
+          type: string
+        symbol_addr:
+          title: Symbol Addr
+          nullable: true
+          type: string
+        image_addr:
+          title: Image Addr
+          nullable: true
+          type: string
+        package:
+          title: Package
+          nullable: true
+          type: string
+        platform:
+          title: Platform
+          nullable: true
+          type: string
+      title: StackTraceFrame
+      type: object
+    IngestRequest:
+      properties:
+        api_target:
+          title: Api Target
+          nullable: true
+          type: string
+        body_size:
+          title: Body Size
+          nullable: true
+          type: integer
+        cookies:
+          anyOf:
+          - type: string
+          - items:
+              items:
+                nullable: true
+                type: string
+              type: array
+            type: array
+          - additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Cookies
+          nullable: true
+        data:
+          anyOf:
+          - type: string
+          - additionalProperties: true
+            type: object
+          - items: {}
+            type: array
+          - {}
+          title: Data
+          nullable: true
+        env:
+          title: Env
+          nullable: true
+          additionalProperties: true
+          type: object
+        fragment:
+          title: Fragment
+          nullable: true
+          type: string
+        method:
+          title: Method
+          nullable: true
+          type: string
+        protocol:
+          title: Protocol
+          nullable: true
+          type: string
+        url:
+          title: Url
+          nullable: true
+          type: string
+        headers:
+          anyOf:
+          - items:
+              items:
+                nullable: true
+                type: string
+              type: array
+            type: array
+          - additionalProperties:
+              nullable: true
+              type: string
+            type: object
+          title: Headers
+          nullable: true
+        query_string:
+          anyOf:
+          - type: string
+          - items:
+              items:
+                nullable: true
+                type: string
+              type: array
+            type: array
+          - additionalProperties:
+              anyOf:
+              - type: string
+              - additionalProperties: true
+                type: object
+              nullable: true
+            type: object
+          title: Query String
+          nullable: true
+      title: IngestRequest
+      type: object
+    ReplayContext:
+      properties:
+        type:
+          const: replay
+          default: replay
+          title: Type
+          type: string
+        replay_id:
+          title: Replay Id
+          type: string
+      required:
+      - replay_id
+      title: ReplayContext
+      type: object
+    OSContext:
+      properties:
+        type:
+          const: os
+          default: os
+          type: string
+        name:
+          type: string
+        version:
+          nullable: true
+          type: string
+        build:
+          nullable: true
+          type: string
+        kernel_version:
+          nullable: true
+          type: string
+        rooted:
+          nullable: true
+          type: boolean
+        theme:
+          nullable: true
+          type: string
+        raw_description:
+          nullable: true
+          type: string
+      required:
+      - name
+      type: object
+    StateContext:
+      properties:
+        type:
+          const: state
+          default: state
+          title: Type
+          type: string
+        state:
+          additionalProperties: true
+          title: State
+          type: object
+      required:
+      - state
+      title: StateContext
+      type: object
+    ExceptionMechanism:
+      properties:
+        type:
+          title: Type
+          type: string
+        description:
+          title: Description
+          nullable: true
+          type: string
+        help_link:
+          title: Help Link
+          nullable: true
+          type: string
+        handled:
+          title: Handled
+          nullable: true
+          type: boolean
+        synthetic:
+          title: Synthetic
+          nullable: true
+          type: boolean
+        is_exception_group:
+          title: Is Exception Group
+          nullable: true
+          type: boolean
+        parent_id:
+          title: Parent Id
+          nullable: true
+          type: integer
+        source:
+          title: Source
+          nullable: true
+          type: string
+        meta:
+          title: Meta
+          nullable: true
+          additionalProperties: true
+          type: object
+        data:
+          title: Data
+          nullable: true
+          additionalProperties: true
+          type: object
+      required:
+      - type
+      title: ExceptionMechanism
+      type: object
+    DebugMeta:
+      properties:
+        images:
+          items:
+            anyOf:
+            - discriminator:
+                mapping:
+                  elf: '#/components/schemas/NativeDebugImage'
+                  jvm: '#/components/schemas/JvmDebugImage'
+                  macho: '#/components/schemas/NativeDebugImage'
+                  pe: '#/components/schemas/NativeDebugImage'
+                  pe_dotnet: '#/components/schemas/NativeDebugImage'
+                  sourcemap: '#/components/schemas/SourceMapImage'
+                  wasm: '#/components/schemas/NativeDebugImage'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/SourceMapImage'
+              - $ref: '#/components/schemas/JvmDebugImage'
+              - $ref: '#/components/schemas/NativeDebugImage'
+            - $ref: '#/components/schemas/OtherDebugImage'
+          title: Images
+          type: array
+      required:
+      - images
+      title: DebugMeta
+      type: object
+    GPUContext:
+      properties:
+        type:
+          const: gpu
+          default: gpu
+          type: string
+        name:
+          type: string
+        version:
+          nullable: true
+          type: string
+        id:
+          nullable: true
+          type: string
+        vendor_id:
+          nullable: true
+          type: string
+        vendor_name:
+          nullable: true
+          type: string
+        memory_size:
+          nullable: true
+          type: integer
+        api_type:
+          nullable: true
+          type: string
+        multi_threaded_rendering:
+          nullable: true
+          type: boolean
+        npot_support:
+          nullable: true
+          type: string
+        max_texture_size:
+          nullable: true
+          type: integer
+        graphics_shader_level:
+          nullable: true
+          type: string
+        supports_draw_call_instancing:
+          nullable: true
+          type: boolean
+        supports_ray_tracing:
+          nullable: true
+          type: boolean
+        supports_compute_shaders:
+          nullable: true
+          type: boolean
+        supports_geometry_shaders:
+          nullable: true
+          type: boolean
+      required:
+      - name
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

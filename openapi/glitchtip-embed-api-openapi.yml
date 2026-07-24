@@ -1,0 +1,275 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Embed API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Embed
+paths:
+  /api/embed/error-page/:
+    get:
+      operationId: apps_event_ingest_embed_api_get_embed_error_page
+      summary: Get Embed Error Page
+      parameters:
+      - in: query
+        name: dsn
+        schema:
+          title: Dsn
+          type: string
+        required: true
+      - in: query
+        name: eventId
+        schema:
+          title: Eventid
+          type: string
+        required: true
+      - in: query
+        name: title
+        schema:
+          default: It looks like we're having issues.
+          title: Title
+          type: string
+        required: false
+      - in: query
+        name: subtitle
+        schema:
+          default: Our team has been notified.
+          title: Subtitle
+          type: string
+        required: false
+      - in: query
+        name: subtitle2
+        schema:
+          default: If you'd like to help, tell us what happened below.
+          title: Subtitle2
+          type: string
+        required: false
+      - in: query
+        name: labelName
+        schema:
+          default: Name
+          title: Labelname
+          type: string
+        required: false
+      - in: query
+        name: labelEmail
+        schema:
+          default: Email
+          title: Labelemail
+          type: string
+        required: false
+      - in: query
+        name: labelComments
+        schema:
+          default: What happened?
+          title: Labelcomments
+          type: string
+        required: false
+      - in: query
+        name: labelClose
+        schema:
+          default: Close
+          title: Labelclose
+          type: string
+        required: false
+      - in: query
+        name: labelSubmit
+        schema:
+          default: Submit Crash Report
+          title: Labelsubmit
+          type: string
+        required: false
+      - in: query
+        name: errorGeneric
+        schema:
+          default: An unknown error occurred while submitting your report. Please try again.
+          title: Errorgeneric
+          type: string
+        required: false
+      - in: query
+        name: errorFormEntry
+        schema:
+          default: Some fields were invalid. Please correct the errors and try again.
+          title: Errorformentry
+          type: string
+        required: false
+      - in: query
+        name: successMessage
+        schema:
+          default: Your feedback has been sent. Thank you!
+          title: Successmessage
+          type: string
+        required: false
+      - in: query
+        name: name
+        schema:
+          title: Name
+          nullable: true
+          type: string
+        required: false
+      - in: query
+        name: email
+        schema:
+          title: Email
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Embed
+    post:
+      operationId: apps_event_ingest_embed_api_submit_embed_error_page
+      summary: Submit Embed Error Page
+      parameters:
+      - in: query
+        name: dsn
+        schema:
+          title: Dsn
+          type: string
+        required: true
+      - in: query
+        name: eventId
+        schema:
+          title: Eventid
+          type: string
+        required: true
+      - in: query
+        name: title
+        schema:
+          default: It looks like we're having issues.
+          title: Title
+          type: string
+        required: false
+      - in: query
+        name: subtitle
+        schema:
+          default: Our team has been notified.
+          title: Subtitle
+          type: string
+        required: false
+      - in: query
+        name: subtitle2
+        schema:
+          default: If you'd like to help, tell us what happened below.
+          title: Subtitle2
+          type: string
+        required: false
+      - in: query
+        name: labelName
+        schema:
+          default: Name
+          title: Labelname
+          type: string
+        required: false
+      - in: query
+        name: labelEmail
+        schema:
+          default: Email
+          title: Labelemail
+          type: string
+        required: false
+      - in: query
+        name: labelComments
+        schema:
+          default: What happened?
+          title: Labelcomments
+          type: string
+        required: false
+      - in: query
+        name: labelClose
+        schema:
+          default: Close
+          title: Labelclose
+          type: string
+        required: false
+      - in: query
+        name: labelSubmit
+        schema:
+          default: Submit Crash Report
+          title: Labelsubmit
+          type: string
+        required: false
+      - in: query
+        name: errorGeneric
+        schema:
+          default: An unknown error occurred while submitting your report. Please try again.
+          title: Errorgeneric
+          type: string
+        required: false
+      - in: query
+        name: errorFormEntry
+        schema:
+          default: Some fields were invalid. Please correct the errors and try again.
+          title: Errorformentry
+          type: string
+        required: false
+      - in: query
+        name: successMessage
+        schema:
+          default: Your feedback has been sent. Thank you!
+          title: Successmessage
+          type: string
+        required: false
+      - in: query
+        name: name
+        schema:
+          title: Name
+          nullable: true
+          type: string
+        required: false
+      - in: query
+        name: email
+        schema:
+          title: Email
+          nullable: true
+          type: string
+        required: false
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              title: FormParams
+              type: object
+              properties:
+                name:
+                  title: Name
+                  nullable: true
+                  type: string
+                email:
+                  title: Email
+                  nullable: true
+                  type: string
+                comments:
+                  title: Comments
+                  nullable: true
+                  type: string
+              required:
+              - name
+              - email
+              - comments
+        required: true
+      tags:
+      - Embed
+components:
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

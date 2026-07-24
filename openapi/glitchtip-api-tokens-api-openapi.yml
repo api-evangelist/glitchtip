@@ -1,0 +1,145 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Api Tokens API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Api Tokens
+paths:
+  /api/0/api-tokens/:
+    get:
+      operationId: apps_api_tokens_api_list_api_tokens
+      summary: List Api Tokens
+      parameters:
+      - in: query
+        name: limit
+        schema:
+          description: Number of results to return per page.
+          title: Limit
+          nullable: true
+          type: integer
+        required: false
+        description: Number of results to return per page.
+      - in: query
+        name: cursor
+        schema:
+          description: The pagination cursor value.
+          title: Cursor
+          nullable: true
+          type: string
+        required: false
+        description: The pagination cursor value.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/APITokenSchema'
+                title: Response
+                type: array
+      security:
+      - SessionAuth: []
+      tags:
+      - Api Tokens
+    post:
+      operationId: apps_api_tokens_api_create_api_token
+      summary: Create Api Token
+      parameters: []
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APITokenSchema'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/APITokenIn'
+        required: true
+      security:
+      - SessionAuth: []
+      tags:
+      - Api Tokens
+  /api/0/api-tokens/{token_id}/:
+    delete:
+      operationId: apps_api_tokens_api_delete_api_token
+      summary: Delete Api Token
+      parameters:
+      - in: path
+        name: token_id
+        schema:
+          title: Token Id
+          type: integer
+        required: true
+      responses:
+        '204':
+          description: No Content
+      security:
+      - SessionAuth: []
+      tags:
+      - Api Tokens
+components:
+  schemas:
+    APITokenIn:
+      properties:
+        scopes:
+          title: Scopes
+          type: integer
+        label:
+          title: Label
+          nullable: true
+          maxLength: 255
+          type: string
+      required:
+      - scopes
+      title: APITokenIn
+      type: object
+    APITokenSchema:
+      properties:
+        id:
+          title: Id
+          type: integer
+        label:
+          title: Label
+          type: string
+        scopes:
+          items:
+            type: string
+          title: Scopes
+          type: array
+        token:
+          title: Token
+          type: string
+        created:
+          format: date-time
+          title: Created
+          type: string
+      required:
+      - id
+      - label
+      - scopes
+      - token
+      - created
+      title: APITokenSchema
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

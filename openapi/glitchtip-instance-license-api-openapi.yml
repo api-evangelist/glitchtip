@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: GlitchTip Accept Instance License API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: Instance License
+paths:
+  /api/0/instance-license/:
+    get:
+      operationId: glitchtip_api_api_get_instance_license
+      summary: Get Instance License
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstanceLicenseOut'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Instance License
+  /api/0/instance-license/support-link/:
+    get:
+      operationId: glitchtip_api_api_get_support_link
+      summary: Get Support Link
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupportLinkOut'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Instance License
+components:
+  schemas:
+    InstanceLicenseOut:
+      properties:
+        billingEmail:
+          title: Billingemail
+          type: string
+      required:
+      - billingEmail
+      title: InstanceLicenseOut
+      type: object
+    SupportLinkOut:
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: SupportLinkOut
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
