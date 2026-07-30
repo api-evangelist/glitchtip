@@ -2,7 +2,20 @@ aid: glitchtip
 name: GlitchTip
 description: GlitchTip is an open-source error tracking and performance monitoring platform compatible with Sentry SDKs. It provides a REST API for managing errors, issues, projects, organizations, and teams, along with uptime monitoring and application performance insights. Available as a hosted SaaS service or self-hosted deployment.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/glitchtip.png
 url: https://raw.githubusercontent.com/api-evangelist/glitchtip/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -18,58 +31,256 @@ tags:
   - Logging
 
 apis:
-  - name: GlitchTip REST API
-    description: Sentry-compatible REST API for managing organizations, projects, teams, issues, events, alerts, and uptime monitors in GlitchTip. Auth tokens are scoped per user and grant access to all projects the user has permissions for.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://app.glitchtip.com/api/docs
-    baseURL: https://app.glitchtip.com/api/0/
-    tags:
-      - Errors
-      - Issues
-      - Projects
-      - Organizations
-      - Teams
-      - Events
-      - Performance
-      - Uptime
-    properties:
-      - type: Documentation
-        url: https://glitchtip.com/documentation/
-      - type: OpenAPI
-        url: https://app.glitchtip.com/api/docs
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/glitchtip/refs/heads/main/openapi/glitchtip-rest-openapi.yml
-
-  - name: GlitchTip Event Intake API
-    description: Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions, and log messages from Sentry-compatible SDKs across Python, JavaScript, Ruby, PHP, Go, Java, and more.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://glitchtip.com/sdkdocs/
-    baseURL: https://app.glitchtip.com/api/
-    tags:
-      - Events
-      - Errors
-      - SDKs
-      - Sentry Compatible
-      - Ingestion
-    properties:
-      - type: Documentation
-        url: https://glitchtip.com/sdkdocs/
-
-  - name: GlitchTip MCP Server
-    description: Model Context Protocol (MCP) server exposing 17 tools for AI assistants to query organizations, projects, issues, events, performance data, alert rules, and uptime monitors. Authenticated via OAuth 2.0 with GlitchTip API tokens.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://glitchtip.com/documentation/mcp/
-    baseURL: https://app.glitchtip.com/mcp
-    tags:
-      - MCP
-      - AI
-      - Model Context Protocol
-      - Issues
-      - Performance
-    properties:
-      - type: Documentation
-        url: https://glitchtip.com/documentation/mcp/
-
+- name: GlitchTip Event Intake API
+  description: >-
+    Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions, and
+    log messages from Sentry-compatible SDKs across Python, JavaScript, Ruby, PHP, Go, Java, and more.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://glitchtip.com/sdkdocs/
+  baseURL: https://app.glitchtip.com/api/
+  tags:
+  - Events
+  - Errors
+  - SDKs
+  - Sentry Compatible
+  - Ingestion
+  properties:
+  - type: Documentation
+    url: https://glitchtip.com/sdkdocs/
+- name: GlitchTip MCP Server
+  description: >-
+    Model Context Protocol (MCP) server exposing 17 tools for AI assistants to query organizations, projects,
+    issues, events, performance data, alert rules, and uptime monitors. Authenticated via OAuth 2.0 with
+    GlitchTip API tokens.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://glitchtip.com/documentation/mcp/
+  baseURL: https://app.glitchtip.com/mcp
+  tags:
+  - MCP
+  - AI
+  - Model Context Protocol
+  - Issues
+  - Performance
+  properties:
+  - type: Documentation
+    url: https://glitchtip.com/documentation/mcp/
+- aid: glitchtip:glitchtip-accept-api
+  name: GlitchTip Accept API
+  description: The Accept API from GlitchTip — 1 operation(s) for accept.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Accept
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-accept-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-api-tokens-api
+  name: GlitchTip Api Tokens API
+  description: The Api Tokens API from GlitchTip — 2 operation(s) for api tokens.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Api Tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-api-tokens-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-embed-api
+  name: GlitchTip Embed API
+  description: The Embed API from GlitchTip — 1 operation(s) for embed.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Embed
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-embed-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-generate-recovery-codes-api
+  name: GlitchTip Generate Recovery Codes API
+  description: >-
+    The Generate Recovery Codes API from GlitchTip — 1 operation(s) for generate recovery codes.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Generate Recovery Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-generate-recovery-codes-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-glitchtip-api-api
+  name: GlitchTip GlitchTip API API
+  description: The GlitchTip API API from GlitchTip — 1 operation(s) for glitchtip api.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - GlitchTip API
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-glitchtip-api-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-import-api
+  name: GlitchTip Import API
+  description: The Import API from GlitchTip — 1 operation(s) for import.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Import
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-import-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-instance-license-api
+  name: GlitchTip Instance License API
+  description: The Instance License API from GlitchTip — 2 operation(s) for instance license.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Instance License
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-instance-license-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-issues-api
+  name: GlitchTip Issues API
+  description: The Issues API from GlitchTip — 17 operation(s) for issues.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Issues
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-issues-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-organizations-api
+  name: GlitchTip Organizations API
+  description: The Organizations API from GlitchTip — 35 operation(s) for organizations.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-projects-api
+  name: GlitchTip Projects API
+  description: The Projects API from GlitchTip — 18 operation(s) for projects.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-projects-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-security-api
+  name: GlitchTip Security API
+  description: The Security API from GlitchTip — 1 operation(s) for security.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-security-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-settings-api
+  name: GlitchTip Settings API
+  description: The Settings API from GlitchTip — 1 operation(s) for settings.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-settings-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-store-api
+  name: GlitchTip Store API
+  description: The Store API from GlitchTip — 1 operation(s) for store.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Store
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-store-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-stripe-api
+  name: GlitchTip Stripe API
+  description: The Stripe API from GlitchTip — 7 operation(s) for stripe.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Stripe
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-stripe-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-teams-api
+  name: GlitchTip Teams API
+  description: The Teams API from GlitchTip — 3 operation(s) for teams.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-teams-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-users-api
+  name: GlitchTip Users API
+  description: The Users API from GlitchTip — 6 operation(s) for users.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-users-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-wizard-api
+  name: GlitchTip Wizard API
+  description: The Wizard API from GlitchTip — 2 operation(s) for wizard.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Wizard
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-wizard-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
+- aid: glitchtip:glitchtip-wizard-set-token-api
+  name: GlitchTip Wizard Set Token API
+  description: The Wizard Set Token API from GlitchTip — 1 operation(s) for wizard set token.
+  humanURL: https://app.glitchtip.com/api/docs
+  baseURL: https://app.glitchtip.com/api/0/
+  tags:
+  - Wizard Set Token
+  properties:
+  - type: OpenAPI
+    url: openapi/glitchtip-wizard-set-token-api-openapi.yml
+  - type: Documentation
+    url: https://glitchtip.com/documentation/
 common:
   - type: AgenticAccess
     url: agentic-access/glitchtip-agentic-access.yml
