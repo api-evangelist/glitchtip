@@ -1,0 +1,103 @@
+{
+  "item": [
+    {
+      "id": "7ff13e26-c56b-4e07-b555-9bb157bc9eb6",
+      "name": "Settings",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c638ec0a-9f7f-4842-9072-ab3a6620f1fd",
+          "name": "Get Settings",
+          "request": {
+            "name": "Get Settings",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "settings",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b225eb2-cc1a-4467-8dbb-b0c11eade65d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "settings",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"socialApps\": [\n    {\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authorize_url\": \"string\",\n      \"name\": \"string\",\n      \"client_id\": \"string\",\n      \"provider\": \"string\"\n    },\n    {\n      \"scopes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"authorize_url\": \"string\",\n      \"name\": \"string\",\n      \"client_id\": \"string\",\n      \"provider\": \"string\"\n    }\n  ],\n  \"billingEnabled\": true,\n  \"iPaidForGlitchTip\": false,\n  \"enableUserRegistration\": true,\n  \"enableSocialAppsUserRegistration\": true,\n  \"enableOrganizationCreation\": true,\n  \"stripePublicKey\": \"string\",\n  \"plausibleUrl\": \"string\",\n  \"plausibleDomain\": \"string\",\n  \"chatwootWebsiteToken\": \"string\",\n  \"sentryDSN\": \"string\",\n  \"sentryTracesSampleRate\": 8163.939889229022,\n  \"environment\": \"string\",\n  \"version\": \"string\",\n  \"serverTimeZone\": \"string\",\n  \"glitchtipInstanceName\": \"string\",\n  \"enabledFeatures\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5487bf92-9a23-4b3a-9705-cb8e3635bed1",
+    "name": "GlitchTip Accept Settings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

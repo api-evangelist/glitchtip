@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accept",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Accept Invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/accept/:org_user_id/:token/",
+            "params": [
+              {
+                "name": "org_user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Return relevant organization data around an invite"
+        },
+        {
+          "info": {
+            "name": "Accept Invite",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/accept/:org_user_id/:token/",
+            "params": [
+              {
+                "name": "org_user_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Accepts invite to organization"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

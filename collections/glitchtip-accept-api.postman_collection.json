@@ -1,0 +1,289 @@
+{
+  "item": [
+    {
+      "id": "1c69d796-d442-4cf1-9793-53197ecff790",
+      "name": "Accept",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ea877a1-6b4c-44ef-8a0d-765c4383b67d",
+          "name": "Get Accept Invite",
+          "request": {
+            "name": "Get Accept Invite",
+            "description": {
+              "content": "Return relevant organization data around an invite",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "accept",
+                ":org_user_id",
+                ":token",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "org_user_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cc93b8c-b080-4510-87ff-ec71b737a34d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "accept",
+                    ":org_user_id",
+                    ":token",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "org_user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acceptInvite\": false,\n  \"orgUser\": {\n    \"id\": \"string\",\n    \"role\": \"manager\",\n    \"roleName\": \"string\",\n    \"dateCreated\": \"2014-12-04T14:53:10.523Z\",\n    \"email\": \"string\",\n    \"pending\": true,\n    \"isOwner\": true,\n    \"organization\": {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"dateCreated\": \"2021-12-27T14:29:14.068Z\",\n      \"slug\": \"string\",\n      \"status\": {\n        \"id\": \"active\",\n        \"name\": \"active\"\n      },\n      \"avatar\": {\n        \"avatarType\": \"\",\n        \"avatarUuid\": null\n      },\n      \"isEarlyAdopter\": false,\n      \"require2fa\": false,\n      \"isAcceptingEvents\": true,\n      \"eventThrottleRate\": 0\n    },\n    \"user\": {\n      \"id\": \"string\",\n      \"options\": {\n        \"timezone\": \"string\",\n        \"stacktraceOrder\": 7114,\n        \"language\": \"string\",\n        \"clock24Hours\": false,\n        \"preferredTheme\": \"string\"\n      },\n      \"username\": \"gLQ@NasHkUMkLPbEisgVPekImveeXOruNyp.bm\",\n      \"dateJoined\": \"2013-12-09T18:16:11.804Z\",\n      \"email\": \"jiOAi72aXF@IDsIuPYzhhxBDROntnvOosCePz.zp\",\n      \"hasPasswordAuth\": false,\n      \"identities\": [\n        {\n          \"email\": \"ufgW7mOt@hbl.mhgu\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"1991-05-13T09:09:03.716Z\",\n          \"dateJoined\": \"1979-12-28T01:30:37.484Z\",\n          \"id\": 9551\n        },\n        {\n          \"email\": \"WpcN03Bg@Ajhq.pd\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"1984-08-31T05:37:03.950Z\",\n          \"dateJoined\": \"1991-05-22T07:02:19.501Z\",\n          \"id\": 5008\n        }\n      ],\n      \"lastLogin\": \"1987-02-26T13:46:47.090Z\",\n      \"isSuperuser\": false,\n      \"isActive\": true,\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ddf95c1-8511-449f-9ef3-8be0a50a75bd",
+          "name": "Accept Invite",
+          "request": {
+            "name": "Accept Invite",
+            "description": {
+              "content": "Accepts invite to organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "accept",
+                ":org_user_id",
+                ":token",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "org_user_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"acceptInvite\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "27a32860-f97b-428b-b860-80bc2d1b2ec4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "accept",
+                    ":org_user_id",
+                    ":token",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "org_user_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"acceptInvite\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"acceptInvite\": true,\n  \"orgUser\": {\n    \"id\": \"string\",\n    \"role\": \"admin\",\n    \"roleName\": \"string\",\n    \"dateCreated\": \"1962-06-20T13:33:33.230Z\",\n    \"email\": \"string\",\n    \"pending\": false,\n    \"isOwner\": false,\n    \"organization\": {\n      \"name\": \"string\",\n      \"id\": \"string\",\n      \"dateCreated\": \"1954-08-28T23:24:53.275Z\",\n      \"slug\": \"string\",\n      \"status\": {\n        \"id\": \"active\",\n        \"name\": \"active\"\n      },\n      \"avatar\": {\n        \"avatarType\": \"\",\n        \"avatarUuid\": null\n      },\n      \"isEarlyAdopter\": false,\n      \"require2fa\": false,\n      \"isAcceptingEvents\": true,\n      \"eventThrottleRate\": 0\n    },\n    \"user\": {\n      \"id\": \"string\",\n      \"options\": {\n        \"timezone\": \"string\",\n        \"stacktraceOrder\": 242,\n        \"language\": \"string\",\n        \"clock24Hours\": false,\n        \"preferredTheme\": \"string\"\n      },\n      \"username\": \"ZrPigmMVQv8@gUwiyliBbK.jy\",\n      \"dateJoined\": \"2000-10-15T13:44:00.784Z\",\n      \"email\": \"hjMv@kImANSsUAMWyiW.rug\",\n      \"hasPasswordAuth\": true,\n      \"identities\": [\n        {\n          \"email\": \"tBz1@xObZppqDMtyCrfXxh.jlj\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"1955-09-17T13:30:37.724Z\",\n          \"dateJoined\": \"1984-05-10T21:13:54.995Z\",\n          \"id\": 6424\n        },\n        {\n          \"email\": \"gSuXwIA@CEYtLyuigixgOZZebhSVtcrNpiVnT.hbp\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"1973-07-16T08:43:53.544Z\",\n          \"dateJoined\": \"2012-09-14T12:24:05.904Z\",\n          \"id\": 9158\n        }\n      ],\n      \"lastLogin\": \"1991-06-20T21:13:26.829Z\",\n      \"isSuperuser\": false,\n      \"isActive\": true,\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f41e513c-7f15-48ac-a8b2-9db7e25a9d38",
+    "name": "GlitchTip Accept API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

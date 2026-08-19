@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept Wizard API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wizard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Setup Wizard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/wizard/"
+          },
+          "docs": "First step used by sentry-wizard\nGenerates a random hash for later usage"
+        },
+        {
+          "info": {
+            "name": "Setup Wizard Hash",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/wizard/:wizard_hash/",
+            "params": [
+              {
+                "name": "wizard_hash",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "auth",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Last step used by sentry-wizard\nFor a specified hash, fetch data for projects with organizations and dsn keys\nHash replaces user authentication"
+        },
+        {
+          "info": {
+            "name": "Setup Wizard Delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/wizard/:wizard_hash/",
+            "params": [
+              {
+                "name": "wizard_hash",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "auth",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete hash used by sentry-wizard.\nIt contains sensitive data, so it makes sense to remove when done."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

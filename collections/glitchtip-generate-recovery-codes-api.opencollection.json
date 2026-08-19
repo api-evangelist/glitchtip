@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept Generate Recovery Codes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generate Recovery Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Recovery Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/generate-recovery-codes/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extension of django-allauth headless API to pre-generate recovery codes before saving"
+        },
+        {
+          "info": {
+            "name": "Set Recovery Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/generate-recovery-codes/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Extension of django-allauth headless API to set recovery codes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept Store API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Store",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Event Store",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/:project_id/store/",
+            "params": [
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Event store is the original event ingest API from OSS Sentry but is used less often\nUnlike Envelope, it accepts only one Issue event."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

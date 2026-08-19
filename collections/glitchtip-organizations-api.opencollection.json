@@ -1,0 +1,1853 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept Organizations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/environments/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Environments"
+        },
+        {
+          "info": {
+            "name": "Get Chunk Upload Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/chunk-upload/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get server settings for chunk file upload"
+        },
+        {
+          "info": {
+            "name": "Chunk Upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/chunk-upload/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file_gzip",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Upload one more more gzipped files to save"
+        },
+        {
+          "info": {
+            "name": "List Logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/logs/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project IDs"
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "Filter by log levels"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service name"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "query",
+                "description": "Filter by environment"
+              },
+              {
+                "name": "host",
+                "value": "",
+                "type": "query",
+                "description": "Filter by host name"
+              },
+              {
+                "name": "traceId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by trace ID"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Search in log body"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start of time range"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End of time range"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "Pagination cursor"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List log events for an organization with optional filtering.\n\nQueries hot storage (PostgreSQL) for recent data and cold storage\n(S3 Parquet via DuckDB) for older data seamlessly.\n\nSupports filtering by:\n- project: List of project IDs\n- level: List of log levels (trace, debug, info, warn, error, fatal)\n- service: Service name (exact match)\n- environment: Environment name (exact match)\n- host: Host name (exact match)\n- traceId: Trace ID for correlation\n- query: Full-text search in log body\n- start"
+        },
+        {
+          "info": {
+            "name": "Get Log",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/logs/:log_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "log_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get a single log event by ID (searches both hot and cold storage)."
+        },
+        {
+          "info": {
+            "name": "Get Log Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/logs/stats/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query",
+                "description": "Filter by project IDs"
+              },
+              {
+                "name": "level",
+                "value": "",
+                "type": "query",
+                "description": "Filter by log levels"
+              },
+              {
+                "name": "service",
+                "value": "",
+                "type": "query",
+                "description": "Filter by service names"
+              },
+              {
+                "name": "environment",
+                "value": "",
+                "type": "query",
+                "description": "Filter by environment names"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start of time range"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "End of time range"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get log statistics for an organization.\n\nReturns hourly counts grouped by level for charting.\nSupports filtering by project and level.\nTime range defaults to last 7 days, max 90 days."
+        },
+        {
+          "info": {
+            "name": "List Log Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/logs/resources/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List unique resource names (service, environment, host) for an organization.\n\nReturns resources ordered by last_seen (most recent first).\nUsed to populate filter dropdowns in the UI."
+        },
+        {
+          "info": {
+            "name": "List Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/",
+            "params": [
+              {
+                "name": "owner",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sortBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Return list of all organizations the user has access to."
+        },
+        {
+          "info": {
+            "name": "Create Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create new organization\nThe first organization on a server is always allowed to be created.\nAfterwards, ENABLE_OPEN_USER_REGISTRATION is checked.\nSuperusers are always allowed to create organizations."
+        },
+        {
+          "info": {
+            "name": "Get Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Return Organization with project and team details."
+        },
+        {
+          "info": {
+            "name": "Update Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an organization."
+        },
+        {
+          "info": {
+            "name": "Delete Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Organization"
+        },
+        {
+          "info": {
+            "name": "List Organization Members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Organization Members"
+        },
+        {
+          "info": {
+            "name": "Create Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Organization Member"
+        },
+        {
+          "info": {
+            "name": "Get Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/:member_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Organization Member"
+        },
+        {
+          "info": {
+            "name": "Update Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/:member_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update member role within organization"
+        },
+        {
+          "info": {
+            "name": "Delete Organization Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/:member_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove member (user) from organization"
+        },
+        {
+          "info": {
+            "name": "Set Organization Owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/:member_id/set_owner/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Set this team member as the one and only one Organization owner\nOnly an existing Owner or user with the \"org:admin\" scope is able to perform this.\nGlitchTip specific API, no sentry api compatibility"
+        },
+        {
+          "info": {
+            "name": "List Transaction Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/transaction-groups/",
+            "params": [
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Transaction Groups"
+        },
+        {
+          "info": {
+            "name": "Get Transaction Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/transaction-groups/:id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Transaction Group"
+        },
+        {
+          "info": {
+            "name": "List Transaction Spans",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/transaction-groups/:id/spans/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Transaction Spans"
+        },
+        {
+          "info": {
+            "name": "List Span Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/span-groups/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "op",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Span Groups"
+        },
+        {
+          "info": {
+            "name": "List N Plus One Patterns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/n-plus-one/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "op",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "threshold",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List N Plus One Patterns"
+        },
+        {
+          "info": {
+            "name": "Get Transaction Trend",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/transaction-groups/:id/trend/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Transaction Trend"
+        },
+        {
+          "info": {
+            "name": "List Organization Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/projects/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch list of organizations for a project\nContains team information\nquery: Filter on team, ex: ?query=!team:burke-software"
+        },
+        {
+          "info": {
+            "name": "Stats V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/stats_v2/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "project",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Reverse engineered stats v2 endpoint. Endpoint in sentry not documented.\nAppears similar to documented sessions endpoint.\nUsed by the Sentry Grafana integration.\n\nUsed to return time series statistics.\nSubmit query params start, end, and interval (defaults to 1h)\nLimits results to 1000 intervals. For example if using hours, max days would be 41"
+        },
+        {
+          "info": {
+            "name": "List Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/repos/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Repositories"
+        },
+        {
+          "info": {
+            "name": "Create Repository",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/repos/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Repository"
+        },
+        {
+          "info": {
+            "name": "Artifact Bundle Assemble",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/artifactbundle/assemble/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Associate files with assembly bundle and optionally release"
+        },
+        {
+          "info": {
+            "name": "List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/teams/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Teams"
+        },
+        {
+          "info": {
+            "name": "Create Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/teams/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Team"
+        },
+        {
+          "info": {
+            "name": "Add Member To Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/:member_id/teams/:team_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add Member To Team"
+        },
+        {
+          "info": {
+            "name": "Delete Member From Team",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/members/:member_id/teams/:team_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Member From Team"
+        },
+        {
+          "info": {
+            "name": "Heartbeat Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/heartbeat_check/:endpoint_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "endpoint_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Heartbeat monitors allow an external service to contact this endpoint\nwhen the service is up."
+        },
+        {
+          "info": {
+            "name": "List Monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/monitors/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Monitors"
+        },
+        {
+          "info": {
+            "name": "Create Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/monitors/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Monitor"
+        },
+        {
+          "info": {
+            "name": "Get Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/monitors/:monitor_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Monitor"
+        },
+        {
+          "info": {
+            "name": "Update Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/monitors/:monitor_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Monitor"
+        },
+        {
+          "info": {
+            "name": "Delete Monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/monitors/:monitor_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Monitor"
+        },
+        {
+          "info": {
+            "name": "List Monitor Checks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/monitors/:monitor_id/checks/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "is_change",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List checks performed for a monitor\nSet is_change query param to True to show only changes,\nThis is useful to see only when a service went up and down."
+        },
+        {
+          "info": {
+            "name": "List Status Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/status-pages/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List status pages, used for showing the current status of an uptime monitor"
+        },
+        {
+          "info": {
+            "name": "Create Status Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/status-pages/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Status Page"
+        },
+        {
+          "info": {
+            "name": "List Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Releases"
+        },
+        {
+          "info": {
+            "name": "Create Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Release"
+        },
+        {
+          "info": {
+            "name": "Get Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Release"
+        },
+        {
+          "info": {
+            "name": "Update Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Release"
+        },
+        {
+          "info": {
+            "name": "Delete Organization Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Organization Release"
+        },
+        {
+          "info": {
+            "name": "List Release Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/files/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Release Files"
+        },
+        {
+          "info": {
+            "name": "Get Organization Release File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/files/:file_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Organization Release File"
+        },
+        {
+          "info": {
+            "name": "Delete Organization Release File",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/files/:file_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Organization Release File"
+        },
+        {
+          "info": {
+            "name": "List Deploys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/deploys/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Deploys"
+        },
+        {
+          "info": {
+            "name": "Create Deploy",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/deploys/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Deploy"
+        },
+        {
+          "info": {
+            "name": "List Commits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/commits/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Commits"
+        },
+        {
+          "info": {
+            "name": "Create Commits",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/commits/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Commits"
+        },
+        {
+          "info": {
+            "name": "Assemble Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/organizations/:organization_slug/releases/:version/assemble/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Assemble Release"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

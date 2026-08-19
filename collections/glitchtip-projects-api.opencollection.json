@@ -1,0 +1,1087 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept Projects API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Project Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/alerts/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Project Alerts"
+        },
+        {
+          "info": {
+            "name": "Create Project Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/alerts/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Project Alert"
+        },
+        {
+          "info": {
+            "name": "Update Project Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/alerts/:alert_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Project Alert"
+        },
+        {
+          "info": {
+            "name": "Delete Project Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/alerts/:alert_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Project Alert"
+        },
+        {
+          "info": {
+            "name": "Test Project Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/alerts/:alert_id/test/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recipient_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Test Project Alert"
+        },
+        {
+          "info": {
+            "name": "Difs Assemble Api",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/files/difs/assemble/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Difs Assemble Api"
+        },
+        {
+          "info": {
+            "name": "Project Reprocessing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/reprocessing/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Not implemented. It is a dummy API to keep `sentry-cli upload-dif` happy"
+        },
+        {
+          "info": {
+            "name": "List Dsyms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/files/dsyms/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Dsyms"
+        },
+        {
+          "info": {
+            "name": "Dsyms",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/files/dsyms/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Dsyms"
+        },
+        {
+          "info": {
+            "name": "List Environment Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/environments/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Environment Projects"
+        },
+        {
+          "info": {
+            "name": "Update Environment Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/environments/:name/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Environment Project"
+        },
+        {
+          "info": {
+            "name": "List Projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all projects that a user has access to"
+        },
+        {
+          "info": {
+            "name": "Get Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Project"
+        },
+        {
+          "info": {
+            "name": "Update Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Project"
+        },
+        {
+          "info": {
+            "name": "Delete Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Project"
+        },
+        {
+          "info": {
+            "name": "List Project Keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/keys/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all DSN keys for a given project"
+        },
+        {
+          "info": {
+            "name": "Create Project Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/keys/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create new key for project. Rate limiting not implemented."
+        },
+        {
+          "info": {
+            "name": "Get Project Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/keys/:key_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Project Key"
+        },
+        {
+          "info": {
+            "name": "Update Project Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/keys/:key_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Project Key"
+        },
+        {
+          "info": {
+            "name": "Delete Project Key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/keys/:key_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Project Key"
+        },
+        {
+          "info": {
+            "name": "List Project Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/teams/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Project Teams"
+        },
+        {
+          "info": {
+            "name": "Add Team To Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/teams/:team_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Add team to project"
+        },
+        {
+          "info": {
+            "name": "Delete Team From Project",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/teams/:team_slug/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Remove team from project"
+        },
+        {
+          "info": {
+            "name": "List Project Releases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Project Releases"
+        },
+        {
+          "info": {
+            "name": "Create Project Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create Project Release"
+        },
+        {
+          "info": {
+            "name": "Get Project Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/:version/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Project Release"
+        },
+        {
+          "info": {
+            "name": "Update Project Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/:version/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update Project Release"
+        },
+        {
+          "info": {
+            "name": "Delete Project Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/:version/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Project Release"
+        },
+        {
+          "info": {
+            "name": "List Project Release Files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/:version/files/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List Project Release Files"
+        },
+        {
+          "info": {
+            "name": "Get Project Release File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/:version/files/:file_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get Project Release File"
+        },
+        {
+          "info": {
+            "name": "Delete Project Release File",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.glitchtip.com/api/0/projects/:organization_slug/:project_slug/releases/:version/files/:file_id/",
+            "params": [
+              {
+                "name": "organization_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "project_slug",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete Project Release File"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

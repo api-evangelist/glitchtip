@@ -1,0 +1,3489 @@
+{
+  "item": [
+    {
+      "id": "d08a512f-d6fc-4e37-b636-b8345684566b",
+      "name": "Issues",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d39b19e3-aa9b-4845-aaa7-2677ff702519",
+          "name": "List Comments",
+          "request": {
+            "name": "List Comments",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "comments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "27152705-2a07-46ac-a541-e7f65a57ea09",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "comments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"dateCreated\": \"1957-12-28T13:24:02.150Z\",\n    \"user\": {\n      \"id\": \"string\",\n      \"email\": \"string\"\n    },\n    \"type\": \"note\",\n    \"id\": 3787\n  },\n  {\n    \"data\": {\n      \"key_0\": \"string\"\n    },\n    \"dateCreated\": \"2025-05-10T19:09:04.593Z\",\n    \"user\": {\n      \"id\": \"string\",\n      \"email\": \"string\"\n    },\n    \"type\": \"note\",\n    \"id\": 8610\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4a35ec2-01db-407d-85b0-c4122817a26e",
+          "name": "Add Comment",
+          "request": {
+            "name": "Add Comment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "comments",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5530204-da9b-434f-a0dc-1311bb244d0e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "comments",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"dateCreated\": \"1955-04-19T17:43:25.972Z\",\n  \"user\": {\n    \"id\": \"string\",\n    \"email\": \"string\"\n  },\n  \"type\": \"note\",\n  \"id\": 8661\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "15761e29-724b-46cb-925f-acef61c1c2b2",
+          "name": "Update Comment",
+          "request": {
+            "name": "Update Comment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "comments",
+                ":comment_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "comment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e3bf366f-0e27-4308-b37d-730a0d0c8a14",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "comments",
+                    ":comment_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "comment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"dateCreated\": \"1955-04-19T17:43:25.972Z\",\n  \"user\": {\n    \"id\": \"string\",\n    \"email\": \"string\"\n  },\n  \"type\": \"note\",\n  \"id\": 8661\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5159aff-491e-4e8a-b23d-460086e7b93b",
+          "name": "Delete Comment",
+          "request": {
+            "name": "Delete Comment",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "comments",
+                ":comment_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "comment_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26bdcdee-7320-4bb7-bbe0-29144646d761",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "comments",
+                    ":comment_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "comment_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2164749-3228-4bc2-9f30-077140b1152d",
+          "name": "List Issue Event",
+          "request": {
+            "name": "List Issue Event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "events",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "32845e93-de32-4ec3-a22e-7d46cf86919f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "events",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"eventID\": \"string\",\n    \"projectID\": 7736,\n    \"groupID\": \"string\",\n    \"dateCreated\": \"2008-03-10T13:29:46.206Z\",\n    \"dateReceived\": \"2001-11-09T09:12:57.700Z\",\n    \"type\": \"string\",\n    \"message\": \"string\",\n    \"title\": \"string\",\n    \"platform\": \"string\",\n    \"errors\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"dist\": \"string\",\n    \"culprit\": \"string\",\n    \"packages\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"entries\": [\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ],\n    \"contexts\": {\n      \"key_0\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 2985.047674925827,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 7988,\n        \"screen_width_pixels\": 8985,\n        \"screen_density\": 6265.0011140864135,\n        \"screen_dpi\": 9917.32361599157,\n        \"online\": false,\n        \"charging\": true,\n        \"low_memory\": false,\n        \"simulator\": false,\n        \"memory_size\": 7922,\n        \"free_memory\": 1549,\n        \"usable_memory\": 8051,\n        \"storage_size\": 9003,\n        \"free_storage\": 3269,\n        \"external_storage_size\": 7433,\n        \"external_free_storage\": 869,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 2891,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 900.0976038759256,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": false,\n        \"supports_accelerometer\": false,\n        \"supports_gyroscope\": false,\n        \"supports_audio\": false,\n        \"supports_location_service\": true\n      },\n      \"key_1\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 5986.236202933927,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 3093,\n        \"screen_width_pixels\": 3530,\n        \"screen_density\": 7094.37485129035,\n        \"screen_dpi\": 6118.4256095071805,\n        \"online\": false,\n        \"charging\": true,\n        \"low_memory\": false,\n        \"simulator\": false,\n        \"memory_size\": 8162,\n        \"free_memory\": 553,\n        \"usable_memory\": 3209,\n        \"storage_size\": 4064,\n        \"free_storage\": 3204,\n        \"external_storage_size\": 2031,\n        \"external_free_storage\": 6894,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 2905,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 8970.128063189828,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": true,\n        \"supports_accelerometer\": false,\n        \"supports_gyroscope\": false,\n        \"supports_audio\": false,\n        \"supports_location_service\": false\n      },\n      \"key_2\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 5816.028437381403,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 2506,\n        \"screen_width_pixels\": 6945,\n        \"screen_density\": 9393.291658758313,\n        \"screen_dpi\": 3855.5470556865066,\n        \"online\": true,\n        \"charging\": false,\n        \"low_memory\": true,\n        \"simulator\": true,\n        \"memory_size\": 4479,\n        \"free_memory\": 8246,\n        \"usable_memory\": 4608,\n        \"storage_size\": 6946,\n        \"free_storage\": 5924,\n        \"external_storage_size\": 9143,\n        \"external_free_storage\": 3725,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 506,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 4214.628056320995,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": true,\n        \"supports_accelerometer\": true,\n        \"supports_gyroscope\": false,\n        \"supports_audio\": true,\n        \"supports_location_service\": true\n      }\n    },\n    \"context\": {\n      \"key_0\": true,\n      \"key_1\": 7161,\n      \"key_2\": true\n    },\n    \"user\": {},\n    \"sdk\": {\n      \"key_0\": 6539.767104589966,\n      \"key_1\": true\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"eventID\": \"string\",\n    \"projectID\": 2348,\n    \"groupID\": \"string\",\n    \"dateCreated\": \"1972-10-05T19:38:47.512Z\",\n    \"dateReceived\": \"1995-02-06T09:42:53.569Z\",\n    \"type\": \"string\",\n    \"message\": \"string\",\n    \"title\": \"string\",\n    \"platform\": \"string\",\n    \"errors\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"dist\": \"string\",\n    \"culprit\": \"string\",\n    \"packages\": {\n      \"key_0\": \"string\"\n    },\n    \"metadata\": {\n      \"key_0\": \"string\"\n    },\n    \"entries\": [\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_2\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_3\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ],\n    \"contexts\": {\n      \"key_0\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 9035.908348176383,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 7087,\n        \"screen_width_pixels\": 2844,\n        \"screen_density\": 7499.779750974065,\n        \"screen_dpi\": 7792.037396059846,\n        \"online\": false,\n        \"charging\": false,\n        \"low_memory\": false,\n        \"simulator\": true,\n        \"memory_size\": 5719,\n        \"free_memory\": 939,\n        \"usable_memory\": 3371,\n        \"storage_size\": 6116,\n        \"free_storage\": 5781,\n        \"external_storage_size\": 5716,\n        \"external_free_storage\": 4230,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 7306,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 2213.1032404512707,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": true,\n        \"supports_accelerometer\": false,\n        \"supports_gyroscope\": true,\n        \"supports_audio\": false,\n        \"supports_location_service\": true\n      }\n    },\n    \"context\": {\n      \"key_0\": true,\n      \"key_1\": 4414.519080305107\n    },\n    \"user\": {},\n    \"sdk\": {\n      \"key_0\": 6882.846225831041,\n      \"key_1\": 1381\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ab8ccea-4149-4ef2-8a61-6058e7ae08fe",
+          "name": "Get Latest Issue Event",
+          "request": {
+            "name": "Get Latest Issue Event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "events",
+                "latest",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4be66734-ff50-46e1-aa5a-c3eb8939345d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "events",
+                    "latest",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"eventID\": \"string\",\n  \"projectID\": 5018,\n  \"groupID\": \"string\",\n  \"dateCreated\": \"1965-06-14T22:44:58.339Z\",\n  \"dateReceived\": \"2009-03-22T10:28:16.146Z\",\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"title\": \"string\",\n  \"userReport\": {\n    \"eventID\": \"string\",\n    \"event\": {\n      \"key_0\": \"string\"\n    },\n    \"dateCreated\": \"1981-12-27T17:41:14.275Z\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"comments\": \"string\",\n    \"user\": \"string\",\n    \"id\": 1066\n  },\n  \"platform\": \"string\",\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    }\n  ],\n  \"dist\": \"string\",\n  \"culprit\": \"string\",\n  \"packages\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"entries\": [\n    {\n      \"type\": \"string\",\n      \"data\": {\n        \"key_0\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 778,\n              \"key_1\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1948-03-16T06:11:57.485Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 1532.9450376654906,\n              \"key_1\": 6620.707409620471,\n              \"key_2\": \"string\"\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"2017-10-08T15:51:02.804Z\",\n            \"event_id\": \"string\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": true,\n              \"key_1\": \"string\",\n              \"key_2\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"2004-08-05T15:49:33.771Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": \"string\",\n              \"key_1\": 5963.539008618298,\n              \"key_2\": 2026.221062506619\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1956-11-10T11:25:43.880Z\",\n            \"event_id\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"data\": {\n        \"key_0\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 4008.045959595995\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1992-08-05T12:40:51.660Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": \"string\",\n              \"key_1\": 8257.410600620731\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1947-09-21T17:25:38.557Z\",\n            \"event_id\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"contexts\": {\n    \"key_0\": {\n      \"type\": \"device\",\n      \"name\": \"string\",\n      \"family\": \"string\",\n      \"model\": \"string\",\n      \"model_id\": \"string\",\n      \"arch\": \"string\",\n      \"battery_level\": 4297.582373220067,\n      \"orientation\": \"string\",\n      \"manufacturer\": \"string\",\n      \"brand\": \"string\",\n      \"screen_resolution\": \"string\",\n      \"screen_height_pixels\": 4550,\n      \"screen_width_pixels\": 9315,\n      \"screen_density\": 5590.67362684745,\n      \"screen_dpi\": 9262.105285637846,\n      \"online\": true,\n      \"charging\": true,\n      \"low_memory\": true,\n      \"simulator\": false,\n      \"memory_size\": 9714,\n      \"free_memory\": 1461,\n      \"usable_memory\": 7577,\n      \"storage_size\": 188,\n      \"free_storage\": 4423,\n      \"external_storage_size\": 5885,\n      \"external_free_storage\": 7375,\n      \"boot_time\": \"string\",\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"processor_count\": 3278,\n      \"cpu_description\": \"string\",\n      \"processor_frequency\": 2401.895479970708,\n      \"device_type\": \"string\",\n      \"battery_status\": \"string\",\n      \"device_unique_identifier\": \"string\",\n      \"supports_vibration\": false,\n      \"supports_accelerometer\": true,\n      \"supports_gyroscope\": false,\n      \"supports_audio\": false,\n      \"supports_location_service\": true\n    },\n    \"key_1\": {\n      \"type\": \"device\",\n      \"name\": \"string\",\n      \"family\": \"string\",\n      \"model\": \"string\",\n      \"model_id\": \"string\",\n      \"arch\": \"string\",\n      \"battery_level\": 4098.645403572663,\n      \"orientation\": \"string\",\n      \"manufacturer\": \"string\",\n      \"brand\": \"string\",\n      \"screen_resolution\": \"string\",\n      \"screen_height_pixels\": 4031,\n      \"screen_width_pixels\": 1111,\n      \"screen_density\": 6647.5036661195945,\n      \"screen_dpi\": 8505.587532120413,\n      \"online\": false,\n      \"charging\": false,\n      \"low_memory\": true,\n      \"simulator\": true,\n      \"memory_size\": 5795,\n      \"free_memory\": 9741,\n      \"usable_memory\": 4586,\n      \"storage_size\": 3454,\n      \"free_storage\": 2326,\n      \"external_storage_size\": 8341,\n      \"external_free_storage\": 6033,\n      \"boot_time\": \"string\",\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"processor_count\": 9516,\n      \"cpu_description\": \"string\",\n      \"processor_frequency\": 1250.9724759320072,\n      \"device_type\": \"string\",\n      \"battery_status\": \"string\",\n      \"device_unique_identifier\": \"string\",\n      \"supports_vibration\": true,\n      \"supports_accelerometer\": true,\n      \"supports_gyroscope\": false,\n      \"supports_audio\": true,\n      \"supports_location_service\": true\n    }\n  },\n  \"context\": {\n    \"key_0\": 441.3303550659031,\n    \"key_1\": 4578.5204431154425,\n    \"key_2\": true\n  },\n  \"user\": {},\n  \"sdk\": {\n    \"key_0\": false,\n    \"key_1\": true\n  },\n  \"nextEventID\": \"string\",\n  \"previousEventID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09b49ac4-8739-4016-ba6b-306a09042ae4",
+          "name": "Get Issue Event",
+          "request": {
+            "name": "Get Issue Event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "events",
+                ":event_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "event_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c936686-5e4a-4834-8ae2-89be96aea6fa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "events",
+                    ":event_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"eventID\": \"string\",\n  \"projectID\": 8861,\n  \"groupID\": \"string\",\n  \"dateCreated\": \"2011-03-13T15:33:38.033Z\",\n  \"dateReceived\": \"1986-05-29T01:12:52.075Z\",\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"title\": \"string\",\n  \"userReport\": {\n    \"eventID\": \"string\",\n    \"event\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"dateCreated\": \"2000-07-04T16:32:05.561Z\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"comments\": \"string\",\n    \"user\": \"string\",\n    \"id\": 4103\n  },\n  \"platform\": \"string\",\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    }\n  ],\n  \"dist\": \"string\",\n  \"culprit\": \"string\",\n  \"packages\": {\n    \"key_0\": \"string\"\n  },\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"entries\": [\n    {\n      \"type\": \"string\",\n      \"data\": {\n        \"key_0\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": \"string\",\n              \"key_1\": 2502\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1987-04-23T01:49:42.297Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 6425,\n              \"key_1\": 9212.166965571807,\n              \"key_2\": true,\n              \"key_3\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1996-06-03T22:32:35.483Z\",\n            \"event_id\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"data\": {\n        \"key_0\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": \"string\",\n              \"key_1\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1956-06-12T06:51:40.091Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 3363,\n              \"key_1\": \"string\"\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1981-02-04T23:51:58.832Z\",\n            \"event_id\": \"string\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 7705,\n              \"key_1\": 704\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"2013-10-09T17:22:04.419Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": true\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1984-08-10T11:56:30.923Z\",\n            \"event_id\": \"string\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 5582,\n              \"key_1\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1957-08-12T15:10:53.336Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 4072,\n              \"key_1\": 4992,\n              \"key_2\": 8064.779200110636,\n              \"key_3\": true\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"2025-10-09T03:33:49.874Z\",\n            \"event_id\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"contexts\": {\n    \"key_0\": {\n      \"type\": \"device\",\n      \"name\": \"string\",\n      \"family\": \"string\",\n      \"model\": \"string\",\n      \"model_id\": \"string\",\n      \"arch\": \"string\",\n      \"battery_level\": 5726.516527825424,\n      \"orientation\": \"string\",\n      \"manufacturer\": \"string\",\n      \"brand\": \"string\",\n      \"screen_resolution\": \"string\",\n      \"screen_height_pixels\": 2804,\n      \"screen_width_pixels\": 3553,\n      \"screen_density\": 407.80036989477077,\n      \"screen_dpi\": 7540.632452266037,\n      \"online\": true,\n      \"charging\": false,\n      \"low_memory\": true,\n      \"simulator\": false,\n      \"memory_size\": 8143,\n      \"free_memory\": 5617,\n      \"usable_memory\": 473,\n      \"storage_size\": 6241,\n      \"free_storage\": 3819,\n      \"external_storage_size\": 861,\n      \"external_free_storage\": 4583,\n      \"boot_time\": \"string\",\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"processor_count\": 3997,\n      \"cpu_description\": \"string\",\n      \"processor_frequency\": 44.641105231119084,\n      \"device_type\": \"string\",\n      \"battery_status\": \"string\",\n      \"device_unique_identifier\": \"string\",\n      \"supports_vibration\": false,\n      \"supports_accelerometer\": false,\n      \"supports_gyroscope\": false,\n      \"supports_audio\": true,\n      \"supports_location_service\": true\n    },\n    \"key_1\": {\n      \"type\": \"device\",\n      \"name\": \"string\",\n      \"family\": \"string\",\n      \"model\": \"string\",\n      \"model_id\": \"string\",\n      \"arch\": \"string\",\n      \"battery_level\": 9729.109326278627,\n      \"orientation\": \"string\",\n      \"manufacturer\": \"string\",\n      \"brand\": \"string\",\n      \"screen_resolution\": \"string\",\n      \"screen_height_pixels\": 3297,\n      \"screen_width_pixels\": 5305,\n      \"screen_density\": 9488.927541358382,\n      \"screen_dpi\": 3887.21593028987,\n      \"online\": true,\n      \"charging\": false,\n      \"low_memory\": false,\n      \"simulator\": true,\n      \"memory_size\": 88,\n      \"free_memory\": 2525,\n      \"usable_memory\": 8143,\n      \"storage_size\": 7804,\n      \"free_storage\": 9557,\n      \"external_storage_size\": 9904,\n      \"external_free_storage\": 5465,\n      \"boot_time\": \"string\",\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"processor_count\": 1219,\n      \"cpu_description\": \"string\",\n      \"processor_frequency\": 7422.879160865069,\n      \"device_type\": \"string\",\n      \"battery_status\": \"string\",\n      \"device_unique_identifier\": \"string\",\n      \"supports_vibration\": false,\n      \"supports_accelerometer\": false,\n      \"supports_gyroscope\": false,\n      \"supports_audio\": false,\n      \"supports_location_service\": true\n    }\n  },\n  \"context\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"user\": {},\n  \"sdk\": {\n    \"key_0\": true,\n    \"key_1\": 7370,\n    \"key_2\": 6305.069796570319,\n    \"key_3\": false\n  },\n  \"nextEventID\": \"string\",\n  \"previousEventID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76e8c8e2-5639-49a9-9afb-c17a4c234026",
+          "name": "List Project Issue Event",
+          "request": {
+            "name": "List Project Issue Event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "projects",
+                ":organization_slug",
+                ":project_slug",
+                "events",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8650cebf-9c18-4243-8090-ab59b9ee0a2b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "projects",
+                    ":organization_slug",
+                    ":project_slug",
+                    "events",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"eventID\": \"string\",\n    \"projectID\": 2211,\n    \"groupID\": \"string\",\n    \"dateCreated\": \"1996-11-17T19:33:27.302Z\",\n    \"dateReceived\": \"1993-10-03T04:10:58.978Z\",\n    \"type\": \"string\",\n    \"message\": \"string\",\n    \"title\": \"string\",\n    \"platform\": \"string\",\n    \"errors\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"dist\": \"string\",\n    \"culprit\": \"string\",\n    \"packages\": {\n      \"key_0\": \"string\"\n    },\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"entries\": [\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ],\n    \"contexts\": {\n      \"key_0\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 2466.2370532628265,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 2946,\n        \"screen_width_pixels\": 7807,\n        \"screen_density\": 5448.058483967552,\n        \"screen_dpi\": 8576.162488618274,\n        \"online\": false,\n        \"charging\": false,\n        \"low_memory\": true,\n        \"simulator\": true,\n        \"memory_size\": 4967,\n        \"free_memory\": 6172,\n        \"usable_memory\": 7782,\n        \"storage_size\": 7141,\n        \"free_storage\": 3940,\n        \"external_storage_size\": 1103,\n        \"external_free_storage\": 6466,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 4388,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 2780.199760872536,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": false,\n        \"supports_accelerometer\": false,\n        \"supports_gyroscope\": true,\n        \"supports_audio\": true,\n        \"supports_location_service\": false\n      },\n      \"key_1\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 4065.9539912634023,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 6199,\n        \"screen_width_pixels\": 1611,\n        \"screen_density\": 4025.498755100446,\n        \"screen_dpi\": 6350.398036293225,\n        \"online\": true,\n        \"charging\": false,\n        \"low_memory\": false,\n        \"simulator\": true,\n        \"memory_size\": 2078,\n        \"free_memory\": 3076,\n        \"usable_memory\": 5779,\n        \"storage_size\": 2094,\n        \"free_storage\": 4078,\n        \"external_storage_size\": 8595,\n        \"external_free_storage\": 5179,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 505,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 6038.78624253738,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": false,\n        \"supports_accelerometer\": false,\n        \"supports_gyroscope\": true,\n        \"supports_audio\": true,\n        \"supports_location_service\": false\n      }\n    },\n    \"context\": {\n      \"key_0\": \"string\",\n      \"key_1\": 3434,\n      \"key_2\": 3074.5796556542427\n    },\n    \"user\": {},\n    \"sdk\": {\n      \"key_0\": 8760,\n      \"key_1\": false,\n      \"key_2\": 7264.315554338306\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"eventID\": \"string\",\n    \"projectID\": 5957,\n    \"groupID\": \"string\",\n    \"dateCreated\": \"1962-12-11T04:00:24.164Z\",\n    \"dateReceived\": \"1947-06-16T08:01:46.760Z\",\n    \"type\": \"string\",\n    \"message\": \"string\",\n    \"title\": \"string\",\n    \"platform\": \"string\",\n    \"errors\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"value\": {}\n      }\n    ],\n    \"dist\": \"string\",\n    \"culprit\": \"string\",\n    \"packages\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"entries\": [\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"key_1\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      {\n        \"type\": \"string\",\n        \"data\": {\n          \"key_0\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      }\n    ],\n    \"contexts\": {\n      \"key_0\": {\n        \"type\": \"device\",\n        \"name\": \"string\",\n        \"family\": \"string\",\n        \"model\": \"string\",\n        \"model_id\": \"string\",\n        \"arch\": \"string\",\n        \"battery_level\": 3210.7580673785287,\n        \"orientation\": \"string\",\n        \"manufacturer\": \"string\",\n        \"brand\": \"string\",\n        \"screen_resolution\": \"string\",\n        \"screen_height_pixels\": 4771,\n        \"screen_width_pixels\": 9322,\n        \"screen_density\": 3659.0817057152303,\n        \"screen_dpi\": 17.572509821993656,\n        \"online\": false,\n        \"charging\": false,\n        \"low_memory\": true,\n        \"simulator\": true,\n        \"memory_size\": 7370,\n        \"free_memory\": 1009,\n        \"usable_memory\": 7104,\n        \"storage_size\": 4362,\n        \"free_storage\": 1126,\n        \"external_storage_size\": 4810,\n        \"external_free_storage\": 6252,\n        \"boot_time\": \"string\",\n        \"timezone\": \"string\",\n        \"language\": \"string\",\n        \"processor_count\": 320,\n        \"cpu_description\": \"string\",\n        \"processor_frequency\": 4579.46727181741,\n        \"device_type\": \"string\",\n        \"battery_status\": \"string\",\n        \"device_unique_identifier\": \"string\",\n        \"supports_vibration\": false,\n        \"supports_accelerometer\": true,\n        \"supports_gyroscope\": true,\n        \"supports_audio\": true,\n        \"supports_location_service\": false\n      }\n    },\n    \"context\": {\n      \"key_0\": \"string\"\n    },\n    \"user\": {},\n    \"sdk\": {\n      \"key_0\": 9987.910248288226,\n      \"key_1\": false,\n      \"key_2\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "022859e5-e467-4aa8-a714-40842e4fb389",
+          "name": "Get Project Issue Event",
+          "request": {
+            "name": "Get Project Issue Event",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "projects",
+                ":organization_slug",
+                ":project_slug",
+                "events",
+                ":event_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "event_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "565c25ba-213b-4643-99cf-6ae92044a16b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "projects",
+                    ":organization_slug",
+                    ":project_slug",
+                    "events",
+                    ":event_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"eventID\": \"string\",\n  \"projectID\": 8861,\n  \"groupID\": \"string\",\n  \"dateCreated\": \"2011-03-13T15:33:38.033Z\",\n  \"dateReceived\": \"1986-05-29T01:12:52.075Z\",\n  \"type\": \"string\",\n  \"message\": \"string\",\n  \"title\": \"string\",\n  \"userReport\": {\n    \"eventID\": \"string\",\n    \"event\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    },\n    \"dateCreated\": \"2000-07-04T16:32:05.561Z\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"comments\": \"string\",\n    \"user\": \"string\",\n    \"id\": 4103\n  },\n  \"platform\": \"string\",\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    }\n  ],\n  \"dist\": \"string\",\n  \"culprit\": \"string\",\n  \"packages\": {\n    \"key_0\": \"string\"\n  },\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"entries\": [\n    {\n      \"type\": \"string\",\n      \"data\": {\n        \"key_0\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": \"string\",\n              \"key_1\": 2502\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1987-04-23T01:49:42.297Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 6425,\n              \"key_1\": 9212.166965571807,\n              \"key_2\": true,\n              \"key_3\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1996-06-03T22:32:35.483Z\",\n            \"event_id\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"type\": \"string\",\n      \"data\": {\n        \"key_0\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": \"string\",\n              \"key_1\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1956-06-12T06:51:40.091Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 3363,\n              \"key_1\": \"string\"\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1981-02-04T23:51:58.832Z\",\n            \"event_id\": \"string\"\n          }\n        ],\n        \"key_1\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 7705,\n              \"key_1\": 704\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"2013-10-09T17:22:04.419Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": true\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1984-08-10T11:56:30.923Z\",\n            \"event_id\": \"string\"\n          }\n        ],\n        \"key_2\": [\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 5582,\n              \"key_1\": false\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"1957-08-12T15:10:53.336Z\",\n            \"event_id\": \"string\"\n          },\n          {\n            \"type\": \"default\",\n            \"category\": \"string\",\n            \"message\": \"string\",\n            \"data\": {\n              \"key_0\": 4072,\n              \"key_1\": 4992,\n              \"key_2\": 8064.779200110636,\n              \"key_3\": true\n            },\n            \"level\": \"info\",\n            \"timestamp\": \"2025-10-09T03:33:49.874Z\",\n            \"event_id\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"contexts\": {\n    \"key_0\": {\n      \"type\": \"device\",\n      \"name\": \"string\",\n      \"family\": \"string\",\n      \"model\": \"string\",\n      \"model_id\": \"string\",\n      \"arch\": \"string\",\n      \"battery_level\": 5726.516527825424,\n      \"orientation\": \"string\",\n      \"manufacturer\": \"string\",\n      \"brand\": \"string\",\n      \"screen_resolution\": \"string\",\n      \"screen_height_pixels\": 2804,\n      \"screen_width_pixels\": 3553,\n      \"screen_density\": 407.80036989477077,\n      \"screen_dpi\": 7540.632452266037,\n      \"online\": true,\n      \"charging\": false,\n      \"low_memory\": true,\n      \"simulator\": false,\n      \"memory_size\": 8143,\n      \"free_memory\": 5617,\n      \"usable_memory\": 473,\n      \"storage_size\": 6241,\n      \"free_storage\": 3819,\n      \"external_storage_size\": 861,\n      \"external_free_storage\": 4583,\n      \"boot_time\": \"string\",\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"processor_count\": 3997,\n      \"cpu_description\": \"string\",\n      \"processor_frequency\": 44.641105231119084,\n      \"device_type\": \"string\",\n      \"battery_status\": \"string\",\n      \"device_unique_identifier\": \"string\",\n      \"supports_vibration\": false,\n      \"supports_accelerometer\": false,\n      \"supports_gyroscope\": false,\n      \"supports_audio\": true,\n      \"supports_location_service\": true\n    },\n    \"key_1\": {\n      \"type\": \"device\",\n      \"name\": \"string\",\n      \"family\": \"string\",\n      \"model\": \"string\",\n      \"model_id\": \"string\",\n      \"arch\": \"string\",\n      \"battery_level\": 9729.109326278627,\n      \"orientation\": \"string\",\n      \"manufacturer\": \"string\",\n      \"brand\": \"string\",\n      \"screen_resolution\": \"string\",\n      \"screen_height_pixels\": 3297,\n      \"screen_width_pixels\": 5305,\n      \"screen_density\": 9488.927541358382,\n      \"screen_dpi\": 3887.21593028987,\n      \"online\": true,\n      \"charging\": false,\n      \"low_memory\": false,\n      \"simulator\": true,\n      \"memory_size\": 88,\n      \"free_memory\": 2525,\n      \"usable_memory\": 8143,\n      \"storage_size\": 7804,\n      \"free_storage\": 9557,\n      \"external_storage_size\": 9904,\n      \"external_free_storage\": 5465,\n      \"boot_time\": \"string\",\n      \"timezone\": \"string\",\n      \"language\": \"string\",\n      \"processor_count\": 1219,\n      \"cpu_description\": \"string\",\n      \"processor_frequency\": 7422.879160865069,\n      \"device_type\": \"string\",\n      \"battery_status\": \"string\",\n      \"device_unique_identifier\": \"string\",\n      \"supports_vibration\": false,\n      \"supports_accelerometer\": false,\n      \"supports_gyroscope\": false,\n      \"supports_audio\": false,\n      \"supports_location_service\": true\n    }\n  },\n  \"context\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"user\": {},\n  \"sdk\": {\n    \"key_0\": true,\n    \"key_1\": 7370,\n    \"key_2\": 6305.069796570319,\n    \"key_3\": false\n  },\n  \"nextEventID\": \"string\",\n  \"previousEventID\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72fc4f07-20cb-4c83-828d-7425603825a7",
+          "name": "Get Event Json",
+          "request": {
+            "name": "Get Event Json",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ":issue_id",
+                "events",
+                ":event_id",
+                "json",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "event_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "815fc89b-1ffa-4a31-8502-08fcd9225855",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ":issue_id",
+                    "events",
+                    ":event_id",
+                    "json",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_id\": \"string\",\n  \"timestamp\": 6348.542048143457,\n  \"datetime\": \"1999-07-02T10:24:19.208Z\",\n  \"project\": 4158,\n  \"level\": \"string\",\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"transaction\": \"string\",\n  \"tags\": {},\n  \"platform\": \"string\",\n  \"errors\": [\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    },\n    {\n      \"type\": \"string\",\n      \"name\": \"string\",\n      \"value\": {}\n    }\n  ],\n  \"breadcrumbs\": {},\n  \"exception\": {},\n  \"modules\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"contexts\": {\n    \"key_0\": \"string\"\n  },\n  \"sdk\": {\n    \"key_0\": \"string\",\n    \"key_1\": 9236,\n    \"key_2\": \"string\",\n    \"key_3\": \"string\",\n    \"key_4\": 143.74398386791555\n  },\n  \"request\": {},\n  \"environment\": \"string\",\n  \"extra\": {\n    \"key_0\": \"string\"\n  },\n  \"user\": {\n    \"id\": \"string\",\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"ip_address\": \"string\",\n    \"data\": {\n      \"key_0\": 1926,\n      \"key_1\": false\n    },\n    \"geo\": {\n      \"city\": \"string\",\n      \"country_code\": \"string\",\n      \"region\": \"string\",\n      \"subdivision\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de2942eb-1be7-4ad6-96ee-3d284757b42d",
+          "name": "Get Issue",
+          "request": {
+            "name": "Get Issue",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c5aee4d8-cce0-4713-bc8f-d9f76290963f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": \"string\",\n  \"type\": \"csp\",\n  \"level\": \"warning\",\n  \"status\": \"unresolved\",\n  \"metadata\": {\n    \"key_0\": 403\n  },\n  \"project\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"platform\": \"string\",\n    \"slug\": \"string\"\n  },\n  \"shortId\": \"string\",\n  \"numComments\": 1685,\n  \"firstSeen\": \"1974-04-13T14:45:08.985Z\",\n  \"lastSeen\": \"1967-01-02T03:50:35.892Z\",\n  \"title\": \"string\",\n  \"userReportCount\": 9630,\n  \"stats\": {\n    \"24h\": []\n  },\n  \"shareId\": 311,\n  \"logger\": \"string\",\n  \"permalink\": \"Not implemented\",\n  \"statusDetails\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"subscriptionDetails\": \"string\",\n  \"userCount\": 0,\n  \"matchingEventId\": \"string\",\n  \"firstRelease\": {\n    \"shortVersion\": \"string\",\n    \"dateCreated\": \"1985-05-15T01:09:05.927Z\",\n    \"dateReleased\": \"2007-08-30T00:06:20.212Z\",\n    \"version\": \"string\"\n  },\n  \"lastRelease\": {\n    \"shortVersion\": \"string\",\n    \"dateCreated\": \"2010-09-10T09:14:35.920Z\",\n    \"dateReleased\": \"1980-01-16T08:19:40.223Z\",\n    \"version\": \"string\"\n  },\n  \"assignedTo\": {\n    \"type\": \"user\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"slug\": \"string\"\n  },\n  \"culprit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad737648-03f2-4b37-ace4-7d6419b8e763",
+          "name": "Update Issue",
+          "request": {
+            "name": "Update Issue",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3380179-5d41-4464-9d2a-fe1d3c1c08ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": \"string\",\n  \"type\": \"default\",\n  \"level\": \"fatal\",\n  \"status\": \"unresolved\",\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"project\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"platform\": \"string\",\n    \"slug\": \"string\"\n  },\n  \"shortId\": \"string\",\n  \"numComments\": 1457,\n  \"firstSeen\": \"2019-10-24T11:12:07.592Z\",\n  \"lastSeen\": \"2006-01-13T16:37:46.140Z\",\n  \"title\": \"string\",\n  \"userReportCount\": 8516,\n  \"stats\": {\n    \"24h\": []\n  },\n  \"shareId\": 5786,\n  \"logger\": \"string\",\n  \"permalink\": \"Not implemented\",\n  \"statusDetails\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\"\n  },\n  \"subscriptionDetails\": \"string\",\n  \"userCount\": 0,\n  \"matchingEventId\": \"string\",\n  \"firstRelease\": {\n    \"shortVersion\": \"string\",\n    \"dateCreated\": \"1975-07-02T08:18:35.944Z\",\n    \"dateReleased\": \"1985-09-28T09:57:59.834Z\",\n    \"version\": \"string\"\n  },\n  \"lastRelease\": {\n    \"shortVersion\": \"string\",\n    \"dateCreated\": \"1977-11-18T14:55:40.335Z\",\n    \"dateReleased\": \"1997-09-26T05:45:21.811Z\",\n    \"version\": \"string\"\n  },\n  \"assignedTo\": {\n    \"type\": \"user\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"slug\": \"string\"\n  },\n  \"culprit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a52feecb-9b96-426a-996c-02b42d9ffef9",
+          "name": "Delete Issue",
+          "request": {
+            "name": "Delete Issue",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ed441897-8741-45e4-8472-ca78ab7ad006",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32e7969f-5816-4d97-bdc5-26966036c3e7",
+          "name": "List Issue Commits",
+          "request": {
+            "name": "List Issue Commits",
+            "description": {
+              "content": "Return commits from the release where this issue first appeared.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "commits",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2e91eb4-b1b7-4142-8597-e1eb644afdc5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "commits",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"message\": \"\",\n    \"dateCreated\": \"string\",\n    \"authorName\": \"string\",\n    \"authorEmail\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"message\": \"\",\n    \"dateCreated\": \"string\",\n    \"authorName\": \"string\",\n    \"authorEmail\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d2e983d-c7da-41b6-8e85-e23724e1ccea",
+          "name": "Update Organization Issue",
+          "request": {
+            "name": "Update Organization Issue",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ":issue_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "98097fd9-2319-4b91-9448-b9e01da72757",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ":issue_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"count\": \"string\",\n  \"type\": \"default\",\n  \"level\": \"fatal\",\n  \"status\": \"unresolved\",\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": true\n  },\n  \"project\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"platform\": \"string\",\n    \"slug\": \"string\"\n  },\n  \"shortId\": \"string\",\n  \"numComments\": 1457,\n  \"firstSeen\": \"2019-10-24T11:12:07.592Z\",\n  \"lastSeen\": \"2006-01-13T16:37:46.140Z\",\n  \"title\": \"string\",\n  \"userReportCount\": 8516,\n  \"stats\": {\n    \"24h\": []\n  },\n  \"shareId\": 5786,\n  \"logger\": \"string\",\n  \"permalink\": \"Not implemented\",\n  \"statusDetails\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\"\n  },\n  \"subscriptionDetails\": \"string\",\n  \"userCount\": 0,\n  \"matchingEventId\": \"string\",\n  \"firstRelease\": {\n    \"shortVersion\": \"string\",\n    \"dateCreated\": \"1975-07-02T08:18:35.944Z\",\n    \"dateReleased\": \"1985-09-28T09:57:59.834Z\",\n    \"version\": \"string\"\n  },\n  \"lastRelease\": {\n    \"shortVersion\": \"string\",\n    \"dateCreated\": \"1977-11-18T14:55:40.335Z\",\n    \"dateReleased\": \"1997-09-26T05:45:21.811Z\",\n    \"version\": \"string\"\n  },\n  \"assignedTo\": {\n    \"type\": \"user\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"username\": \"string\",\n    \"email\": \"string\",\n    \"slug\": \"string\"\n  },\n  \"culprit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "607d2c95-a55d-42e3-9826-ab09bd0cf480",
+          "name": "List Issues",
+          "request": {
+            "name": "List Issues",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "-last_seen"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43e3fc4b-763f-4519-8b35-34bd27e17b67",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-last_seen"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"count\": \"string\",\n    \"type\": \"default\",\n    \"level\": \"debug\",\n    \"status\": \"resolved\",\n    \"metadata\": {\n      \"key_0\": true,\n      \"key_1\": true\n    },\n    \"project\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"shortId\": \"string\",\n    \"numComments\": 7194,\n    \"firstSeen\": \"1948-06-03T18:23:09.334Z\",\n    \"lastSeen\": \"1957-02-19T02:24:02.346Z\",\n    \"title\": \"string\",\n    \"stats\": {\n      \"24h\": []\n    },\n    \"shareId\": 4939,\n    \"logger\": \"string\",\n    \"permalink\": \"Not implemented\",\n    \"statusDetails\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"subscriptionDetails\": \"string\",\n    \"userCount\": 0,\n    \"matchingEventId\": \"string\",\n    \"firstRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"1959-05-10T12:22:43.161Z\",\n      \"dateReleased\": \"2008-05-14T14:58:04.648Z\",\n      \"version\": \"string\"\n    },\n    \"lastRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"2016-06-08T22:12:40.258Z\",\n      \"dateReleased\": \"1991-06-30T00:16:49.728Z\",\n      \"version\": \"string\"\n    },\n    \"assignedTo\": {\n      \"type\": \"team\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"username\": \"string\",\n      \"email\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"culprit\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"count\": \"string\",\n    \"type\": \"default\",\n    \"level\": \"debug\",\n    \"status\": \"resolved\",\n    \"metadata\": {\n      \"key_0\": 9862,\n      \"key_1\": 7815\n    },\n    \"project\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"shortId\": \"string\",\n    \"numComments\": 7059,\n    \"firstSeen\": \"2007-10-04T19:06:54.329Z\",\n    \"lastSeen\": \"1968-01-30T04:15:24.762Z\",\n    \"title\": \"string\",\n    \"stats\": {\n      \"24h\": []\n    },\n    \"shareId\": 7631,\n    \"logger\": \"string\",\n    \"permalink\": \"Not implemented\",\n    \"statusDetails\": {\n      \"key_0\": \"string\"\n    },\n    \"subscriptionDetails\": \"string\",\n    \"userCount\": 0,\n    \"matchingEventId\": \"string\",\n    \"firstRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"1973-01-31T14:51:30.271Z\",\n      \"dateReleased\": \"1973-07-25T04:56:36.663Z\",\n      \"version\": \"string\"\n    },\n    \"lastRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"1990-05-13T13:47:19.337Z\",\n      \"dateReleased\": \"1990-02-23T04:50:42.932Z\",\n      \"version\": \"string\"\n    },\n    \"assignedTo\": {\n      \"type\": \"user\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"username\": \"string\",\n      \"email\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"culprit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "addc552d-b06e-461a-b4e1-ca807563e64f",
+          "name": "Delete Issues",
+          "request": {
+            "name": "Delete Issues",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9fcc92d9-3237-45cf-b600-745b60db965b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11de9228-e1ee-4e58-bf8c-b1b12d890365",
+          "name": "Update Issues",
+          "request": {
+            "name": "Update Issues",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d31b4f8-fd2d-46c1-82c4-08a4dab109ab",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"<string>\",\n  \"statusDetails\": {\n    \"inRelease\": \"<string>\",\n    \"inNextRelease\": \"<boolean>\"\n  },\n  \"merge\": \"<integer>\",\n  \"assignedTo\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bb3562f-829d-43d1-bd3f-94fc95dc5b04",
+          "name": "List Project Issues",
+          "request": {
+            "name": "List Project Issues",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "projects",
+                ":organization_slug",
+                ":project_slug",
+                "issues",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "project",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "environment",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "-last_seen"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "project_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "49e7db86-38c7-4440-a04e-70a4dddb41ab",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "projects",
+                    ":organization_slug",
+                    ":project_slug",
+                    "issues",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "project",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "environment",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "-last_seen"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "project_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"count\": \"string\",\n    \"type\": \"error\",\n    \"level\": \"info\",\n    \"status\": \"ignored\",\n    \"metadata\": {\n      \"key_0\": 4966,\n      \"key_1\": 566,\n      \"key_2\": 7243,\n      \"key_3\": true,\n      \"key_4\": \"string\"\n    },\n    \"project\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"shortId\": \"string\",\n    \"numComments\": 5937,\n    \"firstSeen\": \"1953-11-30T09:24:11.579Z\",\n    \"lastSeen\": \"2024-02-27T08:45:25.809Z\",\n    \"title\": \"string\",\n    \"stats\": {\n      \"24h\": []\n    },\n    \"shareId\": 2383,\n    \"logger\": \"string\",\n    \"permalink\": \"Not implemented\",\n    \"statusDetails\": {\n      \"key_0\": \"string\"\n    },\n    \"subscriptionDetails\": \"string\",\n    \"userCount\": 0,\n    \"matchingEventId\": \"string\",\n    \"firstRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"2013-01-01T15:39:03.604Z\",\n      \"dateReleased\": \"2003-03-26T14:20:45.039Z\",\n      \"version\": \"string\"\n    },\n    \"lastRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"2011-06-03T03:39:20.832Z\",\n      \"dateReleased\": \"2010-03-10T03:29:00.928Z\",\n      \"version\": \"string\"\n    },\n    \"assignedTo\": {\n      \"type\": \"user\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"username\": \"string\",\n      \"email\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"culprit\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"count\": \"string\",\n    \"type\": \"csp\",\n    \"level\": \"debug\",\n    \"status\": \"ignored\",\n    \"metadata\": {\n      \"key_0\": 7837,\n      \"key_1\": 2388,\n      \"key_2\": \"string\",\n      \"key_3\": false,\n      \"key_4\": true\n    },\n    \"project\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"shortId\": \"string\",\n    \"numComments\": 7609,\n    \"firstSeen\": \"1993-12-31T02:21:03.280Z\",\n    \"lastSeen\": \"2001-12-05T22:27:39.297Z\",\n    \"title\": \"string\",\n    \"stats\": {\n      \"24h\": []\n    },\n    \"shareId\": 5718,\n    \"logger\": \"string\",\n    \"permalink\": \"Not implemented\",\n    \"statusDetails\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"subscriptionDetails\": \"string\",\n    \"userCount\": 0,\n    \"matchingEventId\": \"string\",\n    \"firstRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"1972-06-11T20:15:47.284Z\",\n      \"dateReleased\": \"1994-06-26T16:29:56.908Z\",\n      \"version\": \"string\"\n    },\n    \"lastRelease\": {\n      \"shortVersion\": \"string\",\n      \"dateCreated\": \"1970-03-26T22:47:18.702Z\",\n      \"dateReleased\": \"1987-08-11T00:56:53.474Z\",\n      \"version\": \"string\"\n    },\n    \"assignedTo\": {\n      \"type\": \"user\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"username\": \"string\",\n      \"email\": \"string\",\n      \"slug\": \"string\"\n    },\n    \"culprit\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2693ba4-a2b9-4d1d-bbe9-623eb57acfcc",
+          "name": "List Issue Tags",
+          "request": {
+            "name": "List Issue Tags",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "tags",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2ab987c6-0789-401b-8590-ef13ded676d3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "tags",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"topValues\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"count\": 931,\n        \"key\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"count\": 6647,\n        \"key\": \"string\"\n      }\n    ],\n    \"uniqueValues\": 1322,\n    \"key\": \"string\",\n    \"name\": \"string\",\n    \"totalValues\": 5512\n  },\n  {\n    \"topValues\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"count\": 4662,\n        \"key\": \"string\"\n      },\n      {\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"count\": 6909,\n        \"key\": \"string\"\n      }\n    ],\n    \"uniqueValues\": 2206,\n    \"key\": \"string\",\n    \"name\": \"string\",\n    \"totalValues\": 9577\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32edcfcc-0e26-4123-a8b6-43929314251a",
+          "name": "Retrieve Statistics for a Set of Issues",
+          "request": {
+            "name": "Retrieve Statistics for a Set of Issues",
+            "description": {
+              "content": "Retrieves aggregated statistics for a given list of issue groups.\n\nThis endpoint returns data for the last 24 hours, formatted as a series of\n[timestamp, count] pairs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues-stats",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "groups",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "groups",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "statsPeriod",
+                  "value": "24h"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6e97ae3-6d25-468d-b2d2-c624ba8cdb84",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues-stats",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "groups",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "groups",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "statsPeriod",
+                      "value": "24h"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"count\": \"string\",\n    \"userCount\": 8415,\n    \"firstSeen\": \"string\",\n    \"lastSeen\": \"string\",\n    \"isUnhandled\": false,\n    \"stats\": {\n      \"24h\": [\n        [\n          8714,\n          8020\n        ],\n        [\n          4603,\n          1317\n        ]\n      ],\n      \"14d\": [\n        [\n          7650,\n          2657\n        ],\n        [\n          7520,\n          9766\n        ]\n      ]\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"count\": \"string\",\n    \"userCount\": 4721,\n    \"firstSeen\": \"string\",\n    \"lastSeen\": \"string\",\n    \"isUnhandled\": true,\n    \"stats\": {\n      \"24h\": [\n        [\n          5910,\n          9885\n        ],\n        [\n          7284,\n          2357\n        ]\n      ],\n      \"14d\": [\n        [\n          6777,\n          4705\n        ],\n        [\n          1960,\n          5966\n        ]\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32311896-2fa5-435c-8245-04089050de85",
+          "name": "List User Reports",
+          "request": {
+            "name": "List User Reports",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "issues",
+                ":issue_id",
+                "user-reports",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a78f732b-c52d-44b8-a13a-3d78d2bfcc48",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "issues",
+                    ":issue_id",
+                    "user-reports",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"eventID\": \"string\",\n    \"event\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    },\n    \"dateCreated\": \"1974-04-09T04:00:47.140Z\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"comments\": \"string\",\n    \"user\": \"string\",\n    \"id\": 3901\n  },\n  {\n    \"eventID\": \"string\",\n    \"event\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"dateCreated\": \"2021-02-07T14:03:03.722Z\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"comments\": \"string\",\n    \"user\": \"string\",\n    \"id\": 9688\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe163e01-26d5-44bb-8997-b948e8211aba",
+          "name": "List Issue Hashes",
+          "request": {
+            "name": "List Issue Hashes",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ":issue_id",
+                "hashes",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "81f3d7d9-ed38-4728-a53c-23a7943d83a7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ":issue_id",
+                    "hashes",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"latestEvent\": {\n      \"id\": \"string\",\n      \"eventID\": \"string\",\n      \"projectID\": 6817,\n      \"groupID\": \"string\",\n      \"dateCreated\": \"2002-07-16T14:07:32.770Z\",\n      \"dateReceived\": \"2002-10-12T15:27:36.230Z\",\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"title\": \"string\",\n      \"platform\": \"string\",\n      \"errors\": [\n        {\n          \"type\": \"string\",\n          \"name\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"string\",\n          \"name\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"dist\": \"string\",\n      \"culprit\": \"string\",\n      \"packages\": {\n        \"key_0\": \"string\"\n      },\n      \"metadata\": {\n        \"key_0\": \"string\"\n      },\n      \"entries\": [\n        {\n          \"type\": \"string\",\n          \"data\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"string\",\n          \"data\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_3\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"contexts\": {\n        \"key_0\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"family\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"model\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"model_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"arch\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"battery_level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orientation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"manufacturer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"brand\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_resolution\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_height_pixels\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_width_pixels\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_density\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_dpi\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"online\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"charging\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"low_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"simulator\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"memory_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"free_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usable_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"storage_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"free_storage\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"external_storage_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"external_free_storage\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"boot_time\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"processor_count\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cpu_description\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"processor_frequency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"device_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"battery_status\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"device_unique_identifier\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_vibration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_accelerometer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_gyroscope\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_location_service\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"key_1\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"family\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"model\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"model_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"arch\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"battery_level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orientation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"manufacturer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"brand\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_resolution\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_height_pixels\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_width_pixels\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_density\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_dpi\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"online\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"charging\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"low_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"simulator\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"memory_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"free_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usable_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"storage_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"free_storage\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"external_storage_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"external_free_storage\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"boot_time\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"processor_count\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cpu_description\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"processor_frequency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"device_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"battery_status\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"device_unique_identifier\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_vibration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_accelerometer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_gyroscope\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_location_service\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"context\": {\n        \"key_0\": 8865.681492751855\n      },\n      \"user\": {},\n      \"sdk\": {\n        \"key_0\": \"string\"\n      }\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"latestEvent\": {\n      \"id\": \"string\",\n      \"eventID\": \"string\",\n      \"projectID\": 7572,\n      \"groupID\": \"string\",\n      \"dateCreated\": \"1961-03-05T18:14:30.333Z\",\n      \"dateReceived\": \"2002-02-20T09:59:55.845Z\",\n      \"type\": \"string\",\n      \"message\": \"string\",\n      \"title\": \"string\",\n      \"platform\": \"string\",\n      \"errors\": [\n        {\n          \"type\": \"string\",\n          \"name\": \"string\",\n          \"value\": {}\n        },\n        {\n          \"type\": \"string\",\n          \"name\": \"string\",\n          \"value\": {}\n        }\n      ],\n      \"dist\": \"string\",\n      \"culprit\": \"string\",\n      \"packages\": {\n        \"key_0\": \"string\"\n      },\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"entries\": [\n        {\n          \"type\": \"string\",\n          \"data\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"type\": \"string\",\n          \"data\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_2\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"contexts\": {\n        \"key_0\": {\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"family\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"model\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"model_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"arch\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"battery_level\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"orientation\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"manufacturer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"brand\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_resolution\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_height_pixels\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_width_pixels\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_density\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"screen_dpi\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"online\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"charging\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"low_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"simulator\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"memory_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"free_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"usable_memory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"storage_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"free_storage\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"external_storage_size\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"external_free_storage\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"boot_time\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"timezone\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"processor_count\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"cpu_description\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"processor_frequency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"device_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"battery_status\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"device_unique_identifier\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_vibration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_accelerometer\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_gyroscope\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_audio\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"supports_location_service\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"context\": {\n        \"key_0\": 882,\n        \"key_1\": 6147\n      },\n      \"user\": {},\n      \"sdk\": {\n        \"key_0\": 847,\n        \"key_1\": true,\n        \"key_2\": false\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e7a9328-61c6-4745-97a2-b00a7e593646",
+          "name": "Delete Hash",
+          "request": {
+            "name": "Delete Hash",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "organizations",
+                ":organization_slug",
+                "issues",
+                ":issue_id",
+                "hashes",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "issue_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "652eb37f-79c5-4857-a306-e3c35dada264",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "organizations",
+                    ":organization_slug",
+                    "issues",
+                    ":issue_id",
+                    "hashes",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "issue_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f5289707-d484-48bd-8b8d-011abcb5ce11",
+    "name": "GlitchTip Accept Issues API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

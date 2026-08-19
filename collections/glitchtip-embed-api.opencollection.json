@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept Embed API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Embed",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Embed Error Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/embed/error-page/",
+            "params": [
+              {
+                "name": "dsn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subtitle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subtitle2",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelEmail",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelComments",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelClose",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelSubmit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "errorGeneric",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "errorFormEntry",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "successMessage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Embed Error Page"
+        },
+        {
+          "info": {
+            "name": "Submit Embed Error Page",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.glitchtip.com/api/embed/error-page/",
+            "params": [
+              {
+                "name": "dsn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "title",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subtitle",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subtitle2",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelName",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelEmail",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelComments",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelClose",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "labelSubmit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "errorGeneric",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "errorFormEntry",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "successMessage",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "name",
+                  "value": ""
+                },
+                {
+                  "name": "email",
+                  "value": ""
+                },
+                {
+                  "name": "comments",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Submit Embed Error Page"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

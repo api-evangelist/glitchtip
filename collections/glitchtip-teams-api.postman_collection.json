@@ -1,0 +1,858 @@
+{
+  "item": [
+    {
+      "id": "7d8bdd6a-975e-477c-a170-2128c4ceaad4",
+      "name": "Teams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71e0276c-e035-4daa-abb7-8f0aa50cb7e5",
+          "name": "List Team Organization Members",
+          "request": {
+            "name": "List Team Organization Members",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "teams",
+                ":organization_slug",
+                ":team_slug",
+                "members",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "664a7b16-f7d3-4de4-95c8-a4302fbbfe43",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "teams",
+                    ":organization_slug",
+                    ":team_slug",
+                    "members",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"role\": \"member\",\n    \"roleName\": \"string\",\n    \"dateCreated\": \"2021-03-13T03:31:41.324Z\",\n    \"email\": \"string\",\n    \"pending\": false,\n    \"isOwner\": false,\n    \"user\": {\n      \"id\": \"string\",\n      \"options\": {\n        \"timezone\": \"string\",\n        \"stacktraceOrder\": 910,\n        \"language\": \"string\",\n        \"clock24Hours\": false,\n        \"preferredTheme\": \"string\"\n      },\n      \"username\": \"XlNJAF2zHA@TuNJJdrrKkOsHFgaCVetjw.ch\",\n      \"dateJoined\": \"1959-10-02T21:35:59.405Z\",\n      \"email\": \"UTFqKWIK8Ps8O@ejBEPdmQvppsbUMTIoldrEaQxvsVzqk.ggv\",\n      \"hasPasswordAuth\": true,\n      \"identities\": [\n        {\n          \"email\": \"elGJbZj28VlXBKL@QEdxwUAlqhoCNDMuCpF.zlhv\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"2020-10-15T04:37:29.944Z\",\n          \"dateJoined\": \"1957-10-02T05:40:44.464Z\",\n          \"id\": 9445\n        },\n        {\n          \"email\": \"jHOu3Qmn@XkdOuQrcKqUfHGVey.zyzb\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"1974-12-10T11:10:00.834Z\",\n          \"dateJoined\": \"1983-10-26T23:57:02.670Z\",\n          \"id\": 8490\n        }\n      ],\n      \"lastLogin\": \"2020-11-04T01:22:22.612Z\",\n      \"isSuperuser\": false,\n      \"isActive\": true,\n      \"name\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"role\": \"owner\",\n    \"roleName\": \"string\",\n    \"dateCreated\": \"1983-09-18T19:45:20.147Z\",\n    \"email\": \"string\",\n    \"pending\": true,\n    \"isOwner\": true,\n    \"user\": {\n      \"id\": \"string\",\n      \"options\": {\n        \"timezone\": \"string\",\n        \"stacktraceOrder\": 9043,\n        \"language\": \"string\",\n        \"clock24Hours\": false,\n        \"preferredTheme\": \"string\"\n      },\n      \"username\": \"dgEdPFMIwfZu8@ZKnPoxfiJScpa.fbhs\",\n      \"dateJoined\": \"1957-08-17T19:24:07.460Z\",\n      \"email\": \"FIfau5okOc@iiYNVAdLqhUKZwIExpJv.kz\",\n      \"hasPasswordAuth\": true,\n      \"identities\": [\n        {\n          \"email\": \"d83ZkH3J@DqusDsySzSKRDqSDwqihMW.wylt\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"1947-12-27T20:43:22.225Z\",\n          \"dateJoined\": \"1976-11-21T21:46:17.085Z\",\n          \"id\": 1989\n        },\n        {\n          \"email\": \"BlgWFtxuI-gV@ZmgrhJRbCxTILREbs.ezn\",\n          \"username\": \"string\",\n          \"provider\": \"string\",\n          \"uid\": \"string\",\n          \"lastLogin\": \"2022-01-25T07:06:46.928Z\",\n          \"dateJoined\": \"2024-06-02T17:39:45.419Z\",\n          \"id\": 720\n        }\n      ],\n      \"lastLogin\": \"2001-03-06T17:36:30.833Z\",\n      \"isSuperuser\": false,\n      \"isActive\": true,\n      \"name\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65511e97-468a-4702-8fcd-cc662b025ac2",
+          "name": "List Team Projects",
+          "request": {
+            "name": "List Team Projects",
+            "description": {
+              "content": "List all projects for a given team",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "teams",
+                ":organization_slug",
+                ":team_slug",
+                "projects",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "98b4d2c2-f9b6-4309-9643-46a15af65598",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "teams",
+                    ":organization_slug",
+                    ":team_slug",
+                    "projects",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"id\": \"string\",\n    \"isMember\": true,\n    \"scrubIPAddresses\": true,\n    \"dateCreated\": \"2007-10-06T07:04:17.004Z\",\n    \"slug\": \"string\",\n    \"avatar\": {\n      \"avatarType\": \"\",\n      \"avatarUuid\": null\n    },\n    \"color\": \"\",\n    \"hasAccess\": true,\n    \"isBookmarked\": false,\n    \"isInternal\": false,\n    \"isPublic\": false,\n    \"platform\": \"string\",\n    \"firstEvent\": \"2000-10-17T22:46:24.021Z\",\n    \"eventThrottleRate\": 0\n  },\n  {\n    \"name\": \"string\",\n    \"id\": \"string\",\n    \"isMember\": true,\n    \"scrubIPAddresses\": true,\n    \"dateCreated\": \"2017-12-07T15:34:57.884Z\",\n    \"slug\": \"string\",\n    \"avatar\": {\n      \"avatarType\": \"\",\n      \"avatarUuid\": null\n    },\n    \"color\": \"\",\n    \"hasAccess\": true,\n    \"isBookmarked\": false,\n    \"isInternal\": false,\n    \"isPublic\": false,\n    \"platform\": \"string\",\n    \"firstEvent\": \"1993-02-26T03:58:00.738Z\",\n    \"eventThrottleRate\": 0\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f61bffb1-ad93-4bae-b089-21a10f8bf65e",
+          "name": "Create Project",
+          "request": {
+            "name": "Create Project",
+            "description": {
+              "content": "Create a new project given a team and organization",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "teams",
+                ":organization_slug",
+                ":team_slug",
+                "projects",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"eventThrottleRate\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62455123-fcc6-478b-999c-a24830124b52",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "teams",
+                    ":organization_slug",
+                    ":team_slug",
+                    "projects",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"platform\": \"<string>\",\n  \"eventThrottleRate\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"id\": \"string\",\n  \"isMember\": true,\n  \"scrubIPAddresses\": false,\n  \"dateCreated\": \"2016-07-17T14:59:49.715Z\",\n  \"slug\": \"string\",\n  \"avatar\": {\n    \"avatarType\": \"\",\n    \"avatarUuid\": null\n  },\n  \"color\": \"\",\n  \"hasAccess\": true,\n  \"isBookmarked\": false,\n  \"isInternal\": false,\n  \"isPublic\": false,\n  \"platform\": \"string\",\n  \"firstEvent\": \"2010-10-26T18:14:39.578Z\",\n  \"eventThrottleRate\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a178b67-9a0e-465b-a0b5-90b8c6080308",
+          "name": "Get Team",
+          "request": {
+            "name": "Get Team",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "teams",
+                ":organization_slug",
+                ":team_slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b3dc4b7-f256-41d3-a50e-b75ac35e86de",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "teams",
+                    ":organization_slug",
+                    ":team_slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"slug\": \"2gukSy4VWE\",\n  \"dateCreated\": \"2019-12-04T01:55:42.831Z\",\n  \"isMember\": true,\n  \"memberCount\": 6600\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4630e4ec-03c5-4653-be6f-6c826f878084",
+          "name": "Update Team",
+          "request": {
+            "name": "Update Team",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "teams",
+                ":organization_slug",
+                ":team_slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"slug\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d2107692-62e1-4711-ab7c-6bae632120b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "teams",
+                    ":organization_slug",
+                    ":team_slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"slug\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"slug\": \"_\",\n  \"dateCreated\": \"1988-12-11T17:42:57.133Z\",\n  \"isMember\": false,\n  \"memberCount\": 3744\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c953ef7d-edfa-421d-ba3a-f7372bef71d3",
+          "name": "Delete Team",
+          "request": {
+            "name": "Delete Team",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "teams",
+                ":organization_slug",
+                ":team_slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "team_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd98c6e1-6fec-4315-acd6-8f19c8673fb0",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "teams",
+                    ":organization_slug",
+                    ":team_slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "team_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bb721b00-24ed-48f3-ac97-3049536c5f09",
+    "name": "GlitchTip Accept Teams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

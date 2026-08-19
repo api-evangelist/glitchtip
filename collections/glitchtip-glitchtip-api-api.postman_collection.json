@@ -1,0 +1,106 @@
+{
+  "item": [
+    {
+      "id": "99dcaaaf-7818-4d48-aca9-5e0da6821445",
+      "name": "GlitchTip API",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2648b4a-333e-4092-81e3-e22d068ee26c",
+          "name": "Api Root",
+          "request": {
+            "name": "Api Root",
+            "description": {
+              "content": "/api/0/ gives information about the server and current user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf06c70c-5225-4bbe-8ba8-173762ee8fe0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"version\": \"string\",\n  \"user\": {\n    \"id\": \"string\",\n    \"options\": {\n      \"timezone\": \"string\",\n      \"stacktraceOrder\": 8434,\n      \"language\": \"string\",\n      \"clock24Hours\": false,\n      \"preferredTheme\": \"string\"\n    },\n    \"username\": \"JGqs@XjcAlXtENtVqOmP.xmn\",\n    \"dateJoined\": \"1988-05-15T06:24:32.127Z\",\n    \"email\": \"iOq@WEMWLeYVsBCkvSignWFFG.uk\",\n    \"hasPasswordAuth\": true,\n    \"identities\": [\n      {\n        \"email\": \"UcSaa@c.yzy\",\n        \"username\": \"string\",\n        \"provider\": \"string\",\n        \"uid\": \"string\",\n        \"lastLogin\": \"1986-03-18T14:19:18.879Z\",\n        \"dateJoined\": \"1996-02-03T01:25:36.608Z\",\n        \"id\": 2050\n      },\n      {\n        \"email\": \"hr0DNujdz5@OBECMlgKvJbVXJWbqgNVoHtkui.xo\",\n        \"username\": \"string\",\n        \"provider\": \"string\",\n        \"uid\": \"string\",\n        \"lastLogin\": \"1995-04-16T09:33:05.247Z\",\n        \"dateJoined\": \"1972-03-04T04:23:57.368Z\",\n        \"id\": 2067\n      }\n    ],\n    \"lastLogin\": \"2018-07-05T16:30:20.325Z\",\n    \"isSuperuser\": false,\n    \"isActive\": true,\n    \"name\": \"string\"\n  },\n  \"auth\": {\n    \"id\": 2748,\n    \"label\": \"string\",\n    \"scopes\": [\n      \"string\",\n      \"string\"\n    ],\n    \"token\": \"string\",\n    \"created\": \"2023-06-23T16:17:33.567Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4f9c54bb-8922-4bcd-a6ab-ed4ddd6ea0e1",
+    "name": "GlitchTip Accept GlitchTip API API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

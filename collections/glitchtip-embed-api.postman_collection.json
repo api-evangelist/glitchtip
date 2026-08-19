@@ -1,0 +1,492 @@
+{
+  "item": [
+    {
+      "id": "5c7b89ea-7caa-4455-9e81-d09086b1ffa1",
+      "name": "Embed",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af3f9cde-6f6b-4b93-a291-327cd1d073ba",
+          "name": "Get Embed Error Page",
+          "request": {
+            "name": "Get Embed Error Page",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "embed",
+                "error-page",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dsn",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "eventId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "It looks like we're having issues."
+                },
+                {
+                  "disabled": false,
+                  "key": "subtitle",
+                  "value": "Our team has been notified."
+                },
+                {
+                  "disabled": false,
+                  "key": "subtitle2",
+                  "value": "If you'd like to help, tell us what happened below."
+                },
+                {
+                  "disabled": false,
+                  "key": "labelName",
+                  "value": "Name"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelEmail",
+                  "value": "Email"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelComments",
+                  "value": "What happened?"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelClose",
+                  "value": "Close"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelSubmit",
+                  "value": "Submit Crash Report"
+                },
+                {
+                  "disabled": false,
+                  "key": "errorGeneric",
+                  "value": "An unknown error occurred while submitting your report. Please try again."
+                },
+                {
+                  "disabled": false,
+                  "key": "errorFormEntry",
+                  "value": "Some fields were invalid. Please correct the errors and try again."
+                },
+                {
+                  "disabled": false,
+                  "key": "successMessage",
+                  "value": "Your feedback has been sent. Thank you!"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3906a657-8f5e-42d2-9dc0-b95d4cc6c5a2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "embed",
+                    "error-page",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dsn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "It looks like we're having issues."
+                    },
+                    {
+                      "key": "subtitle",
+                      "value": "Our team has been notified."
+                    },
+                    {
+                      "key": "subtitle2",
+                      "value": "If you'd like to help, tell us what happened below."
+                    },
+                    {
+                      "key": "labelName",
+                      "value": "Name"
+                    },
+                    {
+                      "key": "labelEmail",
+                      "value": "Email"
+                    },
+                    {
+                      "key": "labelComments",
+                      "value": "What happened?"
+                    },
+                    {
+                      "key": "labelClose",
+                      "value": "Close"
+                    },
+                    {
+                      "key": "labelSubmit",
+                      "value": "Submit Crash Report"
+                    },
+                    {
+                      "key": "errorGeneric",
+                      "value": "An unknown error occurred while submitting your report. Please try again."
+                    },
+                    {
+                      "key": "errorFormEntry",
+                      "value": "Some fields were invalid. Please correct the errors and try again."
+                    },
+                    {
+                      "key": "successMessage",
+                      "value": "Your feedback has been sent. Thank you!"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e276e3f2-3185-4186-b786-296e06295fe5",
+          "name": "Submit Embed Error Page",
+          "request": {
+            "name": "Submit Embed Error Page",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "embed",
+                "error-page",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dsn",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "eventId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "title",
+                  "value": "It looks like we're having issues."
+                },
+                {
+                  "disabled": false,
+                  "key": "subtitle",
+                  "value": "Our team has been notified."
+                },
+                {
+                  "disabled": false,
+                  "key": "subtitle2",
+                  "value": "If you'd like to help, tell us what happened below."
+                },
+                {
+                  "disabled": false,
+                  "key": "labelName",
+                  "value": "Name"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelEmail",
+                  "value": "Email"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelComments",
+                  "value": "What happened?"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelClose",
+                  "value": "Close"
+                },
+                {
+                  "disabled": false,
+                  "key": "labelSubmit",
+                  "value": "Submit Crash Report"
+                },
+                {
+                  "disabled": false,
+                  "key": "errorGeneric",
+                  "value": "An unknown error occurred while submitting your report. Please try again."
+                },
+                {
+                  "disabled": false,
+                  "key": "errorFormEntry",
+                  "value": "Some fields were invalid. Please correct the errors and try again."
+                },
+                {
+                  "disabled": false,
+                  "key": "successMessage",
+                  "value": "Your feedback has been sent. Thank you!"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "comments",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08ef8886-d3ba-41a9-a5de-ab12099370b6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "embed",
+                    "error-page",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dsn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "eventId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "title",
+                      "value": "It looks like we're having issues."
+                    },
+                    {
+                      "key": "subtitle",
+                      "value": "Our team has been notified."
+                    },
+                    {
+                      "key": "subtitle2",
+                      "value": "If you'd like to help, tell us what happened below."
+                    },
+                    {
+                      "key": "labelName",
+                      "value": "Name"
+                    },
+                    {
+                      "key": "labelEmail",
+                      "value": "Email"
+                    },
+                    {
+                      "key": "labelComments",
+                      "value": "What happened?"
+                    },
+                    {
+                      "key": "labelClose",
+                      "value": "Close"
+                    },
+                    {
+                      "key": "labelSubmit",
+                      "value": "Submit Crash Report"
+                    },
+                    {
+                      "key": "errorGeneric",
+                      "value": "An unknown error occurred while submitting your report. Please try again."
+                    },
+                    {
+                      "key": "errorFormEntry",
+                      "value": "Some fields were invalid. Please correct the errors and try again."
+                    },
+                    {
+                      "key": "successMessage",
+                      "value": "Your feedback has been sent. Thank you!"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "email",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "comments",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fe8edca7-1b53-4f4e-841a-9dbc7ff97b9b",
+    "name": "GlitchTip Accept Embed API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

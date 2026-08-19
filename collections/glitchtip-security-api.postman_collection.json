@@ -1,0 +1,135 @@
+{
+  "item": [
+    {
+      "id": "94f1f297-70cd-41c1-8830-9c1a2e9e3e10",
+      "name": "Security",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7ae109b-fc63-494a-863d-eaad07ad350a",
+          "name": "Event Security",
+          "request": {
+            "name": "Event Security",
+            "description": {
+              "content": "Accept Security (and someday other) issue events.\nReformats event to make CSP browser format match more standard\nevent format.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                ":project_id",
+                "security",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "project_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"csp-report\": {\n    \"blocked-uri\": \"<string>\",\n    \"disposition\": \"<string>\",\n    \"document-uri\": \"<string>\",\n    \"effective-directive\": \"<string>\",\n    \"original-policy\": \"<string>\",\n    \"status-code\": \"<integer>\",\n    \"script-sample\": \"<string>\",\n    \"line_number\": \"<integer>\",\n    \"column_number\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83a0cd4d-400f-4609-8a7f-39cf9566352a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    ":project_id",
+                    "security",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"csp-report\": {\n    \"blocked-uri\": \"<string>\",\n    \"disposition\": \"<string>\",\n    \"document-uri\": \"<string>\",\n    \"effective-directive\": \"<string>\",\n    \"original-policy\": \"<string>\",\n    \"status-code\": \"<integer>\",\n    \"script-sample\": \"<string>\",\n    \"line_number\": \"<integer>\",\n    \"column_number\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c76efd0-73cd-4dd3-a0df-333ae6e00423",
+    "name": "GlitchTip Accept Security API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GlitchTip Accept GlitchTip API API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GlitchTip API",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Api Root",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.glitchtip.com/api/0/"
+          },
+          "docs": "/api/0/ gives information about the server and current user"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

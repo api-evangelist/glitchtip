@@ -1,0 +1,830 @@
+{
+  "item": [
+    {
+      "id": "c6011d48-e70d-400b-b765-cbd81b81a870",
+      "name": "Stripe",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "26baf509-e6d1-44b2-9bba-929ae2ed6112",
+          "name": "List Stripe Products",
+          "request": {
+            "name": "List Stripe Products",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "products",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6293f38a-d41b-47ac-92c3-81f10093cad3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "products",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"stripeID\": \"string\",\n    \"defaultPrice\": {\n      \"stripeID\": \"string\",\n      \"price\": \"string\",\n      \"interval\": \"month\"\n    },\n    \"prices\": [\n      {\n        \"stripeID\": \"string\",\n        \"price\": \"string\",\n        \"interval\": \"month\"\n      },\n      {\n        \"stripeID\": \"string\",\n        \"price\": \"string\",\n        \"interval\": \"month\"\n      }\n    ],\n    \"marketingFeatures\": [\n      \"string\",\n      \"string\"\n    ],\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"events\": 6953\n  },\n  {\n    \"stripeID\": \"string\",\n    \"defaultPrice\": {\n      \"stripeID\": \"string\",\n      \"price\": \"string\",\n      \"interval\": \"month\"\n    },\n    \"prices\": [\n      {\n        \"stripeID\": \"string\",\n        \"price\": \"string\",\n        \"interval\": \"month\"\n      },\n      {\n        \"stripeID\": \"string\",\n        \"price\": \"string\",\n        \"interval\": \"month\"\n      }\n    ],\n    \"marketingFeatures\": [\n      \"string\",\n      \"string\"\n    ],\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"events\": 8211\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e2f60404-9526-46a1-9a9c-5ca99d41416b",
+          "name": "Get Stripe Subscription",
+          "request": {
+            "name": "Get Stripe Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "subscriptions",
+                ":organization_slug",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6c7901b1-1dc7-4ffe-aa92-221b87b7b727",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "subscriptions",
+                    ":organization_slug",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stripeID\": \"string\",\n  \"product\": {\n    \"stripeID\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"events\": 2991,\n    \"default_price_id\": \"string\"\n  },\n  \"price\": {\n    \"stripeID\": \"string\",\n    \"price\": \"string\",\n    \"interval\": \"month\"\n  },\n  \"status\": \"unpaid\",\n  \"collectionMethod\": \"charge_automatically\",\n  \"created\": \"2016-06-04T12:46:58.832Z\",\n  \"currentPeriodStart\": \"2019-04-04T03:42:20.916Z\",\n  \"currentPeriodEnd\": \"2012-04-08T15:14:04.191Z\",\n  \"startDate\": \"1988-11-11T16:51:51.721Z\",\n  \"subscriptionCycleStart\": \"1980-08-23T17:49:10.990Z\",\n  \"subscriptionCycleEnd\": \"1986-08-09T02:21:40.874Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60c1f17f-9acf-4e6e-ad64-5288b025c3e5",
+          "name": "Create Stripe Session",
+          "request": {
+            "name": "Create Stripe Session",
+            "description": {
+              "content": "Create Stripe Checkout, send to client for redirecting to Stripe\nSee https://stripe.com/docs/api/checkout/sessions/create",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "organizations",
+                ":organization_slug",
+                "create-stripe-subscription-checkout",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1ebce6e-ca64-4249-9923-d1b533558506",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "organizations",
+                    ":organization_slug",
+                    "create-stripe-subscription-checkout",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8cba6b6-ed15-4eb9-90a8-17ab23f174b9",
+          "name": "Stripe Billing Portal Session",
+          "request": {
+            "name": "Stripe Billing Portal Session",
+            "description": {
+              "content": "See https://stripe.com/docs/billing/subscriptions/integrating-self-serve-portal",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "organizations",
+                ":organization_slug",
+                "create-billing-portal",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e61b9331-01c1-45ab-89de-2e7e5f32c5e7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "organizations",
+                    ":organization_slug",
+                    "create-billing-portal",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de012048-6fdb-483d-865a-3cba921fc0c9",
+          "name": "Stripe Create Subscription",
+          "request": {
+            "name": "Stripe Create Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "subscriptions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": \"<string>\",\n  \"organization\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0bfbbf6f-fcd7-4cce-bd64-a9fe2b6ec60f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "subscriptions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"price\": \"<string>\",\n  \"organization\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"price\": \"string\",\n  \"organization\": \"string\",\n  \"subscription\": {\n    \"stripeID\": \"string\",\n    \"product\": {\n      \"stripeID\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"events\": 321,\n      \"default_price_id\": \"string\"\n    },\n    \"price\": {\n      \"stripeID\": \"string\",\n      \"price\": \"string\",\n      \"interval\": \"month\"\n    },\n    \"status\": \"canceled\",\n    \"collectionMethod\": \"charge_automatically\",\n    \"created\": \"1992-04-10T19:48:56.237Z\",\n    \"currentPeriodStart\": \"2021-08-01T08:22:03.312Z\",\n    \"currentPeriodEnd\": \"1981-08-21T01:43:14.240Z\",\n    \"startDate\": \"1978-05-17T03:07:37.992Z\",\n    \"subscriptionCycleStart\": \"1949-11-05T19:56:20.840Z\",\n    \"subscriptionCycleEnd\": \"2000-05-24T17:49:34.541Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54972114-4774-46ac-b794-6f4a4af6a0f6",
+          "name": "Subscription Events Count For Period",
+          "request": {
+            "name": "Subscription Events Count For Period",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "subscriptions",
+                ":organization_slug",
+                "events_count",
+                "period",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "periods_ago",
+                  "value": "0"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22bb8164-c254-4cf3-993f-7987e675fff5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "subscriptions",
+                    ":organization_slug",
+                    "events_count",
+                    "period",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "periods_ago",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 7540,\n  \"eventCount\": 9928,\n  \"transactionEventCount\": 1208,\n  \"uptimeCheckEventCount\": 7972,\n  \"logEventCount\": 7222,\n  \"fileSizeMb\": 8490\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e7cc9eb-06b9-4fad-b749-b3fee3e95f40",
+          "name": "Subscription Events Count Daily",
+          "request": {
+            "name": "Subscription Events Count Daily",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "0",
+                "stripe",
+                "subscriptions",
+                ":organization_slug",
+                "events_count",
+                "daily",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "organization_slug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd0d3171-1701-459c-8187-d3cce956d0d0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "0",
+                    "stripe",
+                    "subscriptions",
+                    ":organization_slug",
+                    "events_count",
+                    "daily",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "organization_slug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"date\": \"2006-07-15\",\n      \"eventCount\": 8476,\n      \"transactionEventCount\": 1476,\n      \"uptimeCheckEventCount\": 2932,\n      \"logEventCount\": 931\n    },\n    {\n      \"date\": \"1949-09-17\",\n      \"eventCount\": 1282,\n      \"transactionEventCount\": 8781,\n      \"uptimeCheckEventCount\": 2712,\n      \"logEventCount\": 5361\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "50e00a79-623c-4855-993c-dd6ecc061763",
+    "name": "GlitchTip Accept Stripe API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "item": [
+    {
+      "id": "1a5b4c88-a39c-4506-8a63-e9d274389d57",
+      "name": "Store",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3de83215-bf95-4252-b133-64a50eec6b0a",
+          "name": "Event Store",
+          "request": {
+            "name": "Event Store",
+            "description": {
+              "content": "Event store is the original event ingest API from OSS Sentry but is used less often\nUnlike Envelope, it accepts only one Issue event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                ":project_id",
+                "store",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "project_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event_id\": \"<uuid>\",\n  \"platform\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"level\": \"error\",\n  \"logentry\": {\n    \"formatted\": \"\",\n    \"message\": \"<string>\",\n    \"params\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"logger\": \"<string>\",\n  \"transaction\": \"<string>\",\n  \"server_name\": \"<string>\",\n  \"release\": \"<string>\",\n  \"dist\": \"<string>\",\n  \"tags\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"environment\": \"<string>\",\n  \"modules\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"extra\": {\n    \"key_0\": 8245\n  },\n  \"fingerprint\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exception\": {\n    \"values\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"module\": \"<string>\",\n        \"thread_id\": \"<string>\",\n        \"mechanism\": {\n          \"type\": \"<string>\",\n          \"description\": \"<string>\",\n          \"help_link\": \"<string>\",\n          \"handled\": \"<boolean>\",\n          \"synthetic\": \"<boolean>\",\n          \"is_exception_group\": \"<boolean>\",\n          \"parent_id\": \"<integer>\",\n          \"source\": \"<string>\",\n          \"meta\": {\n            \"key_0\": 297\n          },\n          \"data\": {\n            \"key_0\": false,\n            \"key_1\": \"string\",\n            \"key_2\": 451,\n            \"key_3\": false\n          }\n        },\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"module\": \"<string>\",\n        \"thread_id\": \"<string>\",\n        \"mechanism\": {\n          \"type\": \"<string>\",\n          \"description\": \"<string>\",\n          \"help_link\": \"<string>\",\n          \"handled\": \"<boolean>\",\n          \"synthetic\": \"<boolean>\",\n          \"is_exception_group\": \"<boolean>\",\n          \"parent_id\": \"<integer>\",\n          \"source\": \"<string>\",\n          \"meta\": {\n            \"key_0\": 9233.878077305884,\n            \"key_1\": 1487\n          },\n          \"data\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\"\n          }\n        },\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      }\n    ]\n  },\n  \"threads\": {\n    \"values\": [\n      {\n        \"id\": \"<integer>\",\n        \"current\": \"<boolean>\",\n        \"crashed\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"current\": \"<boolean>\",\n        \"crashed\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      }\n    ]\n  },\n  \"message\": \"<string>\",\n  \"template\": {\n    \"lineno\": \"<integer>\",\n    \"filename\": \"<string>\",\n    \"context_line\": \"<string>\",\n    \"abs_path\": \"<string>\",\n    \"pre_context\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"post_context\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"breadcrumbs\": {\n    \"values\": [\n      {\n        \"type\": \"default\",\n        \"category\": \"<string>\",\n        \"message\": \"<string>\",\n        \"data\": {\n          \"key_0\": \"string\",\n          \"key_1\": 6443.787600222733\n        },\n        \"level\": \"info\",\n        \"timestamp\": \"<dateTime>\"\n      },\n      {\n        \"type\": \"default\",\n        \"category\": \"<string>\",\n        \"message\": \"<string>\",\n        \"data\": {\n          \"key_0\": true,\n          \"key_1\": 3334\n        },\n        \"level\": \"info\",\n        \"timestamp\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"sdk\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"integrations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"packages\": [\n      {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      }\n    ]\n  },\n  \"request\": {\n    \"api_target\": \"<string>\",\n    \"body_size\": \"<integer>\",\n    \"cookies\": \"<string>\",\n    \"data\": \"<string>\",\n    \"env\": {\n      \"key_0\": 3947.6192556549363\n    },\n    \"fragment\": \"<string>\",\n    \"method\": \"<string>\",\n    \"protocol\": \"<string>\",\n    \"url\": \"<string>\",\n    \"headers\": [\n      [\n        \"<string>\",\n        \"<string>\"\n      ],\n      [\n        \"<string>\",\n        \"<string>\"\n      ]\n    ],\n    \"query_string\": \"<string>\"\n  },\n  \"contexts\": {\n    \"key_0\": {\n      \"type\": \"device\",\n      \"name\": \"<string>\",\n      \"family\": \"<string>\",\n      \"model\": \"<string>\",\n      \"model_id\": \"<string>\",\n      \"arch\": \"<string>\",\n      \"battery_level\": \"<number>\",\n      \"orientation\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"screen_resolution\": \"<string>\",\n      \"screen_height_pixels\": \"<integer>\",\n      \"screen_width_pixels\": \"<integer>\",\n      \"screen_density\": \"<number>\",\n      \"screen_dpi\": \"<number>\",\n      \"online\": \"<boolean>\",\n      \"charging\": \"<boolean>\",\n      \"low_memory\": \"<boolean>\",\n      \"simulator\": \"<boolean>\",\n      \"memory_size\": \"<integer>\",\n      \"free_memory\": \"<integer>\",\n      \"usable_memory\": \"<integer>\",\n      \"storage_size\": \"<integer>\",\n      \"free_storage\": \"<integer>\",\n      \"external_storage_size\": \"<integer>\",\n      \"external_free_storage\": \"<integer>\",\n      \"boot_time\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"language\": \"<string>\",\n      \"processor_count\": \"<integer>\",\n      \"cpu_description\": \"<string>\",\n      \"processor_frequency\": \"<number>\",\n      \"device_type\": \"<string>\",\n      \"battery_status\": \"<string>\",\n      \"device_unique_identifier\": \"<string>\",\n      \"supports_vibration\": \"<boolean>\",\n      \"supports_accelerometer\": \"<boolean>\",\n      \"supports_gyroscope\": \"<boolean>\",\n      \"supports_audio\": \"<boolean>\",\n      \"supports_location_service\": \"<boolean>\"\n    }\n  },\n  \"user\": {\n    \"id\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"ip_address\": \"<string>\",\n    \"data\": {\n      \"key_0\": true,\n      \"key_1\": 1237.457302381293,\n      \"key_2\": true\n    },\n    \"geo\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"region\": \"<string>\",\n      \"subdivision\": \"<string>\"\n    }\n  },\n  \"debug_meta\": {\n    \"images\": [\n      {\n        \"type\": \"<string>\",\n        \"code_file\": \"<string>\",\n        \"debug_id\": \"<uuid>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"code_file\": \"<string>\",\n        \"debug_id\": \"<uuid>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c07f0788-c10f-4653-be99-201d9442a2c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    ":project_id",
+                    "store",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "project_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event_id\": \"<uuid>\",\n  \"platform\": \"<string>\",\n  \"timestamp\": \"<dateTime>\",\n  \"level\": \"error\",\n  \"logentry\": {\n    \"formatted\": \"\",\n    \"message\": \"<string>\",\n    \"params\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"logger\": \"<string>\",\n  \"transaction\": \"<string>\",\n  \"server_name\": \"<string>\",\n  \"release\": \"<string>\",\n  \"dist\": \"<string>\",\n  \"tags\": [\n    [\n      \"<string>\",\n      \"<string>\"\n    ],\n    [\n      \"<string>\",\n      \"<string>\"\n    ]\n  ],\n  \"environment\": \"<string>\",\n  \"modules\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"extra\": {\n    \"key_0\": true,\n    \"key_1\": 1713.8107760718867,\n    \"key_2\": \"string\",\n    \"key_3\": 7881.497892239865,\n    \"key_4\": 2040\n  },\n  \"fingerprint\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"exception\": {\n    \"values\": [\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"module\": \"<string>\",\n        \"thread_id\": \"<string>\",\n        \"mechanism\": {\n          \"type\": \"<string>\",\n          \"description\": \"<string>\",\n          \"help_link\": \"<string>\",\n          \"handled\": \"<boolean>\",\n          \"synthetic\": \"<boolean>\",\n          \"is_exception_group\": \"<boolean>\",\n          \"parent_id\": \"<integer>\",\n          \"source\": \"<string>\",\n          \"meta\": {\n            \"key_0\": 6606\n          },\n          \"data\": {\n            \"key_0\": \"string\",\n            \"key_1\": \"string\",\n            \"key_2\": 3616\n          }\n        },\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"module\": \"<string>\",\n        \"thread_id\": \"<string>\",\n        \"mechanism\": {\n          \"type\": \"<string>\",\n          \"description\": \"<string>\",\n          \"help_link\": \"<string>\",\n          \"handled\": \"<boolean>\",\n          \"synthetic\": \"<boolean>\",\n          \"is_exception_group\": \"<boolean>\",\n          \"parent_id\": \"<integer>\",\n          \"source\": \"<string>\",\n          \"meta\": {\n            \"key_0\": 268.1823339100919,\n            \"key_1\": false,\n            \"key_2\": \"string\",\n            \"key_3\": 2197.1635272277513,\n            \"key_4\": true\n          },\n          \"data\": {\n            \"key_0\": 4975.496024605126,\n            \"key_1\": true,\n            \"key_2\": 2475\n          }\n        },\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      }\n    ]\n  },\n  \"threads\": {\n    \"values\": [\n      {\n        \"id\": \"<integer>\",\n        \"current\": \"<boolean>\",\n        \"crashed\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"current\": \"<boolean>\",\n        \"crashed\": \"<boolean>\",\n        \"name\": \"<string>\",\n        \"stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\",\n            \"key_3\": \"<string>\"\n          }\n        },\n        \"raw_stacktrace\": {\n          \"frames\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"registers\": {\n            \"key_0\": \"<string>\",\n            \"key_1\": \"<string>\",\n            \"key_2\": \"<string>\"\n          }\n        }\n      }\n    ]\n  },\n  \"message\": \"<string>\",\n  \"template\": {\n    \"lineno\": \"<integer>\",\n    \"filename\": \"<string>\",\n    \"context_line\": \"<string>\",\n    \"abs_path\": \"<string>\",\n    \"pre_context\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"post_context\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"breadcrumbs\": {\n    \"values\": [\n      {\n        \"type\": \"default\",\n        \"category\": \"<string>\",\n        \"message\": \"<string>\",\n        \"data\": {\n          \"key_0\": 9762,\n          \"key_1\": 9937\n        },\n        \"level\": \"info\",\n        \"timestamp\": \"<dateTime>\"\n      },\n      {\n        \"type\": \"default\",\n        \"category\": \"<string>\",\n        \"message\": \"<string>\",\n        \"data\": {\n          \"key_0\": 9999.44792366822,\n          \"key_1\": 5853.499076379665,\n          \"key_2\": true,\n          \"key_3\": 949\n        },\n        \"level\": \"info\",\n        \"timestamp\": \"<dateTime>\"\n      }\n    ]\n  },\n  \"sdk\": {\n    \"name\": \"<string>\",\n    \"version\": \"<string>\",\n    \"integrations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"packages\": [\n      {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"version\": \"<string>\"\n      }\n    ]\n  },\n  \"request\": {\n    \"api_target\": \"<string>\",\n    \"body_size\": \"<integer>\",\n    \"cookies\": \"<string>\",\n    \"data\": \"<string>\",\n    \"env\": {\n      \"key_0\": 5132,\n      \"key_1\": 1339,\n      \"key_2\": \"string\"\n    },\n    \"fragment\": \"<string>\",\n    \"method\": \"<string>\",\n    \"protocol\": \"<string>\",\n    \"url\": \"<string>\",\n    \"headers\": [\n      [\n        \"<string>\",\n        \"<string>\"\n      ],\n      [\n        \"<string>\",\n        \"<string>\"\n      ]\n    ],\n    \"query_string\": \"<string>\"\n  },\n  \"contexts\": {\n    \"key_0\": {\n      \"type\": \"device\",\n      \"name\": \"<string>\",\n      \"family\": \"<string>\",\n      \"model\": \"<string>\",\n      \"model_id\": \"<string>\",\n      \"arch\": \"<string>\",\n      \"battery_level\": \"<number>\",\n      \"orientation\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"screen_resolution\": \"<string>\",\n      \"screen_height_pixels\": \"<integer>\",\n      \"screen_width_pixels\": \"<integer>\",\n      \"screen_density\": \"<number>\",\n      \"screen_dpi\": \"<number>\",\n      \"online\": \"<boolean>\",\n      \"charging\": \"<boolean>\",\n      \"low_memory\": \"<boolean>\",\n      \"simulator\": \"<boolean>\",\n      \"memory_size\": \"<integer>\",\n      \"free_memory\": \"<integer>\",\n      \"usable_memory\": \"<integer>\",\n      \"storage_size\": \"<integer>\",\n      \"free_storage\": \"<integer>\",\n      \"external_storage_size\": \"<integer>\",\n      \"external_free_storage\": \"<integer>\",\n      \"boot_time\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"language\": \"<string>\",\n      \"processor_count\": \"<integer>\",\n      \"cpu_description\": \"<string>\",\n      \"processor_frequency\": \"<number>\",\n      \"device_type\": \"<string>\",\n      \"battery_status\": \"<string>\",\n      \"device_unique_identifier\": \"<string>\",\n      \"supports_vibration\": \"<boolean>\",\n      \"supports_accelerometer\": \"<boolean>\",\n      \"supports_gyroscope\": \"<boolean>\",\n      \"supports_audio\": \"<boolean>\",\n      \"supports_location_service\": \"<boolean>\"\n    },\n    \"key_1\": {\n      \"type\": \"device\",\n      \"name\": \"<string>\",\n      \"family\": \"<string>\",\n      \"model\": \"<string>\",\n      \"model_id\": \"<string>\",\n      \"arch\": \"<string>\",\n      \"battery_level\": \"<number>\",\n      \"orientation\": \"<string>\",\n      \"manufacturer\": \"<string>\",\n      \"brand\": \"<string>\",\n      \"screen_resolution\": \"<string>\",\n      \"screen_height_pixels\": \"<integer>\",\n      \"screen_width_pixels\": \"<integer>\",\n      \"screen_density\": \"<number>\",\n      \"screen_dpi\": \"<number>\",\n      \"online\": \"<boolean>\",\n      \"charging\": \"<boolean>\",\n      \"low_memory\": \"<boolean>\",\n      \"simulator\": \"<boolean>\",\n      \"memory_size\": \"<integer>\",\n      \"free_memory\": \"<integer>\",\n      \"usable_memory\": \"<integer>\",\n      \"storage_size\": \"<integer>\",\n      \"free_storage\": \"<integer>\",\n      \"external_storage_size\": \"<integer>\",\n      \"external_free_storage\": \"<integer>\",\n      \"boot_time\": \"<string>\",\n      \"timezone\": \"<string>\",\n      \"language\": \"<string>\",\n      \"processor_count\": \"<integer>\",\n      \"cpu_description\": \"<string>\",\n      \"processor_frequency\": \"<number>\",\n      \"device_type\": \"<string>\",\n      \"battery_status\": \"<string>\",\n      \"device_unique_identifier\": \"<string>\",\n      \"supports_vibration\": \"<boolean>\",\n      \"supports_accelerometer\": \"<boolean>\",\n      \"supports_gyroscope\": \"<boolean>\",\n      \"supports_audio\": \"<boolean>\",\n      \"supports_location_service\": \"<boolean>\"\n    }\n  },\n  \"user\": {\n    \"id\": \"<string>\",\n    \"username\": \"<string>\",\n    \"email\": \"<string>\",\n    \"ip_address\": \"<string>\",\n    \"data\": {\n      \"key_0\": false,\n      \"key_1\": \"string\",\n      \"key_2\": 5085.248901889448\n    },\n    \"geo\": {\n      \"city\": \"<string>\",\n      \"country_code\": \"<string>\",\n      \"region\": \"<string>\",\n      \"subdivision\": \"<string>\"\n    }\n  },\n  \"debug_meta\": {\n    \"images\": [\n      {\n        \"type\": \"<string>\",\n        \"code_file\": \"<string>\",\n        \"debug_id\": \"<uuid>\"\n      },\n      {\n        \"type\": \"<string>\",\n        \"code_file\": \"<string>\",\n        \"debug_id\": \"<uuid>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_id\": \"string\",\n  \"task_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.glitchtip.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7d3fe5ff-8760-4c80-aabb-2ca0a6b882d2",
+    "name": "GlitchTip Accept Store API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Email: sales@glitchtip.com",
+      "type": "text/plain"
+    }
+  }
+}
