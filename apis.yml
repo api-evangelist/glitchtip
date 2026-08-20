@@ -25,6 +25,15 @@ tags:
   - Performance Monitoring
   - Uptime Monitoring
   - Application Monitoring
+  - Open-Source
+  - Sentry Compatible
+  - Observability
+  - Logging
+tags_raw:
+  - Error Tracking
+  - Performance Monitoring
+  - Uptime Monitoring
+  - Application Monitoring
   - Open Source
   - Sentry Compatible
   - Observability
@@ -39,6 +48,12 @@ apis:
   humanURL: https://glitchtip.com/sdkdocs/
   baseURL: https://app.glitchtip.com/api/
   tags:
+  - Event
+  - Errors
+  - SDK
+  - Sentry Compatible
+  - Ingestion
+  tags_raw:
   - Events
   - Errors
   - SDKs
@@ -56,6 +71,11 @@ apis:
   humanURL: https://glitchtip.com/documentation/mcp/
   baseURL: https://app.glitchtip.com/mcp
   tags:
+  - MCP
+  - Artificial Intelligence
+  - Issues
+  - Performance
+  tags_raw:
   - MCP
   - AI
   - Model Context Protocol
@@ -82,6 +102,8 @@ apis:
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
+  - API Tokens
+  tags_raw:
   - Api Tokens
   properties:
   - type: OpenAPI
@@ -167,6 +189,8 @@ apis:
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -179,6 +203,8 @@ apis:
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -239,6 +265,8 @@ apis:
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -251,6 +279,8 @@ apis:
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
