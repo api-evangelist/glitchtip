@@ -114,7 +114,7 @@ apis:
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
-  - Api Tokens
+  - API Tokens
   tags_raw:
   - Api Tokens
   properties:
