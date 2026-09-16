@@ -1,6 +1,9 @@
 aid: glitchtip
 name: GlitchTip
-description: GlitchTip is an open-source error tracking and performance monitoring platform compatible with Sentry SDKs. It provides a REST API for managing errors, issues, projects, organizations, and teams, along with uptime monitoring and application performance insights. Available as a hosted SaaS service or self-hosted deployment.
+description: GlitchTip is an open-source error tracking and performance monitoring platform compatible
+  with Sentry SDKs. It provides a REST API for managing errors, issues, projects, organizations, and teams,
+  along with uptime monitoring and application performance insights. Available as a hosted SaaS service
+  or self-hosted deployment.
 type: Index
 deliveryModel:
   model: saas
@@ -31,32 +34,30 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/glitchtip.png
 url: https://raw.githubusercontent.com/api-evangelist/glitchtip/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - Error Tracking
-  - Performance Monitoring
-  - Uptime Monitoring
-  - Application Monitoring
-  - Open-Source
-  - Sentry Compatible
-  - Observability
-  - Logging
+- Error Tracking
+- Performance Monitoring
+- Uptime Monitoring
+- Application Monitoring
+- Open-Source
+- Sentry Compatible
+- Observability
+- Logging
 tags_raw:
-  - Error Tracking
-  - Performance Monitoring
-  - Uptime Monitoring
-  - Application Monitoring
-  - Open Source
-  - Sentry Compatible
-  - Observability
-  - Logging
-
+- Error Tracking
+- Performance Monitoring
+- Uptime Monitoring
+- Application Monitoring
+- Open Source
+- Sentry Compatible
+- Observability
+- Logging
 apis:
 - name: GlitchTip Event Intake API
-  description: >-
-    Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions, and
-    log messages from Sentry-compatible SDKs across Python, JavaScript, Ruby, PHP, Go, Java, and more.
+  description: Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions,
+    and log messages from Sentry-compatible SDKs across Python, JavaScript, Ruby, PHP, Go, Java, and more.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://glitchtip.com/sdkdocs/
   baseURL: https://app.glitchtip.com/api/
@@ -76,10 +77,9 @@ apis:
   - type: Documentation
     url: https://glitchtip.com/sdkdocs/
 - name: GlitchTip MCP Server
-  description: >-
-    Model Context Protocol (MCP) server exposing 17 tools for AI assistants to query organizations, projects,
-    issues, events, performance data, alert rules, and uptime monitors. Authenticated via OAuth 2.0 with
-    GlitchTip API tokens.
+  description: Model Context Protocol (MCP) server exposing 17 tools for AI assistants to query organizations,
+    projects, issues, events, performance data, alert rules, and uptime monitors. Authenticated via OAuth
+    2.0 with GlitchTip API tokens.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://glitchtip.com/documentation/mcp/
   baseURL: https://app.glitchtip.com/mcp
@@ -137,8 +137,7 @@ apis:
     url: https://glitchtip.com/documentation/
 - aid: glitchtip:glitchtip-generate-recovery-codes-api
   name: GlitchTip Generate Recovery Codes API
-  description: >-
-    The Generate Recovery Codes API from GlitchTip — 1 operation(s) for generate recovery codes.
+  description: The Generate Recovery Codes API from GlitchTip — 1 operation(s) for generate recovery codes.
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
   tags:
@@ -149,7 +148,7 @@ apis:
   - type: Documentation
     url: https://glitchtip.com/documentation/
 - aid: glitchtip:glitchtip-glitchtip-api-api
-  name: GlitchTip GlitchTip API API
+  name: GlitchTip API
   description: The GlitchTip API API from GlitchTip — 1 operation(s) for glitchtip api.
   humanURL: https://app.glitchtip.com/api/docs
   baseURL: https://app.glitchtip.com/api/0/
@@ -325,43 +324,42 @@ apis:
   - type: Documentation
     url: https://glitchtip.com/documentation/
 common:
-  - type: AgenticAccess
-    url: agentic-access/glitchtip-agentic-access.yml
-  - type: DomainSecurity
-    url: security/glitchtip-domain-security.yml
-  - type: Authentication
-    url: authentication/glitchtip-authentication.yml
-  - type: Website
-    url: https://glitchtip.com/
-  - type: Documentation
-    url: https://glitchtip.com/documentation/
-  - type: GitHubOrg
-    url: https://gitlab.com/glitchtip
-  - type: Blog
-    url: https://glitchtip.com/blog/
-  - type: Pricing
-    url: https://glitchtip.com/pricing
-  - type: SDKDocumentation
-    url: https://glitchtip.com/sdkdocs/
-  - type: Plans
-    url: plans/glitchtip-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/glitchtip-rate-limits.yml
-  - type: FinOps
-    url: finops/glitchtip-finops.yml
-  - type: Login
-    url: https://app.glitchtip.com/login
-  - type: Register
-    url: https://app.glitchtip.com/register
-  - type: Contact
-    url: mailto:sales@glitchtip.com
-  - type: Mastodon
-    url: https://mastodon.online/@glitchtip
-  - type: Community
-    url: https://gitter.im/GlitchTip/community
-  - type: GitLabIssues
-    url: https://gitlab.com/groups/glitchtip/-/issues
-
+- type: AgenticAccess
+  url: agentic-access/glitchtip-agentic-access.yml
+- type: DomainSecurity
+  url: security/glitchtip-domain-security.yml
+- type: Authentication
+  url: authentication/glitchtip-authentication.yml
+- type: Website
+  url: https://glitchtip.com/
+- type: Documentation
+  url: https://glitchtip.com/documentation/
+- type: GitHubOrg
+  url: https://gitlab.com/glitchtip
+- type: Blog
+  url: https://glitchtip.com/blog/
+- type: Pricing
+  url: https://glitchtip.com/pricing
+- type: SDKDocumentation
+  url: https://glitchtip.com/sdkdocs/
+- type: Plans
+  url: plans/glitchtip-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/glitchtip-rate-limits.yml
+- type: FinOps
+  url: finops/glitchtip-finops.yml
+- type: Login
+  url: https://app.glitchtip.com/login
+- type: Register
+  url: https://app.glitchtip.com/register
+- type: Contact
+  url: mailto:sales@glitchtip.com
+- type: Mastodon
+  url: https://mastodon.online/@glitchtip
+- type: Community
+  url: https://gitter.im/GlitchTip/community
+- type: GitLabIssues
+  url: https://gitlab.com/groups/glitchtip/-/issues
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
