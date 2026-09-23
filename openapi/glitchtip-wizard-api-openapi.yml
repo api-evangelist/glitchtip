@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Wizard API
+  title: GlitchTip Wizard API
   version: 1.0.0
   description: ''
   contact:
@@ -47,8 +47,9 @@ paths:
         name: auth
         schema:
           title: Auth
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':
@@ -77,8 +78,9 @@ paths:
         name: auth
         schema:
           title: Auth
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':

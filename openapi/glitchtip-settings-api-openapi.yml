@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Settings API
+  title: GlitchTip Settings API
   version: 1.0.0
   description: ''
   contact:
@@ -31,38 +31,6 @@ paths:
       - Settings
 components:
   schemas:
-    SocialAppSchema:
-      properties:
-        scopes:
-          items:
-            type: string
-          title: Scopes
-          type: array
-        authorize_url:
-          title: Authorize Url
-          nullable: true
-          type: string
-        name:
-          maxLength: 40
-          title: Name
-          type: string
-        client_id:
-          description: App ID, or consumer key
-          maxLength: 191
-          title: Client Id
-          type: string
-        provider:
-          maxLength: 30
-          title: Provider
-          type: string
-      required:
-      - scopes
-      - authorize_url
-      - name
-      - client_id
-      - provider
-      title: SocialAppSchema
-      type: object
     SettingsOut:
       properties:
         socialApps:
@@ -87,32 +55,39 @@ components:
           type: boolean
         stripePublicKey:
           title: Stripepublickey
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         plausibleUrl:
           title: Plausibleurl
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         plausibleDomain:
           title: Plausibledomain
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         chatwootWebsiteToken:
           title: Chatwootwebsitetoken
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         sentryDSN:
           title: Sentrydsn
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         sentryTracesSampleRate:
           title: Sentrytracessamplerate
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         environment:
           title: Environment
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         version:
           title: Version
           type: string
@@ -121,8 +96,9 @@ components:
           type: string
         glitchtipInstanceName:
           title: Glitchtipinstancename
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         enabledFeatures:
           items:
             type: string
@@ -147,6 +123,39 @@ components:
       - glitchtipInstanceName
       - enabledFeatures
       title: SettingsOut
+      type: object
+    SocialAppSchema:
+      properties:
+        scopes:
+          items:
+            type: string
+          title: Scopes
+          type: array
+        authorize_url:
+          title: Authorize Url
+          type:
+          - string
+          - 'null'
+        name:
+          maxLength: 40
+          title: Name
+          type: string
+        client_id:
+          description: App ID, or consumer key
+          maxLength: 191
+          title: Client Id
+          type: string
+        provider:
+          maxLength: 30
+          title: Provider
+          type: string
+      required:
+      - scopes
+      - authorize_url
+      - name
+      - client_id
+      - provider
+      title: SocialAppSchema
       type: object
   securitySchemes:
     TokenAuth:

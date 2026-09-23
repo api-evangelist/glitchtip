@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Teams API
+  title: GlitchTip Teams API
   version: 1.0.0
   description: ''
   contact:
@@ -37,8 +37,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -46,8 +47,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -87,8 +89,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -96,8 +99,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -240,41 +244,6 @@ paths:
       - Teams
 components:
   schemas:
-    TeamProjectSchema:
-      description: TeamSchema with related projects
-      properties:
-        id:
-          title: Id
-          type: string
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        isMember:
-          title: Ismember
-          type: boolean
-        memberCount:
-          title: Membercount
-          type: integer
-        projects:
-          default: []
-          items:
-            $ref: '#/components/schemas/ProjectSchema'
-          title: Projects
-          type: array
-      required:
-      - id
-      - slug
-      - dateCreated
-      - isMember
-      - memberCount
-      title: TeamProjectSchema
-      type: object
     ProjectSchema:
       description: 'A project is an organizational unit for GlitchTip events. It may contain
 
@@ -288,15 +257,17 @@ components:
           type: string
         slug:
           title: Slug
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           title: Id
           type: string
         avatar:
           additionalProperties:
-            nullable: true
-            type: string
+            type:
+            - string
+            - 'null'
           default:
             avatarType: ''
             avatarUuid: null
@@ -340,13 +311,15 @@ components:
           type: string
         platform:
           title: Platform
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         firstEvent:
           title: First Event
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         eventThrottleRate:
           default: 0
           description: Probability (in percent) on how many events are throttled. Used for throttling at project level
@@ -360,46 +333,6 @@ components:
       - dateCreated
       title: ProjectSchema
       type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          nullable: true
-          format: email
-          type: string
-        username:
-          title: Username
-          nullable: true
-          type: string
-        id:
-          title: ID
-          nullable: true
-          type: integer
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
     ProjectIn:
       properties:
         name:
@@ -408,19 +341,103 @@ components:
           type: string
         slug:
           title: Slug
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         platform:
           title: Platform
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         eventThrottleRate:
           title: Eventthrottlerate
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
       required:
       - name
       title: ProjectIn
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
+      type: object
+    TeamIn:
+      properties:
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+      required:
+      - slug
+      title: TeamIn
+      type: object
+    OrganizationUserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        role:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Role
+          type: string
+        roleName:
+          title: Rolename
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        email:
+          title: Email
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSchema'
+        pending:
+          title: Pending
+          type: boolean
+        isOwner:
+          title: Isowner
+          type: boolean
+      required:
+      - id
+      - role
+      - roleName
+      - dateCreated
+      - email
+      - pending
+      - isOwner
+      title: OrganizationUserSchema
       type: object
     UserSchema:
       properties:
@@ -451,9 +468,10 @@ components:
           type: array
         lastLogin:
           title: Last Login
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         isSuperuser:
           default: false
           description: Designates that this user has all permissions without explicitly assigning them.
@@ -466,9 +484,10 @@ components:
           type: boolean
         name:
           title: Name
-          nullable: true
           maxLength: 255
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - id
       - options
@@ -479,82 +498,83 @@ components:
       - identities
       title: UserSchema
       type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          nullable: true
-          type: string
-        stacktraceOrder:
-          title: Stacktraceorder
-          nullable: true
-          type: integer
-        language:
-          title: Language
-          nullable: true
-          type: string
-        clock24Hours:
-          title: Clock24Hours
-          nullable: true
-          type: boolean
-        preferredTheme:
-          title: Preferredtheme
-          nullable: true
-          type: string
-      title: UserOptions
-      type: object
-    OrganizationUserSchema:
+    TeamProjectSchema:
+      description: TeamSchema with related projects
       properties:
         id:
           title: Id
           type: string
-        role:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Role
-          type: string
-        roleName:
-          title: Rolename
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        email:
-          title: Email
-          type: string
-        user:
-          nullable: true
-          $ref: '#/components/schemas/UserSchema'
-        pending:
-          title: Pending
-          type: boolean
-        isOwner:
-          title: Isowner
-          type: boolean
-      required:
-      - id
-      - role
-      - roleName
-      - dateCreated
-      - email
-      - pending
-      - isOwner
-      title: OrganizationUserSchema
-      type: object
-    TeamIn:
-      properties:
         slug:
           maxLength: 50
           pattern: ^[-a-zA-Z0-9_]+$
           title: Slug
           type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        isMember:
+          title: Ismember
+          type: boolean
+        memberCount:
+          title: Membercount
+          type: integer
+        projects:
+          default: []
+          items:
+            $ref: '#/components/schemas/ProjectSchema'
+          title: Projects
+          type: array
       required:
+      - id
       - slug
-      title: TeamIn
+      - dateCreated
+      - isMember
+      - memberCount
+      title: TeamProjectSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
       type: object
   securitySchemes:
     TokenAuth:

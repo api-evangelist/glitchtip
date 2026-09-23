@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Stripe API
+  title: GlitchTip Stripe API
   version: 1.0.0
   description: ''
   contact:
@@ -52,7 +52,6 @@ paths:
           content:
             application/json:
               schema:
-                nullable: true
                 $ref: '#/components/schemas/StripeSubscriptionSchema'
       security:
       - TokenAuth: []
@@ -209,8 +208,9 @@ components:
           type: integer
         default_price_id:
           title: Default Price
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - stripeID
       - name
@@ -218,100 +218,11 @@ components:
       - events
       title: StripeProductSchema
       type: object
-    StripeSubscriptionSchema:
+    SubscriptionUsageSchema:
       properties:
-        stripeID:
-          title: Stripeid
-          type: string
-        product:
-          $ref: '#/components/schemas/StripeProductSchema'
-        price:
-          $ref: '#/components/schemas/StripeNestedPriceSchema'
-        status:
-          nullable: true
-          $ref: '#/components/schemas/SubscriptionStatus'
-        collectionMethod:
-          $ref: '#/components/schemas/CollectionMethod'
-        created:
-          format: date-time
-          title: Created
-          type: string
-        currentPeriodStart:
-          format: date-time
-          title: Current Period Start
-          type: string
-        currentPeriodEnd:
-          format: date-time
-          title: Current Period End
-          type: string
-        startDate:
-          format: date-time
-          title: Start Date
-          type: string
-        subscriptionCycleStart:
-          title: Subscription Cycle Start
-          nullable: true
-          format: date-time
-          type: string
-        subscriptionCycleEnd:
-          title: Subscription Cycle End
-          nullable: true
-          format: date-time
-          type: string
-      required:
-      - stripeID
-      - product
-      - price
-      - status
-      - collectionMethod
-      - created
-      - currentPeriodStart
-      - currentPeriodEnd
-      - startDate
-      title: StripeSubscriptionSchema
-      type: object
-    SubscriptionStatus:
-      enum:
-      - incomplete
-      - incomplete_expired
-      - trialing
-      - active
-      - past_due
-      - canceled
-      - unpaid
-      - paused
-      title: SubscriptionStatus
-      type: string
-    StripeCheckoutSessionSchema:
-      properties:
-        url:
-          title: Url
-          type: string
-      required:
-      - url
-      title: StripeCheckoutSessionSchema
-      type: object
-    StripePortalSessionSchema:
-      properties:
-        url:
-          title: Url
-          type: string
-      required:
-      - url
-      title: StripePortalSessionSchema
-      type: object
-    CollectionMethod:
-      enum:
-      - charge_automatically
-      - send_invoice
-      title: CollectionMethod
-      type: string
-    DailyEventCountEntry:
-      properties:
-        date:
-          format: date
-          title: Date
-          type: string
+        total:
+          title: Total
+          type: integer
         eventCount:
           title: Eventcount
           type: integer
@@ -324,37 +235,17 @@ components:
         logEventCount:
           title: Logeventcount
           type: integer
+        fileSizeMb:
+          title: Filesizemb
+          type: integer
       required:
-      - date
+      - total
       - eventCount
       - transactionEventCount
       - uptimeCheckEventCount
       - logEventCount
-      title: DailyEventCountEntry
-      type: object
-    SubscriptionIn:
-      properties:
-        price:
-          title: Price
-          type: string
-        organization:
-          title: Organization
-          type: string
-      required:
-      - price
-      - organization
-      title: SubscriptionIn
-      type: object
-    DailyEventsCountSchema:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/DailyEventCountEntry'
-          title: Data
-          type: array
-      required:
-      - data
-      title: DailyEventsCountSchema
+      - fileSizeMb
+      title: SubscriptionUsageSchema
       type: object
     CreateSubscriptionResponse:
       properties:
@@ -390,34 +281,109 @@ components:
       - price
       title: StripeNestedPriceSchema
       type: object
-    SubscriptionUsageSchema:
+    StripePortalSessionSchema:
       properties:
-        total:
-          title: Total
-          type: integer
-        eventCount:
-          title: Eventcount
-          type: integer
-        transactionEventCount:
-          title: Transactioneventcount
-          type: integer
-        uptimeCheckEventCount:
-          title: Uptimecheckeventcount
-          type: integer
-        logEventCount:
-          title: Logeventcount
-          type: integer
-        fileSizeMb:
-          title: Filesizemb
-          type: integer
+        url:
+          title: Url
+          type: string
       required:
-      - total
-      - eventCount
-      - transactionEventCount
-      - uptimeCheckEventCount
-      - logEventCount
-      - fileSizeMb
-      title: SubscriptionUsageSchema
+      - url
+      title: StripePortalSessionSchema
+      type: object
+    SubscriptionStatus:
+      enum:
+      - incomplete
+      - incomplete_expired
+      - trialing
+      - active
+      - past_due
+      - canceled
+      - unpaid
+      - paused
+      title: SubscriptionStatus
+      type: string
+    StripeSubscriptionSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        product:
+          $ref: '#/components/schemas/StripeProductSchema'
+        price:
+          $ref: '#/components/schemas/StripeNestedPriceSchema'
+        status:
+          $ref: '#/components/schemas/SubscriptionStatus'
+        collectionMethod:
+          $ref: '#/components/schemas/CollectionMethod'
+        created:
+          format: date-time
+          title: Created
+          type: string
+        currentPeriodStart:
+          format: date-time
+          title: Current Period Start
+          type: string
+        currentPeriodEnd:
+          format: date-time
+          title: Current Period End
+          type: string
+        startDate:
+          format: date-time
+          title: Start Date
+          type: string
+        subscriptionCycleStart:
+          title: Subscription Cycle Start
+          format: date-time
+          type:
+          - string
+          - 'null'
+        subscriptionCycleEnd:
+          title: Subscription Cycle End
+          format: date-time
+          type:
+          - string
+          - 'null'
+      required:
+      - stripeID
+      - product
+      - price
+      - status
+      - collectionMethod
+      - created
+      - currentPeriodStart
+      - currentPeriodEnd
+      - startDate
+      title: StripeSubscriptionSchema
+      type: object
+    CollectionMethod:
+      enum:
+      - charge_automatically
+      - send_invoice
+      title: CollectionMethod
+      type: string
+    DailyEventsCountSchema:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DailyEventCountEntry'
+          title: Data
+          type: array
+      required:
+      - data
+      title: DailyEventsCountSchema
+      type: object
+    SubscriptionIn:
+      properties:
+        price:
+          title: Price
+          type: string
+        organization:
+          title: Organization
+          type: string
+      required:
+      - price
+      - organization
+      title: SubscriptionIn
       type: object
     StripeProductExpandedPriceSchema:
       properties:
@@ -454,6 +420,41 @@ components:
       - description
       - events
       title: StripeProductExpandedPriceSchema
+      type: object
+    DailyEventCountEntry:
+      properties:
+        date:
+          format: date
+          title: Date
+          type: string
+        eventCount:
+          title: Eventcount
+          type: integer
+        transactionEventCount:
+          title: Transactioneventcount
+          type: integer
+        uptimeCheckEventCount:
+          title: Uptimecheckeventcount
+          type: integer
+        logEventCount:
+          title: Logeventcount
+          type: integer
+      required:
+      - date
+      - eventCount
+      - transactionEventCount
+      - uptimeCheckEventCount
+      - logEventCount
+      title: DailyEventCountEntry
+      type: object
+    StripeCheckoutSessionSchema:
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: StripeCheckoutSessionSchema
       type: object
     PriceIDSchema:
       properties:

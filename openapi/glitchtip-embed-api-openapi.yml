@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Embed API
+  title: GlitchTip Embed API
   version: 1.0.0
   description: ''
   contact:
@@ -113,15 +113,17 @@ paths:
         name: name
         schema:
           title: Name
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: email
         schema:
           title: Email
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':
@@ -225,15 +227,17 @@ paths:
         name: name
         schema:
           title: Name
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: email
         schema:
           title: Email
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':
@@ -247,16 +251,19 @@ paths:
               properties:
                 name:
                   title: Name
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                 email:
                   title: Email
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                 comments:
                   title: Comments
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
               required:
               - name
               - email

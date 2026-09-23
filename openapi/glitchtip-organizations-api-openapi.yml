@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Organizations API
+  title: GlitchTip Organizations API
   version: 1.0.0
   description: ''
   contact:
@@ -42,8 +42,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -51,8 +52,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -141,10 +143,11 @@ paths:
         schema:
           description: Filter by project IDs
           title: Project
-          nullable: true
           items:
             type: integer
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
         description: Filter by project IDs
       - in: query
@@ -152,10 +155,11 @@ paths:
         schema:
           description: Filter by log levels
           title: Level
-          nullable: true
           items:
             type: string
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
         description: Filter by log levels
       - in: query
@@ -163,8 +167,9 @@ paths:
         schema:
           description: Filter by service name
           title: Service
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Filter by service name
       - in: query
@@ -172,8 +177,9 @@ paths:
         schema:
           description: Filter by environment
           title: Environment
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Filter by environment
       - in: query
@@ -181,8 +187,9 @@ paths:
         schema:
           description: Filter by host name
           title: Host
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Filter by host name
       - in: query
@@ -190,8 +197,9 @@ paths:
         schema:
           description: Filter by trace ID
           title: Traceid
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Filter by trace ID
       - in: query
@@ -199,8 +207,9 @@ paths:
         schema:
           description: Search in log body
           title: Query
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Search in log body
       - in: query
@@ -208,9 +217,10 @@ paths:
         schema:
           description: Start of time range
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Start of time range
       - in: query
@@ -218,9 +228,10 @@ paths:
         schema:
           description: End of time range
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: End of time range
       - in: query
@@ -228,8 +239,9 @@ paths:
         schema:
           description: Pagination cursor
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Pagination cursor
       - in: query
@@ -334,10 +346,11 @@ paths:
         schema:
           description: Filter by project IDs
           title: Project
-          nullable: true
           items:
             type: integer
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
         description: Filter by project IDs
       - in: query
@@ -345,10 +358,11 @@ paths:
         schema:
           description: Filter by log levels
           title: Level
-          nullable: true
           items:
             type: string
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
         description: Filter by log levels
       - in: query
@@ -356,10 +370,11 @@ paths:
         schema:
           description: Filter by service names
           title: Service
-          nullable: true
           items:
             type: string
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
         description: Filter by service names
       - in: query
@@ -367,10 +382,11 @@ paths:
         schema:
           description: Filter by environment names
           title: Environment
-          nullable: true
           items:
             type: string
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
         description: Filter by environment names
       - in: query
@@ -378,9 +394,10 @@ paths:
         schema:
           description: Start of time range
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: Start of time range
       - in: query
@@ -388,9 +405,10 @@ paths:
         schema:
           description: End of time range
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: End of time range
       responses:
@@ -428,8 +446,9 @@ paths:
         name: resource_type
         schema:
           title: Resource Type
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':
@@ -461,30 +480,34 @@ paths:
         name: owner
         schema:
           title: Owner
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         required: false
       - in: query
         name: query
         schema:
           title: Query
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: sortBy
         schema:
           title: Sortby
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: limit
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -492,8 +515,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -628,8 +652,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -637,8 +662,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -816,17 +842,19 @@ paths:
         name: start
         schema:
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: end
         schema:
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: sort
@@ -855,16 +883,18 @@ paths:
         name: query
         schema:
           title: Query
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: limit
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -872,8 +902,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       - in: path
@@ -947,17 +978,19 @@ paths:
         name: start
         schema:
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: end
         schema:
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':
@@ -989,17 +1022,19 @@ paths:
         name: start
         schema:
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: end
         schema:
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: project
@@ -1014,8 +1049,9 @@ paths:
         name: op
         schema:
           title: Op
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: sort
@@ -1068,17 +1104,19 @@ paths:
         name: start
         schema:
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: end
         schema:
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: project
@@ -1094,8 +1132,9 @@ paths:
         schema:
           default: db
           title: Op
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: threshold
@@ -1147,17 +1186,19 @@ paths:
         name: start
         schema:
           title: Start
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: end
         schema:
           title: End
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       responses:
         '200':
@@ -1189,16 +1230,18 @@ paths:
         name: query
         schema:
           title: Query
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: limit
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1206,8 +1249,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -1255,22 +1299,24 @@ paths:
         schema:
           default: 1h
           title: Interval
-          nullable: true
           enum:
           - 1d
           - 1h
           - 1m
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
       - in: query
         name: project
         schema:
           title: Project
-          nullable: true
           items:
             minimum: -1
             type: integer
-          type: array
+          type:
+          - array
+          - 'null'
         required: false
       - in: query
         name: field
@@ -1331,8 +1377,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1340,8 +1387,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -1429,8 +1477,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1438,8 +1487,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -1606,8 +1656,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1615,8 +1666,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -1770,16 +1822,18 @@ paths:
         name: is_change
         schema:
           title: Is Change
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         required: false
       - in: query
         name: limit
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1787,8 +1841,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -1827,8 +1882,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1836,8 +1892,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -1928,8 +1985,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -1937,8 +1995,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -2065,8 +2124,9 @@ paths:
         schema:
           description: Number of results to return per page.
           title: Limit
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
@@ -2074,8 +2134,9 @@ paths:
         schema:
           description: The pagination cursor value.
           title: Cursor
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -2332,115 +2393,12 @@ paths:
       - Organizations
 components:
   schemas:
-    MonitorDetailSchema:
-      properties:
-        projectID:
-          title: Projectid
-          nullable: true
-          type: string
-        environmentID:
-          title: Environmentid
-          nullable: true
-          type: integer
-        isUp:
-          title: Isup
-          nullable: true
-          type: boolean
-        lastChange:
-          title: Lastchange
-          nullable: true
-          type: string
-        heartbeatEndpoint:
-          title: Heartbeatendpoint
-          nullable: true
-          type: string
-        projectName:
-          title: Projectname
-          nullable: true
-          type: string
-        envName:
-          title: Envname
-          nullable: true
-          type: string
-        checks:
-          items:
-            $ref: '#/components/schemas/MonitorCheckResponseTimeSchema'
-          title: Checks
-          type: array
-        organizationID:
-          title: Organizationid
-          type: integer
-        monitorType:
-          $ref: '#/components/schemas/MonitorType'
-        id:
-          title: ID
-          nullable: true
-          type: integer
-        endpointID:
-          description: Used for referencing heartbeat endpoint
-          title: Endpoint Id
-          nullable: true
-          format: uuid
-          type: string
-        created:
-          format: date-time
-          title: Created
-          type: string
-        name:
-          maxLength: 200
-          title: Name
-          type: string
-        url:
-          title: Url
-          nullable: true
-          maxLength: 2000
-          type: string
-        expectedStatus:
-          default: 200
-          title: Expected Status
-          nullable: true
-          type: integer
-        expectedBody:
-          title: Expected Body
-          nullable: true
-          maxLength: 2000
-          type: string
-        interval:
-          default: 60
-          title: Interval
-          type: integer
-        timeout:
-          description: Blank implies default value of 20
-          title: Timeout
-          nullable: true
-          type: integer
-      required:
-      - projectID
-      - environmentID
-      - isUp
-      - lastChange
-      - heartbeatEndpoint
-      - checks
-      - organizationID
-      - monitorType
-      - created
-      - name
-      title: MonitorDetailSchema
-      type: object
-    TeamRole:
-      properties:
-        teamSlug:
-          title: Teamslug
-          type: string
-        role:
-          default: ''
-          title: Role
-          type: string
-      required:
-      - teamSlug
-      title: TeamRole
-      type: object
-    NameSlugProjectSchema:
+    ProjectSchema:
+      description: 'A project is an organizational unit for GlitchTip events. It may contain
+
+        DSN keys, be connected to exactly one organization, and provide user permissions
+
+        through teams.'
       properties:
         name:
           maxLength: 64
@@ -2448,205 +2406,321 @@ components:
           type: string
         slug:
           title: Slug
-          nullable: true
-          type: string
-      required:
-      - name
-      title: NameSlugProjectSchema
-      type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          nullable: true
-          format: email
-          type: string
-        username:
-          title: Username
-          nullable: true
-          type: string
-        id:
-          title: ID
-          nullable: true
-          type: integer
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
-    MonitorIn:
-      properties:
-        expectedBody:
-          title: Expectedbody
-          type: string
-        expectedStatus:
-          title: Expectedstatus
-          nullable: true
-          type: integer
-        timeout:
-          title: Timeout
-          nullable: true
-          maximum: 60
-          minimum: 1
-          type: integer
-        project:
-          title: Project
-          nullable: true
-          type: string
-        monitorType:
-          default: Ping
-          maxLength: 12
-          title: Monitor Type
-          type: string
-        name:
-          maxLength: 200
-          title: Name
-          type: string
-        url:
-          title: Url
-          nullable: true
-          maxLength: 2000
-          type: string
-        interval:
-          default: 60
-          title: Interval
-          type: integer
-      required:
-      - expectedBody
-      - expectedStatus
-      - timeout
-      - name
-      title: MonitorIn
-      type: object
-    RepositoryIn:
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          default: ''
-          title: Url
-          type: string
-        provider:
-          title: Provider
-          nullable: true
-          additionalProperties: true
-          type: object
-      required:
-      - name
-      title: RepositoryIn
-      type: object
-    TeamSchema:
-      properties:
+          type:
+          - string
+          - 'null'
         id:
           title: Id
           type: string
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        color:
+          default: ''
+          title: Color
           type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
+        features:
+          default: []
+          items:
+            type: string
+          title: Features
+          type: array
+        hasAccess:
+          default: true
+          title: Hasaccess
+          type: boolean
+        isBookmarked:
+          default: false
+          title: Isbookmarked
+          type: boolean
+        isInternal:
+          default: false
+          title: Isinternal
+          type: boolean
         isMember:
           title: Ismember
           type: boolean
-        memberCount:
-          title: Membercount
-          type: integer
-      required:
-      - id
-      - slug
-      - dateCreated
-      - isMember
-      - memberCount
-      title: TeamSchema
-      type: object
-    RepositorySchema:
-      properties:
-        id:
-          title: Id
-          type: string
+        isPublic:
+          default: false
+          title: Ispublic
+          type: boolean
+        scrubIPAddresses:
+          title: Scrubipaddresses
+          type: boolean
         dateCreated:
           format: date-time
           title: Datecreated
           type: string
+        platform:
+          title: Platform
+          type:
+          - string
+          - 'null'
+        firstEvent:
+          title: First Event
+          format: date-time
+          type:
+          - string
+          - 'null'
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+      required:
+      - name
+      - id
+      - isMember
+      - scrubIPAddresses
+      - dateCreated
+      title: ProjectSchema
+      type: object
+    OrganizationUserIn:
+      properties:
+        orgRole:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Orgrole
+          type: string
+        teamRoles:
+          items:
+            $ref: '#/components/schemas/TeamRole'
+          title: Teamroles
+          type: array
+        email:
+          format: email
+          title: Email
+          type: string
+        sendInvite:
+          default: true
+          title: Sendinvite
+          type: boolean
+        reinvite:
+          default: true
+          title: Reinvite
+          type: boolean
+      required:
+      - orgRole
+      - email
+      title: OrganizationUserIn
+      type: object
+    ReleaseRepositorySchema:
+      properties:
+        id:
+          title: Id
+          type: string
         name:
-          maxLength: 200
           title: Name
+          type: string
+      required:
+      - id
+      - name
+      title: ReleaseRepositorySchema
+      type: object
+    DeploySchema:
+      properties:
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        dateStarted:
+          title: Datestarted
+          format: date-time
+          type:
+          - string
+          - 'null'
+        dateFinished:
+          title: Datefinished
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        environment:
+          maxLength: 64
+          title: Environment
           type: string
         url:
           default: ''
           title: Url
-          nullable: true
-          type: string
-        status:
-          default: active
-          maxLength: 24
-          title: Status
-          type: string
-        provider:
-          title: Provider
-          nullable: true
-          type: object
+          maxLength: 200
+          type:
+          - string
+          - 'null'
       required:
-      - id
       - dateCreated
-      - name
-      title: RepositorySchema
+      - dateStarted
+      - dateFinished
+      - environment
+      title: DeploySchema
+      type: object
+    OrganizationUserUpdateSchema:
+      properties:
+        orgRole:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Orgrole
+          type: string
+        teamRoles:
+          items:
+            $ref: '#/components/schemas/TeamRole'
+          title: Teamroles
+          type: array
+      required:
+      - orgRole
+      title: OrganizationUserUpdateSchema
+      type: object
+    MonitorCheckSchema:
+      properties:
+        isUp:
+          title: Is Up
+          type: boolean
+        startCheck:
+          description: Time when the start of this check was performed
+          format: date-time
+          title: Start Check
+          type: string
+        reason:
+          default: 0
+          title: Reason
+          type:
+          - integer
+          - 'null'
+      required:
+      - isUp
+      title: MonitorCheckSchema
+      type: object
+    TransactionGroupSchema:
+      properties:
+        project:
+          title: Project
+          type: integer
+        id:
+          title: Id
+          type: integer
+        transaction:
+          maxLength: 1024
+          title: Transaction
+          type: string
+        op:
+          maxLength: 255
+          title: Op
+          type: string
+        method:
+          default: ''
+          title: Method
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+        count:
+          default: 0
+          title: Count
+          type: integer
+        avgDuration:
+          default: 0
+          description: Average duration in ms
+          title: Avg Duration
+          type: number
+        p50:
+          title: P50
+          type:
+          - number
+          - 'null'
+        p95:
+          title: P95
+          type:
+          - number
+          - 'null'
+        errorCount:
+          default: 0
+          title: Error Count
+          type: integer
+        firstSeen:
+          format: date-time
+          title: First Seen
+          type: string
+        lastSeen:
+          format: date-time
+          title: Last Seen
+          type: string
+        errorRate:
+          description: Delegates to TransactionGroup.error_rate property.
+          readOnly: true
+          title: Errorrate
+          type: number
+        throughput:
+          description: Delegates to TransactionGroup.throughput property.
+          readOnly: true
+          title: Throughput
+          type:
+          - number
+          - 'null'
+      required:
+      - project
+      - id
+      - transaction
+      - op
+      - firstSeen
+      - lastSeen
+      - errorRate
+      - throughput
+      title: TransactionGroupSchema
       type: object
     MonitorSchema:
       properties:
         projectID:
           title: Projectid
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         environmentID:
           title: Environmentid
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         isUp:
           title: Isup
-          nullable: true
-          type: boolean
+          type:
+          - boolean
+          - 'null'
         lastChange:
           title: Lastchange
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         heartbeatEndpoint:
           title: Heartbeatendpoint
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         projectName:
           title: Projectname
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         envName:
           title: Envname
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         checks:
           items:
             $ref: '#/components/schemas/MonitorCheckSchema'
@@ -2659,14 +2733,16 @@ components:
           $ref: '#/components/schemas/MonitorType'
         id:
           title: ID
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         endpointID:
           description: Used for referencing heartbeat endpoint
           title: Endpoint Id
-          nullable: true
           format: uuid
-          type: string
+          type:
+          - string
+          - 'null'
         created:
           format: date-time
           title: Created
@@ -2677,19 +2753,22 @@ components:
           type: string
         url:
           title: Url
-          nullable: true
           maxLength: 2000
-          type: string
+          type:
+          - string
+          - 'null'
         expectedStatus:
           default: 200
           title: Expected Status
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         expectedBody:
           title: Expected Body
-          nullable: true
           maxLength: 2000
-          type: string
+          type:
+          - string
+          - 'null'
         interval:
           default: 60
           title: Interval
@@ -2697,8 +2776,9 @@ components:
         timeout:
           description: Blank implies default value of 20
           title: Timeout
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
       required:
       - projectID
       - environmentID
@@ -2712,76 +2792,7 @@ components:
       - name
       title: MonitorSchema
       type: object
-    StatusPageSchema:
-      properties:
-        isPublic:
-          description: When true, the status page URL is publicly accessible
-          title: Is Public
-          type: boolean
-        name:
-          maxLength: 200
-          title: Name
-          type: string
-        monitors:
-          items:
-            $ref: '#/components/schemas/MonitorSchema'
-          title: Monitors
-          type: array
-        slug:
-          title: Slug
-          nullable: true
-          maxLength: 200
-          type: string
-      required:
-      - isPublic
-      - name
-      - monitors
-      title: StatusPageSchema
-      type: object
-    EnvironmentSchema:
-      properties:
-        id:
-          title: ID
-          nullable: true
-          type: integer
-        name:
-          maxLength: 255
-          title: Name
-          type: string
-      required:
-      - name
-      title: EnvironmentSchema
-      type: object
-    LogResourceSchema:
-      description: Schema for resource name in list.
-      properties:
-        name:
-          title: Name
-          type: string
-        type:
-          title: Type
-          type: string
-        lastSeen:
-          format: date-time
-          title: Lastseen
-          type: string
-      required:
-      - name
-      - type
-      - lastSeen
-      title: LogResourceSchema
-      type: object
-    OrganizationUserInviteSchema:
-      description: 'Response for the invite (member create) endpoint.
-
-
-        Surfaces the acceptance link so the frontend can offer a copy-link invite
-
-        flow. This is the only delivery path when email is disabled, and a harmless
-
-        convenience when email works. The link carries the same time-limited token
-
-        the invite email uses, so possessing it is what grants acceptance.'
+    OrganizationUserSchema:
       properties:
         id:
           title: Id
@@ -2805,7 +2816,6 @@ components:
           title: Email
           type: string
         user:
-          nullable: true
           $ref: '#/components/schemas/UserSchema'
         pending:
           title: Pending
@@ -2813,10 +2823,6 @@ components:
         isOwner:
           title: Isowner
           type: boolean
-        inviteLink:
-          title: Invitelink
-          nullable: true
-          type: string
       required:
       - id
       - role
@@ -2825,7 +2831,7 @@ components:
       - email
       - pending
       - isOwner
-      title: OrganizationUserInviteSchema
+      title: OrganizationUserSchema
       type: object
     UserSchema:
       properties:
@@ -2856,9 +2862,10 @@ components:
           type: array
         lastLogin:
           title: Last Login
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         isSuperuser:
           default: false
           description: Designates that this user has all permissions without explicitly assigning them.
@@ -2871,9 +2878,10 @@ components:
           type: boolean
         name:
           title: Name
-          nullable: true
           maxLength: 255
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - id
       - options
@@ -2884,288 +2892,6 @@ components:
       - identities
       title: UserSchema
       type: object
-    OrganizationUserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        role:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Role
-          type: string
-        roleName:
-          title: Rolename
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        email:
-          title: Email
-          type: string
-        user:
-          nullable: true
-          $ref: '#/components/schemas/UserSchema'
-        pending:
-          title: Pending
-          type: boolean
-        isOwner:
-          title: Isowner
-          type: boolean
-      required:
-      - id
-      - role
-      - roleName
-      - dateCreated
-      - email
-      - pending
-      - isOwner
-      title: OrganizationUserSchema
-      type: object
-    TeamIn:
-      properties:
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
-          type: string
-      required:
-      - slug
-      title: TeamIn
-      type: object
-    DeploySchema:
-      properties:
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        dateStarted:
-          title: Datestarted
-          nullable: true
-          format: date-time
-          type: string
-        dateFinished:
-          title: Datefinished
-          nullable: true
-          format: date-time
-          type: string
-        id:
-          title: ID
-          nullable: true
-          type: integer
-        environment:
-          maxLength: 64
-          title: Environment
-          type: string
-        url:
-          default: ''
-          title: Url
-          nullable: true
-          maxLength: 200
-          type: string
-      required:
-      - dateCreated
-      - dateStarted
-      - dateFinished
-      - environment
-      title: DeploySchema
-      type: object
-    MonitorCheckSchema:
-      properties:
-        isUp:
-          title: Is Up
-          type: boolean
-        startCheck:
-          description: Time when the start of this check was performed
-          format: date-time
-          title: Start Check
-          type: string
-        reason:
-          default: 0
-          title: Reason
-          nullable: true
-          type: integer
-      required:
-      - isUp
-      title: MonitorCheckSchema
-      type: object
-    MonitorCheckResponseTimeSchema:
-      description: Monitor check with response time. Used in Monitors detail api and monitor checks list
-      properties:
-        isUp:
-          title: Is Up
-          type: boolean
-        startCheck:
-          description: Time when the start of this check was performed
-          format: date-time
-          title: Start Check
-          type: string
-        reason:
-          default: 0
-          title: Reason
-          nullable: true
-          type: integer
-        responseTime:
-          description: Reponse time in milliseconds
-          title: Response Time
-          nullable: true
-          type: integer
-      required:
-      - isUp
-      title: MonitorCheckResponseTimeSchema
-      type: object
-    ReleaseSchema:
-      properties:
-        ref:
-          title: Ref
-          nullable: true
-          type: string
-        dateReleased:
-          title: Datereleased
-          nullable: true
-          format: date-time
-          type: string
-        version:
-          maxLength: 255
-          title: Version
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        shortVersion:
-          title: Shortversion
-          type: string
-        projects:
-          items:
-            $ref: '#/components/schemas/NameSlugProjectSchema'
-          title: Projects
-          type: array
-        repository:
-          nullable: true
-          $ref: '#/components/schemas/ReleaseRepositorySchema'
-        url:
-          title: Url
-          nullable: true
-          type: string
-        data:
-          title: Data
-          type: object
-        commitCount:
-          default: 0
-          title: Commit Count
-          type: integer
-        deployCount:
-          default: 0
-          title: Deploy Count
-          type: integer
-      required:
-      - dateReleased
-      - version
-      - dateCreated
-      - shortVersion
-      - projects
-      title: ReleaseSchema
-      type: object
-    LogStatsSchema:
-      description: Schema for log stats response.
-      properties:
-        intervals:
-          items:
-            format: date-time
-            type: string
-          title: Intervals
-          type: array
-        series:
-          items:
-            $ref: '#/components/schemas/LogStatsSeriesSchema'
-          title: Series
-          type: array
-      required:
-      - intervals
-      - series
-      title: LogStatsSchema
-      type: object
-    DeployIn:
-      properties:
-        environment:
-          title: Environment
-          type: string
-        url:
-          default: ''
-          title: Url
-          type: string
-        dateStarted:
-          title: Datestarted
-          nullable: true
-          format: date-time
-          type: string
-        dateFinished:
-          title: Datefinished
-          nullable: true
-          format: date-time
-          type: string
-      required:
-      - environment
-      title: DeployIn
-      type: object
-    LogStatsSeriesSchema:
-      description: A single series in the stats response.
-      properties:
-        name:
-          title: Name
-          type: string
-        data:
-          items:
-            type: integer
-          title: Data
-          type: array
-      required:
-      - name
-      - data
-      title: LogStatsSeriesSchema
-      type: object
-    ArtifactBundleAssembleIn:
-      properties:
-        checksum:
-          pattern: ^[0-9a-fA-F]{40}$
-          title: Checksum
-          type: string
-        chunks:
-          items:
-            pattern: ^[0-9a-fA-F]{40}$
-            type: string
-          title: Chunks
-          type: array
-        projects:
-          items:
-            type: string
-          title: Projects
-          type: array
-        version:
-          title: Version
-          nullable: true
-          type: string
-      required:
-      - checksum
-      - chunks
-      - projects
-      title: ArtifactBundleAssembleIn
-      type: object
-    MonitorType:
-      enum:
-      - Ping
-      - GET
-      - POST
-      - TCP Port
-      - SSL
-      - Heartbeat
-      title: MonitorType
-      type: string
     TeamProjectSchema:
       description: TeamSchema with related projects
       properties:
@@ -3201,77 +2927,227 @@ components:
       - memberCount
       title: TeamProjectSchema
       type: object
-    ReleaseIn:
+    LogStatsSchema:
+      description: Schema for log stats response.
+      properties:
+        intervals:
+          items:
+            format: date-time
+            type: string
+          title: Intervals
+          type: array
+        series:
+          items:
+            $ref: '#/components/schemas/LogStatsSeriesSchema'
+          title: Series
+          type: array
+      required:
+      - intervals
+      - series
+      title: LogStatsSchema
+      type: object
+    NPlusOnePatternSchema:
+      properties:
+        transactionName:
+          title: Transactionname
+          type: string
+        op:
+          title: Op
+          type: string
+        description:
+          title: Description
+          type: string
+        totalSpans:
+          title: Totalspans
+          type: integer
+        transactionCount:
+          title: Transactioncount
+          type: integer
+        spansPerTxn:
+          title: Spanspertxn
+          type: number
+        avgDuration:
+          title: Avgduration
+          type: number
+        totalTime:
+          title: Totaltime
+          type: number
+      required:
+      - transactionName
+      - op
+      - description
+      - totalSpans
+      - transactionCount
+      - spansPerTxn
+      - avgDuration
+      - totalTime
+      title: NPlusOnePatternSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    MonitorCheckResponseTimeSchema:
+      description: Monitor check with response time. Used in Monitors detail api and monitor checks list
+      properties:
+        isUp:
+          title: Is Up
+          type: boolean
+        startCheck:
+          description: Time when the start of this check was performed
+          format: date-time
+          title: Start Check
+          type: string
+        reason:
+          default: 0
+          title: Reason
+          type:
+          - integer
+          - 'null'
+        responseTime:
+          description: Reponse time in milliseconds
+          title: Response Time
+          type:
+          - integer
+          - 'null'
+      required:
+      - isUp
+      title: MonitorCheckResponseTimeSchema
+      type: object
+    ReleaseSchema:
       properties:
         ref:
           title: Ref
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         dateReleased:
           title: Datereleased
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         version:
+          maxLength: 255
           title: Version
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        shortVersion:
+          title: Shortversion
           type: string
         projects:
           items:
-            type: string
+            $ref: '#/components/schemas/NameSlugProjectSchema'
           title: Projects
           type: array
+        repository:
+          $ref: '#/components/schemas/ReleaseRepositorySchema'
+        url:
+          title: Url
+          type:
+          - string
+          - 'null'
+        data:
+          title: Data
+          type: object
+        commitCount:
+          default: 0
+          title: Commit Count
+          type: integer
+        deployCount:
+          default: 0
+          title: Deploy Count
+          type: integer
       required:
+      - dateReleased
       - version
+      - dateCreated
+      - shortVersion
       - projects
-      title: ReleaseIn
+      title: ReleaseSchema
       type: object
-    OrganizationUserUpdateSchema:
+    UserOptions:
       properties:
-        orgRole:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Orgrole
-          type: string
-        teamRoles:
-          items:
-            $ref: '#/components/schemas/TeamRole'
-          title: Teamroles
-          type: array
-      required:
-      - orgRole
-      title: OrganizationUserUpdateSchema
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
       type: object
-    TeamSlugSchema:
-      description: Used in relations including organization projects
-      properties:
-        id:
-          title: Id
-          type: string
-        slug:
-          title: Slug
-          type: string
-      required:
-      - id
-      - slug
-      title: TeamSlugSchema
-      type: object
-    ReleaseRepositorySchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        name:
-          title: Name
-          type: string
-      required:
-      - id
-      - name
-      title: ReleaseRepositorySchema
-      type: object
-    OrganizationUserDetailSchema:
+    OrganizationUserInviteSchema:
+      description: 'Response for the invite (member create) endpoint.
+
+
+        Surfaces the acceptance link so the frontend can offer a copy-link invite
+
+        flow. This is the only delivery path when email is disabled, and a harmless
+
+        convenience when email works. The link carries the same time-limited token
+
+        the invite email uses, so possessing it is what grants acceptance.'
       properties:
         id:
           title: Id
@@ -3295,7 +3171,6 @@ components:
           title: Email
           type: string
         user:
-          nullable: true
           $ref: '#/components/schemas/UserSchema'
         pending:
           title: Pending
@@ -3303,11 +3178,11 @@ components:
         isOwner:
           title: Isowner
           type: boolean
-        teams:
-          items:
-            type: string
-          title: Teams
-          type: array
+        inviteLink:
+          title: Invitelink
+          type:
+          - string
+          - 'null'
       required:
       - id
       - role
@@ -3316,8 +3191,62 @@ components:
       - email
       - pending
       - isOwner
-      - teams
-      title: OrganizationUserDetailSchema
+      title: OrganizationUserInviteSchema
+      type: object
+    TeamIn:
+      properties:
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+      required:
+      - slug
+      title: TeamIn
+      type: object
+    TeamSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        isMember:
+          title: Ismember
+          type: boolean
+        memberCount:
+          title: Membercount
+          type: integer
+      required:
+      - id
+      - slug
+      - dateCreated
+      - isMember
+      - memberCount
+      title: TeamSchema
+      type: object
+    LogStatsSeriesSchema:
+      description: A single series in the stats response.
+      properties:
+        name:
+          title: Name
+          type: string
+        data:
+          items:
+            type: integer
+          title: Data
+          type: array
+      required:
+      - name
+      - data
+      title: LogStatsSeriesSchema
       type: object
     AssembleSchema:
       properties:
@@ -3333,6 +3262,497 @@ components:
       - checksum
       - chunks
       title: AssembleSchema
+      type: object
+    OrganizationSchema:
+      properties:
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
+          type: string
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        status:
+          additionalProperties:
+            type: string
+          default:
+            id: active
+            name: active
+          title: Status
+          type: object
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        isEarlyAdopter:
+          default: false
+          title: Isearlyadopter
+          type: boolean
+        require2fa:
+          default: false
+          title: Require2Fa
+          type: boolean
+        slug:
+          description: The name in all lowercase, suitable for URL identification
+          maxLength: 200
+          title: Slug
+          type: string
+        isAcceptingEvents:
+          default: true
+          description: Used for throttling at org level
+          title: Is Accepting Events
+          type: boolean
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+      required:
+      - name
+      - id
+      - dateCreated
+      - slug
+      title: OrganizationSchema
+      type: object
+    LogResourceSchema:
+      description: Schema for resource name in list.
+      properties:
+        name:
+          title: Name
+          type: string
+        type:
+          title: Type
+          type: string
+        lastSeen:
+          format: date-time
+          title: Lastseen
+          type: string
+      required:
+      - name
+      - type
+      - lastSeen
+      title: LogResourceSchema
+      type: object
+    RepositoryIn:
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          default: ''
+          title: Url
+          type: string
+        provider:
+          title: Provider
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+      required:
+      - name
+      title: RepositoryIn
+      type: object
+    NameSlugProjectSchema:
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          type:
+          - string
+          - 'null'
+      required:
+      - name
+      title: NameSlugProjectSchema
+      type: object
+    MonitorType:
+      enum:
+      - Ping
+      - GET
+      - POST
+      - TCP Port
+      - SSL
+      - Heartbeat
+      title: MonitorType
+      type: string
+    LogEventSchema:
+      description: Schema for log event API responses.
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        level:
+          title: Level
+          type: string
+        body:
+          title: Body
+          type: string
+        service:
+          default: ''
+          title: Service
+          type:
+          - string
+          - 'null'
+        environment:
+          default: ''
+          title: Environment
+          type:
+          - string
+          - 'null'
+        host:
+          default: ''
+          title: Host
+          type:
+          - string
+          - 'null'
+        traceID:
+          title: Traceid
+          format: uuid
+          type:
+          - string
+          - 'null'
+        spanID:
+          title: Spanid
+          type:
+          - string
+          - 'null'
+        severityNumber:
+          title: Severitynumber
+          type:
+          - integer
+          - 'null'
+        data:
+          additionalProperties: true
+          title: Data
+          type: object
+        projectId:
+          title: Projectid
+          type: integer
+      required:
+      - id
+      - timestamp
+      - level
+      - body
+      - projectId
+      title: LogEventSchema
+      type: object
+    MonitorIn:
+      properties:
+        expectedBody:
+          title: Expectedbody
+          type: string
+        expectedStatus:
+          title: Expectedstatus
+          type:
+          - integer
+          - 'null'
+        timeout:
+          title: Timeout
+          maximum: 60
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+        project:
+          title: Project
+          type:
+          - string
+          - 'null'
+        monitorType:
+          default: Ping
+          maxLength: 12
+          title: Monitor Type
+          type: string
+        name:
+          maxLength: 200
+          title: Name
+          type: string
+        url:
+          title: Url
+          maxLength: 2000
+          type:
+          - string
+          - 'null'
+        interval:
+          default: 60
+          title: Interval
+          type: integer
+      required:
+      - expectedBody
+      - expectedStatus
+      - timeout
+      - name
+      title: MonitorIn
+      type: object
+    ProjectTeamSchema:
+      description: Project Schema with related teams
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          type:
+          - string
+          - 'null'
+        id:
+          title: Id
+          type: string
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        color:
+          default: ''
+          title: Color
+          type: string
+        features:
+          default: []
+          items:
+            type: string
+          title: Features
+          type: array
+        hasAccess:
+          default: true
+          title: Hasaccess
+          type: boolean
+        isBookmarked:
+          default: false
+          title: Isbookmarked
+          type: boolean
+        isInternal:
+          default: false
+          title: Isinternal
+          type: boolean
+        isMember:
+          title: Ismember
+          type: boolean
+        isPublic:
+          default: false
+          title: Ispublic
+          type: boolean
+        scrubIPAddresses:
+          title: Scrubipaddresses
+          type: boolean
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        platform:
+          title: Platform
+          type:
+          - string
+          - 'null'
+        firstEvent:
+          title: First Event
+          format: date-time
+          type:
+          - string
+          - 'null'
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+        teams:
+          items:
+            $ref: '#/components/schemas/TeamSlugSchema'
+          title: Teams
+          type: array
+      required:
+      - name
+      - id
+      - isMember
+      - scrubIPAddresses
+      - dateCreated
+      - teams
+      title: ProjectTeamSchema
+      type: object
+    TransactionTrendSchema:
+      properties:
+        date:
+          format: date-time
+          title: Date
+          type: string
+        count:
+          title: Count
+          type: integer
+        transactionCount:
+          title: Transactioncount
+          type: integer
+        avgDuration:
+          title: Avgduration
+          type: number
+        totalTime:
+          title: Totaltime
+          type: number
+      required:
+      - date
+      - count
+      - transactionCount
+      - avgDuration
+      - totalTime
+      title: TransactionTrendSchema
+      type: object
+    DebugSymbolBundleSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        sha1:
+          title: Sha1
+          type:
+          - string
+          - 'null'
+        headers:
+          title: Headers
+          additionalProperties:
+            type: string
+          type:
+          - object
+          - 'null'
+        name:
+          title: Name
+          type: string
+        size:
+          default: 0
+          title: Size
+          type: integer
+      required:
+      - id
+      - dateCreated
+      - name
+      title: DebugSymbolBundleSchema
+      type: object
+    RepositorySchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        name:
+          maxLength: 200
+          title: Name
+          type: string
+        url:
+          default: ''
+          title: Url
+          type:
+          - string
+          - 'null'
+        status:
+          default: active
+          maxLength: 24
+          title: Status
+          type: string
+        provider:
+          title: Provider
+          type:
+          - object
+          - 'null'
+      required:
+      - id
+      - dateCreated
+      - name
+      title: RepositorySchema
+      type: object
+    ArtifactBundleAssembleIn:
+      properties:
+        checksum:
+          pattern: ^[0-9a-fA-F]{40}$
+          title: Checksum
+          type: string
+        chunks:
+          items:
+            pattern: ^[0-9a-fA-F]{40}$
+            type: string
+          title: Chunks
+          type: array
+        projects:
+          items:
+            type: string
+          title: Projects
+          type: array
+        version:
+          title: Version
+          type:
+          - string
+          - 'null'
+      required:
+      - checksum
+      - chunks
+      - projects
+      title: ArtifactBundleAssembleIn
+      type: object
+    TeamRole:
+      properties:
+        teamSlug:
+          title: Teamslug
+          type: string
+        role:
+          default: ''
+          title: Role
+          type: string
+      required:
+      - teamSlug
+      title: TeamRole
+      type: object
+    DeployIn:
+      properties:
+        environment:
+          title: Environment
+          type: string
+        url:
+          default: ''
+          title: Url
+          type: string
+        dateStarted:
+          title: Datestarted
+          format: date-time
+          type:
+          - string
+          - 'null'
+        dateFinished:
+          title: Datefinished
+          format: date-time
+          type:
+          - string
+          - 'null'
+      required:
+      - environment
+      title: DeployIn
       type: object
     OrganizationDetailSchema:
       properties:
@@ -3358,8 +3778,9 @@ components:
           type: object
         avatar:
           additionalProperties:
-            nullable: true
-            type: string
+            type:
+            - string
+            - 'null'
           default:
             avatarType: ''
             avatarUuid: null
@@ -3436,18 +3857,89 @@ components:
       - access
       title: OrganizationDetailSchema
       type: object
-    ReleaseUpdate:
+    OrganizationUserDetailSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        role:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Role
+          type: string
+        roleName:
+          title: Rolename
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        email:
+          title: Email
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSchema'
+        pending:
+          title: Pending
+          type: boolean
+        isOwner:
+          title: Isowner
+          type: boolean
+        teams:
+          items:
+            type: string
+          title: Teams
+          type: array
+      required:
+      - id
+      - role
+      - roleName
+      - dateCreated
+      - email
+      - pending
+      - isOwner
+      - teams
+      title: OrganizationUserDetailSchema
+      type: object
+    ReleaseIn:
       properties:
         ref:
           title: Ref
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         dateReleased:
           title: Datereleased
-          nullable: true
           format: date-time
+          type:
+          - string
+          - 'null'
+        version:
+          title: Version
           type: string
-      title: ReleaseUpdate
+        projects:
+          items:
+            type: string
+          title: Projects
+          type: array
+      required:
+      - version
+      - projects
+      title: ReleaseIn
+      type: object
+    OrganizationInSchema:
+      properties:
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
+          type: string
+      required:
+      - name
+      title: OrganizationInSchema
       type: object
     SpanGroupSchema:
       properties:
@@ -3478,42 +3970,47 @@ components:
       - totalTime
       title: SpanGroupSchema
       type: object
-    NPlusOnePatternSchema:
+    ReleaseUpdate:
       properties:
-        transactionName:
-          title: Transactionname
+        ref:
+          title: Ref
+          type:
+          - string
+          - 'null'
+        dateReleased:
+          title: Datereleased
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: ReleaseUpdate
+      type: object
+    StatusPageSchema:
+      properties:
+        isPublic:
+          description: When true, the status page URL is publicly accessible
+          title: Is Public
+          type: boolean
+        name:
+          maxLength: 200
+          title: Name
           type: string
-        op:
-          title: Op
-          type: string
-        description:
-          title: Description
-          type: string
-        totalSpans:
-          title: Totalspans
-          type: integer
-        transactionCount:
-          title: Transactioncount
-          type: integer
-        spansPerTxn:
-          title: Spanspertxn
-          type: number
-        avgDuration:
-          title: Avgduration
-          type: number
-        totalTime:
-          title: Totaltime
-          type: number
+        monitors:
+          items:
+            $ref: '#/components/schemas/MonitorSchema'
+          title: Monitors
+          type: array
+        slug:
+          title: Slug
+          maxLength: 200
+          type:
+          - string
+          - 'null'
       required:
-      - transactionName
-      - op
-      - description
-      - totalSpans
-      - transactionCount
-      - spansPerTxn
-      - avgDuration
-      - totalTime
-      title: NPlusOnePatternSchema
+      - isPublic
+      - name
+      - monitors
+      title: StatusPageSchema
       type: object
     CommitSchema:
       description: Output schema for commit data, matching documented public API.
@@ -3524,23 +4021,164 @@ components:
         message:
           default: ''
           title: Message
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         dateCreated:
           title: Datecreated
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         authorName:
           title: Authorname
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         authorEmail:
           title: Authoremail
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - id
       title: CommitSchema
+      type: object
+    StatusPageIn:
+      properties:
+        isPublic:
+          default: false
+          title: Ispublic
+          type: boolean
+        name:
+          maxLength: 200
+          title: Name
+          type: string
+      required:
+      - name
+      title: StatusPageIn
+      type: object
+    MonitorDetailSchema:
+      properties:
+        projectID:
+          title: Projectid
+          type:
+          - string
+          - 'null'
+        environmentID:
+          title: Environmentid
+          type:
+          - integer
+          - 'null'
+        isUp:
+          title: Isup
+          type:
+          - boolean
+          - 'null'
+        lastChange:
+          title: Lastchange
+          type:
+          - string
+          - 'null'
+        heartbeatEndpoint:
+          title: Heartbeatendpoint
+          type:
+          - string
+          - 'null'
+        projectName:
+          title: Projectname
+          type:
+          - string
+          - 'null'
+        envName:
+          title: Envname
+          type:
+          - string
+          - 'null'
+        checks:
+          items:
+            $ref: '#/components/schemas/MonitorCheckResponseTimeSchema'
+          title: Checks
+          type: array
+        organizationID:
+          title: Organizationid
+          type: integer
+        monitorType:
+          $ref: '#/components/schemas/MonitorType'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        endpointID:
+          description: Used for referencing heartbeat endpoint
+          title: Endpoint Id
+          format: uuid
+          type:
+          - string
+          - 'null'
+        created:
+          format: date-time
+          title: Created
+          type: string
+        name:
+          maxLength: 200
+          title: Name
+          type: string
+        url:
+          title: Url
+          maxLength: 2000
+          type:
+          - string
+          - 'null'
+        expectedStatus:
+          default: 200
+          title: Expected Status
+          type:
+          - integer
+          - 'null'
+        expectedBody:
+          title: Expected Body
+          maxLength: 2000
+          type:
+          - string
+          - 'null'
+        interval:
+          default: 60
+          title: Interval
+          type: integer
+        timeout:
+          description: Blank implies default value of 20
+          title: Timeout
+          type:
+          - integer
+          - 'null'
+      required:
+      - projectID
+      - environmentID
+      - isUp
+      - lastChange
+      - heartbeatEndpoint
+      - checks
+      - organizationID
+      - monitorType
+      - created
+      - name
+      title: MonitorDetailSchema
+      type: object
+    EnvironmentSchema:
+      properties:
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+      required:
+      - name
+      title: EnvironmentSchema
       type: object
     CommitIn:
       properties:
@@ -3563,510 +4201,19 @@ components:
       - id
       title: CommitIn
       type: object
-    OrganizationUserIn:
+    TeamSlugSchema:
+      description: Used in relations including organization projects
       properties:
-        orgRole:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Orgrole
-          type: string
-        teamRoles:
-          items:
-            $ref: '#/components/schemas/TeamRole'
-          title: Teamroles
-          type: array
-        email:
-          format: email
-          title: Email
-          type: string
-        sendInvite:
-          default: true
-          title: Sendinvite
-          type: boolean
-        reinvite:
-          default: true
-          title: Reinvite
-          type: boolean
-      required:
-      - orgRole
-      - email
-      title: OrganizationUserIn
-      type: object
-    ProjectSchema:
-      description: 'A project is an organizational unit for GlitchTip events. It may contain
-
-        DSN keys, be connected to exactly one organization, and provide user permissions
-
-        through teams.'
-      properties:
-        name:
-          maxLength: 64
-          title: Name
-          type: string
-        slug:
-          title: Slug
-          nullable: true
-          type: string
         id:
           title: Id
           type: string
-        avatar:
-          additionalProperties:
-            nullable: true
-            type: string
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        color:
-          default: ''
-          title: Color
-          type: string
-        features:
-          default: []
-          items:
-            type: string
-          title: Features
-          type: array
-        hasAccess:
-          default: true
-          title: Hasaccess
-          type: boolean
-        isBookmarked:
-          default: false
-          title: Isbookmarked
-          type: boolean
-        isInternal:
-          default: false
-          title: Isinternal
-          type: boolean
-        isMember:
-          title: Ismember
-          type: boolean
-        isPublic:
-          default: false
-          title: Ispublic
-          type: boolean
-        scrubIPAddresses:
-          title: Scrubipaddresses
-          type: boolean
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        platform:
-          title: Platform
-          nullable: true
-          type: string
-        firstEvent:
-          title: First Event
-          nullable: true
-          format: date-time
-          type: string
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
-      required:
-      - name
-      - id
-      - isMember
-      - scrubIPAddresses
-      - dateCreated
-      title: ProjectSchema
-      type: object
-    OrganizationSchema:
-      properties:
-        name:
-          description: The name of the organization
-          maxLength: 200
-          title: Name
-          type: string
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        status:
-          additionalProperties:
-            type: string
-          default:
-            id: active
-            name: active
-          title: Status
-          type: object
-        avatar:
-          additionalProperties:
-            nullable: true
-            type: string
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        isEarlyAdopter:
-          default: false
-          title: Isearlyadopter
-          type: boolean
-        require2fa:
-          default: false
-          title: Require2Fa
-          type: boolean
         slug:
-          description: The name in all lowercase, suitable for URL identification
-          maxLength: 200
           title: Slug
           type: string
-        isAcceptingEvents:
-          default: true
-          description: Used for throttling at org level
-          title: Is Accepting Events
-          type: boolean
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
       required:
-      - name
       - id
-      - dateCreated
       - slug
-      title: OrganizationSchema
-      type: object
-    ProjectTeamSchema:
-      description: Project Schema with related teams
-      properties:
-        name:
-          maxLength: 64
-          title: Name
-          type: string
-        slug:
-          title: Slug
-          nullable: true
-          type: string
-        id:
-          title: Id
-          type: string
-        avatar:
-          additionalProperties:
-            nullable: true
-            type: string
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        color:
-          default: ''
-          title: Color
-          type: string
-        features:
-          default: []
-          items:
-            type: string
-          title: Features
-          type: array
-        hasAccess:
-          default: true
-          title: Hasaccess
-          type: boolean
-        isBookmarked:
-          default: false
-          title: Isbookmarked
-          type: boolean
-        isInternal:
-          default: false
-          title: Isinternal
-          type: boolean
-        isMember:
-          title: Ismember
-          type: boolean
-        isPublic:
-          default: false
-          title: Ispublic
-          type: boolean
-        scrubIPAddresses:
-          title: Scrubipaddresses
-          type: boolean
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        platform:
-          title: Platform
-          nullable: true
-          type: string
-        firstEvent:
-          title: First Event
-          nullable: true
-          format: date-time
-          type: string
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
-        teams:
-          items:
-            $ref: '#/components/schemas/TeamSlugSchema'
-          title: Teams
-          type: array
-      required:
-      - name
-      - id
-      - isMember
-      - scrubIPAddresses
-      - dateCreated
-      - teams
-      title: ProjectTeamSchema
-      type: object
-    DebugSymbolBundleSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        sha1:
-          title: Sha1
-          nullable: true
-          type: string
-        headers:
-          title: Headers
-          nullable: true
-          additionalProperties:
-            type: string
-          type: object
-        name:
-          title: Name
-          type: string
-        size:
-          default: 0
-          title: Size
-          type: integer
-      required:
-      - id
-      - dateCreated
-      - name
-      title: DebugSymbolBundleSchema
-      type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          nullable: true
-          type: string
-        stacktraceOrder:
-          title: Stacktraceorder
-          nullable: true
-          type: integer
-        language:
-          title: Language
-          nullable: true
-          type: string
-        clock24Hours:
-          title: Clock24Hours
-          nullable: true
-          type: boolean
-        preferredTheme:
-          title: Preferredtheme
-          nullable: true
-          type: string
-      title: UserOptions
-      type: object
-    TransactionGroupSchema:
-      properties:
-        project:
-          title: Project
-          type: integer
-        id:
-          title: Id
-          type: integer
-        transaction:
-          maxLength: 1024
-          title: Transaction
-          type: string
-        op:
-          maxLength: 255
-          title: Op
-          type: string
-        method:
-          default: ''
-          title: Method
-          nullable: true
-          maxLength: 255
-          type: string
-        count:
-          default: 0
-          title: Count
-          type: integer
-        avgDuration:
-          default: 0
-          description: Average duration in ms
-          title: Avg Duration
-          type: number
-        p50:
-          title: P50
-          nullable: true
-          type: number
-        p95:
-          title: P95
-          nullable: true
-          type: number
-        errorCount:
-          default: 0
-          title: Error Count
-          type: integer
-        firstSeen:
-          format: date-time
-          title: First Seen
-          type: string
-        lastSeen:
-          format: date-time
-          title: Last Seen
-          type: string
-        errorRate:
-          description: Delegates to TransactionGroup.error_rate property.
-          readOnly: true
-          title: Errorrate
-          type: number
-        throughput:
-          description: Delegates to TransactionGroup.throughput property.
-          readOnly: true
-          title: Throughput
-          nullable: true
-          type: number
-      required:
-      - project
-      - id
-      - transaction
-      - op
-      - firstSeen
-      - lastSeen
-      - errorRate
-      - throughput
-      title: TransactionGroupSchema
-      type: object
-    StatusPageIn:
-      properties:
-        isPublic:
-          default: false
-          title: Ispublic
-          type: boolean
-        name:
-          maxLength: 200
-          title: Name
-          type: string
-      required:
-      - name
-      title: StatusPageIn
-      type: object
-    TransactionTrendSchema:
-      properties:
-        date:
-          format: date-time
-          title: Date
-          type: string
-        count:
-          title: Count
-          type: integer
-        transactionCount:
-          title: Transactioncount
-          type: integer
-        avgDuration:
-          title: Avgduration
-          type: number
-        totalTime:
-          title: Totaltime
-          type: number
-      required:
-      - date
-      - count
-      - transactionCount
-      - avgDuration
-      - totalTime
-      title: TransactionTrendSchema
-      type: object
-    OrganizationInSchema:
-      properties:
-        name:
-          description: The name of the organization
-          maxLength: 200
-          title: Name
-          type: string
-      required:
-      - name
-      title: OrganizationInSchema
-      type: object
-    LogEventSchema:
-      description: Schema for log event API responses.
-      properties:
-        id:
-          format: uuid
-          title: Id
-          type: string
-        timestamp:
-          format: date-time
-          title: Timestamp
-          type: string
-        level:
-          title: Level
-          type: string
-        body:
-          title: Body
-          type: string
-        service:
-          default: ''
-          title: Service
-          nullable: true
-          type: string
-        environment:
-          default: ''
-          title: Environment
-          nullable: true
-          type: string
-        host:
-          default: ''
-          title: Host
-          nullable: true
-          type: string
-        traceID:
-          title: Traceid
-          nullable: true
-          format: uuid
-          type: string
-        spanID:
-          title: Spanid
-          nullable: true
-          type: string
-        severityNumber:
-          title: Severitynumber
-          nullable: true
-          type: integer
-        data:
-          additionalProperties: true
-          title: Data
-          type: object
-        projectId:
-          title: Projectid
-          type: integer
-      required:
-      - id
-      - timestamp
-      - level
-      - body
-      - projectId
-      title: LogEventSchema
+      title: TeamSlugSchema
       type: object
   securitySchemes:
     TokenAuth:

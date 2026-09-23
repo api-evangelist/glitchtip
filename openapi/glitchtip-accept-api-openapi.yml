@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: GlitchTip Accept API
   version: 1.0.0
@@ -79,18 +79,6 @@ paths:
       - Accept
 components:
   schemas:
-    AcceptInviteSchema:
-      properties:
-        acceptInvite:
-          title: Acceptinvite
-          type: boolean
-        orgUser:
-          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
-      required:
-      - acceptInvite
-      - orgUser
-      title: AcceptInviteSchema
-      type: object
     OrganizationUserOrganizationSchema:
       description: Organization User Serializer with Organization info
       properties:
@@ -116,7 +104,6 @@ components:
           title: Email
           type: string
         user:
-          nullable: true
           $ref: '#/components/schemas/UserSchema'
         pending:
           title: Pending
@@ -137,45 +124,55 @@ components:
       - organization
       title: OrganizationUserOrganizationSchema
       type: object
-    SocialAccountSchema:
+    UserOptions:
       properties:
-        email:
-          title: Email
-          nullable: true
-          format: email
-          type: string
-        username:
-          title: Username
-          nullable: true
-          type: string
-        id:
-          title: ID
-          nullable: true
-          type: integer
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
+      type: object
+    AcceptInviteIn:
+      properties:
+        acceptInvite:
+          title: Acceptinvite
+          type: boolean
       required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
+      - acceptInvite
+      title: AcceptInviteIn
+      type: object
+    AcceptInviteSchema:
+      properties:
+        acceptInvite:
+          title: Acceptinvite
+          type: boolean
+        orgUser:
+          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
+      required:
+      - acceptInvite
+      - orgUser
+      title: AcceptInviteSchema
       type: object
     OrganizationSchema:
       properties:
@@ -201,8 +198,9 @@ components:
           type: object
         avatar:
           additionalProperties:
-            nullable: true
-            type: string
+            type:
+            - string
+            - 'null'
           default:
             avatarType: ''
             avatarUuid: null
@@ -267,9 +265,10 @@ components:
           type: array
         lastLogin:
           title: Last Login
-          nullable: true
           format: date-time
-          type: string
+          type:
+          - string
+          - 'null'
         isSuperuser:
           default: false
           description: Designates that this user has all permissions without explicitly assigning them.
@@ -282,9 +281,10 @@ components:
           type: boolean
         name:
           title: Name
-          nullable: true
           maxLength: 255
-          type: string
+          type:
+          - string
+          - 'null'
       required:
       - id
       - options
@@ -295,38 +295,48 @@ components:
       - identities
       title: UserSchema
       type: object
-    AcceptInviteIn:
+    SocialAccountSchema:
       properties:
-        acceptInvite:
-          title: Acceptinvite
-          type: boolean
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
       required:
-      - acceptInvite
-      title: AcceptInviteIn
-      type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          nullable: true
-          type: string
-        stacktraceOrder:
-          title: Stacktraceorder
-          nullable: true
-          type: integer
-        language:
-          title: Language
-          nullable: true
-          type: string
-        clock24Hours:
-          title: Clock24Hours
-          nullable: true
-          type: boolean
-        preferredTheme:
-          title: Preferredtheme
-          nullable: true
-          type: string
-      title: UserOptions
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
       type: object
   securitySchemes:
     TokenAuth:

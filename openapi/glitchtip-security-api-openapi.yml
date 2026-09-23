@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: GlitchTip Accept Security API
+  title: GlitchTip Security API
   version: 1.0.0
   description: ''
   contact:
@@ -64,24 +64,29 @@ components:
           type: string
         original-policy:
           title: Original-Policy
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         script-sample:
           title: Script-Sample
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         status-code:
           title: Status-Code
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         line_number:
           title: Line Number
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         column_number:
           title: Column Number
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
       required:
       - blocked-uri
       - disposition
