@@ -124,6 +124,18 @@ components:
       - organization
       title: OrganizationUserOrganizationSchema
       type: object
+    AcceptInviteSchema:
+      properties:
+        acceptInvite:
+          title: Acceptinvite
+          type: boolean
+        orgUser:
+          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
+      required:
+      - acceptInvite
+      - orgUser
+      title: AcceptInviteSchema
+      type: object
     UserOptions:
       properties:
         timezone:
@@ -153,6 +165,49 @@ components:
           - 'null'
       title: UserOptions
       type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
     AcceptInviteIn:
       properties:
         acceptInvite:
@@ -161,18 +216,6 @@ components:
       required:
       - acceptInvite
       title: AcceptInviteIn
-      type: object
-    AcceptInviteSchema:
-      properties:
-        acceptInvite:
-          title: Acceptinvite
-          type: boolean
-        orgUser:
-          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
-      required:
-      - acceptInvite
-      - orgUser
-      title: AcceptInviteSchema
       type: object
     OrganizationSchema:
       properties:
@@ -294,49 +337,6 @@ components:
       - hasPasswordAuth
       - identities
       title: UserSchema
-      type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
       type: object
   securitySchemes:
     TokenAuth:

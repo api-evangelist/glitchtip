@@ -1123,7 +1123,224 @@ paths:
       - SessionAuth: []
 components:
   schemas:
-    IssueSchema:
+    CommitSchema:
+      description: Output schema for commit data, matching documented public API.
+      properties:
+        id:
+          title: Id
+          type: string
+        message:
+          default: ''
+          title: Message
+          type:
+          - string
+          - 'null'
+        dateCreated:
+          title: Datecreated
+          type:
+          - string
+          - 'null'
+        authorName:
+          title: Authorname
+          type:
+          - string
+          - 'null'
+        authorEmail:
+          title: Authoremail
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      title: CommitSchema
+      type: object
+    RuntimeContext:
+      properties:
+        type:
+          const: runtime
+          default: runtime
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        version:
+          type:
+          - string
+          - 'null'
+        raw_description:
+          type:
+          - string
+          - 'null'
+      type: object
+    UpdateIssueSchema:
+      properties:
+        status:
+          $ref: '#/components/schemas/EventStatusEnum'
+        statusDetails:
+          $ref: '#/components/schemas/StatusDetailsSchema'
+        merge:
+          title: Merge
+          type:
+          - integer
+          - 'null'
+        assignedTo:
+          title: Assignedto
+          type:
+          - string
+          - 'null'
+      title: UpdateIssueSchema
+      type: object
+    IssueEventJsonSchema:
+      description: Represents a more raw view of the event, built with open source (legacy) Sentry compatibility
+      properties:
+        platform:
+          title: Platform
+          type:
+          - string
+          - 'null'
+        errors:
+          title: Errors
+          items:
+            $ref: '#/components/schemas/EventProcessingError'
+          type:
+          - array
+          - 'null'
+        event_id:
+          title: Event Id
+          type: string
+        timestamp:
+          title: Timestamp
+          type: number
+        datetime:
+          format: date-time
+          title: Datetime
+          type: string
+        breadcrumbs:
+          title: Breadcrumbs
+        project:
+          title: Project
+          type: integer
+        level:
+          title: Level
+          type:
+          - string
+          - 'null'
+        exception:
+          title: Exception
+        modules:
+          title: Modules
+          additionalProperties:
+            type: string
+          type:
+          - object
+          - 'null'
+        contexts:
+          title: Contexts
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        sdk:
+          title: Sdk
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        type:
+          title: Type
+          type:
+          - string
+          - 'null'
+        request:
+          title: Request
+        environment:
+          title: Environment
+          type:
+          - string
+          - 'null'
+        extra:
+          title: Extra
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        user:
+          $ref: '#/components/schemas/EventUser'
+        hashes:
+          default: []
+          items:
+            type: string
+          title: Hashes
+          type: array
+        title:
+          maxLength: 255
+          title: Title
+          type: string
+        transaction:
+          maxLength: 200
+          title: Transaction
+          type: string
+        tags:
+          title: Tags
+          type: object
+      required:
+      - event_id
+      - timestamp
+      - datetime
+      - project
+      - level
+      - type
+      - title
+      - transaction
+      - tags
+      title: IssueEventJsonSchema
+      type: object
+    UserReportSchema:
+      properties:
+        eventID:
+          title: Eventid
+          type: string
+        event:
+          additionalProperties:
+            type: string
+          title: Event
+          type: object
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        user:
+          title: User
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        name:
+          maxLength: 128
+          title: Name
+          type: string
+        email:
+          maxLength: 254
+          title: Email
+          type: string
+        comments:
+          title: Comments
+          type: string
+      required:
+      - eventID
+      - event
+      - dateCreated
+      - name
+      - email
+      - comments
+      title: UserReportSchema
+      type: object
+    IssueDetailSchema:
       properties:
         id:
           title: Id
@@ -1225,6 +1442,9 @@ components:
           type:
           - string
           - 'null'
+        userReportCount:
+          title: Userreportcount
+          type: integer
       required:
       - id
       - count
@@ -1238,84 +1458,51 @@ components:
       - firstSeen
       - lastSeen
       - title
-      title: IssueSchema
+      - userReportCount
+      title: IssueDetailSchema
       type: object
-    CultureContext:
+    AppContext:
       properties:
         type:
-          const: culture
-          default: culture
+          const: app
+          default: app
           type: string
-        calendar:
+        app_start_time:
           type:
           - string
           - 'null'
-        display_name:
+        device_app_hash:
           type:
           - string
           - 'null'
-        locale:
+        build_type:
           type:
           - string
           - 'null'
-        is_24_hour_format:
+        app_identifier:
+          type:
+          - string
+          - 'null'
+        app_name:
+          type:
+          - string
+          - 'null'
+        app_version:
+          type:
+          - string
+          - 'null'
+        app_build:
+          type:
+          - string
+          - 'null'
+        app_memory:
+          type:
+          - integer
+          - 'null'
+        in_foreground:
           type:
           - boolean
           - 'null'
-        timezone:
-          type:
-          - string
-          - 'null'
-      type: object
-    APIEventBreadcrumb:
-      description: Slightly modified Breadcrumb for sentry api compatibility
-      properties:
-        type:
-          default: default
-          title: Type
-          type:
-          - string
-          - 'null'
-        category:
-          title: Category
-          type:
-          - string
-          - 'null'
-        message:
-          title: Message
-          type:
-          - string
-          - 'null'
-        data:
-          title: Data
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        level:
-          default: info
-          title: Level
-          enum:
-          - fatal
-          - error
-          - warning
-          - info
-          - debug
-          type:
-          - string
-          - 'null'
-        timestamp:
-          title: Timestamp
-          format: date-time
-          type:
-          - string
-          - 'null'
-        event_id:
-          title: Event Id
-          type:
-          - string
-          - 'null'
-      title: APIEventBreadcrumb
       type: object
     ReplayContext:
       properties:
@@ -1331,262 +1518,72 @@ components:
       - replay_id
       title: ReplayContext
       type: object
-    IssueTagTopValue:
+    IssueActorSchema:
       properties:
+        type:
+          enum:
+          - user
+          - team
+          title: Type
+          type: string
+        id:
+          title: Id
+          type: string
         name:
           title: Name
           type: string
-        value:
-          title: Value
-          type: string
-        count:
-          title: Count
-          type: integer
-        key:
-          title: Key
-          type: string
-      required:
-      - name
-      - value
-      - count
-      - key
-      title: IssueTagTopValue
-      type: object
-    IssueHashSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        latestEvent:
-          $ref: '#/components/schemas/IssueEventSchema'
-      required:
-      - id
-      - latestEvent
-      title: IssueHashSchema
-      type: object
-    IssueReleaseSchema:
-      properties:
-        shortVersion:
-          title: Shortversion
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        dateReleased:
-          title: Datereleased
-          format: date-time
+        username:
+          title: Username
           type:
           - string
           - 'null'
-        version:
-          maxLength: 255
-          title: Version
-          type: string
-      required:
-      - shortVersion
-      - dateCreated
-      - dateReleased
-      - version
-      title: IssueReleaseSchema
-      type: object
-    MessageEntry:
-      properties:
-        type:
-          const: message
-          title: Type
-          type: string
-        data:
-          additionalProperties: true
-          title: Data
-          type: object
-      required:
-      - type
-      - data
-      title: MessageEntry
-      type: object
-    CommentUserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
         email:
-          maxLength: 254
           title: Email
-          type: string
-      required:
-      - id
-      - email
-      title: CommentUserSchema
-      type: object
-    CloudResourceContext:
-      properties:
-        type:
-          const: cloud_resource
-          default: cloud_resource
-          title: Type
-          type: string
-        cloud:
-          additionalProperties: true
-          title: Cloud
-          type: object
-        host:
-          additionalProperties: true
-          title: Host
-          type: object
-      required:
-      - cloud
-      - host
-      title: CloudResourceContext
-      type: object
-    OSContext:
-      properties:
-        type:
-          const: os
-          default: os
-          type: string
-        name:
-          type: string
-        version:
           type:
           - string
           - 'null'
-        build:
+        slug:
+          title: Slug
           type:
           - string
           - 'null'
-        kernel_version:
-          type:
-          - string
-          - 'null'
-        rooted:
-          type:
-          - boolean
-          - 'null'
-        theme:
-          type:
-          - string
-          - 'null'
-        raw_description:
-          type:
-          - string
-          - 'null'
-      required:
-      - name
-      type: object
-    PostCommentSchema:
-      properties:
-        data:
-          additionalProperties:
-            type: string
-          propertyNames:
-            const: text
-          title: Data
-          type: object
-      required:
-      - data
-      title: PostCommentSchema
-      type: object
-    StatusDetailsSchema:
-      properties:
-        inRelease:
-          title: Inrelease
-          type:
-          - string
-          - 'null'
-        inNextRelease:
-          title: Innextrelease
-          type:
-          - boolean
-          - 'null'
-      title: StatusDetailsSchema
-      type: object
-    BreadcrumbsEntry:
-      properties:
-        type:
-          const: breadcrumbs
-          title: Type
-          type: string
-        data:
-          additionalProperties:
-            items:
-              $ref: '#/components/schemas/APIEventBreadcrumb'
-            type: array
-          propertyNames:
-            const: values
-          title: Data
-          type: object
       required:
       - type
-      - data
-      title: BreadcrumbsEntry
-      type: object
-    GPUContext:
-      properties:
-        type:
-          const: gpu
-          default: gpu
-          type: string
-        name:
-          type: string
-        version:
-          type:
-          - string
-          - 'null'
-        id:
-          type:
-          - string
-          - 'null'
-        vendor_id:
-          type:
-          - string
-          - 'null'
-        vendor_name:
-          type:
-          - string
-          - 'null'
-        memory_size:
-          type:
-          - integer
-          - 'null'
-        api_type:
-          type:
-          - string
-          - 'null'
-        multi_threaded_rendering:
-          type:
-          - boolean
-          - 'null'
-        npot_support:
-          type:
-          - string
-          - 'null'
-        max_texture_size:
-          type:
-          - integer
-          - 'null'
-        graphics_shader_level:
-          type:
-          - string
-          - 'null'
-        supports_draw_call_instancing:
-          type:
-          - boolean
-          - 'null'
-        supports_ray_tracing:
-          type:
-          - boolean
-          - 'null'
-        supports_compute_shaders:
-          type:
-          - boolean
-          - 'null'
-        supports_geometry_shaders:
-          type:
-          - boolean
-          - 'null'
-      required:
+      - id
       - name
+      title: IssueActorSchema
+      type: object
+    EventUser:
+      properties:
+        id:
+          title: Id
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        email:
+          title: Email
+          type:
+          - string
+          - 'null'
+        ip_address:
+          title: Ip Address
+          type:
+          - string
+          - 'null'
+        data:
+          title: Data
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        geo:
+          $ref: '#/components/schemas/EventGeo'
+      title: EventUser
       type: object
     IssueEventSchema:
       properties:
@@ -1746,134 +1743,80 @@ components:
       - title
       title: IssueEventSchema
       type: object
-    EventStatusEnum:
-      enum:
-      - unresolved
-      - resolved
-      - ignored
-      title: EventStatusEnum
-      type: string
-    IssueTagSchema:
+    ExceptionEntry:
       properties:
-        topValues:
-          items:
-            $ref: '#/components/schemas/IssueTagTopValue'
-          title: Topvalues
-          type: array
-        uniqueValues:
-          title: Uniquevalues
-          type: integer
-        key:
-          title: Key
+        type:
+          const: exception
+          title: Type
           type: string
-        name:
-          title: Name
-          type: string
-        totalValues:
-          title: Totalvalues
-          type: integer
-      required:
-      - topValues
-      - uniqueValues
-      - key
-      - name
-      - totalValues
-      title: IssueTagSchema
-      type: object
-    EventUser:
-      properties:
-        id:
-          title: Id
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        email:
-          title: Email
-          type:
-          - string
-          - 'null'
-        ip_address:
-          title: Ip Address
-          type:
-          - string
-          - 'null'
         data:
-          title: Data
           additionalProperties: true
-          type:
-          - object
-          - 'null'
-        geo:
-          $ref: '#/components/schemas/EventGeo'
-      title: EventUser
-      type: object
-    CommentSchema:
-      properties:
-        data:
-          additionalProperties:
-            type: string
           title: Data
           type: object
-        type:
-          default: note
-          title: Type
-          type:
-          - string
-          - 'null'
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        user:
-          $ref: '#/components/schemas/CommentUserSchema'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-      required:
-      - data
-      - dateCreated
-      - user
-      title: CommentSchema
-      type: object
-    EventStatusDisplay:
-      enum:
-      - unresolved
-      - resolved
-      - ignored
-      title: EventStatusDisplay
-      type: string
-    EventProcessingError:
-      description: 'Represents a single error encountered during event processing,
-
-        matching the Sentry event schema.'
-      properties:
-        type:
-          title: Type
-          type: string
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-        value:
-          title: Value
       required:
       - type
-      title: EventProcessingError
+      - data
+      title: ExceptionEntry
       type: object
-    IssueEventTypeDisplay:
+    BrowserContext:
+      properties:
+        type:
+          const: browser
+          default: browser
+          type: string
+        name:
+          type: string
+        version:
+          type:
+          - string
+          - 'null'
+      required:
+      - name
+      type: object
+    OSContext:
+      properties:
+        type:
+          const: os
+          default: os
+          type: string
+        name:
+          type: string
+        version:
+          type:
+          - string
+          - 'null'
+        build:
+          type:
+          - string
+          - 'null'
+        kernel_version:
+          type:
+          - string
+          - 'null'
+        rooted:
+          type:
+          - boolean
+          - 'null'
+        theme:
+          type:
+          - string
+          - 'null'
+        raw_description:
+          type:
+          - string
+          - 'null'
+      required:
+      - name
+      type: object
+    LogLevelDisplay:
       enum:
-      - default
+      - sample
+      - debug
+      - info
+      - warning
       - error
-      - csp
-      title: IssueEventTypeDisplay
+      - fatal
+      title: LogLevelDisplay
       type: string
     CSPEntry:
       properties:
@@ -1890,193 +1833,55 @@ components:
       - data
       title: CSPEntry
       type: object
-    DeviceContext:
+    APIEventBreadcrumb:
+      description: Slightly modified Breadcrumb for sentry api compatibility
       properties:
         type:
-          const: device
-          default: device
-          type: string
-        name:
+          default: default
+          title: Type
           type:
           - string
           - 'null'
-        family:
+        category:
+          title: Category
           type:
           - string
           - 'null'
-        model:
+        message:
+          title: Message
           type:
           - string
           - 'null'
-        model_id:
+        data:
+          title: Data
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        level:
+          default: info
+          title: Level
+          enum:
+          - fatal
+          - error
+          - warning
+          - info
+          - debug
           type:
           - string
           - 'null'
-        arch:
+        timestamp:
+          title: Timestamp
+          format: date-time
           type:
           - string
           - 'null'
-        battery_level:
-          type:
-          - number
-          - 'null'
-        orientation:
+        event_id:
+          title: Event Id
           type:
           - string
           - 'null'
-        manufacturer:
-          type:
-          - string
-          - 'null'
-        brand:
-          type:
-          - string
-          - 'null'
-        screen_resolution:
-          type:
-          - string
-          - 'null'
-        screen_height_pixels:
-          type:
-          - integer
-          - 'null'
-        screen_width_pixels:
-          type:
-          - integer
-          - 'null'
-        screen_density:
-          type:
-          - number
-          - 'null'
-        screen_dpi:
-          type:
-          - number
-          - 'null'
-        online:
-          type:
-          - boolean
-          - 'null'
-        charging:
-          type:
-          - boolean
-          - 'null'
-        low_memory:
-          type:
-          - boolean
-          - 'null'
-        simulator:
-          type:
-          - boolean
-          - 'null'
-        memory_size:
-          type:
-          - integer
-          - 'null'
-        free_memory:
-          type:
-          - integer
-          - 'null'
-        usable_memory:
-          type:
-          - integer
-          - 'null'
-        storage_size:
-          type:
-          - integer
-          - 'null'
-        free_storage:
-          type:
-          - integer
-          - 'null'
-        external_storage_size:
-          type:
-          - integer
-          - 'null'
-        external_free_storage:
-          type:
-          - integer
-          - 'null'
-        boot_time:
-          type:
-          - string
-          - 'null'
-        timezone:
-          type:
-          - string
-          - 'null'
-        language:
-          type:
-          - string
-          - 'null'
-        processor_count:
-          type:
-          - integer
-          - 'null'
-        cpu_description:
-          type:
-          - string
-          - 'null'
-        processor_frequency:
-          type:
-          - number
-          - 'null'
-        device_type:
-          type:
-          - string
-          - 'null'
-        battery_status:
-          type:
-          - string
-          - 'null'
-        device_unique_identifier:
-          type:
-          - string
-          - 'null'
-        supports_vibration:
-          type:
-          - boolean
-          - 'null'
-        supports_accelerometer:
-          type:
-          - boolean
-          - 'null'
-        supports_gyroscope:
-          type:
-          - boolean
-          - 'null'
-        supports_audio:
-          type:
-          - boolean
-          - 'null'
-        supports_location_service:
-          type:
-          - boolean
-          - 'null'
-      type: object
-    ProjectReference:
-      properties:
-        id:
-          title: Id
-          type: string
-        platform:
-          title: Platform
-          maxLength: 64
-          type:
-          - string
-          - 'null'
-        slug:
-          title: Slug
-          type:
-          - string
-          - 'null'
-        name:
-          maxLength: 64
-          title: Name
-          type: string
-      required:
-      - id
-      - name
-      title: ProjectReference
+      title: APIEventBreadcrumb
       type: object
     Request:
       properties:
@@ -2173,326 +1978,47 @@ components:
       - inferredContentType
       title: Request
       type: object
-    EventGeo:
+    IssueTagSchema:
       properties:
-        city:
-          title: City
-          type:
-          - string
-          - 'null'
-        country_code:
-          title: Country Code
-          type:
-          - string
-          - 'null'
-        region:
-          title: Region
-          type:
-          - string
-          - 'null'
-        subdivision:
-          title: Subdivision
-          type:
-          - string
-          - 'null'
-      title: EventGeo
-      type: object
-    RuntimeContext:
-      properties:
-        type:
-          const: runtime
-          default: runtime
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        version:
-          type:
-          - string
-          - 'null'
-        raw_description:
-          type:
-          - string
-          - 'null'
-      type: object
-    IssueActorSchema:
-      properties:
-        type:
-          enum:
-          - user
-          - team
-          title: Type
-          type: string
-        id:
-          title: Id
+        topValues:
+          items:
+            $ref: '#/components/schemas/IssueTagTopValue'
+          title: Topvalues
+          type: array
+        uniqueValues:
+          title: Uniquevalues
+          type: integer
+        key:
+          title: Key
           type: string
         name:
           title: Name
           type: string
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        email:
-          title: Email
-          type:
-          - string
-          - 'null'
-        slug:
-          title: Slug
-          type:
-          - string
-          - 'null'
+        totalValues:
+          title: Totalvalues
+          type: integer
       required:
-      - type
-      - id
+      - topValues
+      - uniqueValues
+      - key
       - name
-      title: IssueActorSchema
+      - totalValues
+      title: IssueTagSchema
       type: object
-    ExceptionEntry:
-      properties:
-        type:
-          const: exception
-          title: Type
-          type: string
-        data:
-          additionalProperties: true
-          title: Data
-          type: object
-      required:
-      - type
-      - data
-      title: ExceptionEntry
-      type: object
-    IssueEventJsonSchema:
-      description: Represents a more raw view of the event, built with open source (legacy) Sentry compatibility
-      properties:
-        platform:
-          title: Platform
-          type:
-          - string
-          - 'null'
-        errors:
-          title: Errors
-          items:
-            $ref: '#/components/schemas/EventProcessingError'
-          type:
-          - array
-          - 'null'
-        event_id:
-          title: Event Id
-          type: string
-        timestamp:
-          title: Timestamp
-          type: number
-        datetime:
-          format: date-time
-          title: Datetime
-          type: string
-        breadcrumbs:
-          title: Breadcrumbs
-        project:
-          title: Project
-          type: integer
-        level:
-          title: Level
-          type:
-          - string
-          - 'null'
-        exception:
-          title: Exception
-        modules:
-          title: Modules
-          additionalProperties:
-            type: string
-          type:
-          - object
-          - 'null'
-        contexts:
-          title: Contexts
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        sdk:
-          title: Sdk
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        type:
-          title: Type
-          type:
-          - string
-          - 'null'
-        request:
-          title: Request
-        environment:
-          title: Environment
-          type:
-          - string
-          - 'null'
-        extra:
-          title: Extra
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        user:
-          $ref: '#/components/schemas/EventUser'
-        hashes:
-          default: []
-          items:
-            type: string
-          title: Hashes
-          type: array
-        title:
-          maxLength: 255
-          title: Title
-          type: string
-        transaction:
-          maxLength: 200
-          title: Transaction
-          type: string
-        tags:
-          title: Tags
-          type: object
-      required:
-      - event_id
-      - timestamp
-      - datetime
-      - project
-      - level
-      - type
-      - title
-      - transaction
-      - tags
-      title: IssueEventJsonSchema
-      type: object
-    IssueStatsResponse:
-      description: Defines the structure for a single issue's statistics in the response.
-      properties:
-        id:
-          title: Id
-          type: string
-        count:
-          title: Count
-          type: string
-        userCount:
-          title: Usercount
-          type: integer
-        firstSeen:
-          title: Firstseen
-          type: string
-        lastSeen:
-          title: Lastseen
-          type: string
-        isUnhandled:
-          title: Isunhandled
-          type: boolean
-        stats:
-          $ref: '#/components/schemas/StatsDetailSchema'
-      required:
-      - id
-      - count
-      - userCount
-      - firstSeen
-      - lastSeen
-      - isUnhandled
-      - stats
-      title: IssueStatsResponse
-      type: object
-    StateContext:
-      properties:
-        type:
-          const: state
-          default: state
-          title: Type
-          type: string
-        state:
-          additionalProperties: true
-          title: State
-          type: object
-      required:
-      - state
-      title: StateContext
-      type: object
-    LogLevelDisplay:
+    EventStatusDisplay:
       enum:
-      - sample
-      - debug
-      - info
-      - warning
-      - error
-      - fatal
-      title: LogLevelDisplay
+      - unresolved
+      - resolved
+      - ignored
+      title: EventStatusDisplay
       type: string
-    TraceContext:
-      properties:
-        type:
-          const: trace
-          default: trace
-          type: string
-        trace_id:
-          type: string
-        span_id:
-          type: string
-        parent_span_id:
-          type:
-          - string
-          - 'null'
-        op:
-          type:
-          - string
-          - 'null'
-        status:
-          type:
-          - string
-          - 'null'
-        exclusive_time:
-          type:
-          - number
-          - 'null'
-        client_sample_rate:
-          type:
-          - number
-          - 'null'
-        tags:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - items: {}
-            type: array
-        dynamic_sampling_context:
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        origin:
-          type:
-          - string
-          - 'null'
-      required:
-      - trace_id
-      - span_id
-      type: object
-    BrowserContext:
-      properties:
-        type:
-          const: browser
-          default: browser
-          type: string
-        name:
-          type: string
-        version:
-          type:
-          - string
-          - 'null'
-      required:
-      - name
-      type: object
+    IssueEventTypeDisplay:
+      enum:
+      - default
+      - error
+      - csp
+      title: IssueEventTypeDisplay
+      type: string
     IssueEventDetailSchema:
       properties:
         platform:
@@ -2664,6 +2190,44 @@ components:
       - userReport
       title: IssueEventDetailSchema
       type: object
+    IssueReleaseSchema:
+      properties:
+        shortVersion:
+          title: Shortversion
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        dateReleased:
+          title: Datereleased
+          format: date-time
+          type:
+          - string
+          - 'null'
+        version:
+          maxLength: 255
+          title: Version
+          type: string
+      required:
+      - shortVersion
+      - dateCreated
+      - dateReleased
+      - version
+      title: IssueReleaseSchema
+      type: object
+    IssueHashSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        latestEvent:
+          $ref: '#/components/schemas/IssueEventSchema'
+      required:
+      - id
+      - latestEvent
+      title: IssueHashSchema
+      type: object
     ResponseContext:
       properties:
         type:
@@ -2678,166 +2242,20 @@ components:
       - status_code
       title: ResponseContext
       type: object
-    UserReportSchema:
-      properties:
-        eventID:
-          title: Eventid
-          type: string
-        event:
-          additionalProperties:
-            type: string
-          title: Event
-          type: object
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        user:
-          title: User
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        name:
-          maxLength: 128
-          title: Name
-          type: string
-        email:
-          maxLength: 254
-          title: Email
-          type: string
-        comments:
-          title: Comments
-          type: string
-      required:
-      - eventID
-      - event
-      - dateCreated
-      - name
-      - email
-      - comments
-      title: UserReportSchema
-      type: object
-    StatsDetailSchema:
-      description: Represents the 24-hour statistics block.
-      properties:
-        24h:
-          title: 24H
-          items:
-            items:
-              type: integer
-            type: array
-          type:
-          - array
-          - 'null'
-        14d:
-          title: 14D
-          items:
-            items:
-              type: integer
-            type: array
-          type:
-          - array
-          - 'null'
-      title: StatsDetailSchema
-      type: object
-    CommitSchema:
-      description: Output schema for commit data, matching documented public API.
-      properties:
-        id:
-          title: Id
-          type: string
-        message:
-          default: ''
-          title: Message
-          type:
-          - string
-          - 'null'
-        dateCreated:
-          title: Datecreated
-          type:
-          - string
-          - 'null'
-        authorName:
-          title: Authorname
-          type:
-          - string
-          - 'null'
-        authorEmail:
-          title: Authoremail
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      title: CommitSchema
-      type: object
-    AppContext:
+    RequestEntry:
       properties:
         type:
-          const: app
-          default: app
+          const: request
+          title: Type
           type: string
-        app_start_time:
-          type:
-          - string
-          - 'null'
-        device_app_hash:
-          type:
-          - string
-          - 'null'
-        build_type:
-          type:
-          - string
-          - 'null'
-        app_identifier:
-          type:
-          - string
-          - 'null'
-        app_name:
-          type:
-          - string
-          - 'null'
-        app_version:
-          type:
-          - string
-          - 'null'
-        app_build:
-          type:
-          - string
-          - 'null'
-        app_memory:
-          type:
-          - integer
-          - 'null'
-        in_foreground:
-          type:
-          - boolean
-          - 'null'
+        data:
+          $ref: '#/components/schemas/Request'
+      required:
+      - type
+      - data
+      title: RequestEntry
       type: object
-    UpdateIssueSchema:
-      properties:
-        status:
-          $ref: '#/components/schemas/EventStatusEnum'
-        statusDetails:
-          $ref: '#/components/schemas/StatusDetailsSchema'
-        merge:
-          title: Merge
-          type:
-          - integer
-          - 'null'
-        assignedTo:
-          title: Assignedto
-          type:
-          - string
-          - 'null'
-      title: UpdateIssueSchema
-      type: object
-    IssueDetailSchema:
+    IssueSchema:
       properties:
         id:
           title: Id
@@ -2939,9 +2357,6 @@ components:
           type:
           - string
           - 'null'
-        userReportCount:
-          title: Userreportcount
-          type: integer
       required:
       - id
       - count
@@ -2955,21 +2370,606 @@ components:
       - firstSeen
       - lastSeen
       - title
-      - userReportCount
-      title: IssueDetailSchema
+      title: IssueSchema
       type: object
-    RequestEntry:
+    StatusDetailsSchema:
+      properties:
+        inRelease:
+          title: Inrelease
+          type:
+          - string
+          - 'null'
+        inNextRelease:
+          title: Innextrelease
+          type:
+          - boolean
+          - 'null'
+      title: StatusDetailsSchema
+      type: object
+    ProjectReference:
+      properties:
+        id:
+          title: Id
+          type: string
+        platform:
+          title: Platform
+          maxLength: 64
+          type:
+          - string
+          - 'null'
+        slug:
+          title: Slug
+          type:
+          - string
+          - 'null'
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+      required:
+      - id
+      - name
+      title: ProjectReference
+      type: object
+    CultureContext:
       properties:
         type:
-          const: request
+          const: culture
+          default: culture
+          type: string
+        calendar:
+          type:
+          - string
+          - 'null'
+        display_name:
+          type:
+          - string
+          - 'null'
+        locale:
+          type:
+          - string
+          - 'null'
+        is_24_hour_format:
+          type:
+          - boolean
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
+      type: object
+    DeviceContext:
+      properties:
+        type:
+          const: device
+          default: device
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        family:
+          type:
+          - string
+          - 'null'
+        model:
+          type:
+          - string
+          - 'null'
+        model_id:
+          type:
+          - string
+          - 'null'
+        arch:
+          type:
+          - string
+          - 'null'
+        battery_level:
+          type:
+          - number
+          - 'null'
+        orientation:
+          type:
+          - string
+          - 'null'
+        manufacturer:
+          type:
+          - string
+          - 'null'
+        brand:
+          type:
+          - string
+          - 'null'
+        screen_resolution:
+          type:
+          - string
+          - 'null'
+        screen_height_pixels:
+          type:
+          - integer
+          - 'null'
+        screen_width_pixels:
+          type:
+          - integer
+          - 'null'
+        screen_density:
+          type:
+          - number
+          - 'null'
+        screen_dpi:
+          type:
+          - number
+          - 'null'
+        online:
+          type:
+          - boolean
+          - 'null'
+        charging:
+          type:
+          - boolean
+          - 'null'
+        low_memory:
+          type:
+          - boolean
+          - 'null'
+        simulator:
+          type:
+          - boolean
+          - 'null'
+        memory_size:
+          type:
+          - integer
+          - 'null'
+        free_memory:
+          type:
+          - integer
+          - 'null'
+        usable_memory:
+          type:
+          - integer
+          - 'null'
+        storage_size:
+          type:
+          - integer
+          - 'null'
+        free_storage:
+          type:
+          - integer
+          - 'null'
+        external_storage_size:
+          type:
+          - integer
+          - 'null'
+        external_free_storage:
+          type:
+          - integer
+          - 'null'
+        boot_time:
+          type:
+          - string
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
+        language:
+          type:
+          - string
+          - 'null'
+        processor_count:
+          type:
+          - integer
+          - 'null'
+        cpu_description:
+          type:
+          - string
+          - 'null'
+        processor_frequency:
+          type:
+          - number
+          - 'null'
+        device_type:
+          type:
+          - string
+          - 'null'
+        battery_status:
+          type:
+          - string
+          - 'null'
+        device_unique_identifier:
+          type:
+          - string
+          - 'null'
+        supports_vibration:
+          type:
+          - boolean
+          - 'null'
+        supports_accelerometer:
+          type:
+          - boolean
+          - 'null'
+        supports_gyroscope:
+          type:
+          - boolean
+          - 'null'
+        supports_audio:
+          type:
+          - boolean
+          - 'null'
+        supports_location_service:
+          type:
+          - boolean
+          - 'null'
+      type: object
+    CloudResourceContext:
+      properties:
+        type:
+          const: cloud_resource
+          default: cloud_resource
+          title: Type
+          type: string
+        cloud:
+          additionalProperties: true
+          title: Cloud
+          type: object
+        host:
+          additionalProperties: true
+          title: Host
+          type: object
+      required:
+      - cloud
+      - host
+      title: CloudResourceContext
+      type: object
+    StateContext:
+      properties:
+        type:
+          const: state
+          default: state
+          title: Type
+          type: string
+        state:
+          additionalProperties: true
+          title: State
+          type: object
+      required:
+      - state
+      title: StateContext
+      type: object
+    StatsDetailSchema:
+      description: Represents the 24-hour statistics block.
+      properties:
+        24h:
+          title: 24H
+          items:
+            items:
+              type: integer
+            type: array
+          type:
+          - array
+          - 'null'
+        14d:
+          title: 14D
+          items:
+            items:
+              type: integer
+            type: array
+          type:
+          - array
+          - 'null'
+      title: StatsDetailSchema
+      type: object
+    CommentUserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        email:
+          maxLength: 254
+          title: Email
+          type: string
+      required:
+      - id
+      - email
+      title: CommentUserSchema
+      type: object
+    TraceContext:
+      properties:
+        type:
+          const: trace
+          default: trace
+          type: string
+        trace_id:
+          type: string
+        span_id:
+          type: string
+        parent_span_id:
+          type:
+          - string
+          - 'null'
+        op:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - string
+          - 'null'
+        exclusive_time:
+          type:
+          - number
+          - 'null'
+        client_sample_rate:
+          type:
+          - number
+          - 'null'
+        tags:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - items: {}
+            type: array
+        dynamic_sampling_context:
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        origin:
+          type:
+          - string
+          - 'null'
+      required:
+      - trace_id
+      - span_id
+      type: object
+    MessageEntry:
+      properties:
+        type:
+          const: message
           title: Type
           type: string
         data:
-          $ref: '#/components/schemas/Request'
+          additionalProperties: true
+          title: Data
+          type: object
       required:
       - type
       - data
-      title: RequestEntry
+      title: MessageEntry
+      type: object
+    EventGeo:
+      properties:
+        city:
+          title: City
+          type:
+          - string
+          - 'null'
+        country_code:
+          title: Country Code
+          type:
+          - string
+          - 'null'
+        region:
+          title: Region
+          type:
+          - string
+          - 'null'
+        subdivision:
+          title: Subdivision
+          type:
+          - string
+          - 'null'
+      title: EventGeo
+      type: object
+    BreadcrumbsEntry:
+      properties:
+        type:
+          const: breadcrumbs
+          title: Type
+          type: string
+        data:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/APIEventBreadcrumb'
+            type: array
+          propertyNames:
+            const: values
+          title: Data
+          type: object
+      required:
+      - type
+      - data
+      title: BreadcrumbsEntry
+      type: object
+    IssueTagTopValue:
+      properties:
+        name:
+          title: Name
+          type: string
+        value:
+          title: Value
+          type: string
+        count:
+          title: Count
+          type: integer
+        key:
+          title: Key
+          type: string
+      required:
+      - name
+      - value
+      - count
+      - key
+      title: IssueTagTopValue
+      type: object
+    EventStatusEnum:
+      enum:
+      - unresolved
+      - resolved
+      - ignored
+      title: EventStatusEnum
+      type: string
+    GPUContext:
+      properties:
+        type:
+          const: gpu
+          default: gpu
+          type: string
+        name:
+          type: string
+        version:
+          type:
+          - string
+          - 'null'
+        id:
+          type:
+          - string
+          - 'null'
+        vendor_id:
+          type:
+          - string
+          - 'null'
+        vendor_name:
+          type:
+          - string
+          - 'null'
+        memory_size:
+          type:
+          - integer
+          - 'null'
+        api_type:
+          type:
+          - string
+          - 'null'
+        multi_threaded_rendering:
+          type:
+          - boolean
+          - 'null'
+        npot_support:
+          type:
+          - string
+          - 'null'
+        max_texture_size:
+          type:
+          - integer
+          - 'null'
+        graphics_shader_level:
+          type:
+          - string
+          - 'null'
+        supports_draw_call_instancing:
+          type:
+          - boolean
+          - 'null'
+        supports_ray_tracing:
+          type:
+          - boolean
+          - 'null'
+        supports_compute_shaders:
+          type:
+          - boolean
+          - 'null'
+        supports_geometry_shaders:
+          type:
+          - boolean
+          - 'null'
+      required:
+      - name
+      type: object
+    EventProcessingError:
+      description: 'Represents a single error encountered during event processing,
+
+        matching the Sentry event schema.'
+      properties:
+        type:
+          title: Type
+          type: string
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+        value:
+          title: Value
+      required:
+      - type
+      title: EventProcessingError
+      type: object
+    CommentSchema:
+      properties:
+        data:
+          additionalProperties:
+            type: string
+          title: Data
+          type: object
+        type:
+          default: note
+          title: Type
+          type:
+          - string
+          - 'null'
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        user:
+          $ref: '#/components/schemas/CommentUserSchema'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+      required:
+      - data
+      - dateCreated
+      - user
+      title: CommentSchema
+      type: object
+    IssueStatsResponse:
+      description: Defines the structure for a single issue's statistics in the response.
+      properties:
+        id:
+          title: Id
+          type: string
+        count:
+          title: Count
+          type: string
+        userCount:
+          title: Usercount
+          type: integer
+        firstSeen:
+          title: Firstseen
+          type: string
+        lastSeen:
+          title: Lastseen
+          type: string
+        isUnhandled:
+          title: Isunhandled
+          type: boolean
+        stats:
+          $ref: '#/components/schemas/StatsDetailSchema'
+      required:
+      - id
+      - count
+      - userCount
+      - firstSeen
+      - lastSeen
+      - isUnhandled
+      - stats
+      title: IssueStatsResponse
+      type: object
+    PostCommentSchema:
+      properties:
+        data:
+          additionalProperties:
+            type: string
+          propertyNames:
+            const: text
+          title: Data
+          type: object
+      required:
+      - data
+      title: PostCommentSchema
       type: object
   securitySchemes:
     TokenAuth:

@@ -54,15 +54,6 @@ paths:
       - Generate Recovery Codes
 components:
   schemas:
-    RecoveryCodeSchema:
-      properties:
-        code:
-          title: Code
-          type: string
-      required:
-      - code
-      title: RecoveryCodeSchema
-      type: object
     RecoveryCodesSchema:
       properties:
         codes:
@@ -73,6 +64,15 @@ components:
       required:
       - codes
       title: RecoveryCodesSchema
+      type: object
+    RecoveryCodeSchema:
+      properties:
+        code:
+          title: Code
+          type: string
+      required:
+      - code
+      title: RecoveryCodeSchema
       type: object
   securitySchemes:
     TokenAuth:

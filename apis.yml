@@ -41,7 +41,7 @@ tags:
 - Performance Monitoring
 - Uptime Monitoring
 - Application Monitoring
-- Open-Source
+- Open Source
 - Sentry Compatible
 - Observability
 - Logging
@@ -54,6 +54,7 @@ tags_raw:
 - Sentry Compatible
 - Observability
 - Logging
+- Open-Source
 apis:
 - name: GlitchTip Event Intake API
   description: Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions,
