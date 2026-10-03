@@ -46,62 +46,6 @@ paths:
       - Store
 components:
   schemas:
-    ExceptionMechanism:
-      properties:
-        type:
-          title: Type
-          type: string
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-        help_link:
-          title: Help Link
-          type:
-          - string
-          - 'null'
-        handled:
-          title: Handled
-          type:
-          - boolean
-          - 'null'
-        synthetic:
-          title: Synthetic
-          type:
-          - boolean
-          - 'null'
-        is_exception_group:
-          title: Is Exception Group
-          type:
-          - boolean
-          - 'null'
-        parent_id:
-          title: Parent Id
-          type:
-          - integer
-          - 'null'
-        source:
-          title: Source
-          type:
-          - string
-          - 'null'
-        meta:
-          title: Meta
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        data:
-          title: Data
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-      required:
-      - type
-      title: ExceptionMechanism
-      type: object
     RuntimeContext:
       properties:
         type:
@@ -121,349 +65,86 @@ components:
           - string
           - 'null'
       type: object
-    AppContext:
+    EventIngestOut:
+      properties:
+        event_id:
+          title: Event Id
+          type: string
+        task_id:
+          title: Task Id
+          type:
+          - string
+          - 'null'
+      required:
+      - event_id
+      title: EventIngestOut
+      type: object
+    GPUContext:
       properties:
         type:
-          const: app
-          default: app
+          const: gpu
+          default: gpu
           type: string
-        app_start_time:
+        name:
+          type: string
+        version:
           type:
           - string
           - 'null'
-        device_app_hash:
+        id:
           type:
           - string
           - 'null'
-        build_type:
+        vendor_id:
           type:
           - string
           - 'null'
-        app_identifier:
+        vendor_name:
           type:
           - string
           - 'null'
-        app_name:
-          type:
-          - string
-          - 'null'
-        app_version:
-          type:
-          - string
-          - 'null'
-        app_build:
-          type:
-          - string
-          - 'null'
-        app_memory:
+        memory_size:
           type:
           - integer
           - 'null'
-        in_foreground:
+        api_type:
+          type:
+          - string
+          - 'null'
+        multi_threaded_rendering:
           type:
           - boolean
           - 'null'
-      type: object
-    ReplayContext:
-      properties:
-        type:
-          const: replay
-          default: replay
-          title: Type
-          type: string
-        replay_id:
-          title: Replay Id
-          type: string
-      required:
-      - replay_id
-      title: ReplayContext
-      type: object
-    EventUser:
-      properties:
-        id:
-          title: Id
+        npot_support:
           type:
           - string
           - 'null'
-        username:
-          title: Username
+        max_texture_size:
+          type:
+          - integer
+          - 'null'
+        graphics_shader_level:
           type:
           - string
           - 'null'
-        email:
-          title: Email
+        supports_draw_call_instancing:
           type:
-          - string
+          - boolean
           - 'null'
-        ip_address:
-          title: Ip Address
+        supports_ray_tracing:
           type:
-          - string
+          - boolean
           - 'null'
-        data:
-          title: Data
-          additionalProperties: true
+        supports_compute_shaders:
           type:
-          - object
+          - boolean
           - 'null'
-        geo:
-          $ref: '#/components/schemas/EventGeo'
-      title: EventUser
-      type: object
-    ClientSDKInfo:
-      properties:
-        integrations:
-          title: Integrations
-          items:
-            type:
-            - string
-            - 'null'
+        supports_geometry_shaders:
           type:
-          - array
-          - 'null'
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-        packages:
-          title: Packages
-          items:
-            $ref: '#/components/schemas/ClientSDKPackage'
-          type:
-          - array
-          - 'null'
-        version:
-          title: Version
-          type:
-          - string
+          - boolean
           - 'null'
       required:
       - name
-      - version
-      title: ClientSDKInfo
-      type: object
-    BrowserContext:
-      properties:
-        type:
-          const: browser
-          default: browser
-          type: string
-        name:
-          type: string
-        version:
-          type:
-          - string
-          - 'null'
-      required:
-      - name
-      type: object
-    OSContext:
-      properties:
-        type:
-          const: os
-          default: os
-          type: string
-        name:
-          type: string
-        version:
-          type:
-          - string
-          - 'null'
-        build:
-          type:
-          - string
-          - 'null'
-        kernel_version:
-          type:
-          - string
-          - 'null'
-        rooted:
-          type:
-          - boolean
-          - 'null'
-        theme:
-          type:
-          - string
-          - 'null'
-        raw_description:
-          type:
-          - string
-          - 'null'
-      required:
-      - name
-      type: object
-    EventBreadcrumb:
-      properties:
-        type:
-          default: default
-          title: Type
-          type:
-          - string
-          - 'null'
-        category:
-          title: Category
-          type:
-          - string
-          - 'null'
-        message:
-          title: Message
-          type:
-          - string
-          - 'null'
-        data:
-          title: Data
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-        level:
-          default: info
-          title: Level
-          enum:
-          - fatal
-          - error
-          - warning
-          - info
-          - debug
-          type:
-          - string
-          - 'null'
-        timestamp:
-          title: Timestamp
-          format: date-time
-          type:
-          - string
-          - 'null'
-      title: EventBreadcrumb
-      type: object
-    DebugMeta:
-      properties:
-        images:
-          items:
-            anyOf:
-            - discriminator:
-                mapping:
-                  elf: '#/components/schemas/NativeDebugImage'
-                  jvm: '#/components/schemas/JvmDebugImage'
-                  macho: '#/components/schemas/NativeDebugImage'
-                  pe: '#/components/schemas/NativeDebugImage'
-                  pe_dotnet: '#/components/schemas/NativeDebugImage'
-                  sourcemap: '#/components/schemas/SourceMapImage'
-                  wasm: '#/components/schemas/NativeDebugImage'
-                propertyName: type
-              oneOf:
-              - $ref: '#/components/schemas/SourceMapImage'
-              - $ref: '#/components/schemas/JvmDebugImage'
-              - $ref: '#/components/schemas/NativeDebugImage'
-            - $ref: '#/components/schemas/OtherDebugImage'
-          title: Images
-          type: array
-      required:
-      - images
-      title: DebugMeta
-      type: object
-    Thread:
-      properties:
-        id:
-          anyOf:
-          - type: integer
-          - type: string
-          title: Id
-        current:
-          title: Current
-          type:
-          - boolean
-          - 'null'
-        crashed:
-          title: Crashed
-          type:
-          - boolean
-          - 'null'
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-        stacktrace:
-          $ref: '#/components/schemas/StackTrace'
-        raw_stacktrace:
-          $ref: '#/components/schemas/StackTrace'
-      title: Thread
-      type: object
-    EventTemplate:
-      properties:
-        lineno:
-          title: Lineno
-          type: integer
-        abs_path:
-          title: Abs Path
-          type:
-          - string
-          - 'null'
-        filename:
-          title: Filename
-          type: string
-        context_line:
-          title: Context Line
-          type: string
-        pre_context:
-          title: Pre Context
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-        post_context:
-          title: Post Context
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-      required:
-      - lineno
-      - filename
-      - context_line
-      title: EventTemplate
-      type: object
-    ValueEventThread:
-      properties:
-        values:
-          items:
-            $ref: '#/components/schemas/Thread'
-          title: Values
-          type: array
-      required:
-      - values
-      title: ValueEventThread
-      type: object
-    EventMessage:
-      properties:
-        formatted:
-          default: ''
-          maxLength: 8192
-          title: Formatted
-          type: string
-        message:
-          title: Message
-          type:
-          - string
-          - 'null'
-        params:
-          anyOf:
-          - items:
-              type:
-              - string
-              - 'null'
-            type: array
-          - additionalProperties:
-              type:
-              - string
-              - 'null'
-            type: object
-          title: Params
-      title: EventMessage
       type: object
     SourceMapImage:
       properties:
@@ -484,94 +165,16 @@ components:
       - debug_id
       title: SourceMapImage
       type: object
-    ResponseContext:
+    ValueEventBreadcrumb:
       properties:
-        type:
-          const: response
-          default: response
-          title: Type
-          type: string
-        status_code:
-          title: Status Code
-          type: integer
+        values:
+          items:
+            $ref: '#/components/schemas/EventBreadcrumb'
+          title: Values
+          type: array
       required:
-      - status_code
-      title: ResponseContext
-      type: object
-    LockReason:
-      properties:
-        type:
-          title: Type
-          type: integer
-        address:
-          title: Address
-          type:
-          - string
-          - 'null'
-        package_name:
-          title: Package Name
-          type:
-          - string
-          - 'null'
-        class_name:
-          title: Class Name
-          type:
-          - string
-          - 'null'
-        thread_id:
-          title: Thread Id
-          type:
-          - string
-          - 'null'
-      required:
-      - type
-      title: LockReason
-      type: object
-    NativeDebugImage:
-      properties:
-        type:
-          enum:
-          - macho
-          - elf
-          - pe
-          - pe_dotnet
-          - wasm
-          title: Type
-          type: string
-        debug_id:
-          title: Debug Id
-          format: uuid
-          type:
-          - string
-          - 'null'
-        debug_checksum:
-          title: Debug Checksum
-          type:
-          - string
-          - 'null'
-        image_addr:
-          title: Image Addr
-          type:
-          - string
-          - 'null'
-        image_size:
-          title: Image Size
-          type:
-          - integer
-          - 'null'
-        code_file:
-          title: Code File
-          type:
-          - string
-          - 'null'
-        code_id:
-          title: Code Id
-          type:
-          - string
-          - 'null'
-      required:
-      - type
-      title: NativeDebugImage
+      - values
+      title: ValueEventBreadcrumb
       type: object
     EventIngestSchema:
       properties:
@@ -735,6 +338,17 @@ components:
       - event_id
       title: EventIngestSchema
       type: object
+    ValueEventThread:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/Thread'
+          title: Values
+          type: array
+      required:
+      - values
+      title: ValueEventThread
+      type: object
     JvmDebugImage:
       properties:
         type:
@@ -750,28 +364,59 @@ components:
       - debug_id
       title: JvmDebugImage
       type: object
-    OtherDebugImage:
+    EventGeo:
+      properties:
+        city:
+          title: City
+          type:
+          - string
+          - 'null'
+        country_code:
+          title: Country Code
+          type:
+          - string
+          - 'null'
+        region:
+          title: Region
+          type:
+          - string
+          - 'null'
+        subdivision:
+          title: Subdivision
+          type:
+          - string
+          - 'null'
+      title: EventGeo
+      type: object
+    IngestEventException:
       properties:
         type:
           title: Type
-          type: string
-      required:
-      - type
-      title: OtherDebugImage
-      type: object
-    ClientSDKPackage:
-      properties:
-        name:
-          title: Name
           type:
           - string
           - 'null'
-        version:
-          title: Version
+        value:
+          title: Value
           type:
           - string
           - 'null'
-      title: ClientSDKPackage
+        module:
+          title: Module
+          type:
+          - string
+          - 'null'
+        thread_id:
+          title: Thread Id
+          type:
+          - string
+          - 'null'
+        mechanism:
+          $ref: '#/components/schemas/ExceptionMechanism'
+        stacktrace:
+          $ref: '#/components/schemas/StackTrace'
+        raw_stacktrace:
+          $ref: '#/components/schemas/StackTrace'
+      title: IngestEventException
       type: object
     DeviceContext:
       properties:
@@ -936,32 +581,344 @@ components:
           - boolean
           - 'null'
       type: object
-    CultureContext:
+    EventMessage:
+      properties:
+        formatted:
+          default: ''
+          maxLength: 8192
+          title: Formatted
+          type: string
+        message:
+          title: Message
+          type:
+          - string
+          - 'null'
+        params:
+          anyOf:
+          - items:
+              type:
+              - string
+              - 'null'
+            type: array
+          - additionalProperties:
+              type:
+              - string
+              - 'null'
+            type: object
+          title: Params
+      title: EventMessage
+      type: object
+    CloudResourceContext:
       properties:
         type:
-          const: culture
-          default: culture
+          const: cloud_resource
+          default: cloud_resource
+          title: Type
           type: string
-        calendar:
+        cloud:
+          additionalProperties: true
+          title: Cloud
+          type: object
+        host:
+          additionalProperties: true
+          title: Host
+          type: object
+      required:
+      - cloud
+      - host
+      title: CloudResourceContext
+      type: object
+    StackTrace:
+      properties:
+        frames:
+          items:
+            $ref: '#/components/schemas/StackTraceFrame'
+          title: Frames
+          type: array
+        registers:
+          title: Registers
+          additionalProperties:
+            type: string
+          type:
+          - object
+          - 'null'
+      required:
+      - frames
+      title: StackTrace
+      type: object
+    DebugMeta:
+      properties:
+        images:
+          items:
+            anyOf:
+            - discriminator:
+                mapping:
+                  elf: '#/components/schemas/NativeDebugImage'
+                  jvm: '#/components/schemas/JvmDebugImage'
+                  macho: '#/components/schemas/NativeDebugImage'
+                  pe: '#/components/schemas/NativeDebugImage'
+                  pe_dotnet: '#/components/schemas/NativeDebugImage'
+                  sourcemap: '#/components/schemas/SourceMapImage'
+                  wasm: '#/components/schemas/NativeDebugImage'
+                propertyName: type
+              oneOf:
+              - $ref: '#/components/schemas/SourceMapImage'
+              - $ref: '#/components/schemas/JvmDebugImage'
+              - $ref: '#/components/schemas/NativeDebugImage'
+            - $ref: '#/components/schemas/OtherDebugImage'
+          title: Images
+          type: array
+      required:
+      - images
+      title: DebugMeta
+      type: object
+    StateContext:
+      properties:
+        type:
+          const: state
+          default: state
+          title: Type
+          type: string
+        state:
+          additionalProperties: true
+          title: State
+          type: object
+      required:
+      - state
+      title: StateContext
+      type: object
+    ExceptionMechanism:
+      properties:
+        type:
+          title: Type
+          type: string
+        description:
+          title: Description
           type:
           - string
           - 'null'
-        display_name:
+        help_link:
+          title: Help Link
           type:
           - string
           - 'null'
-        locale:
-          type:
-          - string
-          - 'null'
-        is_24_hour_format:
+        handled:
+          title: Handled
           type:
           - boolean
           - 'null'
-        timezone:
+        synthetic:
+          title: Synthetic
+          type:
+          - boolean
+          - 'null'
+        is_exception_group:
+          title: Is Exception Group
+          type:
+          - boolean
+          - 'null'
+        parent_id:
+          title: Parent Id
+          type:
+          - integer
+          - 'null'
+        source:
+          title: Source
           type:
           - string
           - 'null'
+        meta:
+          title: Meta
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        data:
+          title: Data
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+      required:
+      - type
+      title: ExceptionMechanism
+      type: object
+    LockReason:
+      properties:
+        type:
+          title: Type
+          type: integer
+        address:
+          title: Address
+          type:
+          - string
+          - 'null'
+        package_name:
+          title: Package Name
+          type:
+          - string
+          - 'null'
+        class_name:
+          title: Class Name
+          type:
+          - string
+          - 'null'
+        thread_id:
+          title: Thread Id
+          type:
+          - string
+          - 'null'
+      required:
+      - type
+      title: LockReason
+      type: object
+    AppContext:
+      properties:
+        type:
+          const: app
+          default: app
+          type: string
+        app_start_time:
+          type:
+          - string
+          - 'null'
+        device_app_hash:
+          type:
+          - string
+          - 'null'
+        build_type:
+          type:
+          - string
+          - 'null'
+        app_identifier:
+          type:
+          - string
+          - 'null'
+        app_name:
+          type:
+          - string
+          - 'null'
+        app_version:
+          type:
+          - string
+          - 'null'
+        app_build:
+          type:
+          - string
+          - 'null'
+        app_memory:
+          type:
+          - integer
+          - 'null'
+        in_foreground:
+          type:
+          - boolean
+          - 'null'
+      type: object
+    EventTemplate:
+      properties:
+        lineno:
+          title: Lineno
+          type: integer
+        abs_path:
+          title: Abs Path
+          type:
+          - string
+          - 'null'
+        filename:
+          title: Filename
+          type: string
+        context_line:
+          title: Context Line
+          type: string
+        pre_context:
+          title: Pre Context
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        post_context:
+          title: Post Context
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      required:
+      - lineno
+      - filename
+      - context_line
+      title: EventTemplate
+      type: object
+    ClientSDKPackage:
+      properties:
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+        version:
+          title: Version
+          type:
+          - string
+          - 'null'
+      title: ClientSDKPackage
+      type: object
+    ResponseContext:
+      properties:
+        type:
+          const: response
+          default: response
+          title: Type
+          type: string
+        status_code:
+          title: Status Code
+          type: integer
+      required:
+      - status_code
+      title: ResponseContext
+      type: object
+    EventUser:
+      properties:
+        id:
+          title: Id
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        email:
+          title: Email
+          type:
+          - string
+          - 'null'
+        ip_address:
+          title: Ip Address
+          type:
+          - string
+          - 'null'
+        data:
+          title: Data
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+        geo:
+          $ref: '#/components/schemas/EventGeo'
+      title: EventUser
+      type: object
+    OtherDebugImage:
+      properties:
+        type:
+          title: Type
+          type: string
+      required:
+      - type
+      title: OtherDebugImage
       type: object
     StackTraceFrame:
       properties:
@@ -1094,81 +1051,141 @@ components:
           - 'null'
       title: StackTraceFrame
       type: object
-    CloudResourceContext:
+    ReplayContext:
       properties:
         type:
-          const: cloud_resource
-          default: cloud_resource
+          const: replay
+          default: replay
           title: Type
           type: string
-        cloud:
-          additionalProperties: true
-          title: Cloud
-          type: object
-        host:
-          additionalProperties: true
-          title: Host
-          type: object
-      required:
-      - cloud
-      - host
-      title: CloudResourceContext
-      type: object
-    StateContext:
-      properties:
-        type:
-          const: state
-          default: state
-          title: Type
+        replay_id:
+          title: Replay Id
           type: string
-        state:
-          additionalProperties: true
-          title: State
-          type: object
       required:
-      - state
-      title: StateContext
+      - replay_id
+      title: ReplayContext
       type: object
-    ValueEventBreadcrumb:
+    Thread:
       properties:
-        values:
-          items:
-            $ref: '#/components/schemas/EventBreadcrumb'
-          title: Values
-          type: array
-      required:
-      - values
-      title: ValueEventBreadcrumb
-      type: object
-    IngestEventException:
-      properties:
-        type:
-          title: Type
+        id:
+          anyOf:
+          - type: integer
+          - type: string
+          title: Id
+        current:
+          title: Current
+          type:
+          - boolean
+          - 'null'
+        crashed:
+          title: Crashed
+          type:
+          - boolean
+          - 'null'
+        name:
+          title: Name
           type:
           - string
           - 'null'
-        value:
-          title: Value
-          type:
-          - string
-          - 'null'
-        module:
-          title: Module
-          type:
-          - string
-          - 'null'
-        thread_id:
-          title: Thread Id
-          type:
-          - string
-          - 'null'
-        mechanism:
-          $ref: '#/components/schemas/ExceptionMechanism'
         stacktrace:
           $ref: '#/components/schemas/StackTrace'
         raw_stacktrace:
           $ref: '#/components/schemas/StackTrace'
-      title: IngestEventException
+      title: Thread
+      type: object
+    IngestValueEventException:
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/IngestEventException'
+          title: Values
+          type: array
+      required:
+      - values
+      title: IngestValueEventException
+      type: object
+    BrowserContext:
+      properties:
+        type:
+          const: browser
+          default: browser
+          type: string
+        name:
+          type: string
+        version:
+          type:
+          - string
+          - 'null'
+      required:
+      - name
+      type: object
+    ClientSDKInfo:
+      properties:
+        integrations:
+          title: Integrations
+          items:
+            type:
+            - string
+            - 'null'
+          type:
+          - array
+          - 'null'
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+        packages:
+          title: Packages
+          items:
+            $ref: '#/components/schemas/ClientSDKPackage'
+          type:
+          - array
+          - 'null'
+        version:
+          title: Version
+          type:
+          - string
+          - 'null'
+      required:
+      - name
+      - version
+      title: ClientSDKInfo
+      type: object
+    OSContext:
+      properties:
+        type:
+          const: os
+          default: os
+          type: string
+        name:
+          type: string
+        version:
+          type:
+          - string
+          - 'null'
+        build:
+          type:
+          - string
+          - 'null'
+        kernel_version:
+          type:
+          - string
+          - 'null'
+        rooted:
+          type:
+          - boolean
+          - 'null'
+        theme:
+          type:
+          - string
+          - 'null'
+        raw_description:
+          type:
+          - string
+          - 'null'
+      required:
+      - name
       type: object
     TraceContext:
       properties:
@@ -1219,47 +1236,49 @@ components:
       - trace_id
       - span_id
       type: object
-    EventGeo:
+    EventBreadcrumb:
       properties:
-        city:
-          title: City
+        type:
+          default: default
+          title: Type
           type:
           - string
           - 'null'
-        country_code:
-          title: Country Code
+        category:
+          title: Category
           type:
           - string
           - 'null'
-        region:
-          title: Region
+        message:
+          title: Message
           type:
           - string
           - 'null'
-        subdivision:
-          title: Subdivision
-          type:
-          - string
-          - 'null'
-      title: EventGeo
-      type: object
-    StackTrace:
-      properties:
-        frames:
-          items:
-            $ref: '#/components/schemas/StackTraceFrame'
-          title: Frames
-          type: array
-        registers:
-          title: Registers
-          additionalProperties:
-            type: string
+        data:
+          title: Data
+          additionalProperties: true
           type:
           - object
           - 'null'
-      required:
-      - frames
-      title: StackTrace
+        level:
+          default: info
+          title: Level
+          enum:
+          - fatal
+          - error
+          - warning
+          - info
+          - debug
+          type:
+          - string
+          - 'null'
+        timestamp:
+          title: Timestamp
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: EventBreadcrumb
       type: object
     IngestRequest:
       properties:
@@ -1358,97 +1377,78 @@ components:
           title: Query String
       title: IngestRequest
       type: object
-    IngestValueEventException:
-      properties:
-        values:
-          items:
-            $ref: '#/components/schemas/IngestEventException'
-          title: Values
-          type: array
-      required:
-      - values
-      title: IngestValueEventException
-      type: object
-    EventIngestOut:
-      properties:
-        event_id:
-          title: Event Id
-          type: string
-        task_id:
-          title: Task Id
-          type:
-          - string
-          - 'null'
-      required:
-      - event_id
-      title: EventIngestOut
-      type: object
-    GPUContext:
+    NativeDebugImage:
       properties:
         type:
-          const: gpu
-          default: gpu
+          enum:
+          - macho
+          - elf
+          - pe
+          - pe_dotnet
+          - wasm
+          title: Type
           type: string
-        name:
-          type: string
-        version:
+        debug_id:
+          title: Debug Id
+          format: uuid
           type:
           - string
           - 'null'
-        id:
+        debug_checksum:
+          title: Debug Checksum
           type:
           - string
           - 'null'
-        vendor_id:
+        image_addr:
+          title: Image Addr
           type:
           - string
           - 'null'
-        vendor_name:
-          type:
-          - string
-          - 'null'
-        memory_size:
+        image_size:
+          title: Image Size
           type:
           - integer
           - 'null'
-        api_type:
+        code_file:
+          title: Code File
           type:
           - string
           - 'null'
-        multi_threaded_rendering:
-          type:
-          - boolean
-          - 'null'
-        npot_support:
+        code_id:
+          title: Code Id
           type:
           - string
-          - 'null'
-        max_texture_size:
-          type:
-          - integer
-          - 'null'
-        graphics_shader_level:
-          type:
-          - string
-          - 'null'
-        supports_draw_call_instancing:
-          type:
-          - boolean
-          - 'null'
-        supports_ray_tracing:
-          type:
-          - boolean
-          - 'null'
-        supports_compute_shaders:
-          type:
-          - boolean
-          - 'null'
-        supports_geometry_shaders:
-          type:
-          - boolean
           - 'null'
       required:
-      - name
+      - type
+      title: NativeDebugImage
+      type: object
+    CultureContext:
+      properties:
+        type:
+          const: culture
+          default: culture
+          type: string
+        calendar:
+          type:
+          - string
+          - 'null'
+        display_name:
+          type:
+          - string
+          - 'null'
+        locale:
+          type:
+          - string
+          - 'null'
+        is_24_hour_format:
+          type:
+          - boolean
+          - 'null'
+        timezone:
+          type:
+          - string
+          - 'null'
       type: object
   securitySchemes:
     TokenAuth:

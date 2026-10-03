@@ -124,17 +124,76 @@ components:
       - organization
       title: OrganizationUserOrganizationSchema
       type: object
-    AcceptInviteSchema:
+    AcceptInviteIn:
       properties:
         acceptInvite:
           title: Acceptinvite
           type: boolean
-        orgUser:
-          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
       required:
       - acceptInvite
-      - orgUser
-      title: AcceptInviteSchema
+      title: AcceptInviteIn
+      type: object
+    OrganizationSchema:
+      properties:
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
+          type: string
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        status:
+          additionalProperties:
+            type: string
+          default:
+            id: active
+            name: active
+          title: Status
+          type: object
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        isEarlyAdopter:
+          default: false
+          title: Isearlyadopter
+          type: boolean
+        require2fa:
+          default: false
+          title: Require2Fa
+          type: boolean
+        slug:
+          description: The name in all lowercase, suitable for URL identification
+          maxLength: 200
+          title: Slug
+          type: string
+        isAcceptingEvents:
+          default: true
+          description: Used for throttling at org level
+          title: Is Accepting Events
+          type: boolean
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+      required:
+      - name
+      - id
+      - dateCreated
+      - slug
+      title: OrganizationSchema
       type: object
     UserOptions:
       properties:
@@ -208,77 +267,6 @@ components:
       - dateJoined
       title: SocialAccountSchema
       type: object
-    AcceptInviteIn:
-      properties:
-        acceptInvite:
-          title: Acceptinvite
-          type: boolean
-      required:
-      - acceptInvite
-      title: AcceptInviteIn
-      type: object
-    OrganizationSchema:
-      properties:
-        name:
-          description: The name of the organization
-          maxLength: 200
-          title: Name
-          type: string
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        status:
-          additionalProperties:
-            type: string
-          default:
-            id: active
-            name: active
-          title: Status
-          type: object
-        avatar:
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        isEarlyAdopter:
-          default: false
-          title: Isearlyadopter
-          type: boolean
-        require2fa:
-          default: false
-          title: Require2Fa
-          type: boolean
-        slug:
-          description: The name in all lowercase, suitable for URL identification
-          maxLength: 200
-          title: Slug
-          type: string
-        isAcceptingEvents:
-          default: true
-          description: Used for throttling at org level
-          title: Is Accepting Events
-          type: boolean
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
-      required:
-      - name
-      - id
-      - dateCreated
-      - slug
-      title: OrganizationSchema
-      type: object
     UserSchema:
       properties:
         id:
@@ -337,6 +325,18 @@ components:
       - hasPasswordAuth
       - identities
       title: UserSchema
+      type: object
+    AcceptInviteSchema:
+      properties:
+        acceptInvite:
+          title: Acceptinvite
+          type: boolean
+        orgUser:
+          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
+      required:
+      - acceptInvite
+      - orgUser
+      title: AcceptInviteSchema
       type: object
   securitySchemes:
     TokenAuth:

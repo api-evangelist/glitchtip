@@ -51,15 +51,6 @@ paths:
       - Instance License
 components:
   schemas:
-    InstanceLicenseOut:
-      properties:
-        billingEmail:
-          title: Billingemail
-          type: string
-      required:
-      - billingEmail
-      title: InstanceLicenseOut
-      type: object
     SupportLinkOut:
       properties:
         url:
@@ -68,6 +59,15 @@ components:
       required:
       - url
       title: SupportLinkOut
+      type: object
+    InstanceLicenseOut:
+      properties:
+        billingEmail:
+          title: Billingemail
+          type: string
+      required:
+      - billingEmail
+      title: InstanceLicenseOut
       type: object
   securitySchemes:
     TokenAuth:

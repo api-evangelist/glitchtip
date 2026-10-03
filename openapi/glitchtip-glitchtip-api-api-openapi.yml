@@ -47,63 +47,6 @@ components:
       - auth
       title: APIRootSchema
       type: object
-    APITokenSchema:
-      properties:
-        id:
-          title: Id
-          type: integer
-        label:
-          title: Label
-          type: string
-        scopes:
-          items:
-            type: string
-          title: Scopes
-          type: array
-        token:
-          title: Token
-          type: string
-        created:
-          format: date-time
-          title: Created
-          type: string
-      required:
-      - id
-      - label
-      - scopes
-      - token
-      - created
-      title: APITokenSchema
-      type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          type:
-          - string
-          - 'null'
-        stacktraceOrder:
-          title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
-        language:
-          title: Language
-          type:
-          - string
-          - 'null'
-        clock24Hours:
-          title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
-        preferredTheme:
-          title: Preferredtheme
-          type:
-          - string
-          - 'null'
-      title: UserOptions
-      type: object
     SocialAccountSchema:
       properties:
         email:
@@ -146,6 +89,35 @@ components:
       - lastLogin
       - dateJoined
       title: SocialAccountSchema
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
       type: object
     UserSchema:
       properties:
@@ -205,6 +177,34 @@ components:
       - hasPasswordAuth
       - identities
       title: UserSchema
+      type: object
+    APITokenSchema:
+      properties:
+        id:
+          title: Id
+          type: integer
+        label:
+          title: Label
+          type: string
+        scopes:
+          items:
+            type: string
+          title: Scopes
+          type: array
+        token:
+          title: Token
+          type: string
+        created:
+          format: date-time
+          title: Created
+          type: string
+      required:
+      - id
+      - label
+      - scopes
+      - token
+      - created
+      title: APITokenSchema
       type: object
   securitySchemes:
     TokenAuth:

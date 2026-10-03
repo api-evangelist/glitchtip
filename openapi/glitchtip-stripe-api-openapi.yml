@@ -218,77 +218,34 @@ components:
       - events
       title: StripeProductSchema
       type: object
-    StripeProductExpandedPriceSchema:
+    SubscriptionUsageSchema:
       properties:
-        stripeID:
-          title: Stripeid
-          type: string
-        defaultPrice:
-          $ref: '#/components/schemas/StripeNestedPriceSchema'
-        prices:
-          items:
-            $ref: '#/components/schemas/StripeNestedPriceSchema'
-          title: Prices
-          type: array
-        marketingFeatures:
-          items:
-            type: string
-          title: Marketingfeatures
-          type: array
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        events:
-          title: Events
+        total:
+          title: Total
+          type: integer
+        eventCount:
+          title: Eventcount
+          type: integer
+        transactionEventCount:
+          title: Transactioneventcount
+          type: integer
+        uptimeCheckEventCount:
+          title: Uptimecheckeventcount
+          type: integer
+        logEventCount:
+          title: Logeventcount
+          type: integer
+        fileSizeMb:
+          title: Filesizemb
           type: integer
       required:
-      - stripeID
-      - defaultPrice
-      - prices
-      - marketingFeatures
-      - name
-      - description
-      - events
-      title: StripeProductExpandedPriceSchema
-      type: object
-    StripeNestedPriceSchema:
-      properties:
-        stripeID:
-          title: Stripeid
-          type: string
-        price:
-          title: Price
-          type: string
-        interval:
-          default: month
-          maxLength: 20
-          title: Interval
-          type: string
-      required:
-      - stripeID
-      - price
-      title: StripeNestedPriceSchema
-      type: object
-    StripePortalSessionSchema:
-      properties:
-        url:
-          title: Url
-          type: string
-      required:
-      - url
-      title: StripePortalSessionSchema
-      type: object
-    PriceIDSchema:
-      properties:
-        price:
-          title: Price
-          type: string
-      required:
-      - price
-      title: PriceIDSchema
+      - total
+      - eventCount
+      - transactionEventCount
+      - uptimeCheckEventCount
+      - logEventCount
+      - fileSizeMb
+      title: SubscriptionUsageSchema
       type: object
     StripeSubscriptionSchema:
       properties:
@@ -343,43 +300,38 @@ components:
       - startDate
       title: StripeSubscriptionSchema
       type: object
-    SubscriptionUsageSchema:
+    SubscriptionIn:
       properties:
-        total:
-          title: Total
-          type: integer
-        eventCount:
-          title: Eventcount
-          type: integer
-        transactionEventCount:
-          title: Transactioneventcount
-          type: integer
-        uptimeCheckEventCount:
-          title: Uptimecheckeventcount
-          type: integer
-        logEventCount:
-          title: Logeventcount
-          type: integer
-        fileSizeMb:
-          title: Filesizemb
-          type: integer
+        price:
+          title: Price
+          type: string
+        organization:
+          title: Organization
+          type: string
       required:
-      - total
-      - eventCount
-      - transactionEventCount
-      - uptimeCheckEventCount
-      - logEventCount
-      - fileSizeMb
-      title: SubscriptionUsageSchema
+      - price
+      - organization
+      title: SubscriptionIn
       type: object
-    StripeCheckoutSessionSchema:
+    StripePortalSessionSchema:
       properties:
         url:
           title: Url
           type: string
       required:
       - url
-      title: StripeCheckoutSessionSchema
+      title: StripePortalSessionSchema
+      type: object
+    DailyEventsCountSchema:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DailyEventCountEntry'
+          title: Data
+          type: array
+      required:
+      - data
+      title: DailyEventsCountSchema
       type: object
     SubscriptionStatus:
       enum:
@@ -393,21 +345,77 @@ components:
       - paused
       title: SubscriptionStatus
       type: string
-    CreateSubscriptionResponse:
+    StripeCheckoutSessionSchema:
+      properties:
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: StripeCheckoutSessionSchema
+      type: object
+    StripeProductExpandedPriceSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        defaultPrice:
+          $ref: '#/components/schemas/StripeNestedPriceSchema'
+        prices:
+          items:
+            $ref: '#/components/schemas/StripeNestedPriceSchema'
+          title: Prices
+          type: array
+        marketingFeatures:
+          items:
+            type: string
+          title: Marketingfeatures
+          type: array
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        events:
+          title: Events
+          type: integer
+      required:
+      - stripeID
+      - defaultPrice
+      - prices
+      - marketingFeatures
+      - name
+      - description
+      - events
+      title: StripeProductExpandedPriceSchema
+      type: object
+    StripeNestedPriceSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        price:
+          title: Price
+          type: string
+        interval:
+          default: month
+          maxLength: 20
+          title: Interval
+          type: string
+      required:
+      - stripeID
+      - price
+      title: StripeNestedPriceSchema
+      type: object
+    PriceIDSchema:
       properties:
         price:
           title: Price
           type: string
-        organization:
-          title: Organization
-          type: string
-        subscription:
-          $ref: '#/components/schemas/StripeSubscriptionSchema'
       required:
       - price
-      - organization
-      - subscription
-      title: CreateSubscriptionResponse
+      title: PriceIDSchema
       type: object
     DailyEventCountEntry:
       properties:
@@ -435,7 +443,13 @@ components:
       - logEventCount
       title: DailyEventCountEntry
       type: object
-    SubscriptionIn:
+    CollectionMethod:
+      enum:
+      - charge_automatically
+      - send_invoice
+      title: CollectionMethod
+      type: string
+    CreateSubscriptionResponse:
       properties:
         price:
           title: Price
@@ -443,28 +457,14 @@ components:
         organization:
           title: Organization
           type: string
+        subscription:
+          $ref: '#/components/schemas/StripeSubscriptionSchema'
       required:
       - price
       - organization
-      title: SubscriptionIn
+      - subscription
+      title: CreateSubscriptionResponse
       type: object
-    DailyEventsCountSchema:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/DailyEventCountEntry'
-          title: Data
-          type: array
-      required:
-      - data
-      title: DailyEventsCountSchema
-      type: object
-    CollectionMethod:
-      enum:
-      - charge_automatically
-      - send_invoice
-      title: CollectionMethod
-      type: string
   securitySchemes:
     TokenAuth:
       type: http
