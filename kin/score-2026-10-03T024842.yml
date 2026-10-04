@@ -1,22 +1,20 @@
-# Kin Score artifact — glitchtip — 2026-09-01T222808
+# Kin Score artifact — glitchtip — 2026-10-03T024842
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: glitchtip
-  schema_version: 0.18.0
-  scored_at: '2026-09-01'
-  run_ts: 2026-09-01T222808
-  composite: 43.7
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T024842
+  composite: 40.6
   band: developing
   facets:
-    discoverability: 68.5
-    contract_quality: 57.3
-    governance: 9.8
-    operational_transparency: 36.8
-    developer_ergonomics: 26.2
-    commercial_clarity: 56.6
+    discoverability: 66.1
+    contract_quality: 52.4
     contract_governance: 9.8
-    access_clarity: 56.6
+    operational_transparency: 33.7
+    developer_ergonomics: 26.2
+    access_clarity: 53.4
   agent_readiness:
     score: 19.8
     band: agent-aware
@@ -40,6 +38,12 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 16.7
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:
