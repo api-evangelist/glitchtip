@@ -1,0 +1,40 @@
+slug: glitchtip
+provider: GlitchTip
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Stripe
+  spec_file: glitchtip-stripe-api-openapi.yml
+  capability_id: BC-4250
+  capability_id_l1: BC-4250
+  capability_name: Subscription Billing & Revenue Management
+  confidence: 0.75
+  evidence: POST /api/0/stripe/organizations/{organization_slug}/create-billing-portal/ Stripe Billing
+    Portal Session; GET .../subscriptions/{organization_slug}/events_count/period/ Subscription Events
+    Count For Period
+  reason: Operations cover plan/product listing, subscription checkout and creation, a customer billing
+    portal, and metered event counts per subscription period - the recurring-revenue billing surface of
+    the SaaS. It straddles usage metering, payment collection and subscription provisioning, so only the
+    L1 is asserted.
+- tag: Issues
+  spec_file: glitchtip-issues-api-openapi.yml
+  capability_id: BC-4220.20
+  capability_id_l1: BC-4220
+  capability_name: Observability Management
+  confidence: 0.7
+  evidence: GET /api/0/issues/{issue_id}/events/latest/ Get Latest Issue Event; schemas ExceptionEntry,
+    BreadcrumbsEntry, RuntimeContext, DeviceContext
+  reason: These 'issues' are grouped production error events captured from running software, with stack/exception/context
+    payloads and status handling - understanding the running service in production. Not a defect tracker
+    for planned engineering work, and not financial-crime style alerting, so observability is the honest
+    reading; some ambiguity with software quality/defect management keeps confidence moderate.

@@ -325,6 +325,9 @@ apis:
   - type: Documentation
     url: https://glitchtip.com/documentation/
 common:
+- type: CapabilityMap
+  url: capabilities/glitchtip-capability-edges.yml
+  name: GlitchTip Business Capability Map
 - type: AgenticAccess
   url: agentic-access/glitchtip-agentic-access.yml
 - type: DomainSecurity
