@@ -401,15 +401,43 @@ paths:
       - Users
 components:
   schemas:
-    EmailAddressIn:
+    UserNotificationsSchema:
       properties:
-        email:
-          format: email
-          title: Email
-          type: string
-      required:
-      - email
-      title: EmailAddressIn
+        subscribeByDefault:
+          default: true
+          description: Subscribe to project notifications by default. Overrides project settings
+          title: Subscribe By Default
+          type: boolean
+      title: UserNotificationsSchema
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
       type: object
     UserDetailSchema:
       properties:
@@ -489,78 +517,6 @@ components:
       - options
       title: UserIn
       type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          type:
-          - string
-          - 'null'
-        stacktraceOrder:
-          title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
-        language:
-          title: Language
-          type:
-          - string
-          - 'null'
-        clock24Hours:
-          title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
-        preferredTheme:
-          title: Preferredtheme
-          type:
-          - string
-          - 'null'
-      title: UserOptions
-      type: object
     UserSchema:
       properties:
         id:
@@ -625,6 +581,59 @@ components:
         type: integer
       title: StrKeyIntValue
       type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    EmailAddressIn:
+      properties:
+        email:
+          format: email
+          title: Email
+          type: string
+      required:
+      - email
+      title: EmailAddressIn
+      type: object
     EmailAddressSchema:
       properties:
         isPrimary:
@@ -642,15 +651,6 @@ components:
       - isVerified
       - email
       title: EmailAddressSchema
-      type: object
-    UserNotificationsSchema:
-      properties:
-        subscribeByDefault:
-          default: true
-          description: Subscribe to project notifications by default. Overrides project settings
-          title: Subscribe By Default
-          type: boolean
-      title: UserNotificationsSchema
       type: object
   securitySchemes:
     TokenAuth:

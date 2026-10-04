@@ -95,21 +95,6 @@ paths:
       - API Tokens
 components:
   schemas:
-    APITokenIn:
-      properties:
-        scopes:
-          title: Scopes
-          type: integer
-        label:
-          title: Label
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - scopes
-      title: APITokenIn
-      type: object
     APITokenSchema:
       properties:
         id:
@@ -137,6 +122,21 @@ components:
       - token
       - created
       title: APITokenSchema
+      type: object
+    APITokenIn:
+      properties:
+        scopes:
+          title: Scopes
+          type: integer
+        label:
+          title: Label
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+      required:
+      - scopes
+      title: APITokenIn
       type: object
   securitySchemes:
     TokenAuth:

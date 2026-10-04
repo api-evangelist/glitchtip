@@ -32,64 +32,6 @@ paths:
       - GlitchTip API
 components:
   schemas:
-    APIRootSchema:
-      properties:
-        version:
-          title: Version
-          type: string
-        user:
-          $ref: '#/components/schemas/UserSchema'
-        auth:
-          $ref: '#/components/schemas/APITokenSchema'
-      required:
-      - version
-      - user
-      - auth
-      title: APIRootSchema
-      type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
     UserOptions:
       properties:
         timezone:
@@ -118,6 +60,49 @@ components:
           - string
           - 'null'
       title: UserOptions
+      type: object
+    APITokenSchema:
+      properties:
+        id:
+          title: Id
+          type: integer
+        label:
+          title: Label
+          type: string
+        scopes:
+          items:
+            type: string
+          title: Scopes
+          type: array
+        token:
+          title: Token
+          type: string
+        created:
+          format: date-time
+          title: Created
+          type: string
+      required:
+      - id
+      - label
+      - scopes
+      - token
+      - created
+      title: APITokenSchema
+      type: object
+    APIRootSchema:
+      properties:
+        version:
+          title: Version
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSchema'
+        auth:
+          $ref: '#/components/schemas/APITokenSchema'
+      required:
+      - version
+      - user
+      - auth
+      title: APIRootSchema
       type: object
     UserSchema:
       properties:
@@ -178,33 +163,48 @@ components:
       - identities
       title: UserSchema
       type: object
-    APITokenSchema:
+    SocialAccountSchema:
       properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
         id:
-          title: Id
-          type: integer
-        label:
-          title: Label
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
           type: string
-        scopes:
-          items:
-            type: string
-          title: Scopes
-          type: array
-        token:
-          title: Token
+        uid:
+          maxLength: 191
+          title: Uid
           type: string
-        created:
+        lastLogin:
           format: date-time
-          title: Created
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
           type: string
       required:
-      - id
-      - label
-      - scopes
-      - token
-      - created
-      title: APITokenSchema
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
       type: object
   securitySchemes:
     TokenAuth:

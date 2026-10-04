@@ -1252,133 +1252,65 @@ paths:
       - Projects
 components:
   schemas:
-    ProjectAlertIn:
+    AlertRecipientSchema:
       properties:
-        name:
-          title: Name
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        recipientType:
+          maxLength: 16
+          title: Recipient Type
+          type: string
+        url:
+          title: Url
+          maxLength: 2000
           type:
           - string
           - 'null'
-        alertRecipients:
-          title: Alertrecipients
-          items:
-            discriminator:
-              mapping:
-                discord: '#/components/schemas/WebhookAlertRecipientIn'
-                email: '#/components/schemas/EmailAlertRecipientIn'
-                feishu: '#/components/schemas/WebhookAlertRecipientIn'
-                googlechat: '#/components/schemas/WebhookAlertRecipientIn'
-                ntfy: '#/components/schemas/WebhookAlertRecipientIn'
-                teams: '#/components/schemas/WebhookAlertRecipientIn'
-                webhook: '#/components/schemas/WebhookAlertRecipientIn'
-                zulip: '#/components/schemas/ZulipAlertRecipientIn'
-              propertyName: recipientType
-            oneOf:
-            - $ref: '#/components/schemas/EmailAlertRecipientIn'
-            - $ref: '#/components/schemas/WebhookAlertRecipientIn'
-            - $ref: '#/components/schemas/ZulipAlertRecipientIn'
+        config:
+          title: Config
           type:
-          - array
+          - object
           - 'null'
-        timespanMinutes:
-          title: Timespan Minutes
-          type:
-          - integer
-          - 'null'
-        quantity:
-          title: Quantity
-          type:
-          - integer
-          - 'null'
-        uptime:
-          default: false
-          description: Send alert on any uptime monitor check failure
-          title: Uptime
-          type: boolean
-      title: ProjectAlertIn
-      type: object
-    EmailAlertRecipientIn:
-      properties:
-        recipientType:
-          const: email
-          title: Recipienttype
-          type: string
-        url:
-          anyOf:
-          - format: uri
-            maxLength: 2083
-            minLength: 1
-            type: string
-          - const: ''
-            type: string
-          default: ''
-          title: Url
         tagsToAdd:
-          title: Tagstoadd
-          items:
-            type: string
+          description: List of additional tags to include in the alert
+          title: Tags To Add
+          items: {}
           type:
           - array
           - 'null'
       required:
       - recipientType
-      title: EmailAlertRecipientIn
+      title: AlertRecipientSchema
       type: object
-    DebugFileSchema:
+    ReleaseRepositorySchema:
       properties:
         id:
           title: Id
           type: string
-        uuid:
-          title: Uuid
-          type:
-          - string
-          - 'null'
-        debugId:
-          title: Debugid
-          type:
-          - string
-          - 'null'
-        cpuName:
-          title: Cpuname
+        name:
+          title: Name
           type: string
-        objectName:
-          title: Objectname
-          type: string
-        symbolType:
-          title: Symboltype
-          type:
-          - string
-          - 'null'
-        size:
-          title: Size
-          type: integer
-        sha1:
-          title: Sha1
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        headers:
-          additionalProperties:
-            type: string
-          title: Headers
-          type: object
-        data:
-          additionalProperties: true
-          title: Data
-          type: object
       required:
       - id
-      - cpuName
-      - objectName
-      - size
-      - sha1
-      - dateCreated
-      - headers
-      - data
-      title: DebugFileSchema
+      - name
+      title: ReleaseRepositorySchema
+      type: object
+    TeamSlugSchema:
+      description: Used in relations including organization projects
+      properties:
+        id:
+          title: Id
+          type: string
+        slug:
+          title: Slug
+          type: string
+      required:
+      - id
+      - slug
+      title: TeamSlugSchema
       type: object
     ProjectKeyIn:
       properties:
@@ -1390,6 +1322,63 @@ components:
         rateLimit:
           $ref: '#/components/schemas/KeyRateLimit'
       title: ProjectKeyIn
+      type: object
+    ReleaseBase:
+      properties:
+        ref:
+          title: Ref
+          type:
+          - string
+          - 'null'
+        dateReleased:
+          title: Datereleased
+          format: date-time
+          type:
+          - string
+          - 'null'
+        version:
+          title: Version
+          type: string
+      required:
+      - version
+      title: ReleaseBase
+      type: object
+    EnvironmentProjectSchema:
+      properties:
+        name:
+          title: Name
+          type: string
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        isHidden:
+          default: false
+          title: Is Hidden
+          type: boolean
+      required:
+      - name
+      title: EnvironmentProjectSchema
+      type: object
+    ChecksumSchema:
+      properties:
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+        debug_id:
+          title: Debug Id
+          type:
+          - string
+          - 'null'
+        chunks:
+          items:
+            type: string
+          title: Chunks
+          type: array
+      title: ChecksumSchema
       type: object
     DebugSymbolBundleSchema:
       properties:
@@ -1425,67 +1414,53 @@ components:
       - name
       title: DebugSymbolBundleSchema
       type: object
-    OrganizationSchema:
+    AssemblePayload:
+      additionalProperties:
+        $ref: '#/components/schemas/ChecksumSchema'
+      title: AssemblePayload
+      type: object
+    TestAlertResultSchema:
       properties:
-        name:
-          description: The name of the organization
-          maxLength: 200
-          title: Name
-          type: string
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
+        recipientType:
+          title: Recipienttype
           type: string
         status:
-          additionalProperties:
-            type: string
-          default:
-            id: active
-            name: active
           title: Status
-          type: object
-        avatar:
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        isEarlyAdopter:
-          default: false
-          title: Isearlyadopter
-          type: boolean
-        require2fa:
-          default: false
-          title: Require2Fa
-          type: boolean
-        slug:
-          description: The name in all lowercase, suitable for URL identification
-          maxLength: 200
-          title: Slug
           type: string
-        isAcceptingEvents:
-          default: true
-          description: Used for throttling at org level
-          title: Is Accepting Events
-          type: boolean
+        message:
+          title: Message
+          type:
+          - string
+          - 'null'
+      required:
+      - recipientType
+      - status
+      title: TestAlertResultSchema
+      type: object
+    ProjectIn:
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          type:
+          - string
+          - 'null'
+        platform:
+          title: Platform
+          type:
+          - string
+          - 'null'
         eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
+          title: Eventthrottlerate
+          type:
+          - integer
+          - 'null'
       required:
       - name
-      - id
-      - dateCreated
-      - slug
-      title: OrganizationSchema
+      title: ProjectIn
       type: object
     ProjectTeamSchema:
       description: Project Schema with related teams
@@ -1578,217 +1553,6 @@ components:
       - teams
       title: ProjectTeamSchema
       type: object
-    ReleaseUpdate:
-      properties:
-        ref:
-          title: Ref
-          type:
-          - string
-          - 'null'
-        dateReleased:
-          title: Datereleased
-          format: date-time
-          type:
-          - string
-          - 'null'
-      title: ReleaseUpdate
-      type: object
-    ReleaseRepositorySchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        name:
-          title: Name
-          type: string
-      required:
-      - id
-      - name
-      title: ReleaseRepositorySchema
-      type: object
-    ProjectIn:
-      properties:
-        name:
-          maxLength: 64
-          title: Name
-          type: string
-        slug:
-          title: Slug
-          type:
-          - string
-          - 'null'
-        platform:
-          title: Platform
-          type:
-          - string
-          - 'null'
-        eventThrottleRate:
-          title: Eventthrottlerate
-          type:
-          - integer
-          - 'null'
-      required:
-      - name
-      title: ProjectIn
-      type: object
-    AlertRecipientSchema:
-      properties:
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        recipientType:
-          maxLength: 16
-          title: Recipient Type
-          type: string
-        url:
-          title: Url
-          maxLength: 2000
-          type:
-          - string
-          - 'null'
-        config:
-          title: Config
-          type:
-          - object
-          - 'null'
-        tagsToAdd:
-          description: List of additional tags to include in the alert
-          title: Tags To Add
-          items: {}
-          type:
-          - array
-          - 'null'
-      required:
-      - recipientType
-      title: AlertRecipientSchema
-      type: object
-    ReleaseBase:
-      properties:
-        ref:
-          title: Ref
-          type:
-          - string
-          - 'null'
-        dateReleased:
-          title: Datereleased
-          format: date-time
-          type:
-          - string
-          - 'null'
-        version:
-          title: Version
-          type: string
-      required:
-      - version
-      title: ReleaseBase
-      type: object
-    ProjectKeySchema:
-      description: 'A project key (DSN) provides a public authentication string used for event
-
-        ingestion.'
-      properties:
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-        rateLimit:
-          $ref: '#/components/schemas/KeyRateLimit'
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        id:
-          format: uuid
-          title: Id
-          type: string
-        dsn:
-          additionalProperties:
-            type: string
-          title: Dsn
-          type: object
-        label:
-          title: Label
-          type:
-          - string
-          - 'null'
-        public:
-          format: uuid
-          title: Public
-          type: string
-        projectID:
-          title: Projectid
-          type: integer
-      required:
-      - dateCreated
-      - id
-      - dsn
-      - label
-      - public
-      - projectID
-      title: ProjectKeySchema
-      type: object
-    ZulipAlertRecipientIn:
-      properties:
-        recipientType:
-          const: zulip
-          title: Recipienttype
-          type: string
-        url:
-          format: uri
-          maxLength: 2083
-          minLength: 1
-          title: Url
-          type: string
-        botEmail:
-          title: Botemail
-          type: string
-        apiKey:
-          title: Apikey
-          type: string
-        channel:
-          title: Channel
-          type: string
-        topic:
-          default: GlitchTip Alerts
-          title: Topic
-          type: string
-        tagsToAdd:
-          title: Tagstoadd
-          items:
-            type: string
-          type:
-          - array
-          - 'null'
-      required:
-      - recipientType
-      - url
-      - botEmail
-      - apiKey
-      - channel
-      title: ZulipAlertRecipientIn
-      type: object
-    ChecksumSchema:
-      properties:
-        name:
-          title: Name
-          type:
-          - string
-          - 'null'
-        debug_id:
-          title: Debug Id
-          type:
-          - string
-          - 'null'
-        chunks:
-          items:
-            type: string
-          title: Chunks
-          type: array
-      title: ChecksumSchema
-      type: object
     ReleaseSchema:
       properties:
         ref:
@@ -1844,81 +1608,134 @@ components:
       - projects
       title: ReleaseSchema
       type: object
-    NameSlugProjectSchema:
+    TeamSchema:
       properties:
-        name:
-          maxLength: 64
-          title: Name
+        id:
+          title: Id
           type: string
         slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
           title: Slug
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        isMember:
+          title: Ismember
+          type: boolean
+        memberCount:
+          title: Membercount
+          type: integer
+      required:
+      - id
+      - slug
+      - dateCreated
+      - isMember
+      - memberCount
+      title: TeamSchema
+      type: object
+    DebugFileSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        uuid:
+          title: Uuid
           type:
           - string
           - 'null'
-      required:
-      - name
-      title: NameSlugProjectSchema
-      type: object
-    WebhookAlertRecipientIn:
-      properties:
-        recipientType:
-          enum:
-          - discord
-          - feishu
-          - webhook
-          - googlechat
-          - teams
-          - ntfy
-          title: Recipienttype
-          type: string
-        url:
-          format: uri
-          maxLength: 2083
-          minLength: 1
-          title: Url
-          type: string
-        tagsToAdd:
-          title: Tagstoadd
-          items:
-            type: string
+        debugId:
+          title: Debugid
           type:
-          - array
+          - string
           - 'null'
-      required:
-      - recipientType
-      - url
-      title: WebhookAlertRecipientIn
-      type: object
-    KeyRateLimit:
-      properties:
-        window:
-          title: Window
+        cpuName:
+          title: Cpuname
+          type: string
+        objectName:
+          title: Objectname
+          type: string
+        symbolType:
+          title: Symboltype
+          type:
+          - string
+          - 'null'
+        size:
+          title: Size
           type: integer
-        count:
-          title: Count
-          type: integer
+        sha1:
+          title: Sha1
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        headers:
+          additionalProperties:
+            type: string
+          title: Headers
+          type: object
+        data:
+          additionalProperties: true
+          title: Data
+          type: object
       required:
-      - window
-      - count
-      title: KeyRateLimit
+      - id
+      - cpuName
+      - objectName
+      - size
+      - sha1
+      - dateCreated
+      - headers
+      - data
+      title: DebugFileSchema
       type: object
-    EnvironmentProjectIn:
+    ProjectAlertIn:
       properties:
         name:
           title: Name
-          type: string
-        isHidden:
-          title: Ishidden
+          type:
+          - string
+          - 'null'
+        alertRecipients:
+          title: Alertrecipients
+          items:
+            discriminator:
+              mapping:
+                discord: '#/components/schemas/WebhookAlertRecipientIn'
+                email: '#/components/schemas/EmailAlertRecipientIn'
+                feishu: '#/components/schemas/WebhookAlertRecipientIn'
+                googlechat: '#/components/schemas/WebhookAlertRecipientIn'
+                ntfy: '#/components/schemas/WebhookAlertRecipientIn'
+                teams: '#/components/schemas/WebhookAlertRecipientIn'
+                webhook: '#/components/schemas/WebhookAlertRecipientIn'
+                zulip: '#/components/schemas/ZulipAlertRecipientIn'
+              propertyName: recipientType
+            oneOf:
+            - $ref: '#/components/schemas/EmailAlertRecipientIn'
+            - $ref: '#/components/schemas/WebhookAlertRecipientIn'
+            - $ref: '#/components/schemas/ZulipAlertRecipientIn'
+          type:
+          - array
+          - 'null'
+        timespanMinutes:
+          title: Timespan Minutes
+          type:
+          - integer
+          - 'null'
+        quantity:
+          title: Quantity
+          type:
+          - integer
+          - 'null'
+        uptime:
+          default: false
+          description: Send alert on any uptime monitor check failure
+          title: Uptime
           type: boolean
-      required:
-      - name
-      - isHidden
-      title: EnvironmentProjectIn
-      type: object
-    AssemblePayload:
-      additionalProperties:
-        $ref: '#/components/schemas/ChecksumSchema'
-      title: AssemblePayload
+      title: ProjectAlertIn
       type: object
     ProjectAlertSchema:
       properties:
@@ -1957,65 +1774,94 @@ components:
       - alertRecipients
       title: ProjectAlertSchema
       type: object
-    TestAlertResultSchema:
+    OrganizationSchema:
       properties:
-        recipientType:
-          title: Recipienttype
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
           type: string
-        status:
-          title: Status
-          type: string
-        message:
-          title: Message
-          type:
-          - string
-          - 'null'
-      required:
-      - recipientType
-      - status
-      title: TestAlertResultSchema
-      type: object
-    TeamSlugSchema:
-      description: Used in relations including organization projects
-      properties:
         id:
           title: Id
-          type: string
-        slug:
-          title: Slug
-          type: string
-      required:
-      - id
-      - slug
-      title: TeamSlugSchema
-      type: object
-    TeamSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
           type: string
         dateCreated:
           format: date-time
           title: Datecreated
           type: string
-        isMember:
-          title: Ismember
+        status:
+          additionalProperties:
+            type: string
+          default:
+            id: active
+            name: active
+          title: Status
+          type: object
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        isEarlyAdopter:
+          default: false
+          title: Isearlyadopter
           type: boolean
-        memberCount:
-          title: Membercount
+        require2fa:
+          default: false
+          title: Require2Fa
+          type: boolean
+        slug:
+          description: The name in all lowercase, suitable for URL identification
+          maxLength: 200
+          title: Slug
+          type: string
+        isAcceptingEvents:
+          default: true
+          description: Used for throttling at org level
+          title: Is Accepting Events
+          type: boolean
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
           type: integer
       required:
+      - name
       - id
-      - slug
       - dateCreated
-      - isMember
-      - memberCount
-      title: TeamSchema
+      - slug
+      title: OrganizationSchema
+      type: object
+    EmailAlertRecipientIn:
+      properties:
+        recipientType:
+          const: email
+          title: Recipienttype
+          type: string
+        url:
+          anyOf:
+          - format: uri
+            maxLength: 2083
+            minLength: 1
+            type: string
+          - const: ''
+            type: string
+          default: ''
+          title: Url
+        tagsToAdd:
+          title: Tagstoadd
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      required:
+      - recipientType
+      title: EmailAlertRecipientIn
       type: object
     ProjectOrganizationSchema:
       properties:
@@ -2104,23 +1950,177 @@ components:
       - organization
       title: ProjectOrganizationSchema
       type: object
-    EnvironmentProjectSchema:
+    ZulipAlertRecipientIn:
+      properties:
+        recipientType:
+          const: zulip
+          title: Recipienttype
+          type: string
+        url:
+          format: uri
+          maxLength: 2083
+          minLength: 1
+          title: Url
+          type: string
+        botEmail:
+          title: Botemail
+          type: string
+        apiKey:
+          title: Apikey
+          type: string
+        channel:
+          title: Channel
+          type: string
+        topic:
+          default: GlitchTip Alerts
+          title: Topic
+          type: string
+        tagsToAdd:
+          title: Tagstoadd
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      required:
+      - recipientType
+      - url
+      - botEmail
+      - apiKey
+      - channel
+      title: ZulipAlertRecipientIn
+      type: object
+    WebhookAlertRecipientIn:
+      properties:
+        recipientType:
+          enum:
+          - discord
+          - feishu
+          - webhook
+          - googlechat
+          - teams
+          - ntfy
+          title: Recipienttype
+          type: string
+        url:
+          format: uri
+          maxLength: 2083
+          minLength: 1
+          title: Url
+          type: string
+        tagsToAdd:
+          title: Tagstoadd
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+      required:
+      - recipientType
+      - url
+      title: WebhookAlertRecipientIn
+      type: object
+    ReleaseUpdate:
+      properties:
+        ref:
+          title: Ref
+          type:
+          - string
+          - 'null'
+        dateReleased:
+          title: Datereleased
+          format: date-time
+          type:
+          - string
+          - 'null'
+      title: ReleaseUpdate
+      type: object
+    ProjectKeySchema:
+      description: 'A project key (DSN) provides a public authentication string used for event
+
+        ingestion.'
+      properties:
+        name:
+          title: Name
+          type:
+          - string
+          - 'null'
+        rateLimit:
+          $ref: '#/components/schemas/KeyRateLimit'
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        id:
+          format: uuid
+          title: Id
+          type: string
+        dsn:
+          additionalProperties:
+            type: string
+          title: Dsn
+          type: object
+        label:
+          title: Label
+          type:
+          - string
+          - 'null'
+        public:
+          format: uuid
+          title: Public
+          type: string
+        projectID:
+          title: Projectid
+          type: integer
+      required:
+      - dateCreated
+      - id
+      - dsn
+      - label
+      - public
+      - projectID
+      title: ProjectKeySchema
+      type: object
+    EnvironmentProjectIn:
       properties:
         name:
           title: Name
           type: string
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
         isHidden:
-          default: false
-          title: Is Hidden
+          title: Ishidden
           type: boolean
       required:
       - name
-      title: EnvironmentProjectSchema
+      - isHidden
+      title: EnvironmentProjectIn
+      type: object
+    NameSlugProjectSchema:
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          type:
+          - string
+          - 'null'
+      required:
+      - name
+      title: NameSlugProjectSchema
+      type: object
+    KeyRateLimit:
+      properties:
+        window:
+          title: Window
+          type: integer
+        count:
+          title: Count
+          type: integer
+      required:
+      - window
+      - count
+      title: KeyRateLimit
       type: object
   securitySchemes:
     TokenAuth:
