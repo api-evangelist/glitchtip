@@ -79,34 +79,85 @@ paths:
       - Accept
 components:
   schemas:
-    UserOptions:
+    UserSchema:
       properties:
-        timezone:
-          title: Timezone
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          title: Last Login
+          format: date-time
           type:
           - string
           - 'null'
-        stacktraceOrder:
-          title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
-        language:
-          title: Language
-          type:
-          - string
-          - 'null'
-        clock24Hours:
-          title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
-        preferredTheme:
-          title: Preferredtheme
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          title: Name
+          maxLength: 255
           type:
           - string
           - 'null'
-      title: UserOptions
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
+      type: object
+    AcceptInviteSchema:
+      properties:
+        acceptInvite:
+          title: Acceptinvite
+          type: boolean
+        orgUser:
+          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
+      required:
+      - acceptInvite
+      - orgUser
+      title: AcceptInviteSchema
+      type: object
+    AcceptInviteIn:
+      properties:
+        acceptInvite:
+          title: Acceptinvite
+          type: boolean
+      required:
+      - acceptInvite
+      title: AcceptInviteIn
       type: object
     OrganizationSchema:
       properties:
@@ -170,65 +221,6 @@ components:
       - slug
       title: OrganizationSchema
       type: object
-    UserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        options:
-          $ref: '#/components/schemas/UserOptions'
-        username:
-          format: email
-          title: Username
-          type: string
-        dateJoined:
-          format: date-time
-          title: Datejoined
-          type: string
-        email:
-          format: email
-          title: Email
-          type: string
-        hasPasswordAuth:
-          title: Haspasswordauth
-          type: boolean
-        identities:
-          items:
-            $ref: '#/components/schemas/SocialAccountSchema'
-          title: Identities
-          type: array
-        lastLogin:
-          title: Last Login
-          format: date-time
-          type:
-          - string
-          - 'null'
-        isSuperuser:
-          default: false
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser Status
-          type: boolean
-        isActive:
-          default: true
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        name:
-          title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - options
-      - username
-      - dateJoined
-      - email
-      - hasPasswordAuth
-      - identities
-      title: UserSchema
-      type: object
     OrganizationUserOrganizationSchema:
       description: Organization User Serializer with Organization info
       properties:
@@ -274,15 +266,6 @@ components:
       - organization
       title: OrganizationUserOrganizationSchema
       type: object
-    AcceptInviteIn:
-      properties:
-        acceptInvite:
-          title: Acceptinvite
-          type: boolean
-      required:
-      - acceptInvite
-      title: AcceptInviteIn
-      type: object
     SocialAccountSchema:
       properties:
         email:
@@ -326,17 +309,34 @@ components:
       - dateJoined
       title: SocialAccountSchema
       type: object
-    AcceptInviteSchema:
+    UserOptions:
       properties:
-        acceptInvite:
-          title: Acceptinvite
-          type: boolean
-        orgUser:
-          $ref: '#/components/schemas/OrganizationUserOrganizationSchema'
-      required:
-      - acceptInvite
-      - orgUser
-      title: AcceptInviteSchema
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
       type: object
   securitySchemes:
     TokenAuth:

@@ -44,6 +44,14 @@ paths:
       - Security
 components:
   schemas:
+    SecuritySchema:
+      properties:
+        csp-report:
+          $ref: '#/components/schemas/CSPReportSchema'
+      required:
+      - csp-report
+      title: SecuritySchema
+      type: object
     CSPReportSchema:
       description: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only#violation_report_syntax
       properties:
@@ -95,14 +103,6 @@ components:
       - original-policy
       - status-code
       title: CSPReportSchema
-      type: object
-    SecuritySchema:
-      properties:
-        csp-report:
-          $ref: '#/components/schemas/CSPReportSchema'
-      required:
-      - csp-report
-      title: SecuritySchema
       type: object
   securitySchemes:
     TokenAuth:

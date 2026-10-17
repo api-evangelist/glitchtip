@@ -2407,275 +2407,20 @@ components:
       - name
       title: StatusPageIn
       type: object
-    TransactionTrendSchema:
+    TeamRole:
       properties:
-        date:
-          format: date-time
-          title: Date
+        teamSlug:
+          title: Teamslug
           type: string
-        count:
-          title: Count
-          type: integer
-        transactionCount:
-          title: Transactioncount
-          type: integer
-        avgDuration:
-          title: Avgduration
-          type: number
-        totalTime:
-          title: Totaltime
-          type: number
-      required:
-      - date
-      - count
-      - transactionCount
-      - avgDuration
-      - totalTime
-      title: TransactionTrendSchema
-      type: object
-    DeploySchema:
-      properties:
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        dateStarted:
-          title: Datestarted
-          format: date-time
-          type:
-          - string
-          - 'null'
-        dateFinished:
-          title: Datefinished
-          format: date-time
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        environment:
-          maxLength: 64
-          title: Environment
-          type: string
-        url:
+        role:
           default: ''
-          title: Url
-          maxLength: 200
-          type:
-          - string
-          - 'null'
-      required:
-      - dateCreated
-      - dateStarted
-      - dateFinished
-      - environment
-      title: DeploySchema
-      type: object
-    ReleaseRepositorySchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        name:
-          title: Name
+          title: Role
           type: string
       required:
-      - id
-      - name
-      title: ReleaseRepositorySchema
+      - teamSlug
+      title: TeamRole
       type: object
-    MonitorCheckSchema:
-      properties:
-        isUp:
-          title: Is Up
-          type: boolean
-        startCheck:
-          description: Time when the start of this check was performed
-          format: date-time
-          title: Start Check
-          type: string
-        reason:
-          default: 0
-          title: Reason
-          type:
-          - integer
-          - 'null'
-      required:
-      - isUp
-      title: MonitorCheckSchema
-      type: object
-    MonitorDetailSchema:
-      properties:
-        projectID:
-          title: Projectid
-          type:
-          - string
-          - 'null'
-        environmentID:
-          title: Environmentid
-          type:
-          - integer
-          - 'null'
-        isUp:
-          title: Isup
-          type:
-          - boolean
-          - 'null'
-        lastChange:
-          title: Lastchange
-          type:
-          - string
-          - 'null'
-        heartbeatEndpoint:
-          title: Heartbeatendpoint
-          type:
-          - string
-          - 'null'
-        projectName:
-          title: Projectname
-          type:
-          - string
-          - 'null'
-        envName:
-          title: Envname
-          type:
-          - string
-          - 'null'
-        checks:
-          items:
-            $ref: '#/components/schemas/MonitorCheckResponseTimeSchema'
-          title: Checks
-          type: array
-        organizationID:
-          title: Organizationid
-          type: integer
-        monitorType:
-          $ref: '#/components/schemas/MonitorType'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        endpointID:
-          description: Used for referencing heartbeat endpoint
-          title: Endpoint Id
-          format: uuid
-          type:
-          - string
-          - 'null'
-        created:
-          format: date-time
-          title: Created
-          type: string
-        name:
-          maxLength: 200
-          title: Name
-          type: string
-        url:
-          title: Url
-          maxLength: 2000
-          type:
-          - string
-          - 'null'
-        expectedStatus:
-          default: 200
-          title: Expected Status
-          type:
-          - integer
-          - 'null'
-        expectedBody:
-          title: Expected Body
-          maxLength: 2000
-          type:
-          - string
-          - 'null'
-        interval:
-          default: 60
-          title: Interval
-          type: integer
-        timeout:
-          description: Blank implies default value of 20
-          title: Timeout
-          type:
-          - integer
-          - 'null'
-      required:
-      - projectID
-      - environmentID
-      - isUp
-      - lastChange
-      - heartbeatEndpoint
-      - checks
-      - organizationID
-      - monitorType
-      - created
-      - name
-      title: MonitorDetailSchema
-      type: object
-    TeamSlugSchema:
-      description: Used in relations including organization projects
-      properties:
-        id:
-          title: Id
-          type: string
-        slug:
-          title: Slug
-          type: string
-      required:
-      - id
-      - slug
-      title: TeamSlugSchema
-      type: object
-    DeployIn:
-      properties:
-        environment:
-          title: Environment
-          type: string
-        url:
-          default: ''
-          title: Url
-          type: string
-        dateStarted:
-          title: Datestarted
-          format: date-time
-          type:
-          - string
-          - 'null'
-        dateFinished:
-          title: Datefinished
-          format: date-time
-          type:
-          - string
-          - 'null'
-      required:
-      - environment
-      title: DeployIn
-      type: object
-    TeamIn:
-      properties:
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
-          type: string
-      required:
-      - slug
-      title: TeamIn
-      type: object
-    OrganizationUserInviteSchema:
-      description: 'Response for the invite (member create) endpoint.
-
-
-        Surfaces the acceptance link so the frontend can offer a copy-link invite
-
-        flow. This is the only delivery path when email is disabled, and a harmless
-
-        convenience when email works. The link carries the same time-limited token
-
-        the invite email uses, so possessing it is what grants acceptance.'
+    OrganizationUserDetailSchema:
       properties:
         id:
           title: Id
@@ -2706,11 +2451,11 @@ components:
         isOwner:
           title: Isowner
           type: boolean
-        inviteLink:
-          title: Invitelink
-          type:
-          - string
-          - 'null'
+        teams:
+          items:
+            type: string
+          title: Teams
+          type: array
       required:
       - id
       - role
@@ -2719,346 +2464,99 @@ components:
       - email
       - pending
       - isOwner
-      title: OrganizationUserInviteSchema
+      - teams
+      title: OrganizationUserDetailSchema
       type: object
-    RepositoryIn:
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          default: ''
-          title: Url
-          type: string
-        provider:
-          title: Provider
-          additionalProperties: true
-          type:
-          - object
-          - 'null'
-      required:
-      - name
-      title: RepositoryIn
-      type: object
-    MonitorCheckResponseTimeSchema:
-      description: Monitor check with response time. Used in Monitors detail api and monitor checks list
-      properties:
-        isUp:
-          title: Is Up
-          type: boolean
-        startCheck:
-          description: Time when the start of this check was performed
-          format: date-time
-          title: Start Check
-          type: string
-        reason:
-          default: 0
-          title: Reason
-          type:
-          - integer
-          - 'null'
-        responseTime:
-          description: Reponse time in milliseconds
-          title: Response Time
-          type:
-          - integer
-          - 'null'
-      required:
-      - isUp
-      title: MonitorCheckResponseTimeSchema
-      type: object
-    CommitSchema:
-      description: Output schema for commit data, matching documented public API.
+    TeamSlugSchema:
+      description: Used in relations including organization projects
       properties:
         id:
           title: Id
-          type: string
-        message:
-          default: ''
-          title: Message
-          type:
-          - string
-          - 'null'
-        dateCreated:
-          title: Datecreated
-          type:
-          - string
-          - 'null'
-        authorName:
-          title: Authorname
-          type:
-          - string
-          - 'null'
-        authorEmail:
-          title: Authoremail
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      title: CommitSchema
-      type: object
-    DebugSymbolBundleSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        sha1:
-          title: Sha1
-          type:
-          - string
-          - 'null'
-        headers:
-          title: Headers
-          additionalProperties:
-            type: string
-          type:
-          - object
-          - 'null'
-        name:
-          title: Name
-          type: string
-        size:
-          default: 0
-          title: Size
-          type: integer
-      required:
-      - id
-      - dateCreated
-      - name
-      title: DebugSymbolBundleSchema
-      type: object
-    AssembleSchema:
-      properties:
-        checksum:
-          title: Checksum
-          type: string
-        chunks:
-          items:
-            type: string
-          title: Chunks
-          type: array
-      required:
-      - checksum
-      - chunks
-      title: AssembleSchema
-      type: object
-    TeamRole:
-      properties:
-        teamSlug:
-          title: Teamslug
-          type: string
-        role:
-          default: ''
-          title: Role
-          type: string
-      required:
-      - teamSlug
-      title: TeamRole
-      type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
-    LogEventSchema:
-      description: Schema for log event API responses.
-      properties:
-        id:
-          format: uuid
-          title: Id
-          type: string
-        timestamp:
-          format: date-time
-          title: Timestamp
-          type: string
-        level:
-          title: Level
-          type: string
-        body:
-          title: Body
-          type: string
-        service:
-          default: ''
-          title: Service
-          type:
-          - string
-          - 'null'
-        environment:
-          default: ''
-          title: Environment
-          type:
-          - string
-          - 'null'
-        host:
-          default: ''
-          title: Host
-          type:
-          - string
-          - 'null'
-        traceID:
-          title: Traceid
-          format: uuid
-          type:
-          - string
-          - 'null'
-        spanID:
-          title: Spanid
-          type:
-          - string
-          - 'null'
-        severityNumber:
-          title: Severitynumber
-          type:
-          - integer
-          - 'null'
-        data:
-          additionalProperties: true
-          title: Data
-          type: object
-        projectId:
-          title: Projectid
-          type: integer
-      required:
-      - id
-      - timestamp
-      - level
-      - body
-      - projectId
-      title: LogEventSchema
-      type: object
-    ProjectTeamSchema:
-      description: Project Schema with related teams
-      properties:
-        name:
-          maxLength: 64
-          title: Name
           type: string
         slug:
           title: Slug
-          type:
-          - string
-          - 'null'
+          type: string
+      required:
+      - id
+      - slug
+      title: TeamSlugSchema
+      type: object
+    TransactionGroupSchema:
+      properties:
+        project:
+          title: Project
+          type: integer
         id:
           title: Id
-          type: string
-        avatar:
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        color:
-          default: ''
-          title: Color
-          type: string
-        features:
-          default: []
-          items:
-            type: string
-          title: Features
-          type: array
-        hasAccess:
-          default: true
-          title: Hasaccess
-          type: boolean
-        isBookmarked:
-          default: false
-          title: Isbookmarked
-          type: boolean
-        isInternal:
-          default: false
-          title: Isinternal
-          type: boolean
-        isMember:
-          title: Ismember
-          type: boolean
-        isPublic:
-          default: false
-          title: Ispublic
-          type: boolean
-        scrubIPAddresses:
-          title: Scrubipaddresses
-          type: boolean
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        platform:
-          title: Platform
-          type:
-          - string
-          - 'null'
-        firstEvent:
-          title: First Event
-          format: date-time
-          type:
-          - string
-          - 'null'
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
           type: integer
-        teams:
-          items:
-            $ref: '#/components/schemas/TeamSlugSchema'
-          title: Teams
-          type: array
+        transaction:
+          maxLength: 1024
+          title: Transaction
+          type: string
+        op:
+          maxLength: 255
+          title: Op
+          type: string
+        method:
+          default: ''
+          title: Method
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+        count:
+          default: 0
+          title: Count
+          type: integer
+        avgDuration:
+          default: 0
+          description: Average duration in ms
+          title: Avg Duration
+          type: number
+        p50:
+          title: P50
+          type:
+          - number
+          - 'null'
+        p95:
+          title: P95
+          type:
+          - number
+          - 'null'
+        errorCount:
+          default: 0
+          title: Error Count
+          type: integer
+        firstSeen:
+          format: date-time
+          title: First Seen
+          type: string
+        lastSeen:
+          format: date-time
+          title: Last Seen
+          type: string
+        errorRate:
+          description: Delegates to TransactionGroup.error_rate property.
+          readOnly: true
+          title: Errorrate
+          type: number
+        throughput:
+          description: Delegates to TransactionGroup.throughput property.
+          readOnly: true
+          title: Throughput
+          type:
+          - number
+          - 'null'
       required:
-      - name
+      - project
       - id
-      - isMember
-      - scrubIPAddresses
-      - dateCreated
-      - teams
-      title: ProjectTeamSchema
+      - transaction
+      - op
+      - firstSeen
+      - lastSeen
+      - errorRate
+      - throughput
+      title: TransactionGroupSchema
       type: object
     ReleaseSchema:
       properties:
@@ -3115,73 +2613,6 @@ components:
       - projects
       title: ReleaseSchema
       type: object
-    ReleaseIn:
-      properties:
-        ref:
-          title: Ref
-          type:
-          - string
-          - 'null'
-        dateReleased:
-          title: Datereleased
-          format: date-time
-          type:
-          - string
-          - 'null'
-        version:
-          title: Version
-          type: string
-        projects:
-          items:
-            type: string
-          title: Projects
-          type: array
-      required:
-      - version
-      - projects
-      title: ReleaseIn
-      type: object
-    OrganizationUserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        role:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Role
-          type: string
-        roleName:
-          title: Rolename
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        email:
-          title: Email
-          type: string
-        user:
-          $ref: '#/components/schemas/UserSchema'
-        pending:
-          title: Pending
-          type: boolean
-        isOwner:
-          title: Isowner
-          type: boolean
-      required:
-      - id
-      - role
-      - roleName
-      - dateCreated
-      - email
-      - pending
-      - isOwner
-      title: OrganizationUserSchema
-      type: object
     TeamSchema:
       properties:
         id:
@@ -3210,237 +2641,114 @@ components:
       - memberCount
       title: TeamSchema
       type: object
-    CommitIn:
+    MonitorIn:
       properties:
-        id:
-          title: Id
+        expectedBody:
+          title: Expectedbody
           type: string
-        message:
-          default: ''
-          title: Message
-          type: string
-        authorName:
-          default: ''
-          title: Authorname
-          type: string
-        authorEmail:
-          default: ''
-          title: Authoremail
-          type: string
-      required:
-      - id
-      title: CommitIn
-      type: object
-    RepositorySchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
+        expectedStatus:
+          title: Expectedstatus
+          type:
+          - integer
+          - 'null'
+        timeout:
+          title: Timeout
+          maximum: 60
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+        project:
+          title: Project
+          type:
+          - string
+          - 'null'
+        monitorType:
+          default: Ping
+          maxLength: 12
+          title: Monitor Type
           type: string
         name:
           maxLength: 200
           title: Name
           type: string
         url:
-          default: ''
           title: Url
+          maxLength: 2000
           type:
           - string
           - 'null'
-        status:
-          default: active
-          maxLength: 24
-          title: Status
-          type: string
-        provider:
-          title: Provider
-          type:
-          - object
-          - 'null'
+        interval:
+          default: 60
+          title: Interval
+          type: integer
       required:
-      - id
-      - dateCreated
+      - expectedBody
+      - expectedStatus
+      - timeout
       - name
-      title: RepositorySchema
+      title: MonitorIn
       type: object
-    OrganizationUserUpdateSchema:
+    AssembleSchema:
       properties:
-        orgRole:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Orgrole
+        checksum:
+          title: Checksum
           type: string
-        teamRoles:
+        chunks:
           items:
-            $ref: '#/components/schemas/TeamRole'
-          title: Teamroles
+            type: string
+          title: Chunks
           type: array
       required:
-      - orgRole
-      title: OrganizationUserUpdateSchema
+      - checksum
+      - chunks
+      title: AssembleSchema
       type: object
-    EnvironmentSchema:
+    MonitorCheckSchema:
       properties:
-        id:
-          title: ID
+        isUp:
+          title: Is Up
+          type: boolean
+        startCheck:
+          description: Time when the start of this check was performed
+          format: date-time
+          title: Start Check
+          type: string
+        reason:
+          default: 0
+          title: Reason
           type:
           - integer
           - 'null'
-        name:
-          maxLength: 255
-          title: Name
-          type: string
       required:
-      - name
-      title: EnvironmentSchema
+      - isUp
+      title: MonitorCheckSchema
       type: object
-    OrganizationDetailSchema:
+    ReleaseIn:
       properties:
-        name:
-          description: The name of the organization
-          maxLength: 200
-          title: Name
-          type: string
-        id:
-          title: Id
-          type: string
-        dateCreated:
+        ref:
+          title: Ref
+          type:
+          - string
+          - 'null'
+        dateReleased:
+          title: Datereleased
           format: date-time
-          title: Datecreated
+          type:
+          - string
+          - 'null'
+        version:
+          title: Version
           type: string
-        status:
-          additionalProperties:
-            type: string
-          default:
-            id: active
-            name: active
-          title: Status
-          type: object
-        avatar:
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        isEarlyAdopter:
-          default: false
-          title: Isearlyadopter
-          type: boolean
-        require2fa:
-          default: false
-          title: Require2Fa
-          type: boolean
-        slug:
-          description: The name in all lowercase, suitable for URL identification
-          maxLength: 200
-          title: Slug
-          type: string
-        isAcceptingEvents:
-          default: true
-          description: Used for throttling at org level
-          title: Is Accepting Events
-          type: boolean
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
         projects:
           items:
-            $ref: '#/components/schemas/ProjectTeamSchema'
+            type: string
           title: Projects
           type: array
-        teams:
-          items:
-            $ref: '#/components/schemas/TeamSchema'
-          title: Teams
-          type: array
-        access:
-          items:
-            enum:
-            - org:read
-            - org:write
-            - org:admin
-            - org:integrations
-            - member:read
-            - member:write
-            - member:admin
-            - team:read
-            - team:write
-            - team:admin
-            - project:read
-            - project:write
-            - project:admin
-            - project:releases
-            - event:read
-            - event:write
-            - event:admin
-            type: string
-          title: Access
-          type: array
-        openMembership:
-          default: true
-          description: Allow any organization member to join any team
-          title: Open Membership
-          type: boolean
       required:
-      - name
-      - id
-      - dateCreated
-      - slug
+      - version
       - projects
-      - teams
-      - access
-      title: OrganizationDetailSchema
-      type: object
-    MonitorType:
-      enum:
-      - Ping
-      - GET
-      - POST
-      - TCP Port
-      - SSL
-      - Heartbeat
-      title: MonitorType
-      type: string
-    SpanGroupSchema:
-      properties:
-        op:
-          title: Op
-          type: string
-        description:
-          title: Description
-          type: string
-        count:
-          title: Count
-          type: integer
-        avgDuration:
-          title: Avgduration
-          type: number
-        p95Duration:
-          title: P95Duration
-          type: number
-        totalTime:
-          title: Totaltime
-          type: number
-      required:
-      - op
-      - description
-      - count
-      - avgDuration
-      - p95Duration
-      - totalTime
-      title: SpanGroupSchema
+      title: ReleaseIn
       type: object
     MonitorSchema:
       properties:
@@ -3550,199 +2858,6 @@ components:
       - name
       title: MonitorSchema
       type: object
-    OrganizationSchema:
-      properties:
-        name:
-          description: The name of the organization
-          maxLength: 200
-          title: Name
-          type: string
-        id:
-          title: Id
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        status:
-          additionalProperties:
-            type: string
-          default:
-            id: active
-            name: active
-          title: Status
-          type: object
-        avatar:
-          additionalProperties:
-            type:
-            - string
-            - 'null'
-          default:
-            avatarType: ''
-            avatarUuid: null
-          title: Avatar
-          type: object
-        isEarlyAdopter:
-          default: false
-          title: Isearlyadopter
-          type: boolean
-        require2fa:
-          default: false
-          title: Require2Fa
-          type: boolean
-        slug:
-          description: The name in all lowercase, suitable for URL identification
-          maxLength: 200
-          title: Slug
-          type: string
-        isAcceptingEvents:
-          default: true
-          description: Used for throttling at org level
-          title: Is Accepting Events
-          type: boolean
-        eventThrottleRate:
-          default: 0
-          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
-          title: Event Throttle Rate
-          type: integer
-      required:
-      - name
-      - id
-      - dateCreated
-      - slug
-      title: OrganizationSchema
-      type: object
-    TransactionGroupSchema:
-      properties:
-        project:
-          title: Project
-          type: integer
-        id:
-          title: Id
-          type: integer
-        transaction:
-          maxLength: 1024
-          title: Transaction
-          type: string
-        op:
-          maxLength: 255
-          title: Op
-          type: string
-        method:
-          default: ''
-          title: Method
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-        count:
-          default: 0
-          title: Count
-          type: integer
-        avgDuration:
-          default: 0
-          description: Average duration in ms
-          title: Avg Duration
-          type: number
-        p50:
-          title: P50
-          type:
-          - number
-          - 'null'
-        p95:
-          title: P95
-          type:
-          - number
-          - 'null'
-        errorCount:
-          default: 0
-          title: Error Count
-          type: integer
-        firstSeen:
-          format: date-time
-          title: First Seen
-          type: string
-        lastSeen:
-          format: date-time
-          title: Last Seen
-          type: string
-        errorRate:
-          description: Delegates to TransactionGroup.error_rate property.
-          readOnly: true
-          title: Errorrate
-          type: number
-        throughput:
-          description: Delegates to TransactionGroup.throughput property.
-          readOnly: true
-          title: Throughput
-          type:
-          - number
-          - 'null'
-      required:
-      - project
-      - id
-      - transaction
-      - op
-      - firstSeen
-      - lastSeen
-      - errorRate
-      - throughput
-      title: TransactionGroupSchema
-      type: object
-    TeamProjectSchema:
-      description: TeamSchema with related projects
-      properties:
-        id:
-          title: Id
-          type: string
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        isMember:
-          title: Ismember
-          type: boolean
-        memberCount:
-          title: Membercount
-          type: integer
-        projects:
-          default: []
-          items:
-            $ref: '#/components/schemas/ProjectSchema'
-          title: Projects
-          type: array
-      required:
-      - id
-      - slug
-      - dateCreated
-      - isMember
-      - memberCount
-      title: TeamProjectSchema
-      type: object
-    LogStatsSchema:
-      description: Schema for log stats response.
-      properties:
-        intervals:
-          items:
-            format: date-time
-            type: string
-          title: Intervals
-          type: array
-        series:
-          items:
-            $ref: '#/components/schemas/LogStatsSeriesSchema'
-          title: Series
-          type: array
-      required:
-      - intervals
-      - series
-      title: LogStatsSchema
-      type: object
     LogStatsSeriesSchema:
       description: A single series in the stats response.
       properties:
@@ -3759,18 +2874,204 @@ components:
       - data
       title: LogStatsSeriesSchema
       type: object
-    OrganizationInSchema:
+    MonitorDetailSchema:
       properties:
+        projectID:
+          title: Projectid
+          type:
+          - string
+          - 'null'
+        environmentID:
+          title: Environmentid
+          type:
+          - integer
+          - 'null'
+        isUp:
+          title: Isup
+          type:
+          - boolean
+          - 'null'
+        lastChange:
+          title: Lastchange
+          type:
+          - string
+          - 'null'
+        heartbeatEndpoint:
+          title: Heartbeatendpoint
+          type:
+          - string
+          - 'null'
+        projectName:
+          title: Projectname
+          type:
+          - string
+          - 'null'
+        envName:
+          title: Envname
+          type:
+          - string
+          - 'null'
+        checks:
+          items:
+            $ref: '#/components/schemas/MonitorCheckResponseTimeSchema'
+          title: Checks
+          type: array
+        organizationID:
+          title: Organizationid
+          type: integer
+        monitorType:
+          $ref: '#/components/schemas/MonitorType'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        endpointID:
+          description: Used for referencing heartbeat endpoint
+          title: Endpoint Id
+          format: uuid
+          type:
+          - string
+          - 'null'
+        created:
+          format: date-time
+          title: Created
+          type: string
         name:
-          description: The name of the organization
           maxLength: 200
           title: Name
           type: string
+        url:
+          title: Url
+          maxLength: 2000
+          type:
+          - string
+          - 'null'
+        expectedStatus:
+          default: 200
+          title: Expected Status
+          type:
+          - integer
+          - 'null'
+        expectedBody:
+          title: Expected Body
+          maxLength: 2000
+          type:
+          - string
+          - 'null'
+        interval:
+          default: 60
+          title: Interval
+          type: integer
+        timeout:
+          description: Blank implies default value of 20
+          title: Timeout
+          type:
+          - integer
+          - 'null'
       required:
+      - projectID
+      - environmentID
+      - isUp
+      - lastChange
+      - heartbeatEndpoint
+      - checks
+      - organizationID
+      - monitorType
+      - created
       - name
-      title: OrganizationInSchema
+      title: MonitorDetailSchema
       type: object
-    OrganizationUserDetailSchema:
+    TransactionTrendSchema:
+      properties:
+        date:
+          format: date-time
+          title: Date
+          type: string
+        count:
+          title: Count
+          type: integer
+        transactionCount:
+          title: Transactioncount
+          type: integer
+        avgDuration:
+          title: Avgduration
+          type: number
+        totalTime:
+          title: Totaltime
+          type: number
+      required:
+      - date
+      - count
+      - transactionCount
+      - avgDuration
+      - totalTime
+      title: TransactionTrendSchema
+      type: object
+    DebugSymbolBundleSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        sha1:
+          title: Sha1
+          type:
+          - string
+          - 'null'
+        headers:
+          title: Headers
+          additionalProperties:
+            type: string
+          type:
+          - object
+          - 'null'
+        name:
+          title: Name
+          type: string
+        size:
+          default: 0
+          title: Size
+          type: integer
+      required:
+      - id
+      - dateCreated
+      - name
+      title: DebugSymbolBundleSchema
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
+      type: object
+    OrganizationUserSchema:
       properties:
         id:
           title: Id
@@ -3801,11 +3102,6 @@ components:
         isOwner:
           title: Isowner
           type: boolean
-        teams:
-          items:
-            type: string
-          title: Teams
-          type: array
       required:
       - id
       - role
@@ -3814,8 +3110,97 @@ components:
       - email
       - pending
       - isOwner
-      - teams
-      title: OrganizationUserDetailSchema
+      title: OrganizationUserSchema
+      type: object
+    ReleaseRepositorySchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        name:
+          title: Name
+          type: string
+      required:
+      - id
+      - name
+      title: ReleaseRepositorySchema
+      type: object
+    LogEventSchema:
+      description: Schema for log event API responses.
+      properties:
+        id:
+          format: uuid
+          title: Id
+          type: string
+        timestamp:
+          format: date-time
+          title: Timestamp
+          type: string
+        level:
+          title: Level
+          type: string
+        body:
+          title: Body
+          type: string
+        service:
+          default: ''
+          title: Service
+          type:
+          - string
+          - 'null'
+        environment:
+          default: ''
+          title: Environment
+          type:
+          - string
+          - 'null'
+        host:
+          default: ''
+          title: Host
+          type:
+          - string
+          - 'null'
+        traceID:
+          title: Traceid
+          format: uuid
+          type:
+          - string
+          - 'null'
+        spanID:
+          title: Spanid
+          type:
+          - string
+          - 'null'
+        severityNumber:
+          title: Severitynumber
+          type:
+          - integer
+          - 'null'
+        data:
+          additionalProperties: true
+          title: Data
+          type: object
+        projectId:
+          title: Projectid
+          type: integer
+      required:
+      - id
+      - timestamp
+      - level
+      - body
+      - projectId
+      title: LogEventSchema
+      type: object
+    OrganizationInSchema:
+      properties:
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
+          type: string
+      required:
+      - name
+      title: OrganizationInSchema
       type: object
     NPlusOnePatternSchema:
       properties:
@@ -3854,102 +3239,6 @@ components:
       - totalTime
       title: NPlusOnePatternSchema
       type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          type:
-          - string
-          - 'null'
-        stacktraceOrder:
-          title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
-        language:
-          title: Language
-          type:
-          - string
-          - 'null'
-        clock24Hours:
-          title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
-        preferredTheme:
-          title: Preferredtheme
-          type:
-          - string
-          - 'null'
-      title: UserOptions
-      type: object
-    LogResourceSchema:
-      description: Schema for resource name in list.
-      properties:
-        name:
-          title: Name
-          type: string
-        type:
-          title: Type
-          type: string
-        lastSeen:
-          format: date-time
-          title: Lastseen
-          type: string
-      required:
-      - name
-      - type
-      - lastSeen
-      title: LogResourceSchema
-      type: object
-    MonitorIn:
-      properties:
-        expectedBody:
-          title: Expectedbody
-          type: string
-        expectedStatus:
-          title: Expectedstatus
-          type:
-          - integer
-          - 'null'
-        timeout:
-          title: Timeout
-          maximum: 60
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-        project:
-          title: Project
-          type:
-          - string
-          - 'null'
-        monitorType:
-          default: Ping
-          maxLength: 12
-          title: Monitor Type
-          type: string
-        name:
-          maxLength: 200
-          title: Name
-          type: string
-        url:
-          title: Url
-          maxLength: 2000
-          type:
-          - string
-          - 'null'
-        interval:
-          default: 60
-          title: Interval
-          type: integer
-      required:
-      - expectedBody
-      - expectedStatus
-      - timeout
-      - name
-      title: MonitorIn
-      type: object
     ReleaseUpdate:
       properties:
         ref:
@@ -3965,32 +3254,49 @@ components:
           - 'null'
       title: ReleaseUpdate
       type: object
-    StatusPageSchema:
+    DeployIn:
       properties:
-        isPublic:
-          description: When true, the status page URL is publicly accessible
-          title: Is Public
-          type: boolean
-        name:
-          maxLength: 200
-          title: Name
+        environment:
+          title: Environment
           type: string
-        monitors:
-          items:
-            $ref: '#/components/schemas/MonitorSchema'
-          title: Monitors
-          type: array
-        slug:
-          title: Slug
-          maxLength: 200
+        url:
+          default: ''
+          title: Url
+          type: string
+        dateStarted:
+          title: Datestarted
+          format: date-time
+          type:
+          - string
+          - 'null'
+        dateFinished:
+          title: Datefinished
+          format: date-time
           type:
           - string
           - 'null'
       required:
-      - isPublic
-      - name
-      - monitors
-      title: StatusPageSchema
+      - environment
+      title: DeployIn
+      type: object
+    LogStatsSchema:
+      description: Schema for log stats response.
+      properties:
+        intervals:
+          items:
+            format: date-time
+            type: string
+          title: Intervals
+          type: array
+        series:
+          items:
+            $ref: '#/components/schemas/LogStatsSeriesSchema'
+          title: Series
+          type: array
+      required:
+      - intervals
+      - series
+      title: LogStatsSchema
       type: object
     ProjectSchema:
       description: 'A project is an organizational unit for GlitchTip events. It may contain
@@ -4081,37 +3387,158 @@ components:
       - dateCreated
       title: ProjectSchema
       type: object
-    OrganizationUserIn:
+    OrganizationSchema:
       properties:
-        orgRole:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Orgrole
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
           type: string
-        teamRoles:
-          items:
-            $ref: '#/components/schemas/TeamRole'
-          title: Teamroles
-          type: array
-        email:
-          format: email
-          title: Email
+        id:
+          title: Id
           type: string
-        sendInvite:
-          default: true
-          title: Sendinvite
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        status:
+          additionalProperties:
+            type: string
+          default:
+            id: active
+            name: active
+          title: Status
+          type: object
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        isEarlyAdopter:
+          default: false
+          title: Isearlyadopter
           type: boolean
-        reinvite:
-          default: true
-          title: Reinvite
+        require2fa:
+          default: false
+          title: Require2Fa
           type: boolean
+        slug:
+          description: The name in all lowercase, suitable for URL identification
+          maxLength: 200
+          title: Slug
+          type: string
+        isAcceptingEvents:
+          default: true
+          description: Used for throttling at org level
+          title: Is Accepting Events
+          type: boolean
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
       required:
-      - orgRole
-      - email
-      title: OrganizationUserIn
+      - name
+      - id
+      - dateCreated
+      - slug
+      title: OrganizationSchema
+      type: object
+    ProjectTeamSchema:
+      description: Project Schema with related teams
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          title: Slug
+          type:
+          - string
+          - 'null'
+        id:
+          title: Id
+          type: string
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        color:
+          default: ''
+          title: Color
+          type: string
+        features:
+          default: []
+          items:
+            type: string
+          title: Features
+          type: array
+        hasAccess:
+          default: true
+          title: Hasaccess
+          type: boolean
+        isBookmarked:
+          default: false
+          title: Isbookmarked
+          type: boolean
+        isInternal:
+          default: false
+          title: Isinternal
+          type: boolean
+        isMember:
+          title: Ismember
+          type: boolean
+        isPublic:
+          default: false
+          title: Ispublic
+          type: boolean
+        scrubIPAddresses:
+          title: Scrubipaddresses
+          type: boolean
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        platform:
+          title: Platform
+          type:
+          - string
+          - 'null'
+        firstEvent:
+          title: First Event
+          format: date-time
+          type:
+          - string
+          - 'null'
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+        teams:
+          items:
+            $ref: '#/components/schemas/TeamSlugSchema'
+          title: Teams
+          type: array
+      required:
+      - name
+      - id
+      - isMember
+      - scrubIPAddresses
+      - dateCreated
+      - teams
+      title: ProjectTeamSchema
       type: object
     UserSchema:
       properties:
@@ -4172,6 +3599,372 @@ components:
       - identities
       title: UserSchema
       type: object
+    StatusPageSchema:
+      properties:
+        isPublic:
+          description: When true, the status page URL is publicly accessible
+          title: Is Public
+          type: boolean
+        name:
+          maxLength: 200
+          title: Name
+          type: string
+        monitors:
+          items:
+            $ref: '#/components/schemas/MonitorSchema'
+          title: Monitors
+          type: array
+        slug:
+          title: Slug
+          maxLength: 200
+          type:
+          - string
+          - 'null'
+      required:
+      - isPublic
+      - name
+      - monitors
+      title: StatusPageSchema
+      type: object
+    DeploySchema:
+      properties:
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        dateStarted:
+          title: Datestarted
+          format: date-time
+          type:
+          - string
+          - 'null'
+        dateFinished:
+          title: Datefinished
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        environment:
+          maxLength: 64
+          title: Environment
+          type: string
+        url:
+          default: ''
+          title: Url
+          maxLength: 200
+          type:
+          - string
+          - 'null'
+      required:
+      - dateCreated
+      - dateStarted
+      - dateFinished
+      - environment
+      title: DeploySchema
+      type: object
+    RepositoryIn:
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          default: ''
+          title: Url
+          type: string
+        provider:
+          title: Provider
+          additionalProperties: true
+          type:
+          - object
+          - 'null'
+      required:
+      - name
+      title: RepositoryIn
+      type: object
+    OrganizationUserIn:
+      properties:
+        orgRole:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Orgrole
+          type: string
+        teamRoles:
+          items:
+            $ref: '#/components/schemas/TeamRole'
+          title: Teamroles
+          type: array
+        email:
+          format: email
+          title: Email
+          type: string
+        sendInvite:
+          default: true
+          title: Sendinvite
+          type: boolean
+        reinvite:
+          default: true
+          title: Reinvite
+          type: boolean
+      required:
+      - orgRole
+      - email
+      title: OrganizationUserIn
+      type: object
+    MonitorCheckResponseTimeSchema:
+      description: Monitor check with response time. Used in Monitors detail api and monitor checks list
+      properties:
+        isUp:
+          title: Is Up
+          type: boolean
+        startCheck:
+          description: Time when the start of this check was performed
+          format: date-time
+          title: Start Check
+          type: string
+        reason:
+          default: 0
+          title: Reason
+          type:
+          - integer
+          - 'null'
+        responseTime:
+          description: Reponse time in milliseconds
+          title: Response Time
+          type:
+          - integer
+          - 'null'
+      required:
+      - isUp
+      title: MonitorCheckResponseTimeSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    EnvironmentSchema:
+      properties:
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        name:
+          maxLength: 255
+          title: Name
+          type: string
+      required:
+      - name
+      title: EnvironmentSchema
+      type: object
+    OrganizationUserUpdateSchema:
+      properties:
+        orgRole:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Orgrole
+          type: string
+        teamRoles:
+          items:
+            $ref: '#/components/schemas/TeamRole'
+          title: Teamroles
+          type: array
+      required:
+      - orgRole
+      title: OrganizationUserUpdateSchema
+      type: object
+    CommitSchema:
+      description: Output schema for commit data, matching documented public API.
+      properties:
+        id:
+          title: Id
+          type: string
+        message:
+          default: ''
+          title: Message
+          type:
+          - string
+          - 'null'
+        dateCreated:
+          title: Datecreated
+          type:
+          - string
+          - 'null'
+        authorName:
+          title: Authorname
+          type:
+          - string
+          - 'null'
+        authorEmail:
+          title: Authoremail
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      title: CommitSchema
+      type: object
+    TeamProjectSchema:
+      description: TeamSchema with related projects
+      properties:
+        id:
+          title: Id
+          type: string
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        isMember:
+          title: Ismember
+          type: boolean
+        memberCount:
+          title: Membercount
+          type: integer
+        projects:
+          default: []
+          items:
+            $ref: '#/components/schemas/ProjectSchema'
+          title: Projects
+          type: array
+      required:
+      - id
+      - slug
+      - dateCreated
+      - isMember
+      - memberCount
+      title: TeamProjectSchema
+      type: object
+    OrganizationUserInviteSchema:
+      description: 'Response for the invite (member create) endpoint.
+
+
+        Surfaces the acceptance link so the frontend can offer a copy-link invite
+
+        flow. This is the only delivery path when email is disabled, and a harmless
+
+        convenience when email works. The link carries the same time-limited token
+
+        the invite email uses, so possessing it is what grants acceptance.'
+      properties:
+        id:
+          title: Id
+          type: string
+        role:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Role
+          type: string
+        roleName:
+          title: Rolename
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        email:
+          title: Email
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSchema'
+        pending:
+          title: Pending
+          type: boolean
+        isOwner:
+          title: Isowner
+          type: boolean
+        inviteLink:
+          title: Invitelink
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - role
+      - roleName
+      - dateCreated
+      - email
+      - pending
+      - isOwner
+      title: OrganizationUserInviteSchema
+      type: object
+    CommitIn:
+      properties:
+        id:
+          title: Id
+          type: string
+        message:
+          default: ''
+          title: Message
+          type: string
+        authorName:
+          default: ''
+          title: Authorname
+          type: string
+        authorEmail:
+          default: ''
+          title: Authoremail
+          type: string
+      required:
+      - id
+      title: CommitIn
+      type: object
     ArtifactBundleAssembleIn:
       properties:
         checksum:
@@ -4200,6 +3993,16 @@ components:
       - projects
       title: ArtifactBundleAssembleIn
       type: object
+    MonitorType:
+      enum:
+      - Ping
+      - GET
+      - POST
+      - TCP Port
+      - SSL
+      - Heartbeat
+      title: MonitorType
+      type: string
     NameSlugProjectSchema:
       properties:
         name:
@@ -4214,6 +4017,203 @@ components:
       required:
       - name
       title: NameSlugProjectSchema
+      type: object
+    SpanGroupSchema:
+      properties:
+        op:
+          title: Op
+          type: string
+        description:
+          title: Description
+          type: string
+        count:
+          title: Count
+          type: integer
+        avgDuration:
+          title: Avgduration
+          type: number
+        p95Duration:
+          title: P95Duration
+          type: number
+        totalTime:
+          title: Totaltime
+          type: number
+      required:
+      - op
+      - description
+      - count
+      - avgDuration
+      - p95Duration
+      - totalTime
+      title: SpanGroupSchema
+      type: object
+    LogResourceSchema:
+      description: Schema for resource name in list.
+      properties:
+        name:
+          title: Name
+          type: string
+        type:
+          title: Type
+          type: string
+        lastSeen:
+          format: date-time
+          title: Lastseen
+          type: string
+      required:
+      - name
+      - type
+      - lastSeen
+      title: LogResourceSchema
+      type: object
+    OrganizationDetailSchema:
+      properties:
+        name:
+          description: The name of the organization
+          maxLength: 200
+          title: Name
+          type: string
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        status:
+          additionalProperties:
+            type: string
+          default:
+            id: active
+            name: active
+          title: Status
+          type: object
+        avatar:
+          additionalProperties:
+            type:
+            - string
+            - 'null'
+          default:
+            avatarType: ''
+            avatarUuid: null
+          title: Avatar
+          type: object
+        isEarlyAdopter:
+          default: false
+          title: Isearlyadopter
+          type: boolean
+        require2fa:
+          default: false
+          title: Require2Fa
+          type: boolean
+        slug:
+          description: The name in all lowercase, suitable for URL identification
+          maxLength: 200
+          title: Slug
+          type: string
+        isAcceptingEvents:
+          default: true
+          description: Used for throttling at org level
+          title: Is Accepting Events
+          type: boolean
+        eventThrottleRate:
+          default: 0
+          description: Probability (in percent) on how many events are throttled. Used for throttling at project level
+          title: Event Throttle Rate
+          type: integer
+        projects:
+          items:
+            $ref: '#/components/schemas/ProjectTeamSchema'
+          title: Projects
+          type: array
+        teams:
+          items:
+            $ref: '#/components/schemas/TeamSchema'
+          title: Teams
+          type: array
+        access:
+          items:
+            enum:
+            - org:read
+            - org:write
+            - org:admin
+            - org:integrations
+            - member:read
+            - member:write
+            - member:admin
+            - team:read
+            - team:write
+            - team:admin
+            - project:read
+            - project:write
+            - project:admin
+            - project:releases
+            - event:read
+            - event:write
+            - event:admin
+            type: string
+          title: Access
+          type: array
+        openMembership:
+          default: true
+          description: Allow any organization member to join any team
+          title: Open Membership
+          type: boolean
+      required:
+      - name
+      - id
+      - dateCreated
+      - slug
+      - projects
+      - teams
+      - access
+      title: OrganizationDetailSchema
+      type: object
+    TeamIn:
+      properties:
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+      required:
+      - slug
+      title: TeamIn
+      type: object
+    RepositorySchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        name:
+          maxLength: 200
+          title: Name
+          type: string
+        url:
+          default: ''
+          title: Url
+          type:
+          - string
+          - 'null'
+        status:
+          default: active
+          maxLength: 24
+          title: Status
+          type: string
+        provider:
+          title: Provider
+          type:
+          - object
+          - 'null'
+      required:
+      - id
+      - dateCreated
+      - name
+      title: RepositorySchema
       type: object
   securitySchemes:
     TokenAuth:

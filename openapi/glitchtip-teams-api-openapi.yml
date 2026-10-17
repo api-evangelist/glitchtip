@@ -244,6 +244,106 @@ paths:
       - Teams
 components:
   schemas:
+    UserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          title: Last Login
+          format: date-time
+          type:
+          - string
+          - 'null'
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          title: Name
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
+      type: object
+    OrganizationUserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        role:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Role
+          type: string
+        roleName:
+          title: Rolename
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        email:
+          title: Email
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSchema'
+        pending:
+          title: Pending
+          type: boolean
+        isOwner:
+          title: Isowner
+          type: boolean
+      required:
+      - id
+      - role
+      - roleName
+      - dateCreated
+      - email
+      - pending
+      - isOwner
+      title: OrganizationUserSchema
+      type: object
     UserOptions:
       properties:
         timezone:
@@ -272,6 +372,41 @@ components:
           - string
           - 'null'
       title: UserOptions
+      type: object
+    TeamProjectSchema:
+      description: TeamSchema with related projects
+      properties:
+        id:
+          title: Id
+          type: string
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        isMember:
+          title: Ismember
+          type: boolean
+        memberCount:
+          title: Membercount
+          type: integer
+        projects:
+          default: []
+          items:
+            $ref: '#/components/schemas/ProjectSchema'
+          title: Projects
+          type: array
+      required:
+      - id
+      - slug
+      - dateCreated
+      - isMember
+      - memberCount
+      title: TeamProjectSchema
       type: object
     ProjectSchema:
       description: 'A project is an organizational unit for GlitchTip events. It may contain
@@ -362,100 +497,6 @@ components:
       - dateCreated
       title: ProjectSchema
       type: object
-    UserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        options:
-          $ref: '#/components/schemas/UserOptions'
-        username:
-          format: email
-          title: Username
-          type: string
-        dateJoined:
-          format: date-time
-          title: Datejoined
-          type: string
-        email:
-          format: email
-          title: Email
-          type: string
-        hasPasswordAuth:
-          title: Haspasswordauth
-          type: boolean
-        identities:
-          items:
-            $ref: '#/components/schemas/SocialAccountSchema'
-          title: Identities
-          type: array
-        lastLogin:
-          title: Last Login
-          format: date-time
-          type:
-          - string
-          - 'null'
-        isSuperuser:
-          default: false
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser Status
-          type: boolean
-        isActive:
-          default: true
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        name:
-          title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - options
-      - username
-      - dateJoined
-      - email
-      - hasPasswordAuth
-      - identities
-      title: UserSchema
-      type: object
-    TeamProjectSchema:
-      description: TeamSchema with related projects
-      properties:
-        id:
-          title: Id
-          type: string
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        isMember:
-          title: Ismember
-          type: boolean
-        memberCount:
-          title: Membercount
-          type: integer
-        projects:
-          default: []
-          items:
-            $ref: '#/components/schemas/ProjectSchema'
-          title: Projects
-          type: array
-      required:
-      - id
-      - slug
-      - dateCreated
-      - isMember
-      - memberCount
-      title: TeamProjectSchema
-      type: object
     SocialAccountSchema:
       properties:
         email:
@@ -499,6 +540,17 @@ components:
       - dateJoined
       title: SocialAccountSchema
       type: object
+    TeamIn:
+      properties:
+        slug:
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+          title: Slug
+          type: string
+      required:
+      - slug
+      title: TeamIn
+      type: object
     ProjectIn:
       properties:
         name:
@@ -523,58 +575,6 @@ components:
       required:
       - name
       title: ProjectIn
-      type: object
-    TeamIn:
-      properties:
-        slug:
-          maxLength: 50
-          pattern: ^[-a-zA-Z0-9_]+$
-          title: Slug
-          type: string
-      required:
-      - slug
-      title: TeamIn
-      type: object
-    OrganizationUserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        role:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Role
-          type: string
-        roleName:
-          title: Rolename
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        email:
-          title: Email
-          type: string
-        user:
-          $ref: '#/components/schemas/UserSchema'
-        pending:
-          title: Pending
-          type: boolean
-        isOwner:
-          title: Isowner
-          type: boolean
-      required:
-      - id
-      - role
-      - roleName
-      - dateCreated
-      - email
-      - pending
-      - isOwner
-      title: OrganizationUserSchema
       type: object
   securitySchemes:
     TokenAuth:
