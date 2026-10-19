@@ -3,15 +3,7 @@ info:
   title: GlitchTip Stripe API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Stripe
 paths:
@@ -52,7 +44,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/StripeSubscriptionSchema'
+                anyOf:
+                - $ref: '#/components/schemas/StripeSubscriptionSchema'
+                - type: 'null'
       security:
       - TokenAuth: []
       - SessionAuth: []
@@ -190,97 +184,77 @@ paths:
       - SessionAuth: []
       tags:
       - Stripe
+  /api/0/stripe/subscriptions/{organization_slug}/overage/:
+    get:
+      operationId: apps_stripe_api_get_overage_status
+      summary: Get Overage Status
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverageStatusSchema'
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
+  /api/0/stripe/organizations/{organization_slug}/overage/:
+    post:
+      operationId: apps_stripe_api_configure_overage
+      summary: Configure Overage
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverageStatusSchema'
+      description: 'Enable/disable metered overage billing and set the spend cap (owner-only).
+
+
+        Enabling attaches the metered overage price as a second subscription item,
+
+        whose own Stripe billing period becomes the organization''s usage window
+
+        from then on (see ``billing_window``). Disabling only clears the flag: the
+
+        item stays attached (dormant, billing zero), so a re-enable within the
+
+        same cycle can''t re-bill reported usage and toggling never moves the
+
+        window. Either way a throttle re-check is enqueued so the new headroom (or
+
+        block) takes effect promptly.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OverageConfigIn'
+        required: true
+      security:
+      - TokenAuth: []
+      - SessionAuth: []
+      tags:
+      - Stripe
 components:
   schemas:
-    StripeProductSchema:
-      properties:
-        stripeID:
-          title: Stripeid
-          type: string
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        events:
-          title: Events
-          type: integer
-        default_price_id:
-          title: Default Price
-          type:
-          - string
-          - 'null'
-      required:
-      - stripeID
-      - name
-      - description
-      - events
-      title: StripeProductSchema
-      type: object
-    CollectionMethod:
-      enum:
-      - charge_automatically
-      - send_invoice
-      title: CollectionMethod
-      type: string
-    StripeProductExpandedPriceSchema:
-      properties:
-        stripeID:
-          title: Stripeid
-          type: string
-        defaultPrice:
-          $ref: '#/components/schemas/StripeNestedPriceSchema'
-        prices:
-          items:
-            $ref: '#/components/schemas/StripeNestedPriceSchema'
-          title: Prices
-          type: array
-        marketingFeatures:
-          items:
-            type: string
-          title: Marketingfeatures
-          type: array
-        name:
-          title: Name
-          type: string
-        description:
-          title: Description
-          type: string
-        events:
-          title: Events
-          type: integer
-      required:
-      - stripeID
-      - defaultPrice
-      - prices
-      - marketingFeatures
-      - name
-      - description
-      - events
-      title: StripeProductExpandedPriceSchema
-      type: object
-    PriceIDSchema:
-      properties:
-        price:
-          title: Price
-          type: string
-      required:
-      - price
-      title: PriceIDSchema
-      type: object
-    DailyEventsCountSchema:
-      properties:
-        data:
-          items:
-            $ref: '#/components/schemas/DailyEventCountEntry'
-          title: Data
-          type: array
-      required:
-      - data
-      title: DailyEventsCountSchema
-      type: object
-    SubscriptionIn:
+    CreateSubscriptionResponse:
       properties:
         price:
           title: Price
@@ -288,36 +262,13 @@ components:
         organization:
           title: Organization
           type: string
+        subscription:
+          $ref: '#/components/schemas/StripeSubscriptionSchema'
       required:
       - price
       - organization
-      title: SubscriptionIn
-      type: object
-    DailyEventCountEntry:
-      properties:
-        date:
-          format: date
-          title: Date
-          type: string
-        eventCount:
-          title: Eventcount
-          type: integer
-        transactionEventCount:
-          title: Transactioneventcount
-          type: integer
-        uptimeCheckEventCount:
-          title: Uptimecheckeventcount
-          type: integer
-        logEventCount:
-          title: Logeventcount
-          type: integer
-      required:
-      - date
-      - eventCount
-      - transactionEventCount
-      - uptimeCheckEventCount
-      - logEventCount
-      title: DailyEventCountEntry
+      - subscription
+      title: CreateSubscriptionResponse
       type: object
     StripeNestedPriceSchema:
       properties:
@@ -337,11 +288,157 @@ components:
       - price
       title: StripeNestedPriceSchema
       type: object
-    SubscriptionUsageSchema:
+    StripeCheckoutSessionSchema:
       properties:
-        total:
-          title: Total
+        url:
+          title: Url
+          type: string
+      required:
+      - url
+      title: StripeCheckoutSessionSchema
+      type: object
+    StripeProductExpandedPriceSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        defaultPrice:
+          $ref: '#/components/schemas/StripeNestedPriceSchema'
+        prices:
+          items:
+            $ref: '#/components/schemas/StripeNestedPriceSchema'
+          title: Prices
+          type: array
+        marketingFeatures:
+          items:
+            type: string
+          title: Marketingfeatures
+          type: array
+        events:
+          title: Events
           type: integer
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+      required:
+      - stripeID
+      - defaultPrice
+      - prices
+      - marketingFeatures
+      - events
+      - name
+      - description
+      title: StripeProductExpandedPriceSchema
+      type: object
+    StripeProductSchema:
+      properties:
+        stripeID:
+          title: Stripeid
+          type: string
+        events:
+          title: Events
+          type: integer
+        name:
+          title: Name
+          type: string
+        description:
+          title: Description
+          type: string
+        default_price_id:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Default Price
+      required:
+      - stripeID
+      - events
+      - name
+      - description
+      title: StripeProductSchema
+      type: object
+    PriceIDSchema:
+      properties:
+        price:
+          title: Price
+          type: string
+      required:
+      - price
+      title: PriceIDSchema
+      type: object
+    OverageStatusSchema:
+      description: Current overage state for an org, for rendering the choice at the limit.
+      properties:
+        enabled:
+          title: Enabled
+          type: boolean
+        eligible:
+          title: Eligible
+          type: boolean
+        configured:
+          title: Configured
+          type: boolean
+        active:
+          title: Active
+          type: boolean
+        capCents:
+          title: Capcents
+          type: integer
+        maxCapCents:
+          title: Maxcapcents
+          type: integer
+        capUnits:
+          title: Capunits
+          type: integer
+        quota:
+          title: Quota
+          type: integer
+        usage:
+          title: Usage
+          type: integer
+        overageUnits:
+          title: Overageunits
+          type: integer
+        overageCostCents:
+          title: Overagecostcents
+          type: integer
+        throttleRate:
+          title: Throttlerate
+          type: integer
+      required:
+      - enabled
+      - eligible
+      - configured
+      - active
+      - capCents
+      - maxCapCents
+      - capUnits
+      - quota
+      - usage
+      - overageUnits
+      - overageCostCents
+      - throttleRate
+      title: OverageStatusSchema
+      type: object
+    DailyEventsCountSchema:
+      properties:
+        data:
+          items:
+            $ref: '#/components/schemas/DailyEventCountEntry'
+          title: Data
+          type: array
+      required:
+      - data
+      title: DailyEventsCountSchema
+      type: object
+    DailyEventCountEntry:
+      properties:
+        date:
+          format: date
+          title: Date
+          type: string
         eventCount:
           title: Eventcount
           type: integer
@@ -350,21 +447,17 @@ components:
           type: integer
         uptimeCheckEventCount:
           title: Uptimecheckeventcount
-          type: integer
+          type: number
         logEventCount:
           title: Logeventcount
-          type: integer
-        fileSizeMb:
-          title: Filesizemb
-          type: integer
+          type: number
       required:
-      - total
+      - date
       - eventCount
       - transactionEventCount
       - uptimeCheckEventCount
       - logEventCount
-      - fileSizeMb
-      title: SubscriptionUsageSchema
+      title: DailyEventCountEntry
       type: object
     StripePortalSessionSchema:
       properties:
@@ -375,16 +468,7 @@ components:
       - url
       title: StripePortalSessionSchema
       type: object
-    StripeCheckoutSessionSchema:
-      properties:
-        url:
-          title: Url
-          type: string
-      required:
-      - url
-      title: StripeCheckoutSessionSchema
-      type: object
-    CreateSubscriptionResponse:
+    SubscriptionIn:
       properties:
         price:
           title: Price
@@ -392,13 +476,10 @@ components:
         organization:
           title: Organization
           type: string
-        subscription:
-          $ref: '#/components/schemas/StripeSubscriptionSchema'
       required:
       - price
       - organization
-      - subscription
-      title: CreateSubscriptionResponse
+      title: SubscriptionIn
       type: object
     StripeSubscriptionSchema:
       properties:
@@ -410,7 +491,9 @@ components:
         price:
           $ref: '#/components/schemas/StripeNestedPriceSchema'
         status:
-          $ref: '#/components/schemas/SubscriptionStatus'
+          anyOf:
+          - $ref: '#/components/schemas/SubscriptionStatus'
+          - type: 'null'
         collectionMethod:
           $ref: '#/components/schemas/CollectionMethod'
         created:
@@ -430,17 +513,17 @@ components:
           title: Start Date
           type: string
         subscriptionCycleStart:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
           title: Subscription Cycle Start
-          format: date-time
-          type:
-          - string
-          - 'null'
         subscriptionCycleEnd:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
           title: Subscription Cycle End
-          format: date-time
-          type:
-          - string
-          - 'null'
       required:
       - stripeID
       - product
@@ -452,6 +535,54 @@ components:
       - currentPeriodEnd
       - startDate
       title: StripeSubscriptionSchema
+      type: object
+    OverageConfigIn:
+      properties:
+        enabled:
+          title: Enabled
+          type: boolean
+        capCents:
+          default: 0
+          title: Capcents
+          type: integer
+      required:
+      - enabled
+      title: OverageConfigIn
+      type: object
+    CollectionMethod:
+      enum:
+      - charge_automatically
+      - send_invoice
+      title: CollectionMethod
+      type: string
+    SubscriptionUsageSchema:
+      properties:
+        total:
+          title: Total
+          type: integer
+        eventCount:
+          title: Eventcount
+          type: integer
+        transactionEventCount:
+          title: Transactioneventcount
+          type: integer
+        uptimeCheckEventCount:
+          title: Uptimecheckeventcount
+          type: number
+        logEventCount:
+          title: Logeventcount
+          type: number
+        fileSizeMb:
+          title: Filesizemb
+          type: integer
+      required:
+      - total
+      - eventCount
+      - transactionEventCount
+      - uptimeCheckEventCount
+      - logEventCount
+      - fileSizeMb
+      title: SubscriptionUsageSchema
       type: object
     SubscriptionStatus:
       enum:

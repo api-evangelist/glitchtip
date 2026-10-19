@@ -3,15 +3,7 @@ info:
   title: GlitchTip Api Tokens API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: API Tokens
 paths:
@@ -23,21 +15,21 @@ paths:
       - in: query
         name: limit
         schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
           description: Number of results to return per page.
           title: Limit
-          type:
-          - integer
-          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
         name: cursor
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           description: The pagination cursor value.
           title: Cursor
-          type:
-          - string
-          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -95,21 +87,6 @@ paths:
       - API Tokens
 components:
   schemas:
-    APITokenIn:
-      properties:
-        scopes:
-          title: Scopes
-          type: integer
-        label:
-          title: Label
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - scopes
-      title: APITokenIn
-      type: object
     APITokenSchema:
       properties:
         id:
@@ -137,6 +114,21 @@ components:
       - token
       - created
       title: APITokenSchema
+      type: object
+    APITokenIn:
+      properties:
+        scopes:
+          title: Scopes
+          type: integer
+        label:
+          anyOf:
+          - maxLength: 255
+            type: string
+          - type: 'null'
+          title: Label
+      required:
+      - scopes
+      title: APITokenIn
       type: object
   securitySchemes:
     TokenAuth:

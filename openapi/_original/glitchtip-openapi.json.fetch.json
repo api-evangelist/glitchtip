@@ -1,0 +1,12 @@
+{
+ "url": "https://app.glitchtip.com/api/openapi.json",
+ "final": "https://app.glitchtip.com/api/openapi.json",
+ "status": 200,
+ "content_type": "application/json",
+ "bytes": 272138,
+ "sha256": "7b60511c4823a0dfe2b82fe1cdb16e5c5d092c250bb5b9ac87a8e842df948360",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

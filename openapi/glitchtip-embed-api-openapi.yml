@@ -3,15 +3,7 @@ info:
   title: GlitchTip Embed API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Embed
 paths:
@@ -112,18 +104,18 @@ paths:
       - in: query
         name: name
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Name
-          type:
-          - string
-          - 'null'
         required: false
       - in: query
         name: email
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Email
-          type:
-          - string
-          - 'null'
         required: false
       responses:
         '200':
@@ -226,18 +218,18 @@ paths:
       - in: query
         name: name
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Name
-          type:
-          - string
-          - 'null'
         required: false
       - in: query
         name: email
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Email
-          type:
-          - string
-          - 'null'
         required: false
       responses:
         '200':
@@ -250,20 +242,20 @@ paths:
               type: object
               properties:
                 name:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
                   title: Name
-                  type:
-                  - string
-                  - 'null'
                 email:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
                   title: Email
-                  type:
-                  - string
-                  - 'null'
                 comments:
+                  anyOf:
+                  - type: string
+                  - type: 'null'
                   title: Comments
-                  type:
-                  - string
-                  - 'null'
               required:
               - name
               - email

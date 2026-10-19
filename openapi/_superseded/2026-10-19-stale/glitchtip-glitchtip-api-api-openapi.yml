@@ -1,0 +1,216 @@
+openapi: 3.2.0
+info:
+  title: GlitchTip API
+  version: 1.0.0
+  description: ''
+  contact:
+    email: sales@glitchtip.com
+    url: https://glitchtip.com/
+  license:
+    name: MIT
+  x-api-id: glitchtip
+servers:
+- url: https://app.glitchtip.com
+  description: GlitchTip production server
+tags:
+- name: GlitchTip API
+paths:
+  /api/0/:
+    get:
+      operationId: glitchtip_api_api_api_root
+      summary: Api Root
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/APIRootSchema'
+      description: /api/0/ gives information about the server and current user
+      tags:
+      - GlitchTip API
+components:
+  schemas:
+    UserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          title: Last Login
+          format: date-time
+          type:
+          - string
+          - 'null'
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          title: Name
+          maxLength: 255
+          type:
+          - string
+          - 'null'
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
+      type: object
+    APIRootSchema:
+      properties:
+        version:
+          title: Version
+          type: string
+        user:
+          $ref: '#/components/schemas/UserSchema'
+        auth:
+          $ref: '#/components/schemas/APITokenSchema'
+      required:
+      - version
+      - user
+      - auth
+      title: APIRootSchema
+      type: object
+    APITokenSchema:
+      properties:
+        id:
+          title: Id
+          type: integer
+        label:
+          title: Label
+          type: string
+        scopes:
+          items:
+            type: string
+          title: Scopes
+          type: array
+        token:
+          title: Token
+          type: string
+        created:
+          format: date-time
+          title: Created
+          type: string
+      required:
+      - id
+      - label
+      - scopes
+      - token
+      - created
+      title: APITokenSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          title: Email
+          format: email
+          type:
+          - string
+          - 'null'
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+        id:
+          title: ID
+          type:
+          - integer
+          - 'null'
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    UserOptions:
+      properties:
+        timezone:
+          title: Timezone
+          type:
+          - string
+          - 'null'
+        stacktraceOrder:
+          title: Stacktraceorder
+          type:
+          - integer
+          - 'null'
+        language:
+          title: Language
+          type:
+          - string
+          - 'null'
+        clock24Hours:
+          title: Clock24Hours
+          type:
+          - boolean
+          - 'null'
+        preferredTheme:
+          title: Preferredtheme
+          type:
+          - string
+          - 'null'
+      title: UserOptions
+      type: object
+  securitySchemes:
+    TokenAuth:
+      type: http
+      scheme: bearer
+    SessionAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

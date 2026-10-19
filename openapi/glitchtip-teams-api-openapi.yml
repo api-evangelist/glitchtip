@@ -3,15 +3,7 @@ info:
   title: GlitchTip Teams API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Teams
 paths:
@@ -35,21 +27,21 @@ paths:
       - in: query
         name: limit
         schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
           description: Number of results to return per page.
           title: Limit
-          type:
-          - integer
-          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
         name: cursor
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           description: The pagination cursor value.
           title: Cursor
-          type:
-          - string
-          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -87,21 +79,21 @@ paths:
       - in: query
         name: limit
         schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
           description: Number of results to return per page.
           title: Limit
-          type:
-          - integer
-          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
         name: cursor
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           description: The pagination cursor value.
           title: Cursor
-          type:
-          - string
-          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -244,133 +236,33 @@ paths:
       - Teams
 components:
   schemas:
-    UserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        options:
-          $ref: '#/components/schemas/UserOptions'
-        username:
-          format: email
-          title: Username
-          type: string
-        dateJoined:
-          format: date-time
-          title: Datejoined
-          type: string
-        email:
-          format: email
-          title: Email
-          type: string
-        hasPasswordAuth:
-          title: Haspasswordauth
-          type: boolean
-        identities:
-          items:
-            $ref: '#/components/schemas/SocialAccountSchema'
-          title: Identities
-          type: array
-        lastLogin:
-          title: Last Login
-          format: date-time
-          type:
-          - string
-          - 'null'
-        isSuperuser:
-          default: false
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser Status
-          type: boolean
-        isActive:
-          default: true
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        name:
-          title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - options
-      - username
-      - dateJoined
-      - email
-      - hasPasswordAuth
-      - identities
-      title: UserSchema
-      type: object
-    OrganizationUserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        role:
-          enum:
-          - member
-          - admin
-          - manager
-          - owner
-          title: Role
-          type: string
-        roleName:
-          title: Rolename
-          type: string
-        dateCreated:
-          format: date-time
-          title: Datecreated
-          type: string
-        email:
-          title: Email
-          type: string
-        user:
-          $ref: '#/components/schemas/UserSchema'
-        pending:
-          title: Pending
-          type: boolean
-        isOwner:
-          title: Isowner
-          type: boolean
-      required:
-      - id
-      - role
-      - roleName
-      - dateCreated
-      - email
-      - pending
-      - isOwner
-      title: OrganizationUserSchema
-      type: object
     UserOptions:
       properties:
         timezone:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Timezone
-          type:
-          - string
-          - 'null'
         stacktraceOrder:
+          anyOf:
+          - type: integer
+          - type: 'null'
           title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
         language:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Language
-          type:
-          - string
-          - 'null'
         clock24Hours:
+          anyOf:
+          - type: boolean
+          - type: 'null'
           title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
         preferredTheme:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Preferredtheme
-          type:
-          - string
-          - 'null'
       title: UserOptions
       type: object
     TeamProjectSchema:
@@ -408,6 +300,176 @@ components:
       - memberCount
       title: TeamProjectSchema
       type: object
+    OrganizationUserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        role:
+          enum:
+          - member
+          - admin
+          - manager
+          - owner
+          title: Role
+          type: string
+        roleName:
+          title: Rolename
+          type: string
+        dateCreated:
+          format: date-time
+          title: Datecreated
+          type: string
+        email:
+          title: Email
+          type: string
+        user:
+          anyOf:
+          - $ref: '#/components/schemas/UserSchema'
+          - type: 'null'
+        pending:
+          title: Pending
+          type: boolean
+        isOwner:
+          title: Isowner
+          type: boolean
+      required:
+      - id
+      - role
+      - roleName
+      - dateCreated
+      - email
+      - pending
+      - isOwner
+      title: OrganizationUserSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          anyOf:
+          - format: email
+            type: string
+          - type: 'null'
+          title: Email
+        username:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Username
+        id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: ID
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    UserSchema:
+      properties:
+        id:
+          title: Id
+          type: string
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
+          type: string
+        dateJoined:
+          format: date-time
+          title: Datejoined
+          type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          title: Last Login
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          anyOf:
+          - maxLength: 255
+            type: string
+          - type: 'null'
+          title: Name
+      required:
+      - id
+      - options
+      - username
+      - dateJoined
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
+      type: object
+    ProjectIn:
+      properties:
+        name:
+          maxLength: 64
+          title: Name
+          type: string
+        slug:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Slug
+        platform:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Platform
+        eventThrottleRate:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Eventthrottlerate
+      required:
+      - name
+      title: ProjectIn
+      type: object
     ProjectSchema:
       description: 'A project is an organizational unit for GlitchTip events. It may contain
 
@@ -420,18 +482,18 @@ components:
           title: Name
           type: string
         slug:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Slug
-          type:
-          - string
-          - 'null'
         id:
           title: Id
           type: string
         avatar:
           additionalProperties:
-            type:
-            - string
-            - 'null'
+            anyOf:
+            - type: string
+            - type: 'null'
           default:
             avatarType: ''
             avatarUuid: null
@@ -474,16 +536,16 @@ components:
           title: Datecreated
           type: string
         platform:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Platform
-          type:
-          - string
-          - 'null'
         firstEvent:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
           title: First Event
-          format: date-time
-          type:
-          - string
-          - 'null'
         eventThrottleRate:
           default: 0
           description: Probability (in percent) on how many events are throttled. Used for throttling at project level
@@ -497,49 +559,6 @@ components:
       - dateCreated
       title: ProjectSchema
       type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
     TeamIn:
       properties:
         slug:
@@ -550,31 +569,6 @@ components:
       required:
       - slug
       title: TeamIn
-      type: object
-    ProjectIn:
-      properties:
-        name:
-          maxLength: 64
-          title: Name
-          type: string
-        slug:
-          title: Slug
-          type:
-          - string
-          - 'null'
-        platform:
-          title: Platform
-          type:
-          - string
-          - 'null'
-        eventThrottleRate:
-          title: Eventthrottlerate
-          type:
-          - integer
-          - 'null'
-      required:
-      - name
-      title: ProjectIn
       type: object
   securitySchemes:
     TokenAuth:

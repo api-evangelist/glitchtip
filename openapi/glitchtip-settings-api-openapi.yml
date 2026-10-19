@@ -3,15 +3,7 @@ info:
   title: GlitchTip Settings API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Settings
 paths:
@@ -29,6 +21,33 @@ paths:
                 $ref: '#/components/schemas/SettingsOut'
       tags:
       - Settings
+  /api/settings/{organization_slug}/:
+    get:
+      operationId: glitchtip_api_api_get_organization_login_settings
+      summary: Get Organization Login Settings
+      parameters:
+      - in: path
+        name: organization_slug
+        schema:
+          title: Organization Slug
+          type: string
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginSettingsOut'
+      description: 'Sign-in options for one organization''s own login page, including social
+
+        apps hidden from the instance-wide login page. Responds
+
+        200 with an empty list for unknown slugs so anonymous requests cannot
+
+        enumerate which organizations exist.'
+      tags:
+      - Settings
 components:
   schemas:
     SocialAppSchema:
@@ -38,11 +57,9 @@ components:
             type: string
           title: Scopes
           type: array
-        authorize_url:
-          title: Authorize Url
-          type:
-          - string
-          - 'null'
+        brand:
+          title: Brand
+          type: string
         name:
           maxLength: 40
           title: Name
@@ -58,7 +75,7 @@ components:
           type: string
       required:
       - scopes
-      - authorize_url
+      - brand
       - name
       - client_id
       - provider
@@ -87,40 +104,40 @@ components:
           title: Enableorganizationcreation
           type: boolean
         stripePublicKey:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Stripepublickey
-          type:
-          - string
-          - 'null'
         plausibleUrl:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Plausibleurl
-          type:
-          - string
-          - 'null'
         plausibleDomain:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Plausibledomain
-          type:
-          - string
-          - 'null'
         chatwootWebsiteToken:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Chatwootwebsitetoken
-          type:
-          - string
-          - 'null'
         sentryDSN:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Sentrydsn
-          type:
-          - string
-          - 'null'
         sentryTracesSampleRate:
+          anyOf:
+          - type: number
+          - type: 'null'
           title: Sentrytracessamplerate
-          type:
-          - number
-          - 'null'
         environment:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Environment
-          type:
-          - string
-          - 'null'
         version:
           title: Version
           type: string
@@ -128,10 +145,10 @@ components:
           title: Servertimezone
           type: string
         glitchtipInstanceName:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Glitchtipinstancename
-          type:
-          - string
-          - 'null'
         enabledFeatures:
           items:
             type: string
@@ -156,6 +173,17 @@ components:
       - glitchtipInstanceName
       - enabledFeatures
       title: SettingsOut
+      type: object
+    LoginSettingsOut:
+      properties:
+        socialApps:
+          items:
+            $ref: '#/components/schemas/SocialAppSchema'
+          title: Socialapps
+          type: array
+      required:
+      - socialApps
+      title: LoginSettingsOut
       type: object
   securitySchemes:
     TokenAuth:

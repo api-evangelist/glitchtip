@@ -3,15 +3,7 @@ info:
   title: GlitchTip Security API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Security
 paths:
@@ -44,14 +36,6 @@ paths:
       - Security
 components:
   schemas:
-    SecuritySchema:
-      properties:
-        csp-report:
-          $ref: '#/components/schemas/CSPReportSchema'
-      required:
-      - csp-report
-      title: SecuritySchema
-      type: object
     CSPReportSchema:
       description: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only#violation_report_syntax
       properties:
@@ -71,30 +55,30 @@ components:
           title: Effective-Directive
           type: string
         original-policy:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Original-Policy
-          type:
-          - string
-          - 'null'
         script-sample:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Script-Sample
-          type:
-          - string
-          - 'null'
         status-code:
+          anyOf:
+          - type: integer
+          - type: 'null'
           title: Status-Code
-          type:
-          - integer
-          - 'null'
         line_number:
+          anyOf:
+          - type: integer
+          - type: 'null'
           title: Line Number
-          type:
-          - integer
-          - 'null'
         column_number:
+          anyOf:
+          - type: integer
+          - type: 'null'
           title: Column Number
-          type:
-          - integer
-          - 'null'
       required:
       - blocked-uri
       - disposition
@@ -103,6 +87,14 @@ components:
       - original-policy
       - status-code
       title: CSPReportSchema
+      type: object
+    SecuritySchema:
+      properties:
+        csp-report:
+          $ref: '#/components/schemas/CSPReportSchema'
+      required:
+      - csp-report
+      title: SecuritySchema
       type: object
   securitySchemes:
     TokenAuth:

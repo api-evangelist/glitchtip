@@ -3,15 +3,7 @@ info:
   title: GlitchTip Users API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Users
 paths:
@@ -80,21 +72,21 @@ paths:
       - in: query
         name: limit
         schema:
+          anyOf:
+          - type: integer
+          - type: 'null'
           description: Number of results to return per page.
           title: Limit
-          type:
-          - integer
-          - 'null'
         required: false
         description: Number of results to return per page.
       - in: query
         name: cursor
         schema:
+          anyOf:
+          - type: string
+          - type: 'null'
           description: The pagination cursor value.
           title: Cursor
-          type:
-          - string
-          - 'null'
         required: false
         description: The pagination cursor value.
       responses:
@@ -401,6 +393,87 @@ paths:
       - Users
 components:
   schemas:
+    SocialAccountSchema:
+      properties:
+        email:
+          anyOf:
+          - format: email
+            type: string
+          - type: 'null'
+          title: Email
+        username:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Username
+        id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: ID
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
+      type: object
+    UserNotificationsSchema:
+      properties:
+        subscribeByDefault:
+          default: true
+          description: Subscribe to project notifications by default. Overrides project settings
+          title: Subscribe By Default
+          type: boolean
+      title: UserNotificationsSchema
+      type: object
+    StrKeyIntValue:
+      additionalProperties:
+        type: integer
+      title: StrKeyIntValue
+      type: object
+    EmailAddressIn:
+      properties:
+        email:
+          format: email
+          title: Email
+          type: string
+      required:
+      - email
+      title: EmailAddressIn
+      type: object
+    UserIn:
+      properties:
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        name:
+          anyOf:
+          - maxLength: 255
+            type: string
+          - type: 'null'
+          title: Name
+      required:
+      - options
+      title: UserIn
+      type: object
     UserSchema:
       properties:
         id:
@@ -429,11 +502,11 @@ components:
           title: Identities
           type: array
         lastLogin:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
           title: Last Login
-          format: date-time
-          type:
-          - string
-          - 'null'
         isSuperuser:
           default: false
           description: Designates that this user has all permissions without explicitly assigning them.
@@ -445,11 +518,11 @@ components:
           title: Active
           type: boolean
         name:
+          anyOf:
+          - maxLength: 255
+            type: string
+          - type: 'null'
           title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
       required:
       - id
       - options
@@ -460,29 +533,34 @@ components:
       - identities
       title: UserSchema
       type: object
-    EmailAddressIn:
+    UserOptions:
       properties:
-        email:
-          format: email
-          title: Email
-          type: string
-      required:
-      - email
-      title: EmailAddressIn
-      type: object
-    StrKeyIntValue:
-      additionalProperties:
-        type: integer
-      title: StrKeyIntValue
-      type: object
-    UserNotificationsSchema:
-      properties:
-        subscribeByDefault:
-          default: true
-          description: Subscribe to project notifications by default. Overrides project settings
-          title: Subscribe By Default
-          type: boolean
-      title: UserNotificationsSchema
+        timezone:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Timezone
+        stacktraceOrder:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Stacktraceorder
+        language:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Language
+        clock24Hours:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          title: Clock24Hours
+        preferredTheme:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Preferredtheme
+      title: UserOptions
       type: object
     EmailAddressSchema:
       properties:
@@ -530,11 +608,11 @@ components:
           title: Identities
           type: array
         lastLogin:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
           title: Last Login
-          format: date-time
-          type:
-          - string
-          - 'null'
         isSuperuser:
           default: false
           description: Designates that this user has all permissions without explicitly assigning them.
@@ -546,16 +624,16 @@ components:
           title: Active
           type: boolean
         name:
+          anyOf:
+          - maxLength: 255
+            type: string
+          - type: 'null'
           title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
         chatwootIdentifierHash:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Chatwootidentifierhash
-          type:
-          - string
-          - 'null'
       required:
       - id
       - options
@@ -565,92 +643,6 @@ components:
       - hasPasswordAuth
       - identities
       title: UserDetailSchema
-      type: object
-    SocialAccountSchema:
-      properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-        id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
-          type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
-          type: string
-        dateJoined:
-          format: date-time
-          title: Date Joined
-          type: string
-      required:
-      - email
-      - username
-      - provider
-      - uid
-      - lastLogin
-      - dateJoined
-      title: SocialAccountSchema
-      type: object
-    UserIn:
-      properties:
-        options:
-          $ref: '#/components/schemas/UserOptions'
-        name:
-          title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - options
-      title: UserIn
-      type: object
-    UserOptions:
-      properties:
-        timezone:
-          title: Timezone
-          type:
-          - string
-          - 'null'
-        stacktraceOrder:
-          title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
-        language:
-          title: Language
-          type:
-          - string
-          - 'null'
-        clock24Hours:
-          title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
-        preferredTheme:
-          title: Preferredtheme
-          type:
-          - string
-          - 'null'
-      title: UserOptions
       type: object
   securitySchemes:
     TokenAuth:

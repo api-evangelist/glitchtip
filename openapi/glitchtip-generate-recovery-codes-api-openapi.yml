@@ -3,15 +3,7 @@ info:
   title: GlitchTip Generate Recovery Codes API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: Generate Recovery Codes
 paths:
@@ -54,6 +46,15 @@ paths:
       - Generate Recovery Codes
 components:
   schemas:
+    RecoveryCodeSchema:
+      properties:
+        code:
+          title: Code
+          type: string
+      required:
+      - code
+      title: RecoveryCodeSchema
+      type: object
     RecoveryCodesSchema:
       properties:
         codes:
@@ -64,15 +65,6 @@ components:
       required:
       - codes
       title: RecoveryCodesSchema
-      type: object
-    RecoveryCodeSchema:
-      properties:
-        code:
-          title: Code
-          type: string
-      required:
-      - code
-      title: RecoveryCodeSchema
       type: object
   securitySchemes:
     TokenAuth:

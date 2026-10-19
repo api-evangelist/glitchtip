@@ -3,15 +3,7 @@ info:
   title: GlitchTip API
   version: 1.0.0
   description: ''
-  contact:
-    email: sales@glitchtip.com
-    url: https://glitchtip.com/
-  license:
-    name: MIT
-  x-api-id: glitchtip
-servers:
-- url: https://app.glitchtip.com
-  description: GlitchTip production server
+servers: []
 tags:
 - name: GlitchTip API
 paths:
@@ -32,79 +24,67 @@ paths:
       - GlitchTip API
 components:
   schemas:
-    UserSchema:
-      properties:
-        id:
-          title: Id
-          type: string
-        options:
-          $ref: '#/components/schemas/UserOptions'
-        username:
-          format: email
-          title: Username
-          type: string
-        dateJoined:
-          format: date-time
-          title: Datejoined
-          type: string
-        email:
-          format: email
-          title: Email
-          type: string
-        hasPasswordAuth:
-          title: Haspasswordauth
-          type: boolean
-        identities:
-          items:
-            $ref: '#/components/schemas/SocialAccountSchema'
-          title: Identities
-          type: array
-        lastLogin:
-          title: Last Login
-          format: date-time
-          type:
-          - string
-          - 'null'
-        isSuperuser:
-          default: false
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser Status
-          type: boolean
-        isActive:
-          default: true
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        name:
-          title: Name
-          maxLength: 255
-          type:
-          - string
-          - 'null'
-      required:
-      - id
-      - options
-      - username
-      - dateJoined
-      - email
-      - hasPasswordAuth
-      - identities
-      title: UserSchema
-      type: object
     APIRootSchema:
       properties:
         version:
           title: Version
           type: string
         user:
-          $ref: '#/components/schemas/UserSchema'
+          anyOf:
+          - $ref: '#/components/schemas/UserSchema'
+          - type: 'null'
         auth:
-          $ref: '#/components/schemas/APITokenSchema'
+          anyOf:
+          - $ref: '#/components/schemas/APITokenSchema'
+          - type: 'null'
       required:
       - version
       - user
       - auth
       title: APIRootSchema
+      type: object
+    SocialAccountSchema:
+      properties:
+        email:
+          anyOf:
+          - format: email
+            type: string
+          - type: 'null'
+          title: Email
+        username:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Username
+        id:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: ID
+        provider:
+          maxLength: 200
+          title: Provider
+          type: string
+        uid:
+          maxLength: 191
+          title: Uid
+          type: string
+        lastLogin:
+          format: date-time
+          title: Last Login
+          type: string
+        dateJoined:
+          format: date-time
+          title: Date Joined
+          type: string
+      required:
+      - email
+      - username
+      - provider
+      - uid
+      - lastLogin
+      - dateJoined
+      title: SocialAccountSchema
       type: object
     APITokenSchema:
       properties:
@@ -134,76 +114,92 @@ components:
       - created
       title: APITokenSchema
       type: object
-    SocialAccountSchema:
+    UserSchema:
       properties:
-        email:
-          title: Email
-          format: email
-          type:
-          - string
-          - 'null'
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
         id:
-          title: ID
-          type:
-          - integer
-          - 'null'
-        provider:
-          maxLength: 200
-          title: Provider
+          title: Id
           type: string
-        uid:
-          maxLength: 191
-          title: Uid
-          type: string
-        lastLogin:
-          format: date-time
-          title: Last Login
+        options:
+          $ref: '#/components/schemas/UserOptions'
+        username:
+          format: email
+          title: Username
           type: string
         dateJoined:
           format: date-time
-          title: Date Joined
+          title: Datejoined
           type: string
+        email:
+          format: email
+          title: Email
+          type: string
+        hasPasswordAuth:
+          title: Haspasswordauth
+          type: boolean
+        identities:
+          items:
+            $ref: '#/components/schemas/SocialAccountSchema'
+          title: Identities
+          type: array
+        lastLogin:
+          anyOf:
+          - format: date-time
+            type: string
+          - type: 'null'
+          title: Last Login
+        isSuperuser:
+          default: false
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser Status
+          type: boolean
+        isActive:
+          default: true
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        name:
+          anyOf:
+          - maxLength: 255
+            type: string
+          - type: 'null'
+          title: Name
       required:
-      - email
+      - id
+      - options
       - username
-      - provider
-      - uid
-      - lastLogin
       - dateJoined
-      title: SocialAccountSchema
+      - email
+      - hasPasswordAuth
+      - identities
+      title: UserSchema
       type: object
     UserOptions:
       properties:
         timezone:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Timezone
-          type:
-          - string
-          - 'null'
         stacktraceOrder:
+          anyOf:
+          - type: integer
+          - type: 'null'
           title: Stacktraceorder
-          type:
-          - integer
-          - 'null'
         language:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Language
-          type:
-          - string
-          - 'null'
         clock24Hours:
+          anyOf:
+          - type: boolean
+          - type: 'null'
           title: Clock24Hours
-          type:
-          - boolean
-          - 'null'
         preferredTheme:
+          anyOf:
+          - type: string
+          - type: 'null'
           title: Preferredtheme
-          type:
-          - string
-          - 'null'
       title: UserOptions
       type: object
   securitySchemes:
