@@ -64,42 +64,209 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-GlitchTip is an open-source error tracking and performance monitoring platform compatible with Sentry SDKs. It captures exceptions, log messages, and Content Security Policy violations in real time, providing performance monitoring for slow requests and database calls, plus uptime monitoring with email and webhook alerts.
+GlitchTip is an open-source error tracking and performance monitoring platform compatible with Sentry SDKs. It provides a REST API for managing errors, issues, projects, organizations, and teams, along with uptime monitoring and application performance insights. Available as a hosted SaaS service or self-hosted deployment.
 
-## APIs
+**Areas:** Error Tracking · Performance Monitoring · Uptime Monitoring · Application Monitoring · Open Source · Sentry Compatible · Observability · Logging
 
-- **REST API** — Sentry-compatible REST API for managing organizations, projects, teams, issues, and events. Base URL: `https://app.glitchtip.com/api/0/`
-- **Event Intake API** — Accepts error and performance events from any Sentry-compatible SDK (Python, JavaScript, Ruby, PHP, Go, Java, and more).
-- **MCP Server** — Model Context Protocol server exposing 17 tools for AI assistants to query and act on GlitchTip data.
+## GlitchTip on APIs.io
 
-## Authentication
+Everything profiled for GlitchTip is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/glitchtip/](https://apis.io/providers/glitchtip/)** — or go straight to one of the APIs or properties below.
 
-API access uses scoped auth tokens generated under **Profile > Auth Tokens**. The MCP server uses OAuth 2.0.
+### APIs (20)
 
-## Hosting
+- [GlitchTip Event Intake API](https://apis.io/apis/glitchtip/glitchtip-event-intake-api/) — Sentry SDK-compatible event intake endpoint that accepts error events, performance transactions, and log messages from Sentry-compatible SDKs across Python,…
+- [GlitchTip MCP Server](https://apis.io/apis/glitchtip/glitchtip-mcp-server/) — Model Context Protocol (MCP) server exposing 17 tools for AI assistants to query organizations, projects, issues, events, performance data, alert rules, and…
+- [GlitchTip Accept API](https://apis.io/apis/glitchtip/glitchtip-accept-api/) — The Accept API from GlitchTip — 1 operation(s) for accept.
+- [GlitchTip Api Tokens API](https://apis.io/apis/glitchtip/glitchtip-api-tokens-api/) — The Api Tokens API from GlitchTip — 2 operation(s) for api tokens.
+- [GlitchTip Embed API](https://apis.io/apis/glitchtip/glitchtip-embed-api/) — The Embed API from GlitchTip — 1 operation(s) for embed.
+- [GlitchTip Generate Recovery Codes API](https://apis.io/apis/glitchtip/glitchtip-generate-recovery-codes-api/) — The Generate Recovery Codes API from GlitchTip — 1 operation(s) for generate recovery codes.
+- [GlitchTip API](https://apis.io/apis/glitchtip/glitchtip-glitchtip-api-api/) — The GlitchTip API API from GlitchTip — 1 operation(s) for glitchtip api.
+- [GlitchTip Import API](https://apis.io/apis/glitchtip/glitchtip-import-api/) — The Import API from GlitchTip — 1 operation(s) for import.
+- [GlitchTip Instance License API](https://apis.io/apis/glitchtip/glitchtip-instance-license-api/) — The Instance License API from GlitchTip — 2 operation(s) for instance license.
+- [GlitchTip Issues API](https://apis.io/apis/glitchtip/glitchtip-issues-api/) — The Issues API from GlitchTip — 17 operation(s) for issues.
+- [GlitchTip Organizations API](https://apis.io/apis/glitchtip/glitchtip-organizations-api/) — The Organizations API from GlitchTip — 35 operation(s) for organizations.
+- [GlitchTip Projects API](https://apis.io/apis/glitchtip/glitchtip-projects-api/) — The Projects API from GlitchTip — 18 operation(s) for projects.
+- [GlitchTip Security API](https://apis.io/apis/glitchtip/glitchtip-security-api/) — The Security API from GlitchTip — 1 operation(s) for security.
+- [GlitchTip Settings API](https://apis.io/apis/glitchtip/glitchtip-settings-api/) — The Settings API from GlitchTip — 1 operation(s) for settings.
+- [GlitchTip Store API](https://apis.io/apis/glitchtip/glitchtip-store-api/) — The Store API from GlitchTip — 1 operation(s) for store.
+- [GlitchTip Stripe API](https://apis.io/apis/glitchtip/glitchtip-stripe-api/) — The Stripe API from GlitchTip — 7 operation(s) for stripe.
+- [GlitchTip Teams API](https://apis.io/apis/glitchtip/glitchtip-teams-api/) — The Teams API from GlitchTip — 3 operation(s) for teams.
+- [GlitchTip Users API](https://apis.io/apis/glitchtip/glitchtip-users-api/) — The Users API from GlitchTip — 6 operation(s) for users.
+- [GlitchTip Wizard API](https://apis.io/apis/glitchtip/glitchtip-wizard-api/) — The Wizard API from GlitchTip — 2 operation(s) for wizard.
+- [GlitchTip Wizard Set Token API](https://apis.io/apis/glitchtip/glitchtip-wizard-set-token-api/) — The Wizard Set Token API from GlitchTip — 1 operation(s) for wizard set token.
 
-- **US**: `https://app.glitchtip.com` (DigitalOcean NYC1)
-- **EU**: `https://eu.glitchtip.com` (DigitalOcean FRA1)
-- **Self-hosted**: Free; see [installation docs](https://glitchtip.com/documentation/install/)
+### Published properties
 
-## Pricing
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Plan | Price | Events/month |
-|------|-------|-------------|
-| Free | $0 | 1,000 |
-| Small | $15/mo | 100,000 |
-| Medium | $50/mo | 500,000 |
-| Large | $250/mo | 3,000,000 |
+#### Agentic access (1)
 
-Nonprofit and open source discounts start at $5/month.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Links
+- [Glitchtip Agentic Access](https://apis.io/agentic-access/glitchtip/glitchtip-agentic-access/)
 
-- Website: https://glitchtip.com/
-- Documentation: https://glitchtip.com/documentation/
-- SDK Docs: https://glitchtip.com/sdkdocs/
-- Blog: https://glitchtip.com/blog/
-- GitLab: https://gitlab.com/glitchtip
-- Community (Gitter): https://gitter.im/GlitchTip/community
-- Mastodon: https://mastodon.online/@glitchtip
-- Contact: sales@glitchtip.com
+#### JSON Schema (21)
+
+The data models the API reads and writes.
+
+- [APITokenSchema](https://apis.io/schemas/glitchtip/glitchtip-apitokenschema/)
+- [CommentSchema](https://apis.io/schemas/glitchtip/glitchtip-commentschema/)
+- [EnvironmentSchema](https://apis.io/schemas/glitchtip/glitchtip-environmentschema/)
+- [EventIngestSchema](https://apis.io/schemas/glitchtip/glitchtip-eventingestschema/)
+- [IssueDetailSchema](https://apis.io/schemas/glitchtip/glitchtip-issuedetailschema/)
+- [IssueEventDetailSchema](https://apis.io/schemas/glitchtip/glitchtip-issueeventdetailschema/)
+- [IssueEventSchema](https://apis.io/schemas/glitchtip/glitchtip-issueeventschema/)
+- [IssueSchema](https://apis.io/schemas/glitchtip/glitchtip-issueschema/)
+- [MonitorDetailSchema](https://apis.io/schemas/glitchtip/glitchtip-monitordetailschema/)
+- [MonitorSchema](https://apis.io/schemas/glitchtip/glitchtip-monitorschema/)
+- [OrganizationDetailSchema](https://apis.io/schemas/glitchtip/glitchtip-organizationdetailschema/)
+- [OrganizationSchema](https://apis.io/schemas/glitchtip/glitchtip-organizationschema/)
+- [ProjectAlertSchema](https://apis.io/schemas/glitchtip/glitchtip-projectalertschema/)
+- [ProjectKeySchema](https://apis.io/schemas/glitchtip/glitchtip-projectkeyschema/)
+- [ProjectSchema](https://apis.io/schemas/glitchtip/glitchtip-projectschema/)
+- [ReleaseSchema](https://apis.io/schemas/glitchtip/glitchtip-releaseschema/)
+- [StatusPageSchema](https://apis.io/schemas/glitchtip/glitchtip-statuspageschema/)
+- [TeamSchema](https://apis.io/schemas/glitchtip/glitchtip-teamschema/)
+- [UserDetailSchema](https://apis.io/schemas/glitchtip/glitchtip-userdetailschema/)
+- [UserReportSchema](https://apis.io/schemas/glitchtip/glitchtip-userreportschema/)
+- [UserSchema](https://apis.io/schemas/glitchtip/glitchtip-userschema/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Glitchtip Context](https://apis.io/jsonld/glitchtip/glitchtip-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [GlitchTip API Vocabulary](https://apis.io/vocabularies/glitchtip/glitchtip-vocabulary/)
+
+#### Examples (7)
+
+Example requests and responses.
+
+- [Glitchtip Alert Example](https://apis.io/examples/glitchtip/glitchtip-alert-example/)
+- [Glitchtip Api Token Example](https://apis.io/examples/glitchtip/glitchtip-api-token-example/)
+- [Glitchtip Event Example](https://apis.io/examples/glitchtip/glitchtip-event-example/)
+- [Glitchtip Issue Example](https://apis.io/examples/glitchtip/glitchtip-issue-example/)
+- [Glitchtip Monitor Example](https://apis.io/examples/glitchtip/glitchtip-monitor-example/)
+- [Glitchtip Organization Example](https://apis.io/examples/glitchtip/glitchtip-organization-example/)
+- [Glitchtip Project Example](https://apis.io/examples/glitchtip/glitchtip-project-example/)
+
+#### Collections (18)
+
+Postman and Open Collection request collections.
+
+- [GlitchTip Accept API](https://apis.io/collections/glitchtip/open-glitchtip-accept-api/)
+- [GlitchTip Accept Api Tokens API](https://apis.io/collections/glitchtip/open-glitchtip-api-tokens-api/)
+- [GlitchTip Accept Embed API](https://apis.io/collections/glitchtip/open-glitchtip-embed-api/)
+- [GlitchTip Accept Generate Recovery Codes API](https://apis.io/collections/glitchtip/open-glitchtip-generate-recovery-codes-api/)
+- [GlitchTip Accept GlitchTip API API](https://apis.io/collections/glitchtip/open-glitchtip-glitchtip-api-api/)
+- [GlitchTip Accept Import API](https://apis.io/collections/glitchtip/open-glitchtip-import-api/)
+- [GlitchTip Accept Instance License API](https://apis.io/collections/glitchtip/open-glitchtip-instance-license-api/)
+- [GlitchTip Accept Issues API](https://apis.io/collections/glitchtip/open-glitchtip-issues-api/)
+- [GlitchTip Accept Organizations API](https://apis.io/collections/glitchtip/open-glitchtip-organizations-api/)
+- [GlitchTip Accept Projects API](https://apis.io/collections/glitchtip/open-glitchtip-projects-api/)
+- [GlitchTip Accept Security API](https://apis.io/collections/glitchtip/open-glitchtip-security-api/)
+- [GlitchTip Accept Settings API](https://apis.io/collections/glitchtip/open-glitchtip-settings-api/)
+- [GlitchTip Accept Store API](https://apis.io/collections/glitchtip/open-glitchtip-store-api/)
+- [GlitchTip Accept Stripe API](https://apis.io/collections/glitchtip/open-glitchtip-stripe-api/)
+- [GlitchTip Accept Teams API](https://apis.io/collections/glitchtip/open-glitchtip-teams-api/)
+- [GlitchTip Accept Users API](https://apis.io/collections/glitchtip/open-glitchtip-users-api/)
+- [GlitchTip Accept Wizard API](https://apis.io/collections/glitchtip/open-glitchtip-wizard-api/)
+- [GlitchTip Accept Wizard Set Token API](https://apis.io/collections/glitchtip/open-glitchtip-wizard-set-token-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [GlitchTip — jsonschema rules](https://apis.io/rules/glitchtip/glitchtip-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Glitchtip Authentication](https://apis.io/security/glitchtip/glitchtip-authentication/)
+- [Glitchtip Domain Security](https://apis.io/security/glitchtip/glitchtip-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Glitchtip Plans Pricing](https://apis.io/plans/glitchtip/glitchtip-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Glitchtip Rate Limits](https://apis.io/rate-limits/glitchtip/glitchtip-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Glitchtip Finops](https://apis.io/finops/glitchtip/glitchtip-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://glitchtip.com/)
+- [Documentation](https://glitchtip.com/documentation/)
+- [Pricing](https://glitchtip.com/pricing)
+- [Blog](https://glitchtip.com/blog/)
+
+## API Evangelist rating
+
+**Kin Score 32.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.4 |
+| Contract governance | 9.8 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 26.2 |
+| Access clarity | 25.0 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/glitchtip/](https://apis.io/providers/glitchtip/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for GlitchTip: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/glitchtip/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
